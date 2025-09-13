@@ -384,3 +384,64 @@ svg {
     font-size: 1.3rem;
     font-weight: 700;
 }
+
+/* Learning Stage Breakdown Styles */
+.total-xp {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-left: 4px solid #fff;
+}
+
+.total-xp h3 {
+    color: white;
+    font-size: 1.2rem;
+}
+
+.total-xp .value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: white;
+}
+
+.stage-breakdown {
+    grid-column: 1 / -1;
+    background: #f8f9fa;
+    border-left: 4px solid #667eea;
+}
+
+.stage-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.stage-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-left: 3px solid #667eea;
+    transition: transform 0.2s ease;
+}
+
+.stage-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.stage-name {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.stage-xp {
+    font-weight: 700;
+    color: #667eea;
+    font-size: 1.1rem;
+}

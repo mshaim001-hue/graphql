@@ -474,15 +474,101 @@ class TomorrowSchoolApp {
         const avgDailyXP = daysActive > 0 ? Math.round(totalXP / daysActive) : 0;
         
         // Debug logging
+        console.log('=== XP CALCULATION DEBUG ===');
         console.log('Total XP calculated:', totalXP);
         console.log('Number of transactions:', transactions.length);
-        console.log('Sample transaction:', transactions[0]);
+        console.log('First 5 transactions:', transactions.slice(0, 5));
+        console.log('Last 5 transactions:', transactions.slice(-5));
         
+        // Show ALL transaction amounts for debugging
+        console.log('=== ALL XP AMOUNTS ===');
+        const allAmounts = transactions.map(t => t.amount);
+        console.log('All amounts:', allAmounts);
+        console.log('Sum of all amounts:', allAmounts.reduce((sum, amount) => sum + amount, 0));
+        
+        // Show amounts in groups of 10 for easier reading
+        for (let i = 0; i < transactions.length; i += 10) {
+            const group = transactions.slice(i, i + 10);
+            const groupAmounts = group.map(t => t.amount);
+            const groupSum = groupAmounts.reduce((sum, amount) => sum + amount, 0);
+            console.log(`Group ${Math.floor(i/10) + 1} (transactions ${i+1}-${Math.min(i+10, transactions.length)}):`, groupAmounts, `Sum: ${groupSum}`);
+        }
+        
+        // Analyze paths to understand learning stages
+        console.log('=== PATH ANALYSIS ===');
+        const pathAnalysis = {};
+        transactions.forEach(t => {
+            const path = t.path || 'unknown';
+            const stage = this.determineLearningStage(path);
+            if (!pathAnalysis[stage]) {
+                pathAnalysis[stage] = { count: 0, totalXP: 0, paths: new Set() };
+            }
+            pathAnalysis[stage].count++;
+            pathAnalysis[stage].totalXP += t.amount;
+            pathAnalysis[stage].paths.add(path);
+        });
+        
+        console.log('Learning stages breakdown:');
+        Object.keys(pathAnalysis).forEach(stage => {
+            console.log(`${stage}: ${pathAnalysis[stage].count} transactions, ${pathAnalysis[stage].totalXP.toLocaleString()} XP`);
+            console.log(`  Sample paths:`, Array.from(pathAnalysis[stage].paths).slice(0, 3));
+        });
+        
+        // Check for any negative amounts or unusual values
+        const negativeAmounts = transactions.filter(t => t.amount < 0);
+        const zeroAmounts = transactions.filter(t => t.amount === 0);
+        const veryLargeAmounts = transactions.filter(t => t.amount > 10000);
+        
+        console.log('Negative amounts:', negativeAmounts.length);
+        console.log('Zero amounts:', zeroAmounts.length);
+        console.log('Very large amounts (>10000):', veryLargeAmounts.length);
+        
+        if (negativeAmounts.length > 0) {
+            console.log('Negative transactions:', negativeAmounts);
+        }
+        if (veryLargeAmounts.length > 0) {
+            console.log('Very large transactions:', veryLargeAmounts);
+        }
+        
+        // Calculate XP by different criteria
+        const totalBySum = transactions.reduce((sum, t) => sum + t.amount, 0);
+        const totalByFilter = transactions
+            .filter(t => t.amount > 0)
+            .reduce((sum, t) => sum + t.amount, 0);
+        
+        console.log('Total by sum (all):', totalBySum);
+        console.log('Total by filter (positive only):', totalByFilter);
+        console.log('Difference:', totalBySum - totalByFilter);
+        console.log('=== END XP DEBUG ===');
+        
+        // Calculate XP by learning stages
+        const stageXP = {};
+        transactions.forEach(t => {
+            const stage = this.determineLearningStage(t.path);
+            if (!stageXP[stage]) {
+                stageXP[stage] = 0;
+            }
+            stageXP[stage] += t.amount;
+        });
+
         xpDetails.innerHTML = `
-            <div class="info-item">
+            <div class="info-item total-xp">
                 <h3>Total XP</h3>
                 <div class="value">${totalXP.toLocaleString()}</div>
             </div>
+            
+            <div class="info-item stage-breakdown">
+                <h3>XP by Learning Stage</h3>
+                <div class="stage-list">
+                    ${Object.keys(stageXP).map(stage => `
+                        <div class="stage-item">
+                            <span class="stage-name">${stage}</span>
+                            <span class="stage-xp">${stageXP[stage].toLocaleString()} XP</span>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+            
             <div class="info-item">
                 <h3>This Week</h3>
                 <div class="value">${weeklyXP.toLocaleString()} XP</div>
@@ -524,6 +610,26 @@ class TomorrowSchoolApp {
                 </div>
             </div>
         `;
+    }
+
+    determineLearningStage(path) {
+        if (!path) return 'Unknown';
+        
+        const pathLower = path.toLowerCase();
+        
+        if (pathLower.includes('piscine-go') || pathLower.includes('piscine_go')) {
+            return 'Piscine Go';
+        } else if (pathLower.includes('piscine-js') || pathLower.includes('piscine_js') || pathLower.includes('piscinejs')) {
+            return 'Piscine JS';
+        } else if (pathLower.includes('core') || pathLower.includes('education') || pathLower.includes('div-')) {
+            return 'Core Education';
+        } else if (pathLower.includes('raid') || pathLower.includes('project')) {
+            return 'Projects & Raids';
+        } else if (pathLower.includes('exam') || pathLower.includes('quest')) {
+            return 'Exams & Quests';
+        } else {
+            return 'Other';
+        }
     }
 
     async loadProgressData() {
