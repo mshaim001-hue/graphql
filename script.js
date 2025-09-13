@@ -79,7 +79,12 @@ class TomorrowSchoolApp {
             console.log('Auth response:', data); // Debug log
             
             // Handle different possible response formats
-            this.jwt = data.token || data.access_token || data.jwt || data;
+            // If data is a string (JWT token), use it directly
+            if (typeof data === 'string') {
+                this.jwt = data;
+            } else {
+                this.jwt = data.token || data.access_token || data.jwt || data;
+            }
             
             if (!this.jwt) {
                 throw new Error('No token received from server');
@@ -91,13 +96,19 @@ class TomorrowSchoolApp {
                 throw new Error('Invalid token format received');
             }
             
-            this.userId = this.parseJWT(this.jwt).id;
+            const payload = this.parseJWT(this.jwt);
+            this.userId = payload.sub || payload.id; // Use 'sub' field from JWT payload
+            
+            console.log('User ID extracted:', this.userId);
+            console.log('JWT token:', this.jwt);
             
             // Store JWT in localStorage
             localStorage.setItem('jwt', this.jwt);
             localStorage.setItem('userId', this.userId);
             
+            console.log('Switching to profile page...');
             this.showProfile();
+            console.log('Loading user data...');
             this.loadUserData();
             
         } catch (error) {
@@ -133,6 +144,11 @@ class TomorrowSchoolApp {
             // Check if token is expired
             if (payload.exp && payload.exp < Date.now() / 1000) {
                 console.log('JWT token expired');
+                return false;
+            }
+            // Check if token has required fields
+            if (!payload.sub && !payload.id) {
+                console.log('JWT token missing user ID');
                 return false;
             }
             return true;
