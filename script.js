@@ -237,7 +237,6 @@ class TomorrowSchoolApp {
                 user {
                     id
                     login
-                    githubLogin
                     profile
                     attrs
                     createdAt
@@ -302,10 +301,6 @@ class TomorrowSchoolApp {
             <div class="info-item">
                 <h3>Username</h3>
                 <div class="value">${user.login || 'N/A'}</div>
-            </div>
-            <div class="info-item">
-                <h3>GitHub</h3>
-                <div class="value">${user.githubLogin || 'Not connected'}</div>
             </div>
             <div class="info-item">
                 <h3>Campus</h3>
