@@ -457,22 +457,6 @@ class TomorrowSchoolApp {
         // Recent activity (last 5 transactions)
         const recentTransactions = transactions.slice(0, 5);
         
-        // XP by project type (if we can determine from path)
-        const projectXP = transactions
-            .filter(t => t.path && t.path.includes('project'))
-            .reduce((sum, t) => sum + t.amount, 0);
-        
-        const exerciseXP = transactions
-            .filter(t => t.path && t.path.includes('exercise'))
-            .reduce((sum, t) => sum + t.amount, 0);
-        
-        // Average XP per day (based on first and last transaction)
-        const firstTransaction = transactions[transactions.length - 1];
-        const lastTransaction = transactions[0];
-        const daysActive = firstTransaction && lastTransaction ? 
-            Math.ceil((new Date(lastTransaction.createdAt) - new Date(firstTransaction.createdAt)) / (1000 * 60 * 60 * 24)) : 0;
-        const avgDailyXP = daysActive > 0 ? Math.round(totalXP / daysActive) : 0;
-        
         // Debug logging
         console.log('=== XP CALCULATION DEBUG ===');
         console.log('Total XP calculated:', totalXP);
@@ -517,17 +501,6 @@ class TomorrowSchoolApp {
             console.log(`  Sample paths:`, Array.from(pathAnalysis[stage].paths).slice(0, 3));
         });
         
-        // Debug Piscine JS projects
-        console.log('=== PISCINE JS PROJECTS DEBUG ===');
-        const piscineJSProjects = this.getPiscineJSProjects(transactions);
-        console.log('Piscine JS projects found:', piscineJSProjects.length);
-        piscineJSProjects.forEach((project, index) => {
-            console.log(`${index + 1}. ${project.name}: ${project.xp.toLocaleString()} XP (${project.count} transactions)`);
-            console.log(`   Path: ${project.path}`);
-        });
-        const totalPiscineJSXP = piscineJSProjects.reduce((sum, p) => sum + p.xp, 0);
-        console.log(`Total Piscine JS XP: ${totalPiscineJSXP.toLocaleString()}`);
-        console.log('=== END PISCINE JS DEBUG ===');
         
         // Verify sum calculation
         console.log('=== SUM VERIFICATION ===');
@@ -623,30 +596,6 @@ class TomorrowSchoolApp {
                 <h3>Average per Transaction</h3>
                 <div class="value">${transactions.length > 0 ? Math.round(totalXP / transactions.length) : 0}</div>
             </div>
-            <div class="info-item">
-                <h3>Average per Day</h3>
-                <div class="value">${avgDailyXP.toLocaleString()}</div>
-            </div>
-            <div class="info-item">
-                <h3>Project XP</h3>
-                <div class="value">${projectXP.toLocaleString()}</div>
-            </div>
-            <div class="info-item">
-                <h3>Exercise XP</h3>
-                <div class="value">${exerciseXP.toLocaleString()}</div>
-            </div>
-            <div class="info-item piscine-js-breakdown">
-                <h3>Piscine JS Projects Breakdown</h3>
-                <div class="project-list">
-                    ${this.getPiscineJSProjects(transactions).map(project => `
-                        <div class="project-item ${project.excluded ? 'excluded' : ''}">
-                            <span class="project-name">${project.name}${project.excluded ? ' (excluded)' : ''}</span>
-                            <span class="project-xp">${project.xp.toLocaleString()} XP</span>
-                            <span class="project-path">${project.path}</span>
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
             
             <div class="info-item recent-activity">
                 <h3>Recent Activity</h3>
@@ -727,52 +676,6 @@ class TomorrowSchoolApp {
         });
     }
 
-    getPiscineJSProjects(transactions) {
-        const piscineJSProjects = {};
-        
-        transactions.forEach(t => {
-            const path = t.path || '';
-            const pathLower = path.toLowerCase();
-            
-            // Check if this transaction is for Piscine JS
-            if (pathLower.includes('piscine-js') || pathLower.includes('piscine_js') || pathLower.includes('piscinejs')) {
-                const projectName = this.extractProjectName(path);
-                const key = `${projectName}|${path}`;
-                
-                if (!piscineJSProjects[key]) {
-                    piscineJSProjects[key] = {
-                        name: projectName,
-                        path: path,
-                        xp: 0,
-                        count: 0,
-                        excluded: pathLower.endsWith('piscine-js') // Mark if this should be excluded from total
-                    };
-                }
-                
-                piscineJSProjects[key].xp += t.amount;
-                piscineJSProjects[key].count++;
-            }
-        });
-        
-        // Convert to array and sort by XP descending
-        return Object.values(piscineJSProjects)
-            .sort((a, b) => b.xp - a.xp);
-    }
-
-    extractProjectName(path) {
-        if (!path) return 'Unknown';
-        
-        // Try to extract project name from path
-        const parts = path.split('/');
-        const lastPart = parts[parts.length - 1];
-        
-        // If last part is empty, try second to last
-        if (!lastPart && parts.length > 1) {
-            return parts[parts.length - 2];
-        }
-        
-        return lastPart || 'Unknown Project';
-    }
 
     async loadProgressData() {
         const query = `
