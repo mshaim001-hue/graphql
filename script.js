@@ -581,7 +581,7 @@ class TomorrowSchoolApp {
                     ${this.getOrderedStages(stageXP).map(stage => `
                         <div class="stage-item">
                             <span class="stage-name">${stage}</span>
-                            <span class="stage-xp">${stageXP[stage].toLocaleString()} XP</span>
+                            <span class="stage-xp">${(stageXP[stage] || 0).toLocaleString()} XP</span>
                         </div>
                     `).join('')}
                 </div>
@@ -653,8 +653,8 @@ class TomorrowSchoolApp {
         // Piscine Go: первые 35 дней с момента регистрации
         const piscineGoEndDate = new Date(memberDate.getTime() + 35 * 24 * 60 * 60 * 1000);
         
-        // Piscine JS: по пути
-        if (pathLower.includes('piscine-js') || pathLower.includes('piscine_js') || pathLower.includes('piscinejs')) {
+        // Piscine JS: по пути (исключая общий путь piscine-js)
+        if ((pathLower.includes('piscine_js') || pathLower.includes('piscinejs')) && !pathLower.endsWith('piscine-js')) {
             return 'Piscine JS';
         }
         
@@ -697,8 +697,14 @@ class TomorrowSchoolApp {
         // Define the order of stages
         const stageOrder = ['Core Education', 'Piscine Go', 'Piscine JS', 'Piscine Rust'];
         
-        // Return stages in the defined order, only if they have XP
-        return stageOrder.filter(stage => stageXP[stage] && stageXP[stage] > 0);
+        // Return stages in the defined order
+        // Always show Piscine Rust even if 0 XP, others only if they have XP
+        return stageOrder.filter(stage => {
+            if (stage === 'Piscine Rust') {
+                return true; // Always show Piscine Rust
+            }
+            return stageXP[stage] && stageXP[stage] > 0;
+        });
     }
 
     getPiscineJSProjects(transactions) {
@@ -708,8 +714,8 @@ class TomorrowSchoolApp {
             const path = t.path || '';
             const pathLower = path.toLowerCase();
             
-            // Check if this transaction is for Piscine JS
-            if (pathLower.includes('piscine-js') || pathLower.includes('piscine_js') || pathLower.includes('piscinejs')) {
+            // Check if this transaction is for Piscine JS (исключая общий путь piscine-js)
+            if ((pathLower.includes('piscine_js') || pathLower.includes('piscinejs')) && !pathLower.endsWith('piscine-js')) {
                 const projectName = this.extractProjectName(path);
                 const key = `${projectName}|${path}`;
                 
