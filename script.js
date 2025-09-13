@@ -241,12 +241,6 @@ class TomorrowSchoolApp {
                     attrs
                     createdAt
                     campus
-                    user_role {
-                        role {
-                            name
-                            slug
-                        }
-                    }
                 }
             }
         `;
@@ -325,12 +319,6 @@ class TomorrowSchoolApp {
             <div class="info-item">
                 <h3>Location</h3>
                 <div class="value">${attrsData.location}</div>
-            </div>
-            ` : ''}
-            ${user.user_role && user.user_role.length > 0 ? `
-            <div class="info-item">
-                <h3>Roles</h3>
-                <div class="value">${user.user_role.map(ur => ur.role.name).join(', ')}</div>
             </div>
             ` : ''}
         `;
