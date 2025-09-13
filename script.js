@@ -48,14 +48,20 @@ class TomorrowSchoolApp {
     }
 
     showProfile() {
+        console.log('showProfile() called');
         document.getElementById('login-page').classList.remove('active');
         document.getElementById('profile-page').classList.add('active');
+        console.log('Profile page classes updated');
     }
 
     async handleLogin() {
+        console.log('handleLogin() called');
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
         const errorDiv = document.getElementById('login-error');
+
+        console.log('Username:', username);
+        console.log('Password length:', password.length);
 
         try {
             errorDiv.style.display = 'none';
@@ -106,10 +112,12 @@ class TomorrowSchoolApp {
             localStorage.setItem('jwt', this.jwt);
             localStorage.setItem('userId', this.userId);
             
+            console.log('JWT stored in localStorage');
             console.log('Switching to profile page...');
             this.showProfile();
-            console.log('Loading user data...');
+            console.log('Profile page shown, now loading user data...');
             this.loadUserData();
+            console.log('User data loading initiated');
             
         } catch (error) {
             errorDiv.textContent = 'Invalid username/email or password. Please try again.';
@@ -215,19 +223,25 @@ class TomorrowSchoolApp {
     }
 
     async loadUserData() {
+        console.log('loadUserData() called');
         try {
+            console.log('Loading user basic info...');
             // Load user basic info
             await this.loadUserInfo();
             
+            console.log('Loading XP data...');
             // Load XP data
             await this.loadXPData();
             
+            console.log('Loading progress data...');
             // Load progress data
             await this.loadProgressData();
             
+            console.log('Loading statistics...');
             // Load statistics and create graphs
             await this.loadStatistics();
             
+            console.log('All user data loaded successfully');
         } catch (error) {
             console.error('Error loading user data:', error);
             this.showError('Failed to load user data. Please try logging in again.');
