@@ -305,7 +305,7 @@ class TomorrowSchoolApp {
             </div>
             <div class="info-item">
                 <h3>Member Since</h3>
-                <div class="value">${formatDate(user.createdAt)}</div>
+                <div class="value" data-date="member-since">${user.createdAt}</div>
             </div>
             ${profileData.email ? `
             <div class="info-item">
@@ -496,10 +496,13 @@ class TomorrowSchoolApp {
         
         // Analyze paths to understand learning stages
         console.log('=== PATH ANALYSIS ===');
+        const memberSinceForAnalysis = this.getMemberSinceDate();
+        console.log('Member since date:', memberSinceForAnalysis);
+        
         const pathAnalysis = {};
         transactions.forEach(t => {
             const path = t.path || 'unknown';
-            const stage = this.determineLearningStage(path);
+            const stage = this.determineLearningStage(path, t.createdAt, memberSinceForAnalysis);
             if (!pathAnalysis[stage]) {
                 pathAnalysis[stage] = { count: 0, totalXP: 0, paths: new Set() };
             }
@@ -541,10 +544,13 @@ class TomorrowSchoolApp {
         console.log('Difference:', totalBySum - totalByFilter);
         console.log('=== END XP DEBUG ===');
         
+        // Get member since date from user data
+        const memberSince = this.getMemberSinceDate();
+        
         // Calculate XP by learning stages
         const stageXP = {};
         transactions.forEach(t => {
-            const stage = this.determineLearningStage(t.path);
+            const stage = this.determineLearningStage(t.path, t.createdAt, memberSince);
             if (!stageXP[stage]) {
                 stageXP[stage] = 0;
             }
@@ -560,7 +566,7 @@ class TomorrowSchoolApp {
             <div class="info-item stage-breakdown">
                 <h3>XP by Learning Stage</h3>
                 <div class="stage-list">
-                    ${Object.keys(stageXP).map(stage => `
+                    ${this.getOrderedStages(stageXP).map(stage => `
                         <div class="stage-item">
                             <span class="stage-name">${stage}</span>
                             <span class="stage-xp">${stageXP[stage].toLocaleString()} XP</span>
@@ -612,24 +618,62 @@ class TomorrowSchoolApp {
         `;
     }
 
-    determineLearningStage(path) {
-        if (!path) return 'Unknown';
+    determineLearningStage(path, createdAt, memberSince) {
+        if (!path) return 'Core Education';
         
         const pathLower = path.toLowerCase();
+        const transactionDate = new Date(createdAt);
+        const memberDate = new Date(memberSince);
         
-        if (pathLower.includes('piscine-go') || pathLower.includes('piscine_go')) {
-            return 'Piscine Go';
-        } else if (pathLower.includes('piscine-js') || pathLower.includes('piscine_js') || pathLower.includes('piscinejs')) {
+        // Piscine Go: первые 35 дней с момента регистрации
+        const piscineGoEndDate = new Date(memberDate.getTime() + 35 * 24 * 60 * 60 * 1000);
+        
+        // Piscine JS: по пути
+        if (pathLower.includes('piscine-js') || pathLower.includes('piscine_js') || pathLower.includes('piscinejs')) {
             return 'Piscine JS';
-        } else if (pathLower.includes('core') || pathLower.includes('education') || pathLower.includes('div-')) {
-            return 'Core Education';
-        } else if (pathLower.includes('raid') || pathLower.includes('project')) {
-            return 'Projects & Raids';
-        } else if (pathLower.includes('exam') || pathLower.includes('quest')) {
-            return 'Exams & Quests';
-        } else {
-            return 'Other';
         }
+        
+        // Piscine Rust: по пути (если будет)
+        if (pathLower.includes('piscine-rust') || pathLower.includes('piscine_rust') || pathLower.includes('piscinerust')) {
+            return 'Piscine Rust';
+        }
+        
+        // Piscine Go: первые 35 дней с момента регистрации
+        if (transactionDate <= piscineGoEndDate) {
+            return 'Piscine Go';
+        }
+        
+        // Все остальное - Core Education
+        return 'Core Education';
+    }
+
+    getMemberSinceDate() {
+        // Try to get member since date from user data
+        const userDetails = document.getElementById('user-details');
+        if (userDetails) {
+            const memberSinceElement = userDetails.querySelector('[data-date="member-since"]');
+            if (memberSinceElement) {
+                return memberSinceElement.textContent;
+            }
+        }
+        
+        // Fallback: try to get from localStorage or use a default
+        const storedDate = localStorage.getItem('memberSince');
+        if (storedDate) {
+            return storedDate;
+        }
+        
+        // If we can't find the date, we'll need to get it from user data
+        // For now, return null and we'll handle it in the display function
+        return null;
+    }
+
+    getOrderedStages(stageXP) {
+        // Define the order of stages
+        const stageOrder = ['Core Education', 'Piscine Go', 'Piscine JS', 'Piscine Rust'];
+        
+        // Return stages in the defined order, only if they have XP
+        return stageOrder.filter(stage => stageXP[stage] && stageXP[stage] > 0);
     }
 
     async loadProgressData() {
