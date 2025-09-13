@@ -517,6 +517,18 @@ class TomorrowSchoolApp {
             console.log(`  Sample paths:`, Array.from(pathAnalysis[stage].paths).slice(0, 3));
         });
         
+        // Debug Piscine JS projects
+        console.log('=== PISCINE JS PROJECTS DEBUG ===');
+        const piscineJSProjects = this.getPiscineJSProjects(transactions);
+        console.log('Piscine JS projects found:', piscineJSProjects.length);
+        piscineJSProjects.forEach((project, index) => {
+            console.log(`${index + 1}. ${project.name}: ${project.xp.toLocaleString()} XP (${project.count} transactions)`);
+            console.log(`   Path: ${project.path}`);
+        });
+        const totalPiscineJSXP = piscineJSProjects.reduce((sum, p) => sum + p.xp, 0);
+        console.log(`Total Piscine JS XP: ${totalPiscineJSXP.toLocaleString()}`);
+        console.log('=== END PISCINE JS DEBUG ===');
+        
         // Check for any negative amounts or unusual values
         const negativeAmounts = transactions.filter(t => t.amount < 0);
         const zeroAmounts = transactions.filter(t => t.amount === 0);
@@ -603,6 +615,19 @@ class TomorrowSchoolApp {
                 <h3>Exercise XP</h3>
                 <div class="value">${exerciseXP.toLocaleString()}</div>
             </div>
+            <div class="info-item piscine-js-breakdown">
+                <h3>Piscine JS Projects Breakdown</h3>
+                <div class="project-list">
+                    ${this.getPiscineJSProjects(transactions).map(project => `
+                        <div class="project-item">
+                            <span class="project-name">${project.name}</span>
+                            <span class="project-xp">${project.xp.toLocaleString()} XP</span>
+                            <span class="project-path">${project.path}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+            
             <div class="info-item recent-activity">
                 <h3>Recent Activity</h3>
                 <div class="recent-list">
@@ -674,6 +699,52 @@ class TomorrowSchoolApp {
         
         // Return stages in the defined order, only if they have XP
         return stageOrder.filter(stage => stageXP[stage] && stageXP[stage] > 0);
+    }
+
+    getPiscineJSProjects(transactions) {
+        const piscineJSProjects = {};
+        
+        transactions.forEach(t => {
+            const path = t.path || '';
+            const pathLower = path.toLowerCase();
+            
+            // Check if this transaction is for Piscine JS
+            if (pathLower.includes('piscine-js') || pathLower.includes('piscine_js') || pathLower.includes('piscinejs')) {
+                const projectName = this.extractProjectName(path);
+                const key = `${projectName}|${path}`;
+                
+                if (!piscineJSProjects[key]) {
+                    piscineJSProjects[key] = {
+                        name: projectName,
+                        path: path,
+                        xp: 0,
+                        count: 0
+                    };
+                }
+                
+                piscineJSProjects[key].xp += t.amount;
+                piscineJSProjects[key].count++;
+            }
+        });
+        
+        // Convert to array and sort by XP descending
+        return Object.values(piscineJSProjects)
+            .sort((a, b) => b.xp - a.xp);
+    }
+
+    extractProjectName(path) {
+        if (!path) return 'Unknown';
+        
+        // Try to extract project name from path
+        const parts = path.split('/');
+        const lastPart = parts[parts.length - 1];
+        
+        // If last part is empty, try second to last
+        if (!lastPart && parts.length > 1) {
+            return parts[parts.length - 2];
+        }
+        
+        return lastPart || 'Unknown Project';
     }
 
     async loadProgressData() {

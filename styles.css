@@ -445,3 +445,63 @@ svg {
     color: #667eea;
     font-size: 1.1rem;
 }
+
+/* Piscine JS Projects Breakdown Styles */
+.piscine-js-breakdown {
+    grid-column: 1 / -1;
+    background: #f0f8ff;
+    border-left: 4px solid #4a90e2;
+}
+
+.project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.project-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-left: 3px solid #4a90e2;
+    transition: transform 0.2s ease;
+}
+
+.project-item:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.project-name {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+    flex: 1;
+    margin-right: 10px;
+}
+
+.project-xp {
+    font-weight: 700;
+    color: #4a90e2;
+    font-size: 1rem;
+    margin-right: 10px;
+    min-width: 80px;
+    text-align: right;
+}
+
+.project-path {
+    font-size: 0.75rem;
+    color: #666;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: monospace;
+}
