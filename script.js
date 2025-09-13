@@ -253,6 +253,8 @@ class TomorrowSchoolApp {
         
         if (data.user && data.user.length > 0) {
             const user = data.user[0];
+            // Store original date for calculations
+            localStorage.setItem('memberSince', user.createdAt);
             this.displayUserInfo(user);
         }
     }
@@ -305,7 +307,7 @@ class TomorrowSchoolApp {
             </div>
             <div class="info-item">
                 <h3>Member Since</h3>
-                <div class="value" data-date="member-since">${user.createdAt}</div>
+                <div class="value" data-date="member-since">${formatDate(user.createdAt)}</div>
             </div>
             ${profileData.email ? `
             <div class="info-item">
@@ -646,7 +648,12 @@ class TomorrowSchoolApp {
         if (userDetails) {
             const memberSinceElement = userDetails.querySelector('[data-date="member-since"]');
             if (memberSinceElement) {
-                return memberSinceElement.textContent;
+                // Extract the original date from the formatted display
+                const formattedDate = memberSinceElement.textContent;
+                // If it's already formatted, we need to get the original date
+                // For now, try to get from localStorage or return the formatted date
+                const storedDate = localStorage.getItem('memberSince');
+                return storedDate || formattedDate;
             }
         }
         
