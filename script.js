@@ -13,9 +13,7 @@ class TomorrowSchoolApp {
         this.setupEventListeners();
         
         // Check if user is already logged in
-        console.log('Initial JWT check:', this.jwt ? 'JWT present' : 'No JWT');
         if (this.jwt && this.isValidJWT(this.jwt)) {
-            console.log('Valid JWT found, showing profile');
             this.showProfile();
             this.loadUserData();
         } else {
@@ -27,7 +25,6 @@ class TomorrowSchoolApp {
                 this.jwt = null;
                 this.userId = null;
             }
-            console.log('Showing login page');
             this.showLogin();
         }
     }
@@ -51,33 +48,14 @@ class TomorrowSchoolApp {
     }
 
     showProfile() {
-        console.log('showProfile() called');
-        
-        const loginPage = document.getElementById('login-page');
-        const profilePage = document.getElementById('profile-page');
-        
-        console.log('Login page element:', loginPage);
-        console.log('Profile page element:', profilePage);
-        console.log('Login page classes before:', loginPage.className);
-        console.log('Profile page classes before:', profilePage.className);
-        
-        loginPage.classList.remove('active');
-        profilePage.classList.add('active');
-        
-        console.log('Login page classes after:', loginPage.className);
-        console.log('Profile page classes after:', profilePage.className);
-        console.log('Profile page display style:', window.getComputedStyle(profilePage).display);
-        console.log('Login page display style:', window.getComputedStyle(loginPage).display);
+        document.getElementById('login-page').classList.remove('active');
+        document.getElementById('profile-page').classList.add('active');
     }
 
     async handleLogin() {
-        console.log('handleLogin() called');
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
         const errorDiv = document.getElementById('login-error');
-
-        console.log('Username:', username);
-        console.log('Password length:', password.length);
 
         try {
             errorDiv.style.display = 'none';
@@ -98,7 +76,6 @@ class TomorrowSchoolApp {
             }
 
             const data = await response.json();
-            console.log('Auth response:', data); // Debug log
             
             // Handle different possible response formats
             // If data is a string (JWT token), use it directly
@@ -121,19 +98,12 @@ class TomorrowSchoolApp {
             const payload = this.parseJWT(this.jwt);
             this.userId = payload.sub || payload.id; // Use 'sub' field from JWT payload
             
-            console.log('User ID extracted:', this.userId);
-            console.log('JWT token:', this.jwt);
-            
             // Store JWT in localStorage
             localStorage.setItem('jwt', this.jwt);
             localStorage.setItem('userId', this.userId);
             
-            console.log('JWT stored in localStorage');
-            console.log('Switching to profile page...');
             this.showProfile();
-            console.log('Profile page shown, now loading user data...');
             this.loadUserData();
-            console.log('User data loading initiated');
             
         } catch (error) {
             errorDiv.textContent = 'Invalid username/email or password. Please try again.';
@@ -199,7 +169,6 @@ class TomorrowSchoolApp {
             }).join(''));
             
             const payload = JSON.parse(jsonPayload);
-            console.log('JWT payload:', payload); // Debug log
             return payload;
         } catch (error) {
             console.error('Error parsing JWT:', error, 'Token:', token);
@@ -208,9 +177,6 @@ class TomorrowSchoolApp {
     }
 
     async makeGraphQLQuery(query, variables = {}) {
-        console.log('makeGraphQLQuery() called with query:', query);
-        console.log('Using JWT:', this.jwt ? 'JWT present' : 'No JWT');
-        
         try {
             const response = await fetch(this.apiUrl, {
                 method: 'POST',
@@ -224,14 +190,11 @@ class TomorrowSchoolApp {
                 })
             });
 
-            console.log('GraphQL response status:', response.status);
-
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
             const data = await response.json();
-            console.log('GraphQL response data:', data);
             
             if (data.errors) {
                 console.error('GraphQL errors:', data.errors);
@@ -246,29 +209,19 @@ class TomorrowSchoolApp {
     }
 
     async loadUserData() {
-        console.log('loadUserData() called');
         try {
-            console.log('Loading user basic info...');
             // Load user basic info
             await this.loadUserInfo();
-            console.log('User basic info loaded');
             
-            console.log('Loading XP data...');
             // Load XP data
             await this.loadXPData();
-            console.log('XP data loaded');
             
-            console.log('Loading progress data...');
             // Load progress data
             await this.loadProgressData();
-            console.log('Progress data loaded');
             
-            console.log('Loading statistics...');
             // Load statistics and create graphs
             await this.loadStatistics();
-            console.log('Statistics loaded');
             
-            console.log('All user data loaded successfully');
         } catch (error) {
             console.error('Error loading user data:', error);
             this.showError('Failed to load user data. Please try logging in again.');
@@ -276,7 +229,6 @@ class TomorrowSchoolApp {
     }
 
     async loadUserInfo() {
-        console.log('loadUserInfo() - making GraphQL query...');
         const query = `
             query {
                 user {
@@ -287,21 +239,15 @@ class TomorrowSchoolApp {
         `;
 
         const data = await this.makeGraphQLQuery(query);
-        console.log('loadUserInfo() - received data:', data);
         
         if (data.user && data.user.length > 0) {
             const user = data.user[0];
-            console.log('loadUserInfo() - displaying user:', user);
             this.displayUserInfo(user);
-        } else {
-            console.log('loadUserInfo() - no user data found');
         }
     }
 
     displayUserInfo(user) {
-        console.log('displayUserInfo() called with:', user);
         const userDetails = document.getElementById('user-details');
-        console.log('user-details element found:', userDetails);
         
         userDetails.innerHTML = `
             <div class="info-item">
@@ -313,11 +259,9 @@ class TomorrowSchoolApp {
                 <div class="value">${user.login}</div>
             </div>
         `;
-        console.log('User info displayed successfully');
     }
 
     async loadXPData() {
-        console.log('loadXPData() - making GraphQL query...');
         const query = `
             query {
                 transaction(where: {type: {_eq: "xp"}}) {
@@ -330,13 +274,9 @@ class TomorrowSchoolApp {
         `;
 
         const data = await this.makeGraphQLQuery(query);
-        console.log('loadXPData() - received data:', data);
         
         if (data.transaction) {
-            console.log('loadXPData() - displaying XP data');
             this.displayXPData(data.transaction);
-        } else {
-            console.log('loadXPData() - no XP data found');
         }
     }
 
