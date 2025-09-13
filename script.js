@@ -98,6 +98,10 @@ class TomorrowSchoolApp {
             const payload = this.parseJWT(this.jwt);
             this.userId = payload.sub || payload.id; // Use 'sub' field from JWT payload
             
+            // Debug: log the payload and userId
+            console.log('JWT payload:', payload);
+            console.log('Extracted userId:', this.userId);
+            
             // Store JWT in localStorage
             localStorage.setItem('jwt', this.jwt);
             localStorage.setItem('userId', this.userId);
@@ -326,6 +330,14 @@ class TomorrowSchoolApp {
 
     async loadUserStatistics() {
         try {
+            // Check if userId is available
+            if (!this.userId) {
+                console.log('No userId available for statistics, skipping...');
+                return;
+            }
+            
+            console.log('Loading user statistics for userId:', this.userId);
+
             // Load user's audit statistics
             const auditQuery = `
                 query {
