@@ -240,7 +240,6 @@ class TomorrowSchoolApp {
                     profile
                     attrs
                     createdAt
-                    updateAt
                     campus
                     user_role {
                         role {
@@ -309,10 +308,6 @@ class TomorrowSchoolApp {
             <div class="info-item">
                 <h3>Member Since</h3>
                 <div class="value">${formatDate(user.createdAt)}</div>
-            </div>
-            <div class="info-item">
-                <h3>Last Updated</h3>
-                <div class="value">${formatDate(user.updateAt)}</div>
             </div>
             ${profileData.email ? `
             <div class="info-item">
