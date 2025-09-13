@@ -23,7 +23,7 @@ body {
 }
 
 /* Login Page Styles */
-#login-page {
+#login-page.active {
     display: flex;
     align-items: center;
     justify-content: center;
