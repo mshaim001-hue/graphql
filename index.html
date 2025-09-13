@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomorrow School Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Login Page -->
+        <div id="login-page" class="page active">
+            <div class="login-container">
+                <h1>Tomorrow School</h1>
+                <h2>Sign In</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username">Username or Email:</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit">Sign In</button>
+                </form>
+                <div id="login-error" class="error-message"></div>
+            </div>
+        </div>
+
+        <!-- Profile Page -->
+        <div id="profile-page" class="page">
+            <header class="profile-header">
+                <h1>My Profile</h1>
+                <button id="logout-btn" class="logout-btn">Logout</button>
+            </header>
+            
+            <main class="profile-content">
+                <!-- User Info Section -->
+                <section class="user-info">
+                    <h2>Basic Information</h2>
+                    <div id="user-details" class="info-grid">
+                        <!-- User data will be populated here -->
+                    </div>
+                </section>
+
+                <!-- XP Section -->
+                <section class="xp-section">
+                    <h2>Experience Points</h2>
+                    <div id="xp-details" class="info-grid">
+                        <!-- XP data will be populated here -->
+                    </div>
+                </section>
+
+                <!-- Progress Section -->
+                <section class="progress-section">
+                    <h2>Progress & Grades</h2>
+                    <div id="progress-details" class="info-grid">
+                        <!-- Progress data will be populated here -->
+                    </div>
+                </section>
+
+                <!-- Statistics Section -->
+                <section class="statistics-section">
+                    <h2>Statistics & Analytics</h2>
+                    <div class="graphs-container">
+                        <div class="graph-card">
+                            <h3>XP Over Time</h3>
+                            <div id="xp-timeline-graph" class="svg-graph"></div>
+                        </div>
+                        <div class="graph-card">
+                            <h3>Audit Ratio</h3>
+                            <div id="audit-ratio-graph" class="svg-graph"></div>
+                        </div>
+                        <div class="graph-card">
+                            <h3>Project Success Rate</h3>
+                            <div id="project-success-graph" class="svg-graph"></div>
+                        </div>
+                        <div class="graph-card">
+                            <h3>Exercise Attempts</h3>
+                            <div id="exercise-attempts-graph" class="svg-graph"></div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
