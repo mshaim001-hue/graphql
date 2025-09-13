@@ -13,7 +13,9 @@ class TomorrowSchoolApp {
         this.setupEventListeners();
         
         // Check if user is already logged in
+        console.log('Initial JWT check:', this.jwt ? 'JWT present' : 'No JWT');
         if (this.jwt && this.isValidJWT(this.jwt)) {
+            console.log('Valid JWT found, showing profile');
             this.showProfile();
             this.loadUserData();
         } else {
@@ -25,6 +27,7 @@ class TomorrowSchoolApp {
                 this.jwt = null;
                 this.userId = null;
             }
+            console.log('Showing login page');
             this.showLogin();
         }
     }
@@ -49,9 +52,22 @@ class TomorrowSchoolApp {
 
     showProfile() {
         console.log('showProfile() called');
-        document.getElementById('login-page').classList.remove('active');
-        document.getElementById('profile-page').classList.add('active');
-        console.log('Profile page classes updated');
+        
+        const loginPage = document.getElementById('login-page');
+        const profilePage = document.getElementById('profile-page');
+        
+        console.log('Login page element:', loginPage);
+        console.log('Profile page element:', profilePage);
+        console.log('Login page classes before:', loginPage.className);
+        console.log('Profile page classes before:', profilePage.className);
+        
+        loginPage.classList.remove('active');
+        profilePage.classList.add('active');
+        
+        console.log('Login page classes after:', loginPage.className);
+        console.log('Profile page classes after:', profilePage.className);
+        console.log('Profile page display style:', window.getComputedStyle(profilePage).display);
+        console.log('Login page display style:', window.getComputedStyle(loginPage).display);
     }
 
     async handleLogin() {
