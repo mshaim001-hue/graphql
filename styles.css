@@ -505,3 +505,19 @@ svg {
     white-space: nowrap;
     font-family: monospace;
 }
+
+/* Excluded project styles */
+.project-item.excluded {
+    opacity: 0.6;
+    background: #f5f5f5;
+    border-left: 3px solid #ccc;
+}
+
+.project-item.excluded .project-name {
+    color: #999;
+    font-style: italic;
+}
+
+.project-item.excluded .project-xp {
+    color: #999;
+}

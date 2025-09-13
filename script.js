@@ -566,6 +566,13 @@ class TomorrowSchoolApp {
             if (!stageXP[stage]) {
                 stageXP[stage] = 0;
             }
+            
+            // Special handling for Piscine JS: exclude general "piscine-js" path
+            if (stage === 'Piscine JS' && t.path && t.path.toLowerCase().endsWith('piscine-js')) {
+                // Don't add this to the total
+                return;
+            }
+            
             stageXP[stage] += t.amount;
         });
 
@@ -619,8 +626,8 @@ class TomorrowSchoolApp {
                 <h3>Piscine JS Projects Breakdown</h3>
                 <div class="project-list">
                     ${this.getPiscineJSProjects(transactions).map(project => `
-                        <div class="project-item">
-                            <span class="project-name">${project.name}</span>
+                        <div class="project-item ${project.excluded ? 'excluded' : ''}">
+                            <span class="project-name">${project.name}${project.excluded ? ' (excluded)' : ''}</span>
                             <span class="project-xp">${project.xp.toLocaleString()} XP</span>
                             <span class="project-path">${project.path}</span>
                         </div>
@@ -653,8 +660,8 @@ class TomorrowSchoolApp {
         // Piscine Go: первые 35 дней с момента регистрации
         const piscineGoEndDate = new Date(memberDate.getTime() + 35 * 24 * 60 * 60 * 1000);
         
-        // Piscine JS: по пути (исключая общий путь piscine-js)
-        if ((pathLower.includes('piscine_js') || pathLower.includes('piscinejs')) && !pathLower.endsWith('piscine-js')) {
+        // Piscine JS: по пути
+        if (pathLower.includes('piscine-js') || pathLower.includes('piscine_js') || pathLower.includes('piscinejs')) {
             return 'Piscine JS';
         }
         
@@ -714,8 +721,8 @@ class TomorrowSchoolApp {
             const path = t.path || '';
             const pathLower = path.toLowerCase();
             
-            // Check if this transaction is for Piscine JS (исключая общий путь piscine-js)
-            if ((pathLower.includes('piscine_js') || pathLower.includes('piscinejs')) && !pathLower.endsWith('piscine-js')) {
+            // Check if this transaction is for Piscine JS
+            if (pathLower.includes('piscine-js') || pathLower.includes('piscine_js') || pathLower.includes('piscinejs')) {
                 const projectName = this.extractProjectName(path);
                 const key = `${projectName}|${path}`;
                 
@@ -724,7 +731,8 @@ class TomorrowSchoolApp {
                         name: projectName,
                         path: path,
                         xp: 0,
-                        count: 0
+                        count: 0,
+                        excluded: pathLower.endsWith('piscine-js') // Mark if this should be excluded from total
                     };
                 }
                 
