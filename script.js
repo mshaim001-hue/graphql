@@ -192,6 +192,9 @@ class TomorrowSchoolApp {
     }
 
     async makeGraphQLQuery(query, variables = {}) {
+        console.log('makeGraphQLQuery() called with query:', query);
+        console.log('Using JWT:', this.jwt ? 'JWT present' : 'No JWT');
+        
         try {
             const response = await fetch(this.apiUrl, {
                 method: 'POST',
@@ -205,13 +208,17 @@ class TomorrowSchoolApp {
                 })
             });
 
+            console.log('GraphQL response status:', response.status);
+
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
             const data = await response.json();
+            console.log('GraphQL response data:', data);
             
             if (data.errors) {
+                console.error('GraphQL errors:', data.errors);
                 throw new Error(data.errors[0].message);
             }
 
@@ -249,6 +256,7 @@ class TomorrowSchoolApp {
     }
 
     async loadUserInfo() {
+        console.log('loadUserInfo() - making GraphQL query...');
         const query = `
             query {
                 user {
@@ -259,15 +267,22 @@ class TomorrowSchoolApp {
         `;
 
         const data = await this.makeGraphQLQuery(query);
+        console.log('loadUserInfo() - received data:', data);
         
         if (data.user && data.user.length > 0) {
             const user = data.user[0];
+            console.log('loadUserInfo() - displaying user:', user);
             this.displayUserInfo(user);
+        } else {
+            console.log('loadUserInfo() - no user data found');
         }
     }
 
     displayUserInfo(user) {
+        console.log('displayUserInfo() called with:', user);
         const userDetails = document.getElementById('user-details');
+        console.log('user-details element found:', userDetails);
+        
         userDetails.innerHTML = `
             <div class="info-item">
                 <h3>User ID</h3>
@@ -278,6 +293,7 @@ class TomorrowSchoolApp {
                 <div class="value">${user.login}</div>
             </div>
         `;
+        console.log('User info displayed successfully');
     }
 
     async loadXPData() {
