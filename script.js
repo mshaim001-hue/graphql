@@ -235,18 +235,22 @@ class TomorrowSchoolApp {
             console.log('Loading user basic info...');
             // Load user basic info
             await this.loadUserInfo();
+            console.log('User basic info loaded');
             
             console.log('Loading XP data...');
             // Load XP data
             await this.loadXPData();
+            console.log('XP data loaded');
             
             console.log('Loading progress data...');
             // Load progress data
             await this.loadProgressData();
+            console.log('Progress data loaded');
             
             console.log('Loading statistics...');
             // Load statistics and create graphs
             await this.loadStatistics();
+            console.log('Statistics loaded');
             
             console.log('All user data loaded successfully');
         } catch (error) {
@@ -297,6 +301,7 @@ class TomorrowSchoolApp {
     }
 
     async loadXPData() {
+        console.log('loadXPData() - making GraphQL query...');
         const query = `
             query {
                 transaction(where: {type: {_eq: "xp"}}) {
@@ -309,9 +314,13 @@ class TomorrowSchoolApp {
         `;
 
         const data = await this.makeGraphQLQuery(query);
+        console.log('loadXPData() - received data:', data);
         
         if (data.transaction) {
+            console.log('loadXPData() - displaying XP data');
             this.displayXPData(data.transaction);
+        } else {
+            console.log('loadXPData() - no XP data found');
         }
     }
 
