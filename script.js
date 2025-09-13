@@ -501,16 +501,6 @@ class TomorrowSchoolApp {
             console.log(`  Sample paths:`, Array.from(pathAnalysis[stage].paths).slice(0, 3));
         });
         
-        
-        // Verify sum calculation
-        console.log('=== SUM VERIFICATION ===');
-        const calculatedTotal = Object.values(stageXP).reduce((sum, xp) => sum + xp, 0);
-        console.log(`Total XP from API: ${totalXP.toLocaleString()}`);
-        console.log(`Calculated total from stages: ${calculatedTotal.toLocaleString()}`);
-        console.log(`Difference: ${totalXP - calculatedTotal}`);
-        console.log('Stage breakdown:', stageXP);
-        console.log('=== END SUM VERIFICATION ===');
-        
         // Check for any negative amounts or unusual values
         const negativeAmounts = transactions.filter(t => t.amount < 0);
         const zeroAmounts = transactions.filter(t => t.amount === 0);
@@ -561,6 +551,15 @@ class TomorrowSchoolApp {
             
             stageXP[stage] += t.amount;
         });
+
+        // Verify sum calculation
+        console.log('=== SUM VERIFICATION ===');
+        const calculatedTotal = Object.values(stageXP).reduce((sum, xp) => sum + xp, 0);
+        console.log(`Total XP from API: ${totalXP.toLocaleString()}`);
+        console.log(`Calculated total from stages: ${calculatedTotal.toLocaleString()}`);
+        console.log(`Difference: ${totalXP - calculatedTotal}`);
+        console.log('Stage breakdown:', stageXP);
+        console.log('=== END SUM VERIFICATION ===');
 
         xpDetails.innerHTML = `
             <div class="info-item total-xp">
