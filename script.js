@@ -13,10 +13,18 @@ class TomorrowSchoolApp {
         this.setupEventListeners();
         
         // Check if user is already logged in
-        if (this.jwt) {
+        if (this.jwt && this.isValidJWT(this.jwt)) {
             this.showProfile();
             this.loadUserData();
         } else {
+            // Clear invalid JWT
+            if (this.jwt) {
+                console.log('Invalid JWT found, clearing...');
+                localStorage.removeItem('jwt');
+                localStorage.removeItem('userId');
+                this.jwt = null;
+                this.userId = null;
+            }
             this.showLogin();
         }
     }
@@ -68,7 +76,21 @@ class TomorrowSchoolApp {
             }
 
             const data = await response.json();
-            this.jwt = data.token;
+            console.log('Auth response:', data); // Debug log
+            
+            // Handle different possible response formats
+            this.jwt = data.token || data.access_token || data.jwt || data;
+            
+            if (!this.jwt) {
+                throw new Error('No token received from server');
+            }
+            
+            // Validate JWT format (should have 3 parts separated by dots)
+            if (typeof this.jwt !== 'string' || this.jwt.split('.').length !== 3) {
+                console.error('Invalid JWT format:', this.jwt);
+                throw new Error('Invalid token format received');
+            }
+            
             this.userId = this.parseJWT(this.jwt).id;
             
             // Store JWT in localStorage
@@ -96,16 +118,51 @@ class TomorrowSchoolApp {
         document.getElementById('login-error').style.display = 'none';
     }
 
+    isValidJWT(token) {
+        if (!token || typeof token !== 'string') {
+            return false;
+        }
+        
+        const parts = token.split('.');
+        if (parts.length !== 3) {
+            return false;
+        }
+        
+        try {
+            const payload = this.parseJWT(token);
+            // Check if token is expired
+            if (payload.exp && payload.exp < Date.now() / 1000) {
+                console.log('JWT token expired');
+                return false;
+            }
+            return true;
+        } catch (error) {
+            return false;
+        }
+    }
+
     parseJWT(token) {
         try {
-            const base64Url = token.split('.')[1];
+            if (!token || typeof token !== 'string') {
+                throw new Error('Invalid token: not a string');
+            }
+            
+            const parts = token.split('.');
+            if (parts.length !== 3) {
+                throw new Error(`Invalid JWT format: expected 3 parts, got ${parts.length}`);
+            }
+            
+            const base64Url = parts[1];
             const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
             const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
                 return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
             }).join(''));
-            return JSON.parse(jsonPayload);
+            
+            const payload = JSON.parse(jsonPayload);
+            console.log('JWT payload:', payload); // Debug log
+            return payload;
         } catch (error) {
-            console.error('Error parsing JWT:', error);
+            console.error('Error parsing JWT:', error, 'Token:', token);
             return {};
         }
     }
