@@ -219,6 +219,9 @@ class TomorrowSchoolApp {
             // Load progress data
             await this.loadProgressData();
             
+            // Load additional user statistics
+            await this.loadUserStatistics();
+            
             // Load statistics and create graphs
             await this.loadStatistics();
             
@@ -234,6 +237,18 @@ class TomorrowSchoolApp {
                 user {
                     id
                     login
+                    githubLogin
+                    profile
+                    attrs
+                    createdAt
+                    updateAt
+                    campus
+                    user_role {
+                        role {
+                            name
+                            slug
+                        }
+                    }
                 }
             }
         `;
@@ -249,16 +264,163 @@ class TomorrowSchoolApp {
     displayUserInfo(user) {
         const userDetails = document.getElementById('user-details');
         
+        // Parse profile and attrs if they exist
+        let profileData = {};
+        let attrsData = {};
+        
+        try {
+            if (user.profile) {
+                profileData = typeof user.profile === 'string' ? JSON.parse(user.profile) : user.profile;
+            }
+        } catch (e) {
+            console.log('Could not parse profile data:', e);
+        }
+        
+        try {
+            if (user.attrs) {
+                attrsData = typeof user.attrs === 'string' ? JSON.parse(user.attrs) : user.attrs;
+            }
+        } catch (e) {
+            console.log('Could not parse attrs data:', e);
+        }
+        
+        // Format dates
+        const formatDate = (dateString) => {
+            if (!dateString) return 'N/A';
+            return new Date(dateString).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        };
+        
         userDetails.innerHTML = `
             <div class="info-item">
                 <h3>User ID</h3>
                 <div class="value">${user.id}</div>
             </div>
             <div class="info-item">
-                <h3>Login</h3>
-                <div class="value">${user.login}</div>
+                <h3>Username</h3>
+                <div class="value">${user.login || 'N/A'}</div>
+            </div>
+            <div class="info-item">
+                <h3>GitHub</h3>
+                <div class="value">${user.githubLogin || 'Not connected'}</div>
+            </div>
+            <div class="info-item">
+                <h3>Campus</h3>
+                <div class="value">${user.campus || 'N/A'}</div>
+            </div>
+            <div class="info-item">
+                <h3>Member Since</h3>
+                <div class="value">${formatDate(user.createdAt)}</div>
+            </div>
+            <div class="info-item">
+                <h3>Last Updated</h3>
+                <div class="value">${formatDate(user.updateAt)}</div>
+            </div>
+            ${profileData.email ? `
+            <div class="info-item">
+                <h3>Email</h3>
+                <div class="value">${profileData.email}</div>
+            </div>
+            ` : ''}
+            ${attrsData.firstName || attrsData.lastName ? `
+            <div class="info-item">
+                <h3>Full Name</h3>
+                <div class="value">${(attrsData.firstName || '') + ' ' + (attrsData.lastName || '')}</div>
+            </div>
+            ` : ''}
+            ${attrsData.location ? `
+            <div class="info-item">
+                <h3>Location</h3>
+                <div class="value">${attrsData.location}</div>
+            </div>
+            ` : ''}
+            ${user.user_role && user.user_role.length > 0 ? `
+            <div class="info-item">
+                <h3>Roles</h3>
+                <div class="value">${user.user_role.map(ur => ur.role.name).join(', ')}</div>
+            </div>
+            ` : ''}
+        `;
+    }
+
+    async loadUserStatistics() {
+        try {
+            // Load user's audit statistics
+            const auditQuery = `
+                query {
+                    audit(where: {auditorId: {_eq: ${this.userId}}}) {
+                        id
+                        grade
+                        createdAt
+                    }
+                }
+            `;
+
+            const auditData = await this.makeGraphQLQuery(auditQuery);
+            
+            // Load user's group participation
+            const groupQuery = `
+                query {
+                    group_user(where: {userId: {_eq: ${this.userId}}}) {
+                        id
+                        confirmed
+                        createdAt
+                        group {
+                            id
+                            status
+                        }
+                    }
+                }
+            `;
+
+            const groupData = await this.makeGraphQLQuery(groupQuery);
+            
+            // Display additional statistics
+            this.displayUserStatistics(auditData.audit || [], groupData.group_user || []);
+            
+        } catch (error) {
+            console.error('Error loading user statistics:', error);
+            // Don't show error to user as this is additional info
+        }
+    }
+
+    displayUserStatistics(audits, groupMemberships) {
+        const userDetails = document.getElementById('user-details');
+        
+        // Calculate audit statistics
+        const totalAudits = audits.length;
+        const passedAudits = audits.filter(a => a.grade >= 1).length;
+        const auditSuccessRate = totalAudits > 0 ? Math.round((passedAudits / totalAudits) * 100) : 0;
+        
+        // Calculate group statistics
+        const totalGroups = groupMemberships.length;
+        const confirmedGroups = groupMemberships.filter(g => g.confirmed).length;
+        const activeGroups = groupMemberships.filter(g => g.group && g.group.status === 'working').length;
+        
+        // Add additional statistics to existing content
+        const additionalStats = `
+            <div class="info-item">
+                <h3>Audits Conducted</h3>
+                <div class="value">${totalAudits}</div>
+            </div>
+            <div class="info-item">
+                <h3>Audit Success Rate</h3>
+                <div class="value">${auditSuccessRate}%</div>
+            </div>
+            <div class="info-item">
+                <h3>Groups Joined</h3>
+                <div class="value">${totalGroups}</div>
+            </div>
+            <div class="info-item">
+                <h3>Active Groups</h3>
+                <div class="value">${activeGroups}</div>
             </div>
         `;
+        
+        userDetails.innerHTML += additionalStats;
     }
 
     async loadXPData() {
