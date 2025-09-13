@@ -529,6 +529,15 @@ class TomorrowSchoolApp {
         console.log(`Total Piscine JS XP: ${totalPiscineJSXP.toLocaleString()}`);
         console.log('=== END PISCINE JS DEBUG ===');
         
+        // Verify sum calculation
+        console.log('=== SUM VERIFICATION ===');
+        const calculatedTotal = Object.values(stageXP).reduce((sum, xp) => sum + xp, 0);
+        console.log(`Total XP from API: ${totalXP.toLocaleString()}`);
+        console.log(`Calculated total from stages: ${calculatedTotal.toLocaleString()}`);
+        console.log(`Difference: ${totalXP - calculatedTotal}`);
+        console.log('Stage breakdown:', stageXP);
+        console.log('=== END SUM VERIFICATION ===');
+        
         // Check for any negative amounts or unusual values
         const negativeAmounts = transactions.filter(t => t.amount < 0);
         const zeroAmounts = transactions.filter(t => t.amount === 0);
@@ -567,9 +576,13 @@ class TomorrowSchoolApp {
                 stageXP[stage] = 0;
             }
             
-            // Special handling for Piscine JS: exclude general "piscine-js" path
+            // Special handling for Piscine JS: exclude general "piscine-js" path from Piscine JS
             if (stage === 'Piscine JS' && t.path && t.path.toLowerCase().endsWith('piscine-js')) {
-                // Don't add this to the total
+                // Add this to Core Education instead
+                if (!stageXP['Core Education']) {
+                    stageXP['Core Education'] = 0;
+                }
+                stageXP['Core Education'] += t.amount;
                 return;
             }
             
