@@ -416,11 +416,13 @@ class TomorrowSchoolApp {
     async loadXPData() {
         const query = `
             query {
-                transaction(where: {type: {_eq: "xp"}}) {
+                transaction(where: {type: {_eq: "xp"}}, order_by: {createdAt: desc}) {
                     id
                     amount
                     createdAt
                     path
+                    objectId
+                    attrs
                 }
             }
         `;
@@ -428,6 +430,7 @@ class TomorrowSchoolApp {
         const data = await this.makeGraphQLQuery(query);
         
         if (data.transaction) {
+            console.log('XP Transactions loaded:', data.transaction);
             this.displayXPData(data.transaction);
         }
     }
@@ -436,18 +439,89 @@ class TomorrowSchoolApp {
         const totalXP = transactions.reduce((sum, t) => sum + t.amount, 0);
         const xpDetails = document.getElementById('xp-details');
         
+        // Calculate additional statistics
+        const today = new Date();
+        const thisWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
+        const thisMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+        
+        // XP earned this week
+        const weeklyXP = transactions
+            .filter(t => new Date(t.createdAt) >= thisWeek)
+            .reduce((sum, t) => sum + t.amount, 0);
+        
+        // XP earned this month
+        const monthlyXP = transactions
+            .filter(t => new Date(t.createdAt) >= thisMonth)
+            .reduce((sum, t) => sum + t.amount, 0);
+        
+        // Recent activity (last 5 transactions)
+        const recentTransactions = transactions.slice(0, 5);
+        
+        // XP by project type (if we can determine from path)
+        const projectXP = transactions
+            .filter(t => t.path && t.path.includes('project'))
+            .reduce((sum, t) => sum + t.amount, 0);
+        
+        const exerciseXP = transactions
+            .filter(t => t.path && t.path.includes('exercise'))
+            .reduce((sum, t) => sum + t.amount, 0);
+        
+        // Average XP per day (based on first and last transaction)
+        const firstTransaction = transactions[transactions.length - 1];
+        const lastTransaction = transactions[0];
+        const daysActive = firstTransaction && lastTransaction ? 
+            Math.ceil((new Date(lastTransaction.createdAt) - new Date(firstTransaction.createdAt)) / (1000 * 60 * 60 * 24)) : 0;
+        const avgDailyXP = daysActive > 0 ? Math.round(totalXP / daysActive) : 0;
+        
+        // Debug logging
+        console.log('Total XP calculated:', totalXP);
+        console.log('Number of transactions:', transactions.length);
+        console.log('Sample transaction:', transactions[0]);
+        
         xpDetails.innerHTML = `
             <div class="info-item">
                 <h3>Total XP</h3>
                 <div class="value">${totalXP.toLocaleString()}</div>
             </div>
             <div class="info-item">
+                <h3>This Week</h3>
+                <div class="value">${weeklyXP.toLocaleString()} XP</div>
+            </div>
+            <div class="info-item">
+                <h3>This Month</h3>
+                <div class="value">${monthlyXP.toLocaleString()} XP</div>
+            </div>
+            <div class="info-item">
                 <h3>Transactions</h3>
                 <div class="value">${transactions.length}</div>
             </div>
             <div class="info-item">
-                <h3>Average XP per Transaction</h3>
-                <div class="value">${Math.round(totalXP / transactions.length)}</div>
+                <h3>Average per Transaction</h3>
+                <div class="value">${transactions.length > 0 ? Math.round(totalXP / transactions.length) : 0}</div>
+            </div>
+            <div class="info-item">
+                <h3>Average per Day</h3>
+                <div class="value">${avgDailyXP.toLocaleString()}</div>
+            </div>
+            <div class="info-item">
+                <h3>Project XP</h3>
+                <div class="value">${projectXP.toLocaleString()}</div>
+            </div>
+            <div class="info-item">
+                <h3>Exercise XP</h3>
+                <div class="value">${exerciseXP.toLocaleString()}</div>
+            </div>
+            <div class="info-item recent-activity">
+                <h3>Recent Activity</h3>
+                <div class="recent-list">
+                    ${recentTransactions.map(t => `
+                        <div class="recent-item">
+                            <span class="xp-amount">+${t.amount} XP</span>
+                            <span class="xp-path">${t.path ? t.path.split('/').pop() : 'Unknown'}</span>
+                            <span class="xp-date">${new Date(t.createdAt).toLocaleDateString()}</span>
+                        </div>
+                    `).join('')}
+                </div>
             </div>
         `;
     }
