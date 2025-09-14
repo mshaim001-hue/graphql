@@ -385,7 +385,6 @@ class TomorrowSchoolApp {
                         }
                         group {
                             id
-                            name
                         }
                         auditor {
                             id
