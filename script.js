@@ -1246,46 +1246,32 @@ class TomorrowSchoolApp {
                 <div class="value">${recentReceived}</div>
             </div>
             
-            <!-- Audit Timeline -->
-            <div class="info-item audit-timeline">
-                <h3>Recent Audit Activity</h3>
-                <div class="audit-timeline-list">
-                    ${Object.keys(auditTimeline)
-                        .sort()
-                        .slice(-7) // Last 7 days
-                        .map(date => {
-                            const data = auditTimeline[date];
-                            const dateObj = new Date(date);
-                            return `
-                                <div class="timeline-item">
-                                    <span class="timeline-date">${dateObj.toLocaleDateString()}</span>
-                                    <span class="timeline-stats">
-                                        <span class="conducted">↑${data.conducted}</span>
-                                        <span class="received">↓${data.received}</span>
-                                    </span>
-                                </div>
-                            `;
-                        }).join('')}
-                </div>
-            </div>
-            
-            <!-- Audit Details -->
-            <div class="info-item audit-details">
+            <!-- Recent Audits Conducted -->
+            <div class="info-item recent-audits">
                 <h3>Recent Audits Conducted</h3>
-                <div class="audit-list">
+                <div class="recent-audits-list">
                     ${conductedAudits
                         .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-                        .slice(0, 5)
+                        .slice(0, 10)
                         .map(audit => {
                             const date = new Date(audit.createdAt);
-                            const gradeValue = audit.grade || 0; // Handle null/undefined grades
+                            const gradeValue = audit.grade || 0;
                             const grade = gradeValue >= 1 ? '✓' : '✗';
                             const gradeClass = gradeValue >= 1 ? 'passed' : 'failed';
+                            const projectName = audit.result?.object?.name || 'Unknown Project';
+                            const projectType = audit.result?.object?.type || 'Unknown';
+                            
                             return `
-                                <div class="audit-item ${gradeClass}">
-                                    <span class="audit-grade">${grade} ${gradeValue.toFixed(2)}</span>
-                                    <span class="audit-date">${date.toLocaleDateString()}</span>
-                                    <span class="audit-group">Group ${audit.groupId || 'N/A'}</span>
+                                <div class="recent-audit-item ${gradeClass}">
+                                    <div class="audit-header">
+                                        <span class="audit-project">${projectName}</span>
+                                        <span class="audit-type">${projectType}</span>
+                                    </div>
+                                    <div class="audit-details">
+                                        <span class="audit-grade">${grade} ${gradeValue.toFixed(2)}</span>
+                                        <span class="audit-date">${date.toLocaleDateString()}</span>
+                                        <span class="audit-group">Group ${audit.groupId || 'N/A'}</span>
+                                    </div>
                                 </div>
                             `;
                         }).join('')}
