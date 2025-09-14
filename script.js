@@ -386,6 +386,32 @@ class TomorrowSchoolApp {
                 allIds: auditData.audit?.map(a => a.id) || []
             });
             
+            // Additional debug: check for duplicates and analyze data
+            if (auditData.audit) {
+                const ids = auditData.audit.map(a => a.id);
+                const uniqueIds = [...new Set(ids)];
+                const duplicates = ids.length - uniqueIds.length;
+                
+                console.log('Audit analysis:', {
+                    totalRecords: auditData.audit.length,
+                    uniqueIds: uniqueIds.length,
+                    duplicates: duplicates,
+                    dateRange: {
+                        earliest: auditData.audit.reduce((min, a) => 
+                            new Date(a.createdAt) < new Date(min.createdAt) ? a : min
+                        ).createdAt,
+                        latest: auditData.audit.reduce((max, a) => 
+                            new Date(a.createdAt) > new Date(max.createdAt) ? a : max
+                        ).createdAt
+                    },
+                    gradeDistribution: {
+                        nullGrades: auditData.audit.filter(a => a.grade === null || a.grade === undefined).length,
+                        zeroGrades: auditData.audit.filter(a => a.grade === 0).length,
+                        passedGrades: auditData.audit.filter(a => a.grade >= 1).length
+                    }
+                });
+            }
+            
             // Load user's group participation
             const groupQuery = `
                 query {
