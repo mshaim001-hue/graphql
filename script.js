@@ -1099,17 +1099,17 @@ class TomorrowSchoolApp {
 
         // Calculate conducted audit statistics
         const totalConducted = conductedAudits.length;
-        const passedConducted = conductedAudits.filter(a => a.grade >= 1).length;
-        const failedConducted = conductedAudits.filter(a => a.grade < 1).length;
+        const passedConducted = conductedAudits.filter(a => (a.grade || 0) >= 1).length;
+        const failedConducted = conductedAudits.filter(a => (a.grade || 0) < 1).length;
         const avgGradeConducted = totalConducted > 0 ? 
-            (conductedAudits.reduce((sum, a) => sum + a.grade, 0) / totalConducted).toFixed(2) : 0;
+            (conductedAudits.reduce((sum, a) => sum + (a.grade || 0), 0) / totalConducted).toFixed(2) : 0;
         
         // Calculate received audit statistics
         const totalReceived = receivedAudits.length;
-        const passedReceived = receivedAudits.filter(a => a.grade >= 1).length;
-        const failedReceived = receivedAudits.filter(a => a.grade < 1).length;
+        const passedReceived = receivedAudits.filter(a => (a.grade || 0) >= 1).length;
+        const failedReceived = receivedAudits.filter(a => (a.grade || 0) < 1).length;
         const avgGradeReceived = totalReceived > 0 ? 
-            (receivedAudits.reduce((sum, a) => sum + a.grade, 0) / totalReceived).toFixed(2) : 0;
+            (receivedAudits.reduce((sum, a) => sum + (a.grade || 0), 0) / totalReceived).toFixed(2) : 0;
 
         // Calculate recent activity (last 30 days)
         const thirtyDaysAgo = new Date();
@@ -1211,13 +1211,14 @@ class TomorrowSchoolApp {
                         .slice(0, 5)
                         .map(audit => {
                             const date = new Date(audit.createdAt);
-                            const grade = audit.grade >= 1 ? '✓' : '✗';
-                            const gradeClass = audit.grade >= 1 ? 'passed' : 'failed';
+                            const gradeValue = audit.grade || 0; // Handle null/undefined grades
+                            const grade = gradeValue >= 1 ? '✓' : '✗';
+                            const gradeClass = gradeValue >= 1 ? 'passed' : 'failed';
                             return `
                                 <div class="audit-item ${gradeClass}">
-                                    <span class="audit-grade">${grade} ${audit.grade.toFixed(2)}</span>
+                                    <span class="audit-grade">${grade} ${gradeValue.toFixed(2)}</span>
                                     <span class="audit-date">${date.toLocaleDateString()}</span>
-                                    <span class="audit-group">Group ${audit.groupId}</span>
+                                    <span class="audit-group">Group ${audit.groupId || 'N/A'}</span>
                                 </div>
                             `;
                         }).join('')}
