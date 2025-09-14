@@ -521,8 +521,13 @@ class TomorrowSchoolApp {
                 <h3>All Activity</h3>
                 <div id="activity-container" class="activity-container">
                     <div id="activity-list" class="activity-list"></div>
-                    <div id="loading-more" class="loading-more" style="display: none;">
-                        Loading more activities...
+                    <div id="activity-controls" class="activity-controls">
+                        <button id="load-more-btn" class="load-more-btn" style="display: none;">
+                            Load More
+                        </button>
+                        <div id="loading-more" class="loading-more" style="display: none;">
+                            Loading more activities...
+                        </div>
                     </div>
                 </div>
             </div>
@@ -546,32 +551,17 @@ class TomorrowSchoolApp {
         // Initialize activity display
         this.displayActivityPage();
         
-        // Setup scroll listener with debounce
-        this.setupScrollListener();
+        // Setup load more button
+        this.setupLoadMoreButton();
     }
     
-    setupScrollListener() {
-        const activityContainer = document.getElementById('activity-container');
-        if (!activityContainer) return;
+    setupLoadMoreButton() {
+        const loadMoreBtn = document.getElementById('load-more-btn');
+        if (!loadMoreBtn) return;
         
-        // Debounce scroll handler
-        let scrollTimeout;
-        const handleScroll = () => {
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                const container = activityContainer;
-                const scrollTop = container.scrollTop;
-                const scrollHeight = container.scrollHeight;
-                const clientHeight = container.clientHeight;
-                
-                // Check if user scrolled to bottom (with some threshold)
-                if (scrollTop + clientHeight >= scrollHeight - 50 && !this.isLoading && this.hasMoreData) {
-                    this.loadMoreActivities();
-                }
-            }, 100); // 100ms debounce
-        };
-        
-        activityContainer.addEventListener('scroll', handleScroll);
+        loadMoreBtn.addEventListener('click', () => {
+            this.loadMoreActivities();
+        });
     }
     
     displayActivityPage() {
@@ -597,10 +587,16 @@ class TomorrowSchoolApp {
             activityList.appendChild(activityItem);
         });
         
-        // Show/hide loading indicator
+        // Show/hide load more button
+        const loadMoreBtn = document.getElementById('load-more-btn');
         const loadingMore = document.getElementById('loading-more');
+        
+        if (loadMoreBtn) {
+            loadMoreBtn.style.display = this.hasMoreData ? 'block' : 'none';
+        }
+        
         if (loadingMore) {
-            loadingMore.style.display = this.hasMoreData ? 'block' : 'none';
+            loadingMore.style.display = 'none';
         }
     }
     
@@ -632,7 +628,13 @@ class TomorrowSchoolApp {
         if (this.isLoading || !this.hasMoreData) return;
         
         this.isLoading = true;
+        const loadMoreBtn = document.getElementById('load-more-btn');
         const loadingMore = document.getElementById('loading-more');
+        
+        // Hide button and show loading
+        if (loadMoreBtn) {
+            loadMoreBtn.style.display = 'none';
+        }
         if (loadingMore) {
             loadingMore.style.display = 'block';
         }

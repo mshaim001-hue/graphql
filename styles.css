@@ -329,17 +329,20 @@ svg {
 }
 
 .activity-container {
-    max-height: 400px;
-    overflow-y: auto;
+    height: 400px;
     border: 1px solid #e1e5e9;
     border-radius: 8px;
     background: white;
     margin-top: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .activity-list {
     display: flex;
     flex-direction: column;
+    flex: 1;
+    overflow-y: auto;
 }
 
 .activity-item {
@@ -360,13 +363,42 @@ svg {
     border-bottom: none;
 }
 
+.activity-controls {
+    padding: 15px;
+    border-top: 1px solid #e1e5e9;
+    background: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60px;
+}
+
+.load-more-btn {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(102, 126, 234, 0.3);
+}
+
+.load-more-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.4);
+}
+
+.load-more-btn:active {
+    transform: translateY(0);
+}
+
 .loading-more {
     text-align: center;
-    padding: 15px;
     color: #666;
     font-size: 0.9rem;
-    background: #f8f9fa;
-    border-top: 1px solid #e1e5e9;
 }
 
 .loading-more::after {
