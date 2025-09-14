@@ -373,6 +373,20 @@ class TomorrowSchoolApp {
                         id
                         grade
                         createdAt
+                        path
+                        attrs
+                        result {
+                            id
+                            path
+                            object {
+                                name
+                                type
+                            }
+                        }
+                        group {
+                            id
+                            name
+                        }
                     }
                 }
             `;
@@ -385,6 +399,18 @@ class TomorrowSchoolApp {
                 sample: auditData.audit?.slice(0, 3) || [],
                 allIds: auditData.audit?.map(a => a.id) || []
             });
+            
+            // Log audit names and types
+            if (auditData.audit) {
+                console.log('Audit names and types:', auditData.audit.map(audit => ({
+                    id: audit.id,
+                    name: audit.result?.object?.name || audit.path || 'Unknown',
+                    type: audit.result?.object?.type || 'Unknown',
+                    grade: audit.grade,
+                    date: audit.createdAt,
+                    group: audit.group?.name || 'No group'
+                })));
+            }
             
             // Additional debug: check for duplicates and analyze data
             if (auditData.audit) {
@@ -1055,6 +1081,19 @@ class TomorrowSchoolApp {
                         version
                         endAt
                         resultId
+                        path
+                        result {
+                            id
+                            path
+                            object {
+                                name
+                                type
+                            }
+                        }
+                        group {
+                            id
+                            name
+                        }
                     }
                 }
             `;
