@@ -519,3 +519,142 @@ svg {
     font-size: 0.9rem;
 }
 
+/* Audit Section Styles */
+.audit-conducted {
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    color: white;
+    border-left: 4px solid #fff;
+}
+
+.audit-conducted h3 {
+    color: white;
+}
+
+.audit-conducted .value {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.audit-received {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    border-left: 4px solid #fff;
+}
+
+.audit-received h3 {
+    color: white;
+}
+
+.audit-received .value {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.audit-timeline {
+    grid-column: 1 / -1;
+    background: #f8f9fa;
+    border-left: 4px solid #667eea;
+}
+
+.audit-timeline-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.timeline-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-left: 3px solid #667eea;
+}
+
+.timeline-date {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.timeline-stats {
+    display: flex;
+    gap: 10px;
+}
+
+.timeline-stats .conducted {
+    color: #27ae60;
+    font-weight: 600;
+}
+
+.timeline-stats .received {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+.audit-details {
+    grid-column: 1 / -1;
+    background: #f8f9fa;
+    border-left: 4px solid #667eea;
+}
+
+.audit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 15px;
+}
+
+.audit-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.audit-item:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.audit-item.passed {
+    border-left: 3px solid #27ae60;
+}
+
+.audit-item.failed {
+    border-left: 3px solid #e74c3c;
+}
+
+.audit-grade {
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.audit-item.passed .audit-grade {
+    color: #27ae60;
+}
+
+.audit-item.failed .audit-grade {
+    color: #e74c3c;
+}
+
+.audit-date {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.audit-group {
+    color: #667eea;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+

@@ -229,6 +229,14 @@ class TomorrowSchoolApp {
                 await this.showBasicProgressData();
             }
             
+            // Load audit data
+            try {
+                await this.loadAuditData();
+            } catch (auditError) {
+                console.error('Error loading audit data:', auditError);
+                this.showBasicAuditData();
+            }
+            
             // Load additional user statistics
             await this.loadUserStatistics();
             
@@ -977,6 +985,242 @@ class TomorrowSchoolApp {
         `;
         
         console.log('Progress data HTML updated successfully');
+    }
+
+    async loadAuditData() {
+        console.log('Starting loadAuditData...');
+        try {
+            // Check if userId is available
+            if (!this.userId) {
+                console.log('No userId available for audit data, showing basic data...');
+                this.showBasicAuditData();
+                return;
+            }
+            
+            console.log('userId available for audits:', this.userId);
+
+            // Load audit data where user is the auditor
+            const auditQuery = `
+                query {
+                    audit(where: {auditorId: {_eq: ${this.userId}}}) {
+                        id
+                        grade
+                        createdAt
+                        updatedAt
+                        groupId
+                        attrs
+                        version
+                        endAt
+                        resultId
+                    }
+                }
+            `;
+
+            // Load audit data where user is being audited (through groups)
+            const auditedQuery = `
+                query {
+                    audit {
+                        id
+                        grade
+                        createdAt
+                        updatedAt
+                        groupId
+                        attrs
+                        version
+                        endAt
+                        resultId
+                        group {
+                            id
+                            group_user(where: {userId: {_eq: ${this.userId}}}) {
+                                id
+                                confirmed
+                            }
+                        }
+                    }
+                }
+            `;
+
+            console.log('Executing audit queries...');
+            const [auditData, auditedData] = await Promise.all([
+                this.makeGraphQLQuery(auditQuery),
+                this.makeGraphQLQuery(auditedQuery)
+            ]);
+            
+            console.log('Audit data received:', {
+                conducted: auditData.audit?.length || 0,
+                received: auditedData.audit?.length || 0
+            });
+            
+            // Filter audited data to only include audits where user is actually in the group
+            const relevantAudited = auditedData.audit?.filter(audit => 
+                audit.group?.group_user && audit.group.group_user.length > 0
+            ) || [];
+            
+            this.displayAuditData(auditData.audit || [], relevantAudited);
+            
+        } catch (error) {
+            console.error('Error loading audit data:', error);
+            this.showBasicAuditData();
+        }
+    }
+
+    showBasicAuditData() {
+        console.log('Showing basic audit data as fallback');
+        const auditDetails = document.getElementById('audits-details');
+        
+        if (auditDetails) {
+            auditDetails.innerHTML = `
+                <div class="info-item">
+                    <h3>Loading Audit Data...</h3>
+                    <div class="value">Please wait</div>
+                </div>
+                <div class="info-item">
+                    <h3>Status</h3>
+                    <div class="value">Connecting to server</div>
+                </div>
+            `;
+        }
+    }
+
+    displayAuditData(conductedAudits, receivedAudits) {
+        console.log('displayAuditData called with:', {
+            conducted: conductedAudits?.length || 0,
+            received: receivedAudits?.length || 0
+        });
+        
+        // Ensure we have arrays to work with
+        conductedAudits = conductedAudits || [];
+        receivedAudits = receivedAudits || [];
+
+        // Calculate conducted audit statistics
+        const totalConducted = conductedAudits.length;
+        const passedConducted = conductedAudits.filter(a => a.grade >= 1).length;
+        const failedConducted = conductedAudits.filter(a => a.grade < 1).length;
+        const avgGradeConducted = totalConducted > 0 ? 
+            (conductedAudits.reduce((sum, a) => sum + a.grade, 0) / totalConducted).toFixed(2) : 0;
+        
+        // Calculate received audit statistics
+        const totalReceived = receivedAudits.length;
+        const passedReceived = receivedAudits.filter(a => a.grade >= 1).length;
+        const failedReceived = receivedAudits.filter(a => a.grade < 1).length;
+        const avgGradeReceived = totalReceived > 0 ? 
+            (receivedAudits.reduce((sum, a) => sum + a.grade, 0) / totalReceived).toFixed(2) : 0;
+
+        // Calculate recent activity (last 30 days)
+        const thirtyDaysAgo = new Date();
+        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+        
+        const recentConducted = conductedAudits.filter(a => 
+            new Date(a.createdAt) >= thirtyDaysAgo
+        ).length;
+        
+        const recentReceived = receivedAudits.filter(a => 
+            new Date(a.createdAt) >= thirtyDaysAgo
+        ).length;
+
+        // Calculate audit timeline data
+        const auditTimeline = {};
+        [...conductedAudits, ...receivedAudits].forEach(audit => {
+            const date = new Date(audit.createdAt).toISOString().split('T')[0];
+            if (!auditTimeline[date]) {
+                auditTimeline[date] = { conducted: 0, received: 0 };
+            }
+            if (conductedAudits.includes(audit)) {
+                auditTimeline[date].conducted++;
+            } else {
+                auditTimeline[date].received++;
+            }
+        });
+
+        const auditDetails = document.getElementById('audits-details');
+        console.log('Found audit details element:', !!auditDetails);
+        
+        auditDetails.innerHTML = `
+            <!-- Conducted Audits Stats -->
+            <div class="info-item audit-conducted">
+                <h3>Audits Conducted</h3>
+                <div class="value">${totalConducted}</div>
+            </div>
+            <div class="info-item">
+                <h3>Conducted Success Rate</h3>
+                <div class="value">${totalConducted > 0 ? Math.round((passedConducted / totalConducted) * 100) : 0}%</div>
+            </div>
+            <div class="info-item">
+                <h3>Avg Grade Given</h3>
+                <div class="value">${avgGradeConducted}</div>
+            </div>
+            
+            <!-- Received Audits Stats -->
+            <div class="info-item audit-received">
+                <h3>Audits Received</h3>
+                <div class="value">${totalReceived}</div>
+            </div>
+            <div class="info-item">
+                <h3>Received Success Rate</h3>
+                <div class="value">${totalReceived > 0 ? Math.round((passedReceived / totalReceived) * 100) : 0}%</div>
+            </div>
+            <div class="info-item">
+                <h3>Avg Grade Received</h3>
+                <div class="value">${avgGradeReceived}</div>
+            </div>
+            
+            <!-- Recent Activity -->
+            <div class="info-item">
+                <h3>Recent Conducted (30d)</h3>
+                <div class="value">${recentConducted}</div>
+            </div>
+            <div class="info-item">
+                <h3>Recent Received (30d)</h3>
+                <div class="value">${recentReceived}</div>
+            </div>
+            
+            <!-- Audit Timeline -->
+            <div class="info-item audit-timeline">
+                <h3>Recent Audit Activity</h3>
+                <div class="audit-timeline-list">
+                    ${Object.keys(auditTimeline)
+                        .sort()
+                        .slice(-7) // Last 7 days
+                        .map(date => {
+                            const data = auditTimeline[date];
+                            const dateObj = new Date(date);
+                            return `
+                                <div class="timeline-item">
+                                    <span class="timeline-date">${dateObj.toLocaleDateString()}</span>
+                                    <span class="timeline-stats">
+                                        <span class="conducted">↑${data.conducted}</span>
+                                        <span class="received">↓${data.received}</span>
+                                    </span>
+                                </div>
+                            `;
+                        }).join('')}
+                </div>
+            </div>
+            
+            <!-- Audit Details -->
+            <div class="info-item audit-details">
+                <h3>Recent Audits Conducted</h3>
+                <div class="audit-list">
+                    ${conductedAudits
+                        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                        .slice(0, 5)
+                        .map(audit => {
+                            const date = new Date(audit.createdAt);
+                            const grade = audit.grade >= 1 ? '✓' : '✗';
+                            const gradeClass = audit.grade >= 1 ? 'passed' : 'failed';
+                            return `
+                                <div class="audit-item ${gradeClass}">
+                                    <span class="audit-grade">${grade} ${audit.grade.toFixed(2)}</span>
+                                    <span class="audit-date">${date.toLocaleDateString()}</span>
+                                    <span class="audit-group">Group ${audit.groupId}</span>
+                                </div>
+                            `;
+                        }).join('')}
+                </div>
+            </div>
+        `;
+        
+        console.log('Audit data HTML updated successfully');
     }
 
     async loadStatistics() {
