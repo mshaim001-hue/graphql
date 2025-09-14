@@ -383,7 +383,6 @@ class TomorrowSchoolApp {
                         }
                         group {
                             id
-                            name
                         }
                     }
                 }
@@ -406,7 +405,7 @@ class TomorrowSchoolApp {
                     type: audit.result?.object?.type || 'Unknown',
                     grade: audit.grade,
                     date: audit.createdAt,
-                    group: audit.group?.name || 'No group',
+                    group: audit.group?.id || 'No group',
                     resultId: audit.result?.id || 'No result'
                 })));
             }
@@ -1089,7 +1088,6 @@ class TomorrowSchoolApp {
                         }
                         group {
                             id
-                            name
                         }
                     }
                 }
