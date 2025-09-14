@@ -402,13 +402,14 @@ class TomorrowSchoolApp {
             if (auditData.audit) {
                 console.log('Audit names and types:', auditData.audit.map(audit => ({
                     id: audit.id,
-                    name: audit.result?.object?.name || 'Unknown',
-                    type: audit.result?.object?.type || 'Unknown',
-                    author: audit.result?.object?.authorId || 'Unknown',
+                    name: audit.result?.object?.name || 'No Project Info',
+                    type: audit.result?.object?.type || 'No Type Info',
+                    author: audit.result?.object?.authorId || 'No Author Info',
                     grade: audit.grade,
                     date: audit.createdAt,
                     group: audit.group?.id || 'No group',
-                    resultId: audit.result?.id || 'No result'
+                    resultId: audit.resultId || 'No result',
+                    hasResult: !!audit.result
                 })));
             }
             
@@ -1252,6 +1253,11 @@ class TomorrowSchoolApp {
             <!-- Recent Audits Conducted -->
             <div class="info-item recent-audits">
                 <h3>Recent Audits Conducted</h3>
+                <div class="audit-info">
+                    <p>📊 Total: ${conductedAudits.length} audits | 
+                    ✅ With project data: ${conductedAudits.filter(a => a.result && a.result.object).length} | 
+                    ⚠️ Missing data: ${conductedAudits.filter(a => !a.result || !a.result.object).length}</p>
+                </div>
                 <div class="recent-audits-list">
                     ${conductedAudits
                         .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
@@ -1261,11 +1267,21 @@ class TomorrowSchoolApp {
                             const gradeValue = audit.grade || 0;
                             const status = gradeValue >= 1 ? 'succeeded' : 'failed';
                             const statusClass = gradeValue >= 1 ? 'passed' : 'failed';
-                            const projectName = audit.result?.object?.name || 'Unknown Project';
-                            const author = audit.result?.object?.authorId || 'Unknown';
+                            
+                            // Handle missing result data
+                            let projectName, author, hasResult;
+                            if (audit.result && audit.result.object) {
+                                projectName = audit.result.object.name || 'Unknown Project';
+                                author = audit.result.object.authorId || 'Unknown Author';
+                                hasResult = true;
+                            } else {
+                                projectName = `Audit #${audit.id}`;
+                                author = `Result ID: ${audit.resultId || 'N/A'}`;
+                                hasResult = false;
+                            }
                             
                             return `
-                                <div class="recent-audit-item ${statusClass}">
+                                <div class="recent-audit-item ${statusClass} ${hasResult ? 'has-result' : 'no-result'}">
                                     <div class="audit-content">
                                         <span class="audit-project">${projectName}</span>
                                         <span class="audit-separator">-</span>
@@ -1274,6 +1290,7 @@ class TomorrowSchoolApp {
                                         <span class="audit-date">${date.toLocaleDateString()}</span>
                                         <span class="audit-separator">-</span>
                                         <span class="audit-status ${statusClass}">${status}</span>
+                                        ${!hasResult ? '<span class="audit-warning">⚠️ No Result Data</span>' : ''}
                                     </div>
                                 </div>
                             `;

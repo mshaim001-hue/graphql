@@ -1,0 +1,2235 @@
+{
+  "summary": {
+    "total_audits": 135,
+    "unique_ids": 135,
+    "duplicates": 0,
+    "with_results": 0,
+    "without_results": 135,
+    "with_result_id": 134,
+    "passed": 69,
+    "failed": 30,
+    "null_grades": 36
+  },
+  "audits": [
+    {
+      "id": 264,
+      "grade": 1.0,
+      "createdAt": "2024-12-23T18:39:36.705579+00:00",
+      "updatedAt": "2025-01-11T05:20:04.515176+00:00",
+      "groupId": 126,
+      "auditorId": 2058,
+      "resultId": 53666,
+      "attrs": {},
+      "version": "b7534791e5423256464f63bb902ff7bd6095078a",
+      "endAt": "2025-01-06T18:39:36.704+00:00",
+      "result": null,
+      "group": {
+        "id": 126
+      }
+    },
+    {
+      "id": 182,
+      "grade": 1.0,
+      "createdAt": "2024-12-13T16:28:13.503551+00:00",
+      "updatedAt": "2024-12-14T12:20:45.755526+00:00",
+      "groupId": 126,
+      "auditorId": 2058,
+      "resultId": 46370,
+      "attrs": {},
+      "version": "dea8a869e5da6c6ad3cbed36f7e669c83662a8f0",
+      "endAt": "2024-12-27T16:28:13.5+00:00",
+      "result": null,
+      "group": {
+        "id": 126
+      }
+    },
+    {
+      "id": 3808,
+      "grade": 1.0,
+      "createdAt": "2025-03-06T10:54:36.915019+00:00",
+      "updatedAt": "2025-03-06T13:40:28.268554+00:00",
+      "groupId": 695,
+      "auditorId": 2058,
+      "resultId": 95241,
+      "attrs": {},
+      "version": "674442feb0d17b266bea21687eefae3cde722ea8",
+      "endAt": "2025-03-09T10:54:36.913+00:00",
+      "result": null,
+      "group": {
+        "id": 695
+      }
+    },
+    {
+      "id": 966,
+      "grade": 2.0,
+      "createdAt": "2025-01-17T18:35:05.639684+00:00",
+      "updatedAt": "2025-01-18T13:06:48.044793+00:00",
+      "groupId": 270,
+      "auditorId": 2058,
+      "resultId": 54335,
+      "attrs": {},
+      "version": "08af27ac9b18e415caf52f922ce951afdfe7c406",
+      "endAt": "2025-01-20T18:35:05.638+00:00",
+      "result": null,
+      "group": {
+        "id": 270
+      }
+    },
+    {
+      "id": 245,
+      "grade": 1.0,
+      "createdAt": "2024-12-21T10:29:49.29689+00:00",
+      "updatedAt": "2024-12-22T16:27:32.701827+00:00",
+      "groupId": 126,
+      "auditorId": 2058,
+      "resultId": 53034,
+      "attrs": {},
+      "version": "d18b86a03e1871c3767b8a24232b2c2a62ea8dee",
+      "endAt": "2025-01-04T10:29:49.295+00:00",
+      "result": null,
+      "group": {
+        "id": 126
+      }
+    },
+    {
+      "id": 3881,
+      "grade": 1.0,
+      "createdAt": "2025-03-07T10:38:47.726325+00:00",
+      "updatedAt": "2025-03-07T16:02:58.743736+00:00",
+      "groupId": 844,
+      "auditorId": 2058,
+      "resultId": 95419,
+      "attrs": {},
+      "version": "e2bcd136d4683f71660e5565a44cd1cc5f1a4d66",
+      "endAt": "2025-03-10T10:38:47.725+00:00",
+      "result": null,
+      "group": {
+        "id": 844
+      }
+    },
+    {
+      "id": 3910,
+      "grade": 1.0,
+      "createdAt": "2025-03-07T16:10:16.455435+00:00",
+      "updatedAt": "2025-03-12T15:26:30.243187+00:00",
+      "groupId": 564,
+      "auditorId": 2058,
+      "resultId": 99802,
+      "attrs": {},
+      "version": "dfade1280619bab219ba6967ad7a43041ab0979d",
+      "endAt": "2025-03-10T16:10:16.454+00:00",
+      "result": null,
+      "group": {
+        "id": 564
+      }
+    },
+    {
+      "id": 846,
+      "grade": 1.2727272727272727,
+      "createdAt": "2025-01-16T12:09:54.371872+00:00",
+      "updatedAt": "2025-01-16T12:32:30.572405+00:00",
+      "groupId": 202,
+      "auditorId": 2058,
+      "resultId": 54025,
+      "attrs": {},
+      "version": "e6bdf200c96822c0c09d55056520a6b5830a01da",
+      "endAt": "2025-01-19T12:09:54.37+00:00",
+      "result": null,
+      "group": {
+        "id": 202
+      }
+    },
+    {
+      "id": 429,
+      "grade": 1.0,
+      "createdAt": "2025-01-09T16:07:17.823649+00:00",
+      "updatedAt": "2025-01-16T10:20:19.248765+00:00",
+      "groupId": 138,
+      "auditorId": 2058,
+      "resultId": 54009,
+      "attrs": {},
+      "version": "ee727654726285fb11c5a60892fc5e8cec42cfd3",
+      "endAt": "2025-01-23T16:07:17.822+00:00",
+      "result": null,
+      "group": {
+        "id": 138
+      }
+    },
+    {
+      "id": 616,
+      "grade": 1.0,
+      "createdAt": "2025-01-14T04:02:03.212874+00:00",
+      "updatedAt": "2025-01-14T08:48:58.779221+00:00",
+      "groupId": 147,
+      "auditorId": 2058,
+      "resultId": 53800,
+      "attrs": {},
+      "version": "25ab19ccf1eefb12c7bdf890764f1a0c107cb7e9",
+      "endAt": "2025-01-17T04:02:03.211+00:00",
+      "result": null,
+      "group": {
+        "id": 147
+      }
+    },
+    {
+      "id": 696,
+      "grade": 1.3125,
+      "createdAt": "2025-01-14T11:45:41.635109+00:00",
+      "updatedAt": "2025-01-14T12:47:08.132229+00:00",
+      "groupId": 231,
+      "auditorId": 2058,
+      "resultId": 53820,
+      "attrs": {},
+      "version": "1a6834daebe298f70f3ba1db2fe04cbe19cf19af",
+      "endAt": "2025-01-28T11:45:41.633+00:00",
+      "result": null,
+      "group": {
+        "id": 231
+      }
+    },
+    {
+      "id": 756,
+      "grade": 1.2941176470588236,
+      "createdAt": "2025-01-15T11:15:32.254041+00:00",
+      "updatedAt": "2025-01-15T13:57:16.38625+00:00",
+      "groupId": 232,
+      "auditorId": 2058,
+      "resultId": 53884,
+      "attrs": {},
+      "version": "048ce92a7476c7f957cb203c126a87ef72f66f7a",
+      "endAt": "2025-01-18T11:15:32.252+00:00",
+      "result": null,
+      "group": {
+        "id": 232
+      }
+    },
+    {
+      "id": 877,
+      "grade": 1.2727272727272727,
+      "createdAt": "2025-01-16T14:39:14.031961+00:00",
+      "updatedAt": "2025-01-16T15:11:50.219727+00:00",
+      "groupId": 235,
+      "auditorId": 2058,
+      "resultId": 54055,
+      "attrs": {},
+      "version": "f25932602cfc3ceacf7eead09aea4505d022eda7",
+      "endAt": "2025-01-19T14:39:14.03+00:00",
+      "result": null,
+      "group": {
+        "id": 235
+      }
+    },
+    {
+      "id": 891,
+      "grade": 1.0,
+      "createdAt": "2025-01-16T15:47:35.790398+00:00",
+      "updatedAt": "2025-01-17T09:30:00.898267+00:00",
+      "groupId": 188,
+      "auditorId": 2058,
+      "resultId": 54128,
+      "attrs": {},
+      "version": "cfea4e31c01f5b44b4a1a1b3479167d6c336bdf5",
+      "endAt": "2025-01-19T15:47:35.789+00:00",
+      "result": null,
+      "group": {
+        "id": 188
+      }
+    },
+    {
+      "id": 1005,
+      "grade": 1.3636363636363635,
+      "createdAt": "2025-01-18T13:07:30.878433+00:00",
+      "updatedAt": "2025-01-18T14:04:49.240054+00:00",
+      "groupId": 213,
+      "auditorId": 2058,
+      "resultId": 54339,
+      "attrs": {},
+      "version": "a590a40f030b5ff14d43f67964de06c5c51460c8",
+      "endAt": "2025-01-21T13:07:30.876+00:00",
+      "result": null,
+      "group": {
+        "id": 213
+      }
+    },
+    {
+      "id": 951,
+      "grade": null,
+      "createdAt": "2025-01-17T12:14:35.907017+00:00",
+      "updatedAt": "2025-01-17T13:41:45.05653+00:00",
+      "groupId": 182,
+      "auditorId": 2058,
+      "resultId": 54290,
+      "attrs": {},
+      "version": "bf67e52b587f628158793a7b7893109284c61056",
+      "endAt": "2025-01-20T12:14:35.905+00:00",
+      "result": null,
+      "group": {
+        "id": 182
+      }
+    },
+    {
+      "id": 1065,
+      "grade": 1.0,
+      "createdAt": "2025-01-19T09:14:51.119206+00:00",
+      "updatedAt": "2025-01-19T11:12:00.827155+00:00",
+      "groupId": 177,
+      "auditorId": 2058,
+      "resultId": 54357,
+      "attrs": {},
+      "version": "ddd48f4c7d9258b76ef5603724e8414a75c18162",
+      "endAt": "2025-01-22T09:14:51.116+00:00",
+      "result": null,
+      "group": {
+        "id": 177
+      }
+    },
+    {
+      "id": 1107,
+      "grade": 1.2727272727272727,
+      "createdAt": "2025-01-19T12:59:04.490422+00:00",
+      "updatedAt": "2025-01-19T14:43:03.882136+00:00",
+      "groupId": 251,
+      "auditorId": 2058,
+      "resultId": 54360,
+      "attrs": {},
+      "version": "c4fa48e0a1355353934787e0bf05f79aba7e2a26",
+      "endAt": "2025-01-22T12:59:04.489+00:00",
+      "result": null,
+      "group": {
+        "id": 251
+      }
+    },
+    {
+      "id": 1145,
+      "grade": 1.4,
+      "createdAt": "2025-01-19T15:05:40.883094+00:00",
+      "updatedAt": "2025-01-22T14:57:40.538974+00:00",
+      "groupId": 256,
+      "auditorId": 2058,
+      "resultId": 58650,
+      "attrs": {},
+      "version": "d035e3b4a05b64e95ed3bb8b459844b2b66a9bdd",
+      "endAt": "2025-01-22T15:05:40.881+00:00",
+      "result": null,
+      "group": {
+        "id": 256
+      }
+    },
+    {
+      "id": 1220,
+      "grade": null,
+      "createdAt": "2025-01-20T12:45:00.032769+00:00",
+      "updatedAt": "2025-01-20T13:29:33.877093+00:00",
+      "groupId": 315,
+      "auditorId": 2058,
+      "resultId": 55106,
+      "attrs": {},
+      "version": "0f43932faa3a4d36c72f7dc64aea4550c6f00974",
+      "endAt": "2025-01-23T12:45:00.031+00:00",
+      "result": null,
+      "group": {
+        "id": 315
+      }
+    },
+    {
+      "id": 3943,
+      "grade": null,
+      "createdAt": "2025-03-09T14:46:35.547678+00:00",
+      "updatedAt": "2025-03-12T10:07:00.002066+00:00",
+      "groupId": 843,
+      "auditorId": 2058,
+      "resultId": 99092,
+      "attrs": {},
+      "version": "fa11bce8238dc41037c741e12b9624800e017d11",
+      "endAt": "2025-03-12T14:46:35.546+00:00",
+      "result": null,
+      "group": {
+        "id": 843
+      }
+    },
+    {
+      "id": 2213,
+      "grade": 1.3529411764705883,
+      "createdAt": "2025-02-02T13:58:02.76017+00:00",
+      "updatedAt": "2025-02-02T14:53:14.530325+00:00",
+      "groupId": 464,
+      "auditorId": 2058,
+      "resultId": 74767,
+      "attrs": {},
+      "version": "542eeed0f4d38767473558a8476c0922292ca891",
+      "endAt": "2025-02-05T13:58:02.758+00:00",
+      "result": null,
+      "group": {
+        "id": 464
+      }
+    },
+    {
+      "id": 1370,
+      "grade": 1.0,
+      "createdAt": "2025-01-22T12:34:50.060394+00:00",
+      "updatedAt": "2025-01-22T15:26:26.122496+00:00",
+      "groupId": 346,
+      "auditorId": 2058,
+      "resultId": 58739,
+      "attrs": {},
+      "version": "c3f402aa485b322acaf40ae2ca65e67b85d6189a",
+      "endAt": "2025-01-25T12:34:50.059+00:00",
+      "result": null,
+      "group": {
+        "id": 346
+      }
+    },
+    {
+      "id": 1424,
+      "grade": 1.3636363636363635,
+      "createdAt": "2025-01-23T08:19:24.478738+00:00",
+      "updatedAt": "2025-01-24T07:55:09.556051+00:00",
+      "groupId": 272,
+      "auditorId": 2058,
+      "resultId": 61251,
+      "attrs": {},
+      "version": "a52d1e29767ff6e86c2675b3f22e6aff3b666ca6",
+      "endAt": "2025-01-26T08:19:24.477+00:00",
+      "result": null,
+      "group": {
+        "id": 272
+      }
+    },
+    {
+      "id": 1496,
+      "grade": null,
+      "createdAt": "2025-01-24T14:27:47.163137+00:00",
+      "updatedAt": "2025-01-27T05:12:17.568245+00:00",
+      "groupId": 207,
+      "auditorId": 2058,
+      "resultId": 65446,
+      "attrs": {},
+      "version": "8873c6de70f4afb87130cc3f479aa5f5ae8f1bc1",
+      "endAt": "2025-01-27T14:27:47.161+00:00",
+      "result": null,
+      "group": {
+        "id": 207
+      }
+    },
+    {
+      "id": 1556,
+      "grade": 1.3333333333333333,
+      "createdAt": "2025-01-25T07:21:41.421236+00:00",
+      "updatedAt": "2025-01-25T09:16:10.611691+00:00",
+      "groupId": 316,
+      "auditorId": 2058,
+      "resultId": 63103,
+      "attrs": {},
+      "version": "cb9faa477353d43fc2b3c136fb58076aa1cb22a4",
+      "endAt": "2025-01-28T07:21:41.42+00:00",
+      "result": null,
+      "group": {
+        "id": 316
+      }
+    },
+    {
+      "id": 4113,
+      "grade": 1.0,
+      "createdAt": "2025-03-13T13:50:22.542204+00:00",
+      "updatedAt": "2025-03-14T09:16:03.810116+00:00",
+      "groupId": 642,
+      "auditorId": 2058,
+      "resultId": 101767,
+      "attrs": {},
+      "version": "928a0d42aeebe783217ed25fecb38f50a99e7985",
+      "endAt": "2025-03-16T13:50:22.54+00:00",
+      "result": null,
+      "group": {
+        "id": 642
+      }
+    },
+    {
+      "id": 1977,
+      "grade": 1.0,
+      "createdAt": "2025-01-31T04:22:53.180373+00:00",
+      "updatedAt": "2025-02-04T14:56:23.543966+00:00",
+      "groupId": 178,
+      "auditorId": 2058,
+      "resultId": 76026,
+      "attrs": {},
+      "version": "041a2bdf20866e55903ae51ad5c5804a26d71aa3",
+      "endAt": "2025-02-03T04:22:53.178+00:00",
+      "result": null,
+      "group": {
+        "id": 178
+      }
+    },
+    {
+      "id": 1795,
+      "grade": 1.263157894736842,
+      "createdAt": "2025-01-28T10:13:59.254616+00:00",
+      "updatedAt": "2025-01-31T15:57:58.268963+00:00",
+      "groupId": 236,
+      "auditorId": 2058,
+      "resultId": 72630,
+      "attrs": {},
+      "version": "3862c27d6423010f0706732e30155d20a43c5f4a",
+      "endAt": "2025-01-31T10:13:59.252+00:00",
+      "result": null,
+      "group": {
+        "id": 236
+      }
+    },
+    {
+      "id": 1897,
+      "grade": 1.0,
+      "createdAt": "2025-01-29T17:18:19.17954+00:00",
+      "updatedAt": "2025-01-31T14:49:25.324839+00:00",
+      "groupId": 387,
+      "auditorId": 2058,
+      "resultId": 72561,
+      "attrs": {},
+      "version": "81d751d993c81ff18f7e9844be32ff7cf7d2f5e8",
+      "endAt": "2025-02-01T17:18:19.178+00:00",
+      "result": null,
+      "group": {
+        "id": 387
+      }
+    },
+    {
+      "id": 2101,
+      "grade": 1.4444444444444444,
+      "createdAt": "2025-02-01T12:40:42.784458+00:00",
+      "updatedAt": "2025-02-02T13:57:44.439284+00:00",
+      "groupId": 342,
+      "auditorId": 2058,
+      "resultId": 74662,
+      "attrs": {},
+      "version": "c666de6ada1a0516db37249bef0b64d5bfd4291e",
+      "endAt": "2025-02-04T12:40:42.782+00:00",
+      "result": null,
+      "group": {
+        "id": 342
+      }
+    },
+    {
+      "id": 2051,
+      "grade": 1.3333333333333333,
+      "createdAt": "2025-01-31T17:41:01.327707+00:00",
+      "updatedAt": "2025-02-01T16:17:54.794418+00:00",
+      "groupId": 328,
+      "auditorId": 2058,
+      "resultId": 72830,
+      "attrs": {},
+      "version": "efec2087d80006f3cd71bdb2988c92738b19801b",
+      "endAt": "2025-02-03T17:41:01.326+00:00",
+      "result": null,
+      "group": {
+        "id": 328
+      }
+    },
+    {
+      "id": 2172,
+      "grade": null,
+      "createdAt": "2025-02-01T17:15:27.225713+00:00",
+      "updatedAt": "2025-02-01T17:26:21.089239+00:00",
+      "groupId": 349,
+      "auditorId": 2058,
+      "resultId": 72842,
+      "attrs": {},
+      "version": "4516b113015acb752a752d6887d17ba2b9e6eb9c",
+      "endAt": "2025-02-04T17:15:27.224+00:00",
+      "result": null,
+      "group": {
+        "id": 349
+      }
+    },
+    {
+      "id": 2312,
+      "grade": 1.4666666666666666,
+      "createdAt": "2025-02-03T13:17:00.475734+00:00",
+      "updatedAt": "2025-02-03T16:55:23.201954+00:00",
+      "groupId": 332,
+      "auditorId": 2058,
+      "resultId": 75464,
+      "attrs": {},
+      "version": "aee66075bd326ee1c1fee4488d87fc6528e1a839",
+      "endAt": "2025-02-06T13:17:00.473+00:00",
+      "result": null,
+      "group": {
+        "id": 332
+      }
+    },
+    {
+      "id": 3072,
+      "grade": 1.2727272727272727,
+      "createdAt": "2025-02-16T13:13:59.678203+00:00",
+      "updatedAt": "2025-02-17T14:02:27.610573+00:00",
+      "groupId": 583,
+      "auditorId": 2058,
+      "resultId": 92394,
+      "attrs": {},
+      "version": "5cc8ddeaf45fe0c39bfb086674f9f1c6864409b7",
+      "endAt": "2025-02-19T13:13:59.676+00:00",
+      "result": null,
+      "group": {
+        "id": 583
+      }
+    },
+    {
+      "id": 2482,
+      "grade": 1.4375,
+      "createdAt": "2025-02-06T06:41:24.50199+00:00",
+      "updatedAt": "2025-02-06T10:22:01.63256+00:00",
+      "groupId": 438,
+      "auditorId": 2058,
+      "resultId": 76880,
+      "attrs": {},
+      "version": "c5393aaa6ef38b9ffb4bf076501bd4f0f1941cd7",
+      "endAt": "2025-02-09T06:41:24.5+00:00",
+      "result": null,
+      "group": {
+        "id": 438
+      }
+    },
+    {
+      "id": 2518,
+      "grade": 0,
+      "createdAt": "2025-02-06T12:52:53.463393+00:00",
+      "updatedAt": "2025-03-05T01:22:42.779444+00:00",
+      "groupId": 387,
+      "auditorId": 2058,
+      "resultId": 76997,
+      "attrs": {
+        "###### Has the requirement for the allowed packages been respected? (Reminder for this project: (only [standard packages](https://golang.org/pkg/)))": "doesn't work properly"
+      },
+      "version": "2da5b35c26169f4df08e2373bebf649f29337245",
+      "endAt": "2025-02-09T12:52:53.462+00:00",
+      "result": null,
+      "group": {
+        "id": 387
+      }
+    },
+    {
+      "id": 2551,
+      "grade": 2.4,
+      "createdAt": "2025-02-07T13:27:28.75785+00:00",
+      "updatedAt": "2025-02-07T14:28:19.621571+00:00",
+      "groupId": 575,
+      "auditorId": 2058,
+      "resultId": 79508,
+      "attrs": {},
+      "version": "53bcfeb3b1374ca560bd80e8a5383ebb37bfecb0",
+      "endAt": "2025-02-10T13:27:28.756+00:00",
+      "result": null,
+      "group": {
+        "id": 575
+      }
+    },
+    {
+      "id": 2925,
+      "grade": 1.368421052631579,
+      "createdAt": "2025-02-13T12:45:22.441627+00:00",
+      "updatedAt": "2025-02-14T11:46:02.933536+00:00",
+      "groupId": 439,
+      "auditorId": 2058,
+      "resultId": 90343,
+      "attrs": {},
+      "version": "16dba636b118d6ffe9a6046273c3296d38821bdd",
+      "endAt": "2025-02-16T12:45:22.44+00:00",
+      "result": null,
+      "group": {
+        "id": 439
+      }
+    },
+    {
+      "id": 5690,
+      "grade": 0.0,
+      "createdAt": "2025-04-25T14:58:29.446074+00:00",
+      "updatedAt": "2025-04-26T13:30:06.979028+00:00",
+      "groupId": 983,
+      "auditorId": 2058,
+      "resultId": 131284,
+      "attrs": {
+        "null\n\n###### Has the requirement for the allowed packages been respected? (Reminder for this project: only [standard packages](https://golang.org/pkg/))": "\\n doesn't work"
+      },
+      "version": "6bd2099736938afeea6e85d76f8a1f995052c388",
+      "endAt": "2025-04-28T14:58:29.444+00:00",
+      "result": null,
+      "group": {
+        "id": 983
+      }
+    },
+    {
+      "id": 2960,
+      "grade": 1.4375,
+      "createdAt": "2025-02-14T11:46:57.953172+00:00",
+      "updatedAt": "2025-02-14T14:23:03.535718+00:00",
+      "groupId": 579,
+      "auditorId": 2058,
+      "resultId": 90953,
+      "attrs": {},
+      "version": "c541e5588c1364b619870e02377659abb7bd1dc6",
+      "endAt": "2025-02-17T11:46:57.951+00:00",
+      "result": null,
+      "group": {
+        "id": 579
+      }
+    },
+    {
+      "id": 2858,
+      "grade": null,
+      "createdAt": "2025-02-12T11:46:36.369936+00:00",
+      "updatedAt": "2025-02-12T15:23:00.140463+00:00",
+      "groupId": 571,
+      "auditorId": 2058,
+      "resultId": 85296,
+      "attrs": {},
+      "version": "13d2cde316715028c4ebf5a2634fc70317cd153e",
+      "endAt": "2025-02-15T11:46:36.368+00:00",
+      "result": null,
+      "group": {
+        "id": 571
+      }
+    },
+    {
+      "id": 2903,
+      "grade": 1.0,
+      "createdAt": "2025-02-12T16:00:57.353769+00:00",
+      "updatedAt": "2025-02-13T11:14:37.580663+00:00",
+      "groupId": 387,
+      "auditorId": 2058,
+      "resultId": 86001,
+      "attrs": {},
+      "version": "e3838625eeb4041f95417be88321856ebed84c42",
+      "endAt": "2025-02-15T16:00:57.352+00:00",
+      "result": null,
+      "group": {
+        "id": 387
+      }
+    },
+    {
+      "id": 2801,
+      "grade": 1.4705882352941178,
+      "createdAt": "2025-02-11T12:40:12.483379+00:00",
+      "updatedAt": "2025-02-11T13:39:46.935846+00:00",
+      "groupId": 555,
+      "auditorId": 2058,
+      "resultId": 84393,
+      "attrs": {},
+      "version": "23ddafd9ae785e30bc38da25ca19f4b9859fdb75",
+      "endAt": "2025-02-14T12:40:12.482+00:00",
+      "result": null,
+      "group": {
+        "id": 555
+      }
+    },
+    {
+      "id": 3008,
+      "grade": 1.2272727272727273,
+      "createdAt": "2025-02-15T08:32:16.214319+00:00",
+      "updatedAt": "2025-02-18T10:00:49.619879+00:00",
+      "groupId": 627,
+      "auditorId": 2058,
+      "resultId": 92469,
+      "attrs": {},
+      "version": "fd3897bc36bd1b11de01c86b7922bdb355a9f4e3",
+      "endAt": "2025-02-18T08:32:16.211+00:00",
+      "result": null,
+      "group": {
+        "id": 627
+      }
+    },
+    {
+      "id": 3141,
+      "grade": null,
+      "createdAt": "2025-02-18T08:52:14.859227+00:00",
+      "updatedAt": "2025-02-22T15:12:05.770592+00:00",
+      "groupId": 688,
+      "auditorId": 2058,
+      "resultId": 92908,
+      "attrs": {},
+      "version": "30db6258a14055aa9c6f2c80a0d7bbf417e5cc62",
+      "endAt": "2025-02-21T08:52:14.857+00:00",
+      "result": null,
+      "group": {
+        "id": 688
+      }
+    },
+    {
+      "id": 3250,
+      "grade": null,
+      "createdAt": "2025-02-20T13:38:59.427166+00:00",
+      "updatedAt": "2025-02-23T13:35:30.951276+00:00",
+      "groupId": 524,
+      "auditorId": 2058,
+      "resultId": 93364,
+      "attrs": {},
+      "version": "2162c19570e4556afa0d29f2d5a11b3ba3ff1377",
+      "endAt": "2025-02-23T13:38:59.425+00:00",
+      "result": null,
+      "group": {
+        "id": 524
+      }
+    },
+    {
+      "id": 3537,
+      "grade": 1.375,
+      "createdAt": "2025-02-27T11:48:26.122996+00:00",
+      "updatedAt": "2025-02-28T08:25:47.052018+00:00",
+      "groupId": 540,
+      "auditorId": 2058,
+      "resultId": 93923,
+      "attrs": {},
+      "version": "dad42c56fa83fa0007244a327b50e1763c35e56c",
+      "endAt": "2025-03-02T11:48:26.121+00:00",
+      "result": null,
+      "group": {
+        "id": 540
+      }
+    },
+    {
+      "id": 3604,
+      "grade": null,
+      "createdAt": "2025-02-28T13:43:41.755105+00:00",
+      "updatedAt": "2025-03-01T09:59:46.430229+00:00",
+      "groupId": 819,
+      "auditorId": 2058,
+      "resultId": 93984,
+      "attrs": {},
+      "version": "4f6ac85e7d2ba2131fac3f46643acb2ff6214ec1",
+      "endAt": "2025-03-03T13:43:41.754+00:00",
+      "result": null,
+      "group": {
+        "id": 819
+      }
+    },
+    {
+      "id": 3647,
+      "grade": 1.2727272727272727,
+      "createdAt": "2025-03-01T17:40:54.312915+00:00",
+      "updatedAt": "2025-03-02T13:08:48.001933+00:00",
+      "groupId": 733,
+      "auditorId": 2058,
+      "resultId": 94541,
+      "attrs": {},
+      "version": "8bb7bd4e4b129d587b9f17d5c5e76fbc8a694f79",
+      "endAt": "2025-03-04T17:40:54.311+00:00",
+      "result": null,
+      "group": {
+        "id": 733
+      }
+    },
+    {
+      "id": 3671,
+      "grade": 1.3333333333333333,
+      "createdAt": "2025-03-03T11:13:40.736987+00:00",
+      "updatedAt": "2025-03-03T15:07:06.933064+00:00",
+      "groupId": 556,
+      "auditorId": 2058,
+      "resultId": 94890,
+      "attrs": {},
+      "version": "d4c77fb6ecffe7fec693d93e313d7806dc40132a",
+      "endAt": "2025-03-06T11:13:40.735+00:00",
+      "result": null,
+      "group": {
+        "id": 556
+      }
+    },
+    {
+      "id": 3732,
+      "grade": null,
+      "createdAt": "2025-03-04T09:39:23.321341+00:00",
+      "updatedAt": "2025-03-14T13:38:22.374298+00:00",
+      "groupId": 282,
+      "auditorId": 2058,
+      "resultId": 103693,
+      "attrs": {},
+      "version": "939da3b27fb6f07e568e3a8d24cd09fddfe89b34",
+      "endAt": "2025-03-07T09:39:23.32+00:00",
+      "result": null,
+      "group": {
+        "id": 282
+      }
+    },
+    {
+      "id": 545,
+      "grade": 0.2,
+      "createdAt": "2025-01-12T09:22:30.538585+00:00",
+      "updatedAt": "2025-03-05T01:22:42.779444+00:00",
+      "groupId": 191,
+      "auditorId": 2058,
+      "resultId": 53699,
+      "attrs": {
+        "##### In a file called `sample.txt`, place the following text: `If I make you BREAKFAST IN BED (low, 3) just say thank you instead of: how (cap) did you get in my house (up, 2) ?`. Now run the student program with the arguments: `sample.txt result.txt`.\n\n`If I make you breakfast in bed just say thank you instead of: How did you get in MY HOUSE?`\n\n###### Is the text present in `result.txt` equal to the above?": "panic: runtime error: index out of range"
+      },
+      "version": "87ca29fadd2ef35202e125aff92fd6b3a37bce54",
+      "endAt": "2025-01-26T09:22:30.537+00:00",
+      "result": null,
+      "group": {
+        "id": 191
+      }
+    },
+    {
+      "id": 158,
+      "grade": 0.4,
+      "createdAt": "2024-12-12T15:37:52.330985+00:00",
+      "updatedAt": "2025-03-05T01:22:42.779444+00:00",
+      "groupId": 137,
+      "auditorId": 2058,
+      "resultId": 45563,
+      "attrs": {
+        "##### In a file called `sample.txt` place the following text: `I have to pack 101 (bin) outfits. Packed 1a (hex) just to be sure`. Now run the student program with the arguments: `sample.txt result.txt`.\n\n`I have to pack 5 outfits. Packed 26 just to be sure`\n\n###### Is the text present in `result.txt` equal to the above?": "doesn't work with hex"
+      },
+      "version": "c0b98d6bcf7c48c2734c545af17e02cebba3c472",
+      "endAt": "2024-12-26T15:37:52.328+00:00",
+      "result": null,
+      "group": {
+        "id": 137
+      }
+    },
+    {
+      "id": 289,
+      "grade": 0.6,
+      "createdAt": "2024-12-31T06:55:03.394862+00:00",
+      "updatedAt": "2025-03-05T01:22:42.779444+00:00",
+      "groupId": 145,
+      "auditorId": 2058,
+      "resultId": 53456,
+      "attrs": {
+        "##### In a file called `sample.txt` place the following text: `Don not be sad ,because sad backwards is das . And das not good`. Now run the student program with the arguments: `sample.txt result.txt`.\n\n`Don not be sad, because sad backwards is das. And das not good`\n\n###### Is the text present in `result.txt` equal to the above?": "failed the test"
+      },
+      "version": "ccf594aa9d5e9ac06bf1f779965709da5f85c7ec",
+      "endAt": "2025-01-14T06:55:03.392+00:00",
+      "result": null,
+      "group": {
+        "id": 145
+      }
+    },
+    {
+      "id": 346,
+      "grade": 0.0,
+      "createdAt": "2025-01-07T11:43:57.659971+00:00",
+      "updatedAt": "2025-03-05T01:22:42.779444+00:00",
+      "groupId": 172,
+      "auditorId": 2058,
+      "resultId": 53591,
+      "attrs": {
+        "###### Has the requirement for the allowed packages been respected? (Reminder for this project: (only [standard packages](https://golang.org/pkg/)))": "NETU SAMPLE.TXT"
+      },
+      "version": "da309c8fc6fcd27f2214fa5d94dde7dadcfd55a6",
+      "endAt": "2025-01-21T11:43:57.658+00:00",
+      "result": null,
+      "group": {
+        "id": 172
+      }
+    },
+    {
+      "id": 318,
+      "grade": 0.2,
+      "createdAt": "2025-01-06T14:21:01.526893+00:00",
+      "updatedAt": "2025-03-05T01:22:42.779444+00:00",
+      "groupId": 145,
+      "auditorId": 2058,
+      "resultId": 53539,
+      "attrs": {
+        "##### In a file called `sample.txt`, place the following text: `If I make you BREAKFAST IN BED (low, 3) just say thank you instead of: how (cap) did you get in my house (up, 2) ?`. Now run the student program with the arguments: `sample.txt result.txt`.\n\n`If I make you breakfast in bed just say thank you instead of: How did you get in MY HOUSE?`\n\n###### Is the text present in `result.txt` equal to the above?": "commands without spaces doesn't  work"
+      },
+      "version": "e5ddc0fe703edb95675b834356057495f4094874",
+      "endAt": "2025-01-20T14:21:01.525+00:00",
+      "result": null,
+      "group": {
+        "id": 145
+      }
+    },
+    {
+      "id": 199,
+      "grade": 0.8,
+      "createdAt": "2024-12-17T10:26:08.633294+00:00",
+      "updatedAt": "2025-03-05T01:22:42.779444+00:00",
+      "groupId": 147,
+      "auditorId": 2058,
+      "resultId": 53584,
+      "attrs": {
+        "##### In a file called `sample.txt` place the following text: `harold wilson (cap, 2) : ' I am a optimist ,but a optimist who carries a raincoat . '`. Now run the student program with the arguments: `sample.txt result.txt`.\n\n`Harold Wilson: 'I am an optimist, but an optimist who carries a raincoat.'`\n\n###### Is the text present in `result.txt` equal to the above?": "apostrophes panic"
+      },
+      "version": "9656ce338e1cdf6119dc376ad7ae289190ffbcb4",
+      "endAt": "2024-12-31T10:26:08.63+00:00",
+      "result": null,
+      "group": {
+        "id": 147
+      }
+    },
+    {
+      "id": 401,
+      "grade": 0.2,
+      "createdAt": "2025-01-08T13:09:14.372915+00:00",
+      "updatedAt": "2025-03-05T01:22:42.779444+00:00",
+      "groupId": 136,
+      "auditorId": 2058,
+      "resultId": 53603,
+      "attrs": {
+        "##### In a file called `sample.txt`, place the following text: `If I make you BREAKFAST IN BED (low, 3) just say thank you instead of: how (cap) did you get in my house (up, 2) ?`. Now run the student program with the arguments: `sample.txt result.txt`.\n\n`If I make you breakfast in bed just say thank you instead of: How did you get in MY HOUSE?`\n\n###### Is the text present in `result.txt` equal to the above?": "\u043a\u043e\u0433\u0434\u0430 \u043f\u0440\u043e\u043f\u0438\u0441\u044b\u0432\u0430\u0435\u0448\u044c \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u043a\u043e\u043c\u0430\u043d\u0434 \u0434\u043b\u044f \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430 \u0441\u043b\u043e\u0432 \u0438 \u0434\u043b\u044f \u043a\u043e\u043d\u0432\u0435\u0440\u0442\u0430\u0446\u0438\u0438 \u0447\u0438\u0441\u0435\u043b, \u0442\u043e \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430 \u043d\u0435 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442. 101 (bin) (hex) (hex) -> 5 (hex) (hex)"
+      },
+      "version": "961c141b77ab61a069e51d68a4a3282834ed6491",
+      "endAt": "2025-01-22T13:09:14.371+00:00",
+      "result": null,
+      "group": {
+        "id": 136
+      }
+    },
+    {
+      "id": 491,
+      "grade": 0.2,
+      "createdAt": "2025-01-11T10:51:30.670794+00:00",
+      "updatedAt": "2025-03-05T01:22:42.779444+00:00",
+      "groupId": 171,
+      "auditorId": 2058,
+      "resultId": 53673,
+      "attrs": {
+        "##### In a file called `sample.txt`, place the following text: `If I make you BREAKFAST IN BED (low, 3) just say thank you instead of: how (cap) did you get in my house (up, 2) ?`. Now run the student program with the arguments: `sample.txt result.txt`.\n\n`If I make you breakfast in bed just say thank you instead of: How did you get in MY HOUSE?`\n\n###### Is the text present in `result.txt` equal to the above?": "fail comands does't work"
+      },
+      "version": "54d154dedb472776daa30ba95d2d805ebbd15ba1",
+      "endAt": "2025-01-25T10:51:30.669+00:00",
+      "result": null,
+      "group": {
+        "id": 171
+      }
+    },
+    {
+      "id": 826,
+      "grade": 0.8,
+      "createdAt": "2025-01-16T10:40:59.258639+00:00",
+      "updatedAt": "2025-03-05T01:22:42.779444+00:00",
+      "groupId": 188,
+      "auditorId": 2058,
+      "resultId": 54015,
+      "attrs": {
+        "##### In a file called `sample.txt` place the following text: `harold wilson (cap, 2) : ' I am a optimist ,but a optimist who carries a raincoat . '`. Now run the student program with the arguments: `sample.txt result.txt`.\n\n`Harold Wilson: 'I am an optimist, but an optimist who carries a raincoat.'`\n\n###### Is the text present in `result.txt` equal to the above?": "panic  panic panic"
+      },
+      "version": "e91b5bc622619c2242b2e15b4089eba05e9cece4",
+      "endAt": "2025-01-19T10:40:59.257+00:00",
+      "result": null,
+      "group": {
+        "id": 188
+      }
+    },
+    {
+      "id": 915,
+      "grade": 0.0,
+      "createdAt": "2025-01-17T09:51:53.60285+00:00",
+      "updatedAt": "2025-03-05T01:22:42.779444+00:00",
+      "groupId": 182,
+      "auditorId": 2058,
+      "resultId": 54131,
+      "attrs": {
+        "###### Has the requirement for the allowed packages been respected? (Reminder for this project: (only [standard packages](https://golang.org/pkg/)))": "several commands in line doesn't work"
+      },
+      "version": "822c8aaa9608faad7624ddc9a779a820b8a329d0",
+      "endAt": "2025-01-20T09:51:53.601+00:00",
+      "result": null,
+      "group": {
+        "id": 182
+      }
+    },
+    {
+      "id": 1049,
+      "grade": 0.0,
+      "createdAt": "2025-01-18T16:18:27.121415+00:00",
+      "updatedAt": "2025-03-05T01:22:42.779444+00:00",
+      "groupId": 204,
+      "auditorId": 2058,
+      "resultId": 54351,
+      "attrs": {
+        "###### Has the requirement for the allowed packages been respected? (Reminder for this project: (only [standard packages](https://golang.org/pkg/)))": "ndmfg jd\"sf \" ,sd' sd'k s'd sj'db n,s .s/ /s\n"
+      },
+      "version": "5175613872f189ec715f2850db178729fd88d4a4",
+      "endAt": "2025-01-21T16:18:27.12+00:00",
+      "result": null,
+      "group": {
+        "id": 204
+      }
+    },
+    {
+      "id": 1301,
+      "grade": 0.2,
+      "createdAt": "2025-01-21T13:26:34.903771+00:00",
+      "updatedAt": "2025-03-05T01:22:42.779444+00:00",
+      "groupId": 331,
+      "auditorId": 2058,
+      "resultId": 56914,
+      "attrs": {
+        "##### In a file called `sample.txt`, place the following text: `If I make you BREAKFAST IN BED (low, 3) just say thank you instead of: how (cap) did you get in my house (up, 2) ?`. Now run the student program with the arguments: `sample.txt result.txt`.\n\n`If I make you breakfast in bed just say thank you instead of: How did you get in MY HOUSE?`\n\n###### Is the text present in `result.txt` equal to the above?": "quote incorrect working"
+      },
+      "version": "821a6892d065caa4d02a2161929adc36a563397e",
+      "endAt": "2025-01-24T13:26:34.902+00:00",
+      "result": null,
+      "group": {
+        "id": 331
+      }
+    },
+    {
+      "id": 1607,
+      "grade": 0.4,
+      "createdAt": "2025-01-26T11:05:43.423312+00:00",
+      "updatedAt": "2025-03-05T01:22:42.779444+00:00",
+      "groupId": 395,
+      "auditorId": 2058,
+      "resultId": 65612,
+      "attrs": {
+        "##### In a file called `sample.txt` place the following text: `I have to pack 101 (bin) outfits. Packed 1a (hex) just to be sure`. Now run the student program with the arguments: `sample.txt result.txt`.\n\n`I have to pack 5 outfits. Packed 26 just to be sure`\n\n###### Is the text present in `result.txt` equal to the above?": "a(hex)(hex)\nfff(hex)(up)"
+      },
+      "version": "233045a88ee1ecb71a54c01497020211641cde28",
+      "endAt": "2025-01-29T11:05:43.422+00:00",
+      "result": null,
+      "group": {
+        "id": 395
+      }
+    },
+    {
+      "id": 1655,
+      "grade": 0.8,
+      "createdAt": "2025-01-27T07:48:02.620039+00:00",
+      "updatedAt": "2025-03-05T01:22:42.779444+00:00",
+      "groupId": 244,
+      "auditorId": 2058,
+      "resultId": 66414,
+      "attrs": {
+        "##### In a file called `sample.txt` place the following text: `harold wilson (cap, 2) : ' I am a optimist ,but a optimist who carries a raincoat . '`. Now run the student program with the arguments: `sample.txt result.txt`.\n\n`Harold Wilson: 'I am an optimist, but an optimist who carries a raincoat.'`\n\n###### Is the text present in `result.txt` equal to the above?": "sd         ' a'j      ' fk '"
+      },
+      "version": "c33ee977e9897524ad2d6df7b8a6ad902e887479",
+      "endAt": "2025-01-30T07:48:02.619+00:00",
+      "result": null,
+      "group": {
+        "id": 244
+      }
+    },
+    {
+      "id": 2663,
+      "grade": 0.2,
+      "createdAt": "2025-02-08T16:31:41.594409+00:00",
+      "updatedAt": "2025-03-05T01:22:42.779444+00:00",
+      "groupId": 558,
+      "auditorId": 2058,
+      "resultId": 84873,
+      "attrs": {
+        "##### In a file called `sample.txt`, place the following text: `If I make you BREAKFAST IN BED (low, 3) just say thank you instead of: how (cap) did you get in my house (up, 2) ?`. Now run the student program with the arguments: `sample.txt result.txt`.\n\n`If I make you breakfast in bed just say thank you instead of: How did you get in MY HOUSE?`\n\n###### Is the text present in `result.txt` equal to the above?": "sample: I have 10 (hex) (up, 10) books. result: I have 16 BOOKS."
+      },
+      "version": "558493e23b589e2cfb50d0c651f61a9745f1c0d9",
+      "endAt": "2025-02-11T16:31:41.592+00:00",
+      "result": null,
+      "group": {
+        "id": 558
+      }
+    },
+    {
+      "id": 2608,
+      "grade": 0.0,
+      "createdAt": "2025-02-08T12:25:26.064586+00:00",
+      "updatedAt": "2025-03-05T01:22:42.779444+00:00",
+      "groupId": 241,
+      "auditorId": 2058,
+      "resultId": 80515,
+      "attrs": {
+        "###### Has the requirement for the allowed packages been respected? (Reminder for this project: (only [standard packages](https://golang.org/pkg/)))": "panic panic panic"
+      },
+      "version": "fa2378ad883d76e84ee5365c74943b231abfecd9",
+      "endAt": "2025-02-11T12:25:26.063+00:00",
+      "result": null,
+      "group": {
+        "id": 241
+      }
+    },
+    {
+      "id": 4915,
+      "grade": 1,
+      "createdAt": "2025-04-05T15:07:49.676832+00:00",
+      "updatedAt": "2025-04-08T09:30:11.799959+00:00",
+      "groupId": 811,
+      "auditorId": 2058,
+      "resultId": 128011,
+      "attrs": {},
+      "version": "6318b04b2162d40d6bed6d5c1810919d7962ac6a",
+      "endAt": "2025-04-08T15:07:49.674+00:00",
+      "result": null,
+      "group": {
+        "id": 811
+      }
+    },
+    {
+      "id": 4161,
+      "grade": 0.6470588235294118,
+      "createdAt": "2025-03-16T08:16:17.816318+00:00",
+      "updatedAt": "2025-03-25T07:18:33.427355+00:00",
+      "groupId": 679,
+      "auditorId": 2058,
+      "resultId": 114618,
+      "attrs": {
+        "##### Try passing as arguments a random string with upper and lower case letters followed by one of the templates names (standard, shadow, thinkertoy, or other).\n\n###### Does it display the expected string in the right template as an ASCII art representation?": "\\n doesn't work"
+      },
+      "version": "2c72fd87161bf22b7118afda0e3bf8d6f6511bdb",
+      "endAt": "2025-03-19T08:16:17.814+00:00",
+      "result": null,
+      "group": {
+        "id": 679
+      }
+    },
+    {
+      "id": 4951,
+      "grade": 1.0,
+      "createdAt": "2025-04-08T12:33:44.530354+00:00",
+      "updatedAt": "2025-05-03T21:16:17.079129+00:00",
+      "groupId": 1132,
+      "auditorId": 2058,
+      "resultId": 138613,
+      "attrs": {},
+      "version": "a41975b78c4b5638c677a12992e7608fafe5311f",
+      "endAt": "2025-04-11T12:33:44.528+00:00",
+      "result": null,
+      "group": {
+        "id": 1132
+      }
+    },
+    {
+      "id": 4381,
+      "grade": 1.0,
+      "createdAt": "2025-03-24T14:27:33.856481+00:00",
+      "updatedAt": "2025-03-27T14:53:56.203736+00:00",
+      "groupId": 945,
+      "auditorId": 2058,
+      "resultId": 115797,
+      "attrs": {},
+      "version": "fc4c56040bfa5cd8cf945fa938504462de19c10e",
+      "endAt": "2025-03-27T14:27:33.854+00:00",
+      "result": null,
+      "group": {
+        "id": 945
+      }
+    },
+    {
+      "id": 4516,
+      "grade": 0.2,
+      "createdAt": "2025-03-27T15:18:35.589044+00:00",
+      "updatedAt": "2025-03-31T16:07:05.273466+00:00",
+      "groupId": 984,
+      "auditorId": 2058,
+      "resultId": 122346,
+      "attrs": {
+        "##### In a file called `sample.txt`, place the following text: `If I make you BREAKFAST IN BED (low, 3) just say thank you instead of: how (cap) did you get in my house (up, 2) ?`. Now run the student program with the arguments: `sample.txt result.txt`.\n\n`If I make you breakfast in bed just say thank you instead of: How did you get in MY HOUSE?`\n\n###### Is the text present in `result.txt` equal to the above?": "jdhsf sjkdfs fksd fksdj fksdj fk sdkjfhsd .fsdf(up,5)(low,4(cap,3)(hex,1)fghjs sd hjf sd jsdh sjdh sjd sjd s(up,100)"
+      },
+      "version": "b10cdd615481e879a0fd3a3618d7a096ad24cad2",
+      "endAt": "2025-03-30T15:18:35.586+00:00",
+      "result": null,
+      "group": {
+        "id": 984
+      }
+    },
+    {
+      "id": 4623,
+      "grade": 0.13333333333333333,
+      "createdAt": "2025-03-30T08:04:00.10615+00:00",
+      "updatedAt": "2025-03-31T16:33:44.197405+00:00",
+      "groupId": 811,
+      "auditorId": 2058,
+      "resultId": 122349,
+      "attrs": {
+        "##### Try inputting with the standard template/banner the following example:\n\nIn the first line `{123}`\n\nIn the second line `<Hello> (World)!`\n\n```\n   __                     __\n  / /  _   ____    _____  \\ \\\n | |  / | |___ \\  |___ /   | |\n/ /   | |   __) |   |_ \\    \\ \\\n\\ \\   | |  / __/   ___) |   / /\n | |  |_| |_____| |____/   | |\n  \\_\\                     /_/\n\n   __  _    _          _   _          __            __ __          __                 _       _  __    _\n  / / | |  | |        | | | |         \\ \\          / / \\ \\        / /                | |     | | \\ \\  | |\n / /  | |__| |   ___  | | | |   ___    \\ \\        | |   \\ \\  /\\  / /    ___    _ __  | |   __| |  | | | |\n< <   |  __  |  / _ \\ | | | |  / _ \\    > >       | |    \\ \\/  \\/ /    / _ \\  | '__| | |  / _` |  | | | |\n \\ \\  | |  | | |  __/ | | | | | (_) |  / /        | |     \\  /\\  /    | (_) | | |    | | | (_| |  | | |_|\n  \\_\\ |_|  |_|  \\___| |_| |_|  \\___/  /_/         | |      \\/  \\/      \\___/  |_|    |_|  \\__,_|  | | (_)\n                                                   \\_\\                                           /_/\n\n```\n\n###### Does it display the right result as above?": "enter doesn't work in texture"
+      },
+      "version": "b9f9bf9ca24a9b4a695ea8305004f94d1089674f",
+      "endAt": "2025-04-02T08:04:00.104+00:00",
+      "result": null,
+      "group": {
+        "id": 811
+      }
+    },
+    {
+      "id": 4868,
+      "grade": 1.0,
+      "createdAt": "2025-04-03T10:33:21.350309+00:00",
+      "updatedAt": "2025-04-03T13:16:54.553+00:00",
+      "groupId": 827,
+      "auditorId": 2058,
+      "resultId": 124421,
+      "attrs": {},
+      "version": "014707accb6c88d9a21d96b85ea2d2e26031ca78",
+      "endAt": "2025-04-06T10:33:21.347+00:00",
+      "result": null,
+      "group": {
+        "id": 827
+      }
+    },
+    {
+      "id": 4753,
+      "grade": null,
+      "createdAt": "2025-03-31T17:18:20.077402+00:00",
+      "updatedAt": "2025-04-11T14:45:45.707404+00:00",
+      "groupId": 988,
+      "auditorId": 2058,
+      "resultId": 128161,
+      "attrs": {},
+      "version": "f9c3101227cd20c81d4087287ad4ae308818d857",
+      "endAt": "2025-04-03T17:18:20.075+00:00",
+      "result": null,
+      "group": {
+        "id": 988
+      }
+    },
+    {
+      "id": 5102,
+      "grade": 1.0,
+      "createdAt": "2025-04-10T15:01:11.595755+00:00",
+      "updatedAt": "2025-04-11T12:30:00.012874+00:00",
+      "groupId": 238,
+      "auditorId": 2058,
+      "resultId": 128156,
+      "attrs": {},
+      "version": "2c1a852ff7a9d7e22dbc9c0a9e0385f0da95ac6a",
+      "endAt": "2025-04-13T15:01:11.594+00:00",
+      "result": null,
+      "group": {
+        "id": 238
+      }
+    },
+    {
+      "id": 5205,
+      "grade": null,
+      "createdAt": "2025-04-12T10:15:13.332644+00:00",
+      "updatedAt": "2025-04-16T14:34:50.526928+00:00",
+      "groupId": 692,
+      "auditorId": 2058,
+      "resultId": 129647,
+      "attrs": {},
+      "version": "fb5899a616b79a33f8ed4d89598094f2232ac341",
+      "endAt": "2025-04-15T10:15:13.331+00:00",
+      "result": null,
+      "group": {
+        "id": 692
+      }
+    },
+    {
+      "id": 5331,
+      "grade": null,
+      "createdAt": "2025-04-15T11:46:42.255128+00:00",
+      "updatedAt": "2025-04-16T12:41:05.257145+00:00",
+      "groupId": 893,
+      "auditorId": 2058,
+      "resultId": 129627,
+      "attrs": {},
+      "version": "e2d6806bcad41090ab5434305717e7084878d256",
+      "endAt": "2025-04-18T11:46:42.253+00:00",
+      "result": null,
+      "group": {
+        "id": 893
+      }
+    },
+    {
+      "id": 5827,
+      "grade": 1.0,
+      "createdAt": "2025-04-27T16:42:14.315895+00:00",
+      "updatedAt": "2025-04-27T18:16:55.703411+00:00",
+      "groupId": 896,
+      "auditorId": 2058,
+      "resultId": 132726,
+      "attrs": {},
+      "version": "d6873e6a03c3ab2207b4fd991af6a48a1c0e8e69",
+      "endAt": "2025-04-30T16:42:14.314+00:00",
+      "result": null,
+      "group": {
+        "id": 896
+      }
+    },
+    {
+      "id": 5474,
+      "grade": 0.2,
+      "createdAt": "2025-04-21T08:40:17.838069+00:00",
+      "updatedAt": "2025-04-29T03:21:48.311153+00:00",
+      "groupId": 1207,
+      "auditorId": 2058,
+      "resultId": 133582,
+      "attrs": {
+        "##### In a file called `sample.txt`, place the following text: `If I make you BREAKFAST IN BED (low, 3) just say thank you instead of: how (cap) did you get in my house (up, 2) ?`. Now run the student program with the arguments: `sample.txt result.txt`.\n\n`If I make you breakfast in bed just say thank you instead of: How did you get in MY HOUSE?`\n\n###### Is the text present in `result.txt` equal to the above?": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0430 \u043d\u0435 \u0434\u043e\u043b\u0436\u043d\u0430 \u0432\u044b\u0432\u043e\u0434\u0438\u0442\u044c \u043f\u0430\u043d\u0438\u043a\u0443"
+      },
+      "version": "0cc1d955be4ab53cff8ba8d8f55608a7e046cba9",
+      "endAt": "2025-04-24T08:40:17.836+00:00",
+      "result": null,
+      "group": {
+        "id": 1207
+      }
+    },
+    {
+      "id": 7285,
+      "grade": 1,
+      "createdAt": "2025-05-29T06:18:08.590852+00:00",
+      "updatedAt": "2025-05-29T09:52:51.784546+00:00",
+      "groupId": 1155,
+      "auditorId": 2058,
+      "resultId": 161929,
+      "attrs": {},
+      "version": "87aec1f24a48a861404a9cd39f1b346adc942de1",
+      "endAt": "2025-06-01T06:18:08.588+00:00",
+      "result": null,
+      "group": {
+        "id": 1155
+      }
+    },
+    {
+      "id": 6437,
+      "grade": null,
+      "createdAt": "2025-05-11T15:48:43.785904+00:00",
+      "updatedAt": "2025-05-11T17:45:28.317981+00:00",
+      "groupId": 977,
+      "auditorId": 2058,
+      "resultId": 148462,
+      "attrs": {},
+      "version": "8b020f13cc34b20c02124c3bb7e8921d6f46cf23",
+      "endAt": "2025-05-14T15:48:43.784+00:00",
+      "result": null,
+      "group": {
+        "id": 977
+      }
+    },
+    {
+      "id": 6052,
+      "grade": 1.0,
+      "createdAt": "2025-05-04T10:02:06.05489+00:00",
+      "updatedAt": "2025-05-05T15:38:32.926127+00:00",
+      "groupId": 1272,
+      "auditorId": 2058,
+      "resultId": 141930,
+      "attrs": {},
+      "version": "da4fc8121442cbd29386d2b4a97b3909d8ba8401",
+      "endAt": "2025-05-07T10:02:06.053+00:00",
+      "result": null,
+      "group": {
+        "id": 1272
+      }
+    },
+    {
+      "id": 6172,
+      "grade": null,
+      "createdAt": "2025-05-06T10:13:21.340341+00:00",
+      "updatedAt": "2025-05-09T14:02:44.799411+00:00",
+      "groupId": 1323,
+      "auditorId": 2058,
+      "resultId": 146158,
+      "attrs": {},
+      "version": "b8b2bf4f2f09e4a5cfffd1ad28d986c0fb06c4eb",
+      "endAt": "2025-05-09T10:13:21.338+00:00",
+      "result": null,
+      "group": {
+        "id": 1323
+      }
+    },
+    {
+      "id": 6621,
+      "grade": 0.2,
+      "createdAt": "2025-05-15T04:15:58.18027+00:00",
+      "updatedAt": "2025-05-15T10:57:42.921626+00:00",
+      "groupId": 1432,
+      "auditorId": 2058,
+      "resultId": 149855,
+      "attrs": {
+        "##### In a file called `sample.txt`, place the following text: `If I make you BREAKFAST IN BED (low, 3) just say thank you instead of: how (cap) did you get in my house (up, 2) ?`. Now run the student program with the arguments: `sample.txt result.txt`.\n\n`If I make you breakfast in bed just say thank you instead of: How did you get in MY HOUSE?`\n\n###### Is the text present in `result.txt` equal to the above?": "tests cases dont work"
+      },
+      "version": "c756556888569b2984913b0e42d00897ff23dcd4",
+      "endAt": "2025-05-18T04:15:58.179+00:00",
+      "result": null,
+      "group": {
+        "id": 1432
+      }
+    },
+    {
+      "id": 6320,
+      "grade": 0.0,
+      "createdAt": "2025-05-09T12:36:09.782344+00:00",
+      "updatedAt": "2025-05-17T10:19:21.918916+00:00",
+      "groupId": 1445,
+      "auditorId": 2058,
+      "resultId": 152233,
+      "attrs": {
+        "null\n\n###### Has the requirement for the allowed packages been respected? (Reminder for this project: (only [standard packages](https://golang.org/pkg/)))": "sdjk sadf asd sdj fhsadjk (cap)(up)"
+      },
+      "version": "ce90f0a6baa55022dead6edca6e3e4f17551b52b",
+      "endAt": "2025-05-12T12:36:09.78+00:00",
+      "result": null,
+      "group": {
+        "id": 1445
+      }
+    },
+    {
+      "id": 6750,
+      "grade": null,
+      "createdAt": "2025-05-17T11:41:13.766295+00:00",
+      "updatedAt": "2025-05-17T13:10:09.269223+00:00",
+      "groupId": 1354,
+      "auditorId": 2058,
+      "resultId": 152616,
+      "attrs": {},
+      "version": "930764fbfa7b79cc3ce065cb29a620143baa1879",
+      "endAt": "2025-05-20T11:41:13.764+00:00",
+      "result": null,
+      "group": {
+        "id": 1354
+      }
+    },
+    {
+      "id": 6785,
+      "grade": 1.0,
+      "createdAt": "2025-05-18T10:03:30.1584+00:00",
+      "updatedAt": "2025-05-18T12:50:50.491731+00:00",
+      "groupId": 1367,
+      "auditorId": 2058,
+      "resultId": 154950,
+      "attrs": {},
+      "version": "6b9321a40aeea21933b49f8386332d04148e3f16",
+      "endAt": "2025-05-21T10:03:30.157+00:00",
+      "result": null,
+      "group": {
+        "id": 1367
+      }
+    },
+    {
+      "id": 6862,
+      "grade": null,
+      "createdAt": "2025-05-19T07:33:43.381241+00:00",
+      "updatedAt": "2025-05-22T15:41:48.637987+00:00",
+      "groupId": 1297,
+      "auditorId": 2058,
+      "resultId": 157476,
+      "attrs": {},
+      "version": "4a49d1f428943c529c4b07989a6040707756ed96",
+      "endAt": "2025-05-22T07:33:43.379+00:00",
+      "result": null,
+      "group": {
+        "id": 1297
+      }
+    },
+    {
+      "id": 6995,
+      "grade": 1.0,
+      "createdAt": "2025-05-21T12:39:24.719478+00:00",
+      "updatedAt": "2025-05-21T14:52:24.723921+00:00",
+      "groupId": 943,
+      "auditorId": 2058,
+      "resultId": 156799,
+      "attrs": {},
+      "version": "be15d7e095c61e22f200a9069cf07e3a85ba60eb",
+      "endAt": "2025-06-04T12:39:24.717+00:00",
+      "result": null,
+      "group": {
+        "id": 943
+      }
+    },
+    {
+      "id": 7045,
+      "grade": 1.0,
+      "createdAt": "2025-05-22T14:42:50.248136+00:00",
+      "updatedAt": "2025-05-22T16:07:04.703417+00:00",
+      "groupId": 1326,
+      "auditorId": 2058,
+      "resultId": 157512,
+      "attrs": {},
+      "version": "c9713545d38d762be9518cf869b436f6b6334998",
+      "endAt": "2025-05-25T14:42:50.246+00:00",
+      "result": null,
+      "group": {
+        "id": 1326
+      }
+    },
+    {
+      "id": 8292,
+      "grade": 1.0,
+      "createdAt": "2025-06-16T15:52:06.958409+00:00",
+      "updatedAt": "2025-06-18T13:16:19.359962+00:00",
+      "groupId": 1271,
+      "auditorId": 2058,
+      "resultId": 171387,
+      "attrs": {},
+      "version": "c3f64fb4e0064e4aea9a3e22f9d21fc921b7ff09",
+      "endAt": "2025-06-19T15:52:06.955+00:00",
+      "result": null,
+      "group": {
+        "id": 1271
+      }
+    },
+    {
+      "id": 7090,
+      "grade": 0.0,
+      "createdAt": "2025-05-23T13:51:41.712156+00:00",
+      "updatedAt": "2025-05-24T12:38:39.230713+00:00",
+      "groupId": 1550,
+      "auditorId": 2058,
+      "resultId": 160316,
+      "attrs": {
+        "null\n\n###### Has the requirement for the allowed packages been respected? (Reminder for this project: (only [standard packages](https://golang.org/pkg/)))": "skdjfh  sdjf ksdf ksdf kj(up,4)(low,3)"
+      },
+      "version": "de6d9ed032c953953bc3e23c3b7ca949c36dc865",
+      "endAt": "2025-05-26T13:51:41.71+00:00",
+      "result": null,
+      "group": {
+        "id": 1550
+      }
+    },
+    {
+      "id": 7143,
+      "grade": 1.0,
+      "createdAt": "2025-05-25T10:32:31.63247+00:00",
+      "updatedAt": "2025-05-25T12:10:12.408727+00:00",
+      "groupId": 1437,
+      "auditorId": 2058,
+      "resultId": 161183,
+      "attrs": {},
+      "version": "e14b38662987212d7189fe5ec072436ac6c1e105",
+      "endAt": "2025-05-28T10:32:31.631+00:00",
+      "result": null,
+      "group": {
+        "id": 1437
+      }
+    },
+    {
+      "id": 7203,
+      "grade": null,
+      "createdAt": "2025-05-26T11:14:37.808719+00:00",
+      "updatedAt": "2025-05-27T12:46:24.704647+00:00",
+      "groupId": 1430,
+      "auditorId": 2058,
+      "resultId": 161886,
+      "attrs": {},
+      "version": "5ab4ccf0e0976dc0168bc1c7919485384eb605a3",
+      "endAt": "2025-05-29T11:14:37.807+00:00",
+      "result": null,
+      "group": {
+        "id": 1430
+      }
+    },
+    {
+      "id": 8426,
+      "grade": 1,
+      "createdAt": "2025-06-18T14:50:24.831498+00:00",
+      "updatedAt": "2025-06-19T15:28:29.178773+00:00",
+      "groupId": 1505,
+      "auditorId": 2058,
+      "resultId": 172230,
+      "attrs": {},
+      "version": "fb5fd890f2002844583078a8a55d84aa30cbe9aa",
+      "endAt": "2025-06-21T14:50:24.829+00:00",
+      "result": null,
+      "group": {
+        "id": 1505
+      }
+    },
+    {
+      "id": 7258,
+      "grade": 1.0,
+      "createdAt": "2025-05-27T14:18:32.859216+00:00",
+      "updatedAt": "2025-05-28T19:08:38.724102+00:00",
+      "groupId": 1405,
+      "auditorId": 2058,
+      "resultId": 161922,
+      "attrs": {},
+      "version": "870c440a0b84d0edac6b391748c305e0ccd82f42",
+      "endAt": "2025-05-30T14:18:32.857+00:00",
+      "result": null,
+      "group": {
+        "id": 1405
+      }
+    },
+    {
+      "id": 7341,
+      "grade": 0.2,
+      "createdAt": "2025-05-30T11:49:55.476555+00:00",
+      "updatedAt": "2025-06-02T11:53:27.14329+00:00",
+      "groupId": 1645,
+      "auditorId": 2058,
+      "resultId": 163193,
+      "attrs": {
+        "##### In a file called `sample.txt`, place the following text: `If I make you BREAKFAST IN BED (low, 3) just say thank you instead of: how (cap) did you get in my house (up, 2) ?`. Now run the student program with the arguments: `sample.txt result.txt`.\n\n`If I make you breakfast in bed just say thank you instead of: How did you get in MY HOUSE?`\n\n###### Is the text present in `result.txt` equal to the above?": "dkhjf dsjkhfskd fhkjsd fdSfs (((((low))))))))\n"
+      },
+      "version": "21afec108dcc8a0bc1a52f19d96c643d4e312548",
+      "endAt": "2025-06-02T11:49:55.473+00:00",
+      "result": null,
+      "group": {
+        "id": 1645
+      }
+    },
+    {
+      "id": 7514,
+      "grade": 1.0,
+      "createdAt": "2025-06-02T15:28:51.200284+00:00",
+      "updatedAt": "2025-06-03T09:47:07.880132+00:00",
+      "groupId": 1478,
+      "auditorId": 2058,
+      "resultId": 163206,
+      "attrs": {},
+      "version": "ec5ee0f2cbe78f9ccd222e755ad14558b60c7e6e",
+      "endAt": "2025-06-05T15:28:51.198+00:00",
+      "result": null,
+      "group": {
+        "id": 1478
+      }
+    },
+    {
+      "id": 9796,
+      "grade": null,
+      "createdAt": "2025-07-11T05:30:35.0249+00:00",
+      "updatedAt": "2025-07-11T14:42:58.903988+00:00",
+      "groupId": 2002,
+      "auditorId": 2058,
+      "resultId": 187431,
+      "attrs": {},
+      "version": "a37e09b0eb94e99ed9c6649b0c23d88486027826",
+      "endAt": "2025-07-14T05:30:35.023+00:00",
+      "result": null,
+      "group": {
+        "id": 2002
+      }
+    },
+    {
+      "id": 7708,
+      "grade": 1.0,
+      "createdAt": "2025-06-05T13:18:56.340159+00:00",
+      "updatedAt": "2025-06-06T13:53:10.090104+00:00",
+      "groupId": 1548,
+      "auditorId": 2058,
+      "resultId": 163381,
+      "attrs": {},
+      "version": "c54611014bc834c08be25e37b897a560a8aecc0d",
+      "endAt": "2025-06-08T13:18:56.338+00:00",
+      "result": null,
+      "group": {
+        "id": 1548
+      }
+    },
+    {
+      "id": 7584,
+      "grade": null,
+      "createdAt": "2025-06-03T19:43:54.643382+00:00",
+      "updatedAt": "2025-06-05T21:40:06.610951+00:00",
+      "groupId": 1424,
+      "auditorId": 2058,
+      "resultId": 163293,
+      "attrs": {},
+      "version": "4e11df456b46d3c95c6d652b9b79c54e46f6c7a3",
+      "endAt": "2025-06-04T05:03:22.137348+00:00",
+      "result": null,
+      "group": {
+        "id": 1424
+      }
+    },
+    {
+      "id": 7800,
+      "grade": null,
+      "createdAt": "2025-06-07T05:03:25.888279+00:00",
+      "updatedAt": "2025-06-08T15:47:35.070366+00:00",
+      "groupId": 390,
+      "auditorId": 2058,
+      "resultId": 164568,
+      "attrs": {},
+      "version": "ce0527840af3626ae26f0170ed500857e4fcee9a",
+      "endAt": "2025-06-10T05:03:25.886+00:00",
+      "result": null,
+      "group": {
+        "id": 390
+      }
+    },
+    {
+      "id": 7870,
+      "grade": null,
+      "createdAt": "2025-06-08T16:55:16.403473+00:00",
+      "updatedAt": "2025-06-12T12:53:55.967477+00:00",
+      "groupId": 1298,
+      "auditorId": 2058,
+      "resultId": 167097,
+      "attrs": {},
+      "version": "592a00fa26a75e8b720c2cfab98553310e1bb8f6",
+      "endAt": "2025-06-11T16:55:16.402+00:00",
+      "result": null,
+      "group": {
+        "id": 1298
+      }
+    },
+    {
+      "id": 9644,
+      "grade": 1.0,
+      "createdAt": "2025-07-08T11:32:42.186698+00:00",
+      "updatedAt": "2025-07-10T11:58:11.371032+00:00",
+      "groupId": 1979,
+      "auditorId": 2058,
+      "resultId": 186911,
+      "attrs": {},
+      "version": "2fbac9c0470e62ce3110060605c5394aa0b276b8",
+      "endAt": "2025-07-11T11:32:42.184+00:00",
+      "result": null,
+      "group": {
+        "id": 1979
+      }
+    },
+    {
+      "id": 7950,
+      "grade": null,
+      "createdAt": "2025-06-11T08:46:12.995845+00:00",
+      "updatedAt": "2025-06-11T12:49:31.761693+00:00",
+      "groupId": 1304,
+      "auditorId": 2058,
+      "resultId": 166216,
+      "attrs": {},
+      "version": "965c01749ebed1be6e00d82b43c9a7662124a9ca",
+      "endAt": "2025-06-14T08:46:12.993+00:00",
+      "result": null,
+      "group": {
+        "id": 1304
+      }
+    },
+    {
+      "id": 7993,
+      "grade": 1,
+      "createdAt": "2025-06-11T17:32:07.488915+00:00",
+      "updatedAt": "2025-06-12T11:36:07.777019+00:00",
+      "groupId": 1726,
+      "auditorId": 2058,
+      "resultId": 167060,
+      "attrs": {},
+      "version": "b838bac062536c5e7b5fc9c5300f02b6d460ce08",
+      "endAt": "2025-06-25T17:32:07.487+00:00",
+      "result": null,
+      "group": {
+        "id": 1726
+      }
+    },
+    {
+      "id": 8028,
+      "grade": null,
+      "createdAt": "2025-06-12T15:46:07.648784+00:00",
+      "updatedAt": "2025-06-15T12:15:12.310593+00:00",
+      "groupId": 1322,
+      "auditorId": 2058,
+      "resultId": 169171,
+      "attrs": {},
+      "version": "aa0df8c843fff9d343fcb2b8dd58cec67bce2c76",
+      "endAt": "2025-06-15T15:46:07.647+00:00",
+      "result": null,
+      "group": {
+        "id": 1322
+      }
+    },
+    {
+      "id": 8127,
+      "grade": 1.0,
+      "createdAt": "2025-06-15T11:41:53.075462+00:00",
+      "updatedAt": "2025-06-17T11:06:09.467178+00:00",
+      "groupId": 1682,
+      "auditorId": 2058,
+      "resultId": 170417,
+      "attrs": {},
+      "version": "a60bbc6e1c0ac6dcb056bb8bee7ddfa120c82598",
+      "endAt": "2025-06-18T11:41:53.074+00:00",
+      "result": null,
+      "group": {
+        "id": 1682
+      }
+    },
+    {
+      "id": 8489,
+      "grade": null,
+      "createdAt": "2025-06-20T05:07:34.605965+00:00",
+      "updatedAt": "2025-06-21T08:30:49.695196+00:00",
+      "groupId": 1417,
+      "auditorId": 2058,
+      "resultId": 173236,
+      "attrs": {},
+      "version": "bcbfc007eda1f297516e09803e6b253451b590b4",
+      "endAt": "2025-06-23T05:07:34.604+00:00",
+      "result": null,
+      "group": {
+        "id": 1417
+      }
+    },
+    {
+      "id": 8573,
+      "grade": null,
+      "createdAt": "2025-06-21T13:13:13.894169+00:00",
+      "updatedAt": "2025-06-25T04:10:42.607991+00:00",
+      "groupId": 1746,
+      "auditorId": 2058,
+      "resultId": 175885,
+      "attrs": {},
+      "version": "3f3bb2515d94b83ec5979460fdd6838fd0782e04",
+      "endAt": "2025-06-24T13:13:13.892+00:00",
+      "result": null,
+      "group": {
+        "id": 1746
+      }
+    },
+    {
+      "id": 8783,
+      "grade": null,
+      "createdAt": "2025-06-24T13:56:01.291663+00:00",
+      "updatedAt": "2025-06-25T05:20:26.106532+00:00",
+      "groupId": 1861,
+      "auditorId": 2058,
+      "resultId": 175924,
+      "attrs": {},
+      "version": "8770f835ffc3f5f419be9afe9b49722262e682ad",
+      "endAt": "2025-06-27T13:56:01.289+00:00",
+      "result": null,
+      "group": {
+        "id": 1861
+      }
+    },
+    {
+      "id": 8809,
+      "grade": 1.0,
+      "createdAt": "2025-06-25T07:31:01.568922+00:00",
+      "updatedAt": "2025-06-27T14:07:53.062237+00:00",
+      "groupId": 1493,
+      "auditorId": 2058,
+      "resultId": 177241,
+      "attrs": {},
+      "version": "630e913432c3b696d0c054726ac90e1852b7ec21",
+      "endAt": "2025-07-09T07:31:01.566+00:00",
+      "result": null,
+      "group": {
+        "id": 1493
+      }
+    },
+    {
+      "id": 8909,
+      "grade": 0,
+      "createdAt": "2025-06-27T16:24:26.77521+00:00",
+      "updatedAt": "2025-06-28T18:26:23.457637+00:00",
+      "groupId": 1412,
+      "auditorId": 2058,
+      "resultId": 178146,
+      "attrs": {
+        "null\n\n###### Has the requirement for the allowed packages been respected? (Reminder for this project: (only [standard packages](https://golang.org/pkg/)))": "\u043d\u0435 \u0440\u0430\u0431\u043e\u0442\u0430\u044e\u0442 \u043a\u0435\u0439\u0441\u044b"
+      },
+      "version": "18887eaaebe6e8085826440b25984fb9e9bf68d8",
+      "endAt": "2025-06-30T16:24:26.773+00:00",
+      "result": null,
+      "group": {
+        "id": 1412
+      }
+    },
+    {
+      "id": 8997,
+      "grade": 1.0,
+      "createdAt": "2025-06-29T09:46:39.21845+00:00",
+      "updatedAt": "2025-06-29T12:18:31.874997+00:00",
+      "groupId": 1830,
+      "auditorId": 2058,
+      "resultId": 179230,
+      "attrs": {},
+      "version": "2d429010020654fb5c471077dcc5aef3f828af1f",
+      "endAt": "2025-07-02T09:46:39.217+00:00",
+      "result": null,
+      "group": {
+        "id": 1830
+      }
+    },
+    {
+      "id": 9119,
+      "grade": 1,
+      "createdAt": "2025-06-30T09:35:19.764237+00:00",
+      "updatedAt": "2025-06-30T10:10:46.923562+00:00",
+      "groupId": 1673,
+      "auditorId": 2058,
+      "resultId": 179445,
+      "attrs": {},
+      "version": "9c094688cb446e8e6869a9039bdad7ac3383a30d",
+      "endAt": "2025-07-03T09:35:19.763+00:00",
+      "result": null,
+      "group": {
+        "id": 1673
+      }
+    },
+    {
+      "id": 9177,
+      "grade": null,
+      "createdAt": "2025-07-01T11:02:35.933204+00:00",
+      "updatedAt": "2025-07-02T07:49:34.146548+00:00",
+      "groupId": 1731,
+      "auditorId": 2058,
+      "resultId": 180560,
+      "attrs": {},
+      "version": "f76b2de662e5a1cf3c9e550ed276ebafe1d27bc8",
+      "endAt": "2025-07-04T11:02:35.931+00:00",
+      "result": null,
+      "group": {
+        "id": 1731
+      }
+    },
+    {
+      "id": 9334,
+      "grade": null,
+      "createdAt": "2025-07-03T14:16:59.384501+00:00",
+      "updatedAt": "2025-07-03T14:54:15.716084+00:00",
+      "groupId": 1815,
+      "auditorId": 2058,
+      "resultId": 182193,
+      "attrs": {},
+      "version": "54f030a68e958944dc1242643fbc367ac919e626",
+      "endAt": "2025-07-06T14:16:59.383+00:00",
+      "result": null,
+      "group": {
+        "id": 1815
+      }
+    },
+    {
+      "id": 9425,
+      "grade": 1.0,
+      "createdAt": "2025-07-04T15:32:06.953977+00:00",
+      "updatedAt": "2025-07-07T11:38:38.047662+00:00",
+      "groupId": 1412,
+      "auditorId": 2058,
+      "resultId": 185974,
+      "attrs": {},
+      "version": "b1b9d773150a557947a864bb449768e85338465a",
+      "endAt": "2025-07-07T15:32:06.952+00:00",
+      "result": null,
+      "group": {
+        "id": 1412
+      }
+    },
+    {
+      "id": 9548,
+      "grade": 1.0,
+      "createdAt": "2025-07-06T12:33:54.827861+00:00",
+      "updatedAt": "2025-07-06T14:12:11.008462+00:00",
+      "groupId": 1964,
+      "auditorId": 2058,
+      "resultId": 185800,
+      "attrs": {},
+      "version": "293ea56a42c0c024ff2df10b404cdde675d5f983",
+      "endAt": "2025-07-09T12:33:54.826+00:00",
+      "result": null,
+      "group": {
+        "id": 1964
+      }
+    },
+    {
+      "id": 9865,
+      "grade": null,
+      "createdAt": "2025-07-11T18:50:00.019052+00:00",
+      "updatedAt": "2025-07-14T07:30:19.553517+00:00",
+      "groupId": 1973,
+      "auditorId": 2058,
+      "resultId": 188925,
+      "attrs": {},
+      "version": "9603e03533f6f196487a3b0574b58f58b7fd7dca",
+      "endAt": "2025-07-14T18:50:00.017+00:00",
+      "result": null,
+      "group": {
+        "id": 1973
+      }
+    },
+    {
+      "id": 9998,
+      "grade": null,
+      "createdAt": "2025-07-14T11:36:20.201018+00:00",
+      "updatedAt": "2025-07-15T13:23:35.784375+00:00",
+      "groupId": 1966,
+      "auditorId": 2058,
+      "resultId": 189176,
+      "attrs": {},
+      "version": "9c379b58a93100a7d666d04e6e0e5e1cfa26d589",
+      "endAt": "2025-07-17T11:36:20.199+00:00",
+      "result": null,
+      "group": {
+        "id": 1966
+      }
+    },
+    {
+      "id": 10096,
+      "grade": 1.0,
+      "createdAt": "2025-07-16T09:28:27.258102+00:00",
+      "updatedAt": "2025-07-16T14:22:06.154605+00:00",
+      "groupId": 2097,
+      "auditorId": 2058,
+      "resultId": 189551,
+      "attrs": {},
+      "version": "d45666f6c6e01ecbfa1f8fd6e65e9e157277bacb",
+      "endAt": "2025-07-19T09:28:27.256+00:00",
+      "result": null,
+      "group": {
+        "id": 2097
+      }
+    },
+    {
+      "id": 10180,
+      "grade": null,
+      "createdAt": "2025-07-17T14:29:24.217447+00:00",
+      "updatedAt": "2025-07-17T15:29:03.471484+00:00",
+      "groupId": 2076,
+      "auditorId": 2058,
+      "resultId": 189955,
+      "attrs": {},
+      "version": "5b3fd18b6296372710466dc383cdaf28e0615f16",
+      "endAt": "2025-07-20T14:29:24.215+00:00",
+      "result": null,
+      "group": {
+        "id": 2076
+      }
+    },
+    {
+      "id": 10213,
+      "grade": null,
+      "createdAt": "2025-07-18T10:10:29.648692+00:00",
+      "updatedAt": "2025-07-21T11:14:14.572142+00:00",
+      "groupId": 1893,
+      "auditorId": 2058,
+      "resultId": 192244,
+      "attrs": {},
+      "version": "aa323d96c1da94c81b2efc3096b71bb00010ef7d",
+      "endAt": "2025-07-21T10:10:29.646+00:00",
+      "result": null,
+      "group": {
+        "id": 1893
+      }
+    },
+    {
+      "id": 10319,
+      "grade": null,
+      "createdAt": "2025-07-21T12:26:30.119765+00:00",
+      "updatedAt": "2025-07-23T11:55:43.09412+00:00",
+      "groupId": 1829,
+      "auditorId": 2058,
+      "resultId": 195135,
+      "attrs": {},
+      "version": "1d46323f54022b84cd8795e30a80f0fa0a286e0c",
+      "endAt": "2025-07-24T12:26:30.118+00:00",
+      "result": null,
+      "group": {
+        "id": 1829
+      }
+    },
+    {
+      "id": 10418,
+      "grade": 0.0,
+      "createdAt": "2025-07-23T13:45:32.043567+00:00",
+      "updatedAt": "2025-07-23T16:29:40.595057+00:00",
+      "groupId": 1897,
+      "auditorId": 2058,
+      "resultId": 195557,
+      "attrs": {
+        "null\n\n###### Has the requirement for the allowed packages been respected? (Reminder for this project: (only [standard packages](https://golang.org/pkg/)))": "sdjf sdjf sadkj fska (up)\na (up)(hex)\nks'ljs' 'df, ',ds',f. .' ''.  aaaaaaaaaaaa(hex)',s ..d.,.d, ,  (up, 100)\nan ppl\na (up) appl"
+      },
+      "version": "1c3d9f3d8cd0c55393fdd3730c2b17463112f877",
+      "endAt": "2025-07-26T13:45:32.041+00:00",
+      "result": null,
+      "group": {
+        "id": 1897
+      }
+    },
+    {
+      "id": 10448,
+      "grade": 1.0,
+      "createdAt": "2025-07-24T12:43:41.943076+00:00",
+      "updatedAt": "2025-07-24T14:40:07.304557+00:00",
+      "groupId": 2037,
+      "auditorId": 2058,
+      "resultId": 196723,
+      "attrs": {},
+      "version": "225bff693fd846bab766bc46b61e1c4632b24404",
+      "endAt": "2025-08-07T12:43:41.941+00:00",
+      "result": null,
+      "group": {
+        "id": 2037
+      }
+    },
+    {
+      "id": 10899,
+      "grade": 1.0,
+      "createdAt": "2025-08-01T06:35:05.215712+00:00",
+      "updatedAt": "2025-08-07T15:09:34.477192+00:00",
+      "groupId": 1909,
+      "auditorId": 2058,
+      "resultId": 209551,
+      "attrs": {},
+      "version": "3ad9fcb6aeb4904d99c0e20c31e9709af036d97c",
+      "endAt": "2025-08-04T06:35:05.213+00:00",
+      "result": null,
+      "group": {
+        "id": 1909
+      }
+    },
+    {
+      "id": 10537,
+      "grade": null,
+      "createdAt": "2025-07-26T16:41:34.149998+00:00",
+      "updatedAt": "2025-07-27T15:24:57.218383+00:00",
+      "groupId": 2190,
+      "auditorId": 2058,
+      "resultId": 200411,
+      "attrs": {},
+      "version": "962fcd5579cdd580a6454df7ee728e33c276275d",
+      "endAt": "2025-07-29T16:41:34.148+00:00",
+      "result": null,
+      "group": {
+        "id": 2190
+      }
+    },
+    {
+      "id": 10617,
+      "grade": null,
+      "createdAt": "2025-07-28T12:51:19.278148+00:00",
+      "updatedAt": "2025-07-29T07:50:42.53992+00:00",
+      "groupId": 1840,
+      "auditorId": 2058,
+      "resultId": 202043,
+      "attrs": {},
+      "version": "aa922700220cb592b31d3e8df41ee5e02710f8c0",
+      "endAt": "2025-07-31T12:51:19.276+00:00",
+      "result": null,
+      "group": {
+        "id": 1840
+      }
+    },
+    {
+      "id": 11309,
+      "grade": 0.0,
+      "createdAt": "2025-08-07T15:47:49.053534+00:00",
+      "updatedAt": "2025-08-19T16:27:53.509811+00:00",
+      "groupId": 1738,
+      "auditorId": 2058,
+      "resultId": 222723,
+      "attrs": {
+        "validCloningRepo": "404 \u043d\u0435 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442"
+      },
+      "version": "a6a3ecf46fa8d3d834b6b725b60e12576ff11577",
+      "endAt": "2025-08-10T15:47:49.052+00:00",
+      "result": null,
+      "group": {
+        "id": 1738
+      }
+    },
+    {
+      "id": 12090,
+      "grade": 0.0,
+      "createdAt": "2025-08-19T16:29:39.931007+00:00",
+      "updatedAt": "2025-08-20T08:22:47.545031+00:00",
+      "groupId": 1738,
+      "auditorId": 2058,
+      "resultId": null,
+      "attrs": {
+        "validCloningRepo": "404 404 404 404"
+      },
+      "version": "64ceb61e0b6501191b7fbf71da8849ff3ba61af0",
+      "endAt": "2025-08-22T16:29:39.929+00:00",
+      "result": null,
+      "group": {
+        "id": 1738
+      }
+    },
+    {
+      "id": 13151,
+      "grade": 1.0,
+      "createdAt": "2025-09-11T07:03:19.689458+00:00",
+      "updatedAt": "2025-09-13T12:21:14.833534+00:00",
+      "groupId": 2385,
+      "auditorId": 2058,
+      "resultId": 240932,
+      "attrs": {},
+      "version": "c95a708157d45644b1ebfb046bf051edc628afcb",
+      "endAt": "2025-09-14T07:03:19.688+00:00",
+      "result": null,
+      "group": {
+        "id": 2385
+      }
+    }
+  ]
+}

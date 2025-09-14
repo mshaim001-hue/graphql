@@ -1,0 +1,1231 @@
+{
+  "summary": {
+    "total_audits": 135,
+    "unique_ids": 135,
+    "duplicates": 0,
+    "passed": 69,
+    "failed": 30,
+    "null_grades": 36,
+    "with_results": 0,
+    "without_results": 135,
+    "with_objects": 0,
+    "with_author_ids": 0
+  },
+  "audits": [
+    {
+      "id": 264,
+      "grade": 1.0,
+      "createdAt": "2024-12-23T18:39:36.705579+00:00",
+      "result": null,
+      "group": {
+        "id": 126
+      }
+    },
+    {
+      "id": 182,
+      "grade": 1.0,
+      "createdAt": "2024-12-13T16:28:13.503551+00:00",
+      "result": null,
+      "group": {
+        "id": 126
+      }
+    },
+    {
+      "id": 3808,
+      "grade": 1.0,
+      "createdAt": "2025-03-06T10:54:36.915019+00:00",
+      "result": null,
+      "group": {
+        "id": 695
+      }
+    },
+    {
+      "id": 966,
+      "grade": 2.0,
+      "createdAt": "2025-01-17T18:35:05.639684+00:00",
+      "result": null,
+      "group": {
+        "id": 270
+      }
+    },
+    {
+      "id": 245,
+      "grade": 1.0,
+      "createdAt": "2024-12-21T10:29:49.29689+00:00",
+      "result": null,
+      "group": {
+        "id": 126
+      }
+    },
+    {
+      "id": 3881,
+      "grade": 1.0,
+      "createdAt": "2025-03-07T10:38:47.726325+00:00",
+      "result": null,
+      "group": {
+        "id": 844
+      }
+    },
+    {
+      "id": 3910,
+      "grade": 1.0,
+      "createdAt": "2025-03-07T16:10:16.455435+00:00",
+      "result": null,
+      "group": {
+        "id": 564
+      }
+    },
+    {
+      "id": 846,
+      "grade": 1.2727272727272727,
+      "createdAt": "2025-01-16T12:09:54.371872+00:00",
+      "result": null,
+      "group": {
+        "id": 202
+      }
+    },
+    {
+      "id": 429,
+      "grade": 1.0,
+      "createdAt": "2025-01-09T16:07:17.823649+00:00",
+      "result": null,
+      "group": {
+        "id": 138
+      }
+    },
+    {
+      "id": 616,
+      "grade": 1.0,
+      "createdAt": "2025-01-14T04:02:03.212874+00:00",
+      "result": null,
+      "group": {
+        "id": 147
+      }
+    },
+    {
+      "id": 696,
+      "grade": 1.3125,
+      "createdAt": "2025-01-14T11:45:41.635109+00:00",
+      "result": null,
+      "group": {
+        "id": 231
+      }
+    },
+    {
+      "id": 756,
+      "grade": 1.2941176470588236,
+      "createdAt": "2025-01-15T11:15:32.254041+00:00",
+      "result": null,
+      "group": {
+        "id": 232
+      }
+    },
+    {
+      "id": 877,
+      "grade": 1.2727272727272727,
+      "createdAt": "2025-01-16T14:39:14.031961+00:00",
+      "result": null,
+      "group": {
+        "id": 235
+      }
+    },
+    {
+      "id": 891,
+      "grade": 1.0,
+      "createdAt": "2025-01-16T15:47:35.790398+00:00",
+      "result": null,
+      "group": {
+        "id": 188
+      }
+    },
+    {
+      "id": 1005,
+      "grade": 1.3636363636363635,
+      "createdAt": "2025-01-18T13:07:30.878433+00:00",
+      "result": null,
+      "group": {
+        "id": 213
+      }
+    },
+    {
+      "id": 951,
+      "grade": null,
+      "createdAt": "2025-01-17T12:14:35.907017+00:00",
+      "result": null,
+      "group": {
+        "id": 182
+      }
+    },
+    {
+      "id": 1065,
+      "grade": 1.0,
+      "createdAt": "2025-01-19T09:14:51.119206+00:00",
+      "result": null,
+      "group": {
+        "id": 177
+      }
+    },
+    {
+      "id": 1107,
+      "grade": 1.2727272727272727,
+      "createdAt": "2025-01-19T12:59:04.490422+00:00",
+      "result": null,
+      "group": {
+        "id": 251
+      }
+    },
+    {
+      "id": 1145,
+      "grade": 1.4,
+      "createdAt": "2025-01-19T15:05:40.883094+00:00",
+      "result": null,
+      "group": {
+        "id": 256
+      }
+    },
+    {
+      "id": 1220,
+      "grade": null,
+      "createdAt": "2025-01-20T12:45:00.032769+00:00",
+      "result": null,
+      "group": {
+        "id": 315
+      }
+    },
+    {
+      "id": 3943,
+      "grade": null,
+      "createdAt": "2025-03-09T14:46:35.547678+00:00",
+      "result": null,
+      "group": {
+        "id": 843
+      }
+    },
+    {
+      "id": 2213,
+      "grade": 1.3529411764705883,
+      "createdAt": "2025-02-02T13:58:02.76017+00:00",
+      "result": null,
+      "group": {
+        "id": 464
+      }
+    },
+    {
+      "id": 1370,
+      "grade": 1.0,
+      "createdAt": "2025-01-22T12:34:50.060394+00:00",
+      "result": null,
+      "group": {
+        "id": 346
+      }
+    },
+    {
+      "id": 1424,
+      "grade": 1.3636363636363635,
+      "createdAt": "2025-01-23T08:19:24.478738+00:00",
+      "result": null,
+      "group": {
+        "id": 272
+      }
+    },
+    {
+      "id": 1496,
+      "grade": null,
+      "createdAt": "2025-01-24T14:27:47.163137+00:00",
+      "result": null,
+      "group": {
+        "id": 207
+      }
+    },
+    {
+      "id": 1556,
+      "grade": 1.3333333333333333,
+      "createdAt": "2025-01-25T07:21:41.421236+00:00",
+      "result": null,
+      "group": {
+        "id": 316
+      }
+    },
+    {
+      "id": 4113,
+      "grade": 1.0,
+      "createdAt": "2025-03-13T13:50:22.542204+00:00",
+      "result": null,
+      "group": {
+        "id": 642
+      }
+    },
+    {
+      "id": 1977,
+      "grade": 1.0,
+      "createdAt": "2025-01-31T04:22:53.180373+00:00",
+      "result": null,
+      "group": {
+        "id": 178
+      }
+    },
+    {
+      "id": 1795,
+      "grade": 1.263157894736842,
+      "createdAt": "2025-01-28T10:13:59.254616+00:00",
+      "result": null,
+      "group": {
+        "id": 236
+      }
+    },
+    {
+      "id": 1897,
+      "grade": 1.0,
+      "createdAt": "2025-01-29T17:18:19.17954+00:00",
+      "result": null,
+      "group": {
+        "id": 387
+      }
+    },
+    {
+      "id": 2101,
+      "grade": 1.4444444444444444,
+      "createdAt": "2025-02-01T12:40:42.784458+00:00",
+      "result": null,
+      "group": {
+        "id": 342
+      }
+    },
+    {
+      "id": 2051,
+      "grade": 1.3333333333333333,
+      "createdAt": "2025-01-31T17:41:01.327707+00:00",
+      "result": null,
+      "group": {
+        "id": 328
+      }
+    },
+    {
+      "id": 2172,
+      "grade": null,
+      "createdAt": "2025-02-01T17:15:27.225713+00:00",
+      "result": null,
+      "group": {
+        "id": 349
+      }
+    },
+    {
+      "id": 2312,
+      "grade": 1.4666666666666666,
+      "createdAt": "2025-02-03T13:17:00.475734+00:00",
+      "result": null,
+      "group": {
+        "id": 332
+      }
+    },
+    {
+      "id": 3072,
+      "grade": 1.2727272727272727,
+      "createdAt": "2025-02-16T13:13:59.678203+00:00",
+      "result": null,
+      "group": {
+        "id": 583
+      }
+    },
+    {
+      "id": 2482,
+      "grade": 1.4375,
+      "createdAt": "2025-02-06T06:41:24.50199+00:00",
+      "result": null,
+      "group": {
+        "id": 438
+      }
+    },
+    {
+      "id": 2518,
+      "grade": 0,
+      "createdAt": "2025-02-06T12:52:53.463393+00:00",
+      "result": null,
+      "group": {
+        "id": 387
+      }
+    },
+    {
+      "id": 2551,
+      "grade": 2.4,
+      "createdAt": "2025-02-07T13:27:28.75785+00:00",
+      "result": null,
+      "group": {
+        "id": 575
+      }
+    },
+    {
+      "id": 2925,
+      "grade": 1.368421052631579,
+      "createdAt": "2025-02-13T12:45:22.441627+00:00",
+      "result": null,
+      "group": {
+        "id": 439
+      }
+    },
+    {
+      "id": 5690,
+      "grade": 0.0,
+      "createdAt": "2025-04-25T14:58:29.446074+00:00",
+      "result": null,
+      "group": {
+        "id": 983
+      }
+    },
+    {
+      "id": 2960,
+      "grade": 1.4375,
+      "createdAt": "2025-02-14T11:46:57.953172+00:00",
+      "result": null,
+      "group": {
+        "id": 579
+      }
+    },
+    {
+      "id": 2858,
+      "grade": null,
+      "createdAt": "2025-02-12T11:46:36.369936+00:00",
+      "result": null,
+      "group": {
+        "id": 571
+      }
+    },
+    {
+      "id": 2903,
+      "grade": 1.0,
+      "createdAt": "2025-02-12T16:00:57.353769+00:00",
+      "result": null,
+      "group": {
+        "id": 387
+      }
+    },
+    {
+      "id": 2801,
+      "grade": 1.4705882352941178,
+      "createdAt": "2025-02-11T12:40:12.483379+00:00",
+      "result": null,
+      "group": {
+        "id": 555
+      }
+    },
+    {
+      "id": 3008,
+      "grade": 1.2272727272727273,
+      "createdAt": "2025-02-15T08:32:16.214319+00:00",
+      "result": null,
+      "group": {
+        "id": 627
+      }
+    },
+    {
+      "id": 3141,
+      "grade": null,
+      "createdAt": "2025-02-18T08:52:14.859227+00:00",
+      "result": null,
+      "group": {
+        "id": 688
+      }
+    },
+    {
+      "id": 3250,
+      "grade": null,
+      "createdAt": "2025-02-20T13:38:59.427166+00:00",
+      "result": null,
+      "group": {
+        "id": 524
+      }
+    },
+    {
+      "id": 3537,
+      "grade": 1.375,
+      "createdAt": "2025-02-27T11:48:26.122996+00:00",
+      "result": null,
+      "group": {
+        "id": 540
+      }
+    },
+    {
+      "id": 3604,
+      "grade": null,
+      "createdAt": "2025-02-28T13:43:41.755105+00:00",
+      "result": null,
+      "group": {
+        "id": 819
+      }
+    },
+    {
+      "id": 3647,
+      "grade": 1.2727272727272727,
+      "createdAt": "2025-03-01T17:40:54.312915+00:00",
+      "result": null,
+      "group": {
+        "id": 733
+      }
+    },
+    {
+      "id": 3671,
+      "grade": 1.3333333333333333,
+      "createdAt": "2025-03-03T11:13:40.736987+00:00",
+      "result": null,
+      "group": {
+        "id": 556
+      }
+    },
+    {
+      "id": 3732,
+      "grade": null,
+      "createdAt": "2025-03-04T09:39:23.321341+00:00",
+      "result": null,
+      "group": {
+        "id": 282
+      }
+    },
+    {
+      "id": 545,
+      "grade": 0.2,
+      "createdAt": "2025-01-12T09:22:30.538585+00:00",
+      "result": null,
+      "group": {
+        "id": 191
+      }
+    },
+    {
+      "id": 158,
+      "grade": 0.4,
+      "createdAt": "2024-12-12T15:37:52.330985+00:00",
+      "result": null,
+      "group": {
+        "id": 137
+      }
+    },
+    {
+      "id": 289,
+      "grade": 0.6,
+      "createdAt": "2024-12-31T06:55:03.394862+00:00",
+      "result": null,
+      "group": {
+        "id": 145
+      }
+    },
+    {
+      "id": 346,
+      "grade": 0.0,
+      "createdAt": "2025-01-07T11:43:57.659971+00:00",
+      "result": null,
+      "group": {
+        "id": 172
+      }
+    },
+    {
+      "id": 318,
+      "grade": 0.2,
+      "createdAt": "2025-01-06T14:21:01.526893+00:00",
+      "result": null,
+      "group": {
+        "id": 145
+      }
+    },
+    {
+      "id": 199,
+      "grade": 0.8,
+      "createdAt": "2024-12-17T10:26:08.633294+00:00",
+      "result": null,
+      "group": {
+        "id": 147
+      }
+    },
+    {
+      "id": 401,
+      "grade": 0.2,
+      "createdAt": "2025-01-08T13:09:14.372915+00:00",
+      "result": null,
+      "group": {
+        "id": 136
+      }
+    },
+    {
+      "id": 491,
+      "grade": 0.2,
+      "createdAt": "2025-01-11T10:51:30.670794+00:00",
+      "result": null,
+      "group": {
+        "id": 171
+      }
+    },
+    {
+      "id": 826,
+      "grade": 0.8,
+      "createdAt": "2025-01-16T10:40:59.258639+00:00",
+      "result": null,
+      "group": {
+        "id": 188
+      }
+    },
+    {
+      "id": 915,
+      "grade": 0.0,
+      "createdAt": "2025-01-17T09:51:53.60285+00:00",
+      "result": null,
+      "group": {
+        "id": 182
+      }
+    },
+    {
+      "id": 1049,
+      "grade": 0.0,
+      "createdAt": "2025-01-18T16:18:27.121415+00:00",
+      "result": null,
+      "group": {
+        "id": 204
+      }
+    },
+    {
+      "id": 1301,
+      "grade": 0.2,
+      "createdAt": "2025-01-21T13:26:34.903771+00:00",
+      "result": null,
+      "group": {
+        "id": 331
+      }
+    },
+    {
+      "id": 1607,
+      "grade": 0.4,
+      "createdAt": "2025-01-26T11:05:43.423312+00:00",
+      "result": null,
+      "group": {
+        "id": 395
+      }
+    },
+    {
+      "id": 1655,
+      "grade": 0.8,
+      "createdAt": "2025-01-27T07:48:02.620039+00:00",
+      "result": null,
+      "group": {
+        "id": 244
+      }
+    },
+    {
+      "id": 2663,
+      "grade": 0.2,
+      "createdAt": "2025-02-08T16:31:41.594409+00:00",
+      "result": null,
+      "group": {
+        "id": 558
+      }
+    },
+    {
+      "id": 2608,
+      "grade": 0.0,
+      "createdAt": "2025-02-08T12:25:26.064586+00:00",
+      "result": null,
+      "group": {
+        "id": 241
+      }
+    },
+    {
+      "id": 4915,
+      "grade": 1,
+      "createdAt": "2025-04-05T15:07:49.676832+00:00",
+      "result": null,
+      "group": {
+        "id": 811
+      }
+    },
+    {
+      "id": 4161,
+      "grade": 0.6470588235294118,
+      "createdAt": "2025-03-16T08:16:17.816318+00:00",
+      "result": null,
+      "group": {
+        "id": 679
+      }
+    },
+    {
+      "id": 4951,
+      "grade": 1.0,
+      "createdAt": "2025-04-08T12:33:44.530354+00:00",
+      "result": null,
+      "group": {
+        "id": 1132
+      }
+    },
+    {
+      "id": 4381,
+      "grade": 1.0,
+      "createdAt": "2025-03-24T14:27:33.856481+00:00",
+      "result": null,
+      "group": {
+        "id": 945
+      }
+    },
+    {
+      "id": 4516,
+      "grade": 0.2,
+      "createdAt": "2025-03-27T15:18:35.589044+00:00",
+      "result": null,
+      "group": {
+        "id": 984
+      }
+    },
+    {
+      "id": 4623,
+      "grade": 0.13333333333333333,
+      "createdAt": "2025-03-30T08:04:00.10615+00:00",
+      "result": null,
+      "group": {
+        "id": 811
+      }
+    },
+    {
+      "id": 4868,
+      "grade": 1.0,
+      "createdAt": "2025-04-03T10:33:21.350309+00:00",
+      "result": null,
+      "group": {
+        "id": 827
+      }
+    },
+    {
+      "id": 4753,
+      "grade": null,
+      "createdAt": "2025-03-31T17:18:20.077402+00:00",
+      "result": null,
+      "group": {
+        "id": 988
+      }
+    },
+    {
+      "id": 5102,
+      "grade": 1.0,
+      "createdAt": "2025-04-10T15:01:11.595755+00:00",
+      "result": null,
+      "group": {
+        "id": 238
+      }
+    },
+    {
+      "id": 5205,
+      "grade": null,
+      "createdAt": "2025-04-12T10:15:13.332644+00:00",
+      "result": null,
+      "group": {
+        "id": 692
+      }
+    },
+    {
+      "id": 5331,
+      "grade": null,
+      "createdAt": "2025-04-15T11:46:42.255128+00:00",
+      "result": null,
+      "group": {
+        "id": 893
+      }
+    },
+    {
+      "id": 5827,
+      "grade": 1.0,
+      "createdAt": "2025-04-27T16:42:14.315895+00:00",
+      "result": null,
+      "group": {
+        "id": 896
+      }
+    },
+    {
+      "id": 5474,
+      "grade": 0.2,
+      "createdAt": "2025-04-21T08:40:17.838069+00:00",
+      "result": null,
+      "group": {
+        "id": 1207
+      }
+    },
+    {
+      "id": 7285,
+      "grade": 1,
+      "createdAt": "2025-05-29T06:18:08.590852+00:00",
+      "result": null,
+      "group": {
+        "id": 1155
+      }
+    },
+    {
+      "id": 6437,
+      "grade": null,
+      "createdAt": "2025-05-11T15:48:43.785904+00:00",
+      "result": null,
+      "group": {
+        "id": 977
+      }
+    },
+    {
+      "id": 6052,
+      "grade": 1.0,
+      "createdAt": "2025-05-04T10:02:06.05489+00:00",
+      "result": null,
+      "group": {
+        "id": 1272
+      }
+    },
+    {
+      "id": 6172,
+      "grade": null,
+      "createdAt": "2025-05-06T10:13:21.340341+00:00",
+      "result": null,
+      "group": {
+        "id": 1323
+      }
+    },
+    {
+      "id": 6621,
+      "grade": 0.2,
+      "createdAt": "2025-05-15T04:15:58.18027+00:00",
+      "result": null,
+      "group": {
+        "id": 1432
+      }
+    },
+    {
+      "id": 6320,
+      "grade": 0.0,
+      "createdAt": "2025-05-09T12:36:09.782344+00:00",
+      "result": null,
+      "group": {
+        "id": 1445
+      }
+    },
+    {
+      "id": 6750,
+      "grade": null,
+      "createdAt": "2025-05-17T11:41:13.766295+00:00",
+      "result": null,
+      "group": {
+        "id": 1354
+      }
+    },
+    {
+      "id": 6785,
+      "grade": 1.0,
+      "createdAt": "2025-05-18T10:03:30.1584+00:00",
+      "result": null,
+      "group": {
+        "id": 1367
+      }
+    },
+    {
+      "id": 6862,
+      "grade": null,
+      "createdAt": "2025-05-19T07:33:43.381241+00:00",
+      "result": null,
+      "group": {
+        "id": 1297
+      }
+    },
+    {
+      "id": 6995,
+      "grade": 1.0,
+      "createdAt": "2025-05-21T12:39:24.719478+00:00",
+      "result": null,
+      "group": {
+        "id": 943
+      }
+    },
+    {
+      "id": 7045,
+      "grade": 1.0,
+      "createdAt": "2025-05-22T14:42:50.248136+00:00",
+      "result": null,
+      "group": {
+        "id": 1326
+      }
+    },
+    {
+      "id": 8292,
+      "grade": 1.0,
+      "createdAt": "2025-06-16T15:52:06.958409+00:00",
+      "result": null,
+      "group": {
+        "id": 1271
+      }
+    },
+    {
+      "id": 7090,
+      "grade": 0.0,
+      "createdAt": "2025-05-23T13:51:41.712156+00:00",
+      "result": null,
+      "group": {
+        "id": 1550
+      }
+    },
+    {
+      "id": 7143,
+      "grade": 1.0,
+      "createdAt": "2025-05-25T10:32:31.63247+00:00",
+      "result": null,
+      "group": {
+        "id": 1437
+      }
+    },
+    {
+      "id": 7203,
+      "grade": null,
+      "createdAt": "2025-05-26T11:14:37.808719+00:00",
+      "result": null,
+      "group": {
+        "id": 1430
+      }
+    },
+    {
+      "id": 8426,
+      "grade": 1,
+      "createdAt": "2025-06-18T14:50:24.831498+00:00",
+      "result": null,
+      "group": {
+        "id": 1505
+      }
+    },
+    {
+      "id": 7258,
+      "grade": 1.0,
+      "createdAt": "2025-05-27T14:18:32.859216+00:00",
+      "result": null,
+      "group": {
+        "id": 1405
+      }
+    },
+    {
+      "id": 7341,
+      "grade": 0.2,
+      "createdAt": "2025-05-30T11:49:55.476555+00:00",
+      "result": null,
+      "group": {
+        "id": 1645
+      }
+    },
+    {
+      "id": 7514,
+      "grade": 1.0,
+      "createdAt": "2025-06-02T15:28:51.200284+00:00",
+      "result": null,
+      "group": {
+        "id": 1478
+      }
+    },
+    {
+      "id": 9796,
+      "grade": null,
+      "createdAt": "2025-07-11T05:30:35.0249+00:00",
+      "result": null,
+      "group": {
+        "id": 2002
+      }
+    },
+    {
+      "id": 7708,
+      "grade": 1.0,
+      "createdAt": "2025-06-05T13:18:56.340159+00:00",
+      "result": null,
+      "group": {
+        "id": 1548
+      }
+    },
+    {
+      "id": 7584,
+      "grade": null,
+      "createdAt": "2025-06-03T19:43:54.643382+00:00",
+      "result": null,
+      "group": {
+        "id": 1424
+      }
+    },
+    {
+      "id": 7800,
+      "grade": null,
+      "createdAt": "2025-06-07T05:03:25.888279+00:00",
+      "result": null,
+      "group": {
+        "id": 390
+      }
+    },
+    {
+      "id": 7870,
+      "grade": null,
+      "createdAt": "2025-06-08T16:55:16.403473+00:00",
+      "result": null,
+      "group": {
+        "id": 1298
+      }
+    },
+    {
+      "id": 9644,
+      "grade": 1.0,
+      "createdAt": "2025-07-08T11:32:42.186698+00:00",
+      "result": null,
+      "group": {
+        "id": 1979
+      }
+    },
+    {
+      "id": 7950,
+      "grade": null,
+      "createdAt": "2025-06-11T08:46:12.995845+00:00",
+      "result": null,
+      "group": {
+        "id": 1304
+      }
+    },
+    {
+      "id": 7993,
+      "grade": 1,
+      "createdAt": "2025-06-11T17:32:07.488915+00:00",
+      "result": null,
+      "group": {
+        "id": 1726
+      }
+    },
+    {
+      "id": 8028,
+      "grade": null,
+      "createdAt": "2025-06-12T15:46:07.648784+00:00",
+      "result": null,
+      "group": {
+        "id": 1322
+      }
+    },
+    {
+      "id": 8127,
+      "grade": 1.0,
+      "createdAt": "2025-06-15T11:41:53.075462+00:00",
+      "result": null,
+      "group": {
+        "id": 1682
+      }
+    },
+    {
+      "id": 8489,
+      "grade": null,
+      "createdAt": "2025-06-20T05:07:34.605965+00:00",
+      "result": null,
+      "group": {
+        "id": 1417
+      }
+    },
+    {
+      "id": 8573,
+      "grade": null,
+      "createdAt": "2025-06-21T13:13:13.894169+00:00",
+      "result": null,
+      "group": {
+        "id": 1746
+      }
+    },
+    {
+      "id": 8783,
+      "grade": null,
+      "createdAt": "2025-06-24T13:56:01.291663+00:00",
+      "result": null,
+      "group": {
+        "id": 1861
+      }
+    },
+    {
+      "id": 8809,
+      "grade": 1.0,
+      "createdAt": "2025-06-25T07:31:01.568922+00:00",
+      "result": null,
+      "group": {
+        "id": 1493
+      }
+    },
+    {
+      "id": 8909,
+      "grade": 0,
+      "createdAt": "2025-06-27T16:24:26.77521+00:00",
+      "result": null,
+      "group": {
+        "id": 1412
+      }
+    },
+    {
+      "id": 8997,
+      "grade": 1.0,
+      "createdAt": "2025-06-29T09:46:39.21845+00:00",
+      "result": null,
+      "group": {
+        "id": 1830
+      }
+    },
+    {
+      "id": 9119,
+      "grade": 1,
+      "createdAt": "2025-06-30T09:35:19.764237+00:00",
+      "result": null,
+      "group": {
+        "id": 1673
+      }
+    },
+    {
+      "id": 9177,
+      "grade": null,
+      "createdAt": "2025-07-01T11:02:35.933204+00:00",
+      "result": null,
+      "group": {
+        "id": 1731
+      }
+    },
+    {
+      "id": 9334,
+      "grade": null,
+      "createdAt": "2025-07-03T14:16:59.384501+00:00",
+      "result": null,
+      "group": {
+        "id": 1815
+      }
+    },
+    {
+      "id": 9425,
+      "grade": 1.0,
+      "createdAt": "2025-07-04T15:32:06.953977+00:00",
+      "result": null,
+      "group": {
+        "id": 1412
+      }
+    },
+    {
+      "id": 9548,
+      "grade": 1.0,
+      "createdAt": "2025-07-06T12:33:54.827861+00:00",
+      "result": null,
+      "group": {
+        "id": 1964
+      }
+    },
+    {
+      "id": 9865,
+      "grade": null,
+      "createdAt": "2025-07-11T18:50:00.019052+00:00",
+      "result": null,
+      "group": {
+        "id": 1973
+      }
+    },
+    {
+      "id": 9998,
+      "grade": null,
+      "createdAt": "2025-07-14T11:36:20.201018+00:00",
+      "result": null,
+      "group": {
+        "id": 1966
+      }
+    },
+    {
+      "id": 10096,
+      "grade": 1.0,
+      "createdAt": "2025-07-16T09:28:27.258102+00:00",
+      "result": null,
+      "group": {
+        "id": 2097
+      }
+    },
+    {
+      "id": 10180,
+      "grade": null,
+      "createdAt": "2025-07-17T14:29:24.217447+00:00",
+      "result": null,
+      "group": {
+        "id": 2076
+      }
+    },
+    {
+      "id": 10213,
+      "grade": null,
+      "createdAt": "2025-07-18T10:10:29.648692+00:00",
+      "result": null,
+      "group": {
+        "id": 1893
+      }
+    },
+    {
+      "id": 10319,
+      "grade": null,
+      "createdAt": "2025-07-21T12:26:30.119765+00:00",
+      "result": null,
+      "group": {
+        "id": 1829
+      }
+    },
+    {
+      "id": 10418,
+      "grade": 0.0,
+      "createdAt": "2025-07-23T13:45:32.043567+00:00",
+      "result": null,
+      "group": {
+        "id": 1897
+      }
+    },
+    {
+      "id": 10448,
+      "grade": 1.0,
+      "createdAt": "2025-07-24T12:43:41.943076+00:00",
+      "result": null,
+      "group": {
+        "id": 2037
+      }
+    },
+    {
+      "id": 10899,
+      "grade": 1.0,
+      "createdAt": "2025-08-01T06:35:05.215712+00:00",
+      "result": null,
+      "group": {
+        "id": 1909
+      }
+    },
+    {
+      "id": 10537,
+      "grade": null,
+      "createdAt": "2025-07-26T16:41:34.149998+00:00",
+      "result": null,
+      "group": {
+        "id": 2190
+      }
+    },
+    {
+      "id": 10617,
+      "grade": null,
+      "createdAt": "2025-07-28T12:51:19.278148+00:00",
+      "result": null,
+      "group": {
+        "id": 1840
+      }
+    },
+    {
+      "id": 11309,
+      "grade": 0.0,
+      "createdAt": "2025-08-07T15:47:49.053534+00:00",
+      "result": null,
+      "group": {
+        "id": 1738
+      }
+    },
+    {
+      "id": 12090,
+      "grade": 0.0,
+      "createdAt": "2025-08-19T16:29:39.931007+00:00",
+      "result": null,
+      "group": {
+        "id": 1738
+      }
+    },
+    {
+      "id": 13151,
+      "grade": 1.0,
+      "createdAt": "2025-09-11T07:03:19.689458+00:00",
+      "result": null,
+      "group": {
+        "id": 2385
+      }
+    }
+  ]
+}
