@@ -324,26 +324,62 @@ svg {
 }
 
 /* XP Section Specific Styles */
-.recent-activity {
+.activity-section {
     grid-column: 1 / -1;
 }
 
-.recent-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+.activity-container {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #e1e5e9;
+    border-radius: 8px;
+    background: white;
     margin-top: 10px;
 }
 
-.recent-item {
+.activity-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.activity-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 12px;
-    background: white;
-    border-radius: 6px;
-    border-left: 3px solid #667eea;
+    padding: 12px 15px;
+    border-bottom: 1px solid #f0f0f0;
     font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+
+.activity-item:hover {
+    background-color: #f8f9fa;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.loading-more {
+    text-align: center;
+    padding: 15px;
+    color: #666;
+    font-size: 0.9rem;
+    background: #f8f9fa;
+    border-top: 1px solid #e1e5e9;
+}
+
+.loading-more::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #667eea;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+    vertical-align: middle;
 }
 
 .xp-amount {
@@ -385,7 +421,7 @@ svg {
     font-weight: 700;
 }
 
-/* Learning Stage Breakdown Styles */
+/* Total XP Styles */
 .total-xp {
     grid-column: 1 / -1;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -402,47 +438,5 @@ svg {
     font-size: 2rem;
     font-weight: 800;
     color: white;
-}
-
-.stage-breakdown {
-    grid-column: 1 / -1;
-    background: #f8f9fa;
-    border-left: 4px solid #667eea;
-}
-
-.stage-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    margin-top: 15px;
-}
-
-.stage-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 15px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-left: 3px solid #667eea;
-    transition: transform 0.2s ease;
-}
-
-.stage-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-.stage-name {
-    font-weight: 600;
-    color: #333;
-    font-size: 0.95rem;
-}
-
-.stage-xp {
-    font-weight: 700;
-    color: #667eea;
-    font-size: 1.1rem;
 }
 

@@ -480,28 +480,8 @@ class TomorrowSchoolApp {
             console.log(`Group ${Math.floor(i/10) + 1} (transactions ${i+1}-${Math.min(i+10, transactions.length)}):`, groupAmounts, `Sum: ${groupSum}`);
         }
         
-        // Analyze paths to understand learning stages
-        console.log('=== PATH ANALYSIS ===');
-        const memberSinceForAnalysis = this.getMemberSinceDate();
-        console.log('Member since date:', memberSinceForAnalysis);
-        
-        const pathAnalysis = {};
-        transactions.forEach(t => {
-            const path = t.path || 'unknown';
-            const stage = this.determineLearningStage(path, t.createdAt, memberSinceForAnalysis);
-            if (!pathAnalysis[stage]) {
-                pathAnalysis[stage] = { count: 0, totalXP: 0, paths: new Set() };
-            }
-            pathAnalysis[stage].count++;
-            pathAnalysis[stage].totalXP += t.amount;
-            pathAnalysis[stage].paths.add(path);
-        });
-        
-        console.log('Learning stages breakdown:');
-        Object.keys(pathAnalysis).forEach(stage => {
-            console.log(`${stage}: ${pathAnalysis[stage].count} transactions, ${pathAnalysis[stage].totalXP.toLocaleString()} XP`);
-            console.log(`  Sample paths:`, Array.from(pathAnalysis[stage].paths).slice(0, 3));
-        });
+        // Store transactions for activity display
+        this.allTransactions = transactions;
         
         // Check for any negative amounts or unusual values
         const negativeAmounts = transactions.filter(t => t.amount < 0);
@@ -530,38 +510,6 @@ class TomorrowSchoolApp {
         console.log('Difference:', totalBySum - totalByFilter);
         console.log('=== END XP DEBUG ===');
         
-        // Get member since date from user data
-        const memberSince = this.getMemberSinceDate();
-        
-        // Calculate XP by learning stages
-        const stageXP = {};
-        transactions.forEach(t => {
-            const stage = this.determineLearningStage(t.path, t.createdAt, memberSince);
-            if (!stageXP[stage]) {
-                stageXP[stage] = 0;
-            }
-            
-            // Special handling for Piscine JS: exclude general "piscine-js" path from Piscine JS
-            if (stage === 'Piscine JS' && t.path && t.path.toLowerCase().endsWith('piscine-js')) {
-                // Add this to Core Education instead
-                if (!stageXP['Core Education']) {
-                    stageXP['Core Education'] = 0;
-                }
-                stageXP['Core Education'] += t.amount;
-                return;
-            }
-            
-            stageXP[stage] += t.amount;
-        });
-
-        // Verify sum calculation
-        console.log('=== SUM VERIFICATION ===');
-        const calculatedTotal = Object.values(stageXP).reduce((sum, xp) => sum + xp, 0);
-        console.log(`Total XP from API: ${totalXP.toLocaleString()}`);
-        console.log(`Calculated total from stages: ${calculatedTotal.toLocaleString()}`);
-        console.log(`Difference: ${totalXP - calculatedTotal}`);
-        console.log('Stage breakdown:', stageXP);
-        console.log('=== END SUM VERIFICATION ===');
 
         xpDetails.innerHTML = `
             <div class="info-item total-xp">
@@ -569,117 +517,133 @@ class TomorrowSchoolApp {
                 <div class="value">${totalXP.toLocaleString()}</div>
             </div>
             
-            <div class="info-item stage-breakdown">
-                <h3>XP by Learning Stage</h3>
-                <div class="stage-list">
-                    ${this.getOrderedStages(stageXP).map(stage => `
-                        <div class="stage-item">
-                            <span class="stage-name">${stage}</span>
-                            <span class="stage-xp">${(stageXP[stage] || 0).toLocaleString()} XP</span>
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
-            
-            <div class="info-item">
-                <h3>This Week</h3>
-                <div class="value">${weeklyXP.toLocaleString()} XP</div>
-            </div>
-            <div class="info-item">
-                <h3>This Month</h3>
-                <div class="value">${monthlyXP.toLocaleString()} XP</div>
-            </div>
-            <div class="info-item">
-                <h3>Transactions</h3>
-                <div class="value">${transactions.length}</div>
-            </div>
-            <div class="info-item">
-                <h3>Average per Transaction</h3>
-                <div class="value">${transactions.length > 0 ? Math.round(totalXP / transactions.length) : 0}</div>
-            </div>
-            
-            <div class="info-item recent-activity">
-                <h3>Recent Activity</h3>
-                <div class="recent-list">
-                    ${recentTransactions.map(t => `
-                        <div class="recent-item">
-                            <span class="xp-amount">+${t.amount} XP</span>
-                            <span class="xp-path">${t.path ? t.path.split('/').pop() : 'Unknown'}</span>
-                            <span class="xp-date">${new Date(t.createdAt).toLocaleDateString()}</span>
-                        </div>
-                    `).join('')}
+            <div class="info-item activity-section">
+                <h3>All Activity</h3>
+                <div id="activity-container" class="activity-container">
+                    <div id="activity-list" class="activity-list"></div>
+                    <div id="loading-more" class="loading-more" style="display: none;">
+                        Loading more activities...
+                    </div>
                 </div>
             </div>
         `;
+        
+        // Initialize activity display after DOM is updated
+        setTimeout(() => {
+            this.initializeActivityDisplay();
+        }, 100);
     }
 
-    determineLearningStage(path, createdAt, memberSince) {
-        if (!path) return 'Core Education';
+    initializeActivityDisplay() {
+        if (!this.allTransactions) return;
         
-        const pathLower = path.toLowerCase();
-        const transactionDate = new Date(createdAt);
-        const memberDate = new Date(memberSince);
+        // Initialize pagination variables
+        this.currentPage = 0;
+        this.itemsPerPage = 7;
+        this.isLoading = false;
+        this.hasMoreData = true;
         
-        // Piscine Go: первые 35 дней с момента регистрации
-        const piscineGoEndDate = new Date(memberDate.getTime() + 35 * 24 * 60 * 60 * 1000);
+        // Initialize activity display
+        this.displayActivityPage();
         
-        // Piscine JS: по пути
-        if (pathLower.includes('piscine-js') || pathLower.includes('piscine_js') || pathLower.includes('piscinejs')) {
-            return 'Piscine JS';
-        }
-        
-        // Piscine Rust: по пути (если будет)
-        if (pathLower.includes('piscine-rust') || pathLower.includes('piscine_rust') || pathLower.includes('piscinerust')) {
-            return 'Piscine Rust';
-        }
-        
-        // Piscine Go: первые 35 дней с момента регистрации
-        if (transactionDate <= piscineGoEndDate) {
-            return 'Piscine Go';
-        }
-        
-        // Все остальное - Core Education
-        return 'Core Education';
+        // Setup scroll listener with debounce
+        this.setupScrollListener();
     }
-
-    getMemberSinceDate() {
-        // Try to get member since date from user data
-        const userDetails = document.getElementById('user-details');
-        if (userDetails) {
-            const memberSinceElement = userDetails.querySelector('[data-date="member-since"]');
-            if (memberSinceElement) {
-                // Extract the original date from the formatted display
-                const formattedDate = memberSinceElement.textContent;
-                // If it's already formatted, we need to get the original date
-                // For now, try to get from localStorage or return the formatted date
-                const storedDate = localStorage.getItem('memberSince');
-                return storedDate || formattedDate;
-            }
-        }
+    
+    setupScrollListener() {
+        const activityContainer = document.getElementById('activity-container');
+        if (!activityContainer) return;
         
-        // Fallback: try to get from localStorage or use a default
-        const storedDate = localStorage.getItem('memberSince');
-        if (storedDate) {
-            return storedDate;
-        }
+        // Debounce scroll handler
+        let scrollTimeout;
+        const handleScroll = () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                const container = activityContainer;
+                const scrollTop = container.scrollTop;
+                const scrollHeight = container.scrollHeight;
+                const clientHeight = container.clientHeight;
+                
+                // Check if user scrolled to bottom (with some threshold)
+                if (scrollTop + clientHeight >= scrollHeight - 50 && !this.isLoading && this.hasMoreData) {
+                    this.loadMoreActivities();
+                }
+            }, 100); // 100ms debounce
+        };
         
-        // If we can't find the date, we'll need to get it from user data
-        // For now, return null and we'll handle it in the display function
-        return null;
+        activityContainer.addEventListener('scroll', handleScroll);
     }
-
-    getOrderedStages(stageXP) {
-        // Define the order of stages
-        const stageOrder = ['Core Education', 'Piscine Go', 'Piscine JS', 'Piscine Rust'];
+    
+    displayActivityPage() {
+        const activityList = document.getElementById('activity-list');
+        if (!activityList || !this.allTransactions) return;
         
-        // Return stages in the defined order
-        // Always show Piscine Rust even if 0 XP, others only if they have XP
-        return stageOrder.filter(stage => {
-            if (stage === 'Piscine Rust') {
-                return true; // Always show Piscine Rust
-            }
-            return stageXP[stage] && stageXP[stage] > 0;
+        // Calculate range for current page
+        const startIndex = this.currentPage * this.itemsPerPage;
+        const endIndex = startIndex + this.itemsPerPage;
+        const pageTransactions = this.allTransactions.slice(startIndex, endIndex);
+        
+        // Check if there's more data
+        this.hasMoreData = endIndex < this.allTransactions.length;
+        
+        if (this.currentPage === 0) {
+            // First page - replace content
+            activityList.innerHTML = '';
+        }
+        
+        // Add new activities to the list
+        pageTransactions.forEach(transaction => {
+            const activityItem = this.createActivityItem(transaction);
+            activityList.appendChild(activityItem);
         });
+        
+        // Show/hide loading indicator
+        const loadingMore = document.getElementById('loading-more');
+        if (loadingMore) {
+            loadingMore.style.display = this.hasMoreData ? 'block' : 'none';
+        }
+    }
+    
+    createActivityItem(transaction) {
+        const item = document.createElement('div');
+        item.className = 'activity-item';
+        
+        const date = new Date(transaction.createdAt);
+        const formattedDate = date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+        
+        const pathDisplay = transaction.path ? transaction.path.split('/').pop() : 'Unknown';
+        
+        item.innerHTML = `
+            <span class="xp-amount">+${transaction.amount} XP</span>
+            <span class="xp-path">${pathDisplay}</span>
+            <span class="xp-date">${formattedDate}</span>
+        `;
+        
+        return item;
+    }
+    
+    async loadMoreActivities() {
+        if (this.isLoading || !this.hasMoreData) return;
+        
+        this.isLoading = true;
+        const loadingMore = document.getElementById('loading-more');
+        if (loadingMore) {
+            loadingMore.style.display = 'block';
+        }
+        
+        // Simulate loading delay for better UX
+        await new Promise(resolve => setTimeout(resolve, 300));
+        
+        this.currentPage++;
+        this.displayActivityPage();
+        
+        this.isLoading = false;
     }
 
 
