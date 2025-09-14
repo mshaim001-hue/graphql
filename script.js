@@ -381,14 +381,6 @@ class TomorrowSchoolApp {
                                 name
                                 type
                                 authorId
-                                user {
-                                    id
-                                    login
-                                }
-                            }
-                            user {
-                                id
-                                login
                             }
                         }
                         group {
@@ -1291,12 +1283,7 @@ class TomorrowSchoolApp {
                             let projectName, author, hasResult;
                             if (audit.result && audit.result.object) {
                                 projectName = audit.result.object.name || 'Unknown Project';
-                                author = audit.result.object.authorId || audit.result.object.user?.login || 'Unknown Author';
-                                hasResult = true;
-                            } else if (audit.result && audit.result.user) {
-                                // Try to get info from result.user
-                                projectName = `Project #${audit.result.id}`;
-                                author = audit.result.user.login || 'Unknown Author';
+                                author = audit.result.object.authorId || 'Unknown Author';
                                 hasResult = true;
                             } else if (audit.attrs) {
                                 // Try to extract info from attrs if available
