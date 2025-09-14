@@ -221,7 +221,13 @@ class TomorrowSchoolApp {
             await this.loadXPData();
             
             // Load progress data
-            await this.loadProgressData();
+            try {
+                await this.loadProgressData();
+            } catch (progressError) {
+                console.error('Error loading progress data:', progressError);
+                // Show basic progress data even if loading fails
+                this.showBasicProgressData();
+            }
             
             // Load additional user statistics
             await this.loadUserStatistics();
@@ -586,12 +592,16 @@ class TomorrowSchoolApp {
 
 
     async loadProgressData() {
+        console.log('Starting loadProgressData...');
         try {
             // Check if userId is available
             if (!this.userId) {
-                console.log('No userId available for progress data, skipping...');
+                console.log('No userId available for progress data, showing basic data...');
+                this.showBasicProgressData();
                 return;
             }
+            
+            console.log('userId available:', this.userId);
 
             // Load progress and result data
             const progressQuery = `
@@ -670,7 +680,9 @@ class TomorrowSchoolApp {
             `;
 
             // Execute queries - start with progress/result data
+            console.log('Executing progress query...');
             const progressData = await this.makeGraphQLQuery(progressQuery);
+            console.log('Progress data received:', progressData);
             
             // Execute user-specific queries only if userId is valid
             let auditData = { audit: [] };
@@ -678,16 +690,19 @@ class TomorrowSchoolApp {
             let eventData = { event_user: [] };
 
             try {
+                console.log('Executing user-specific queries...');
                 [auditData, groupData, eventData] = await Promise.all([
                     this.makeGraphQLQuery(auditQuery),
                     this.makeGraphQLQuery(groupQuery),
                     this.makeGraphQLQuery(eventQuery)
                 ]);
+                console.log('User-specific data received');
             } catch (userDataError) {
                 console.log('Error loading user-specific data, using empty arrays:', userDataError);
             }
             
             if (progressData.progress && progressData.result) {
+                console.log('Displaying progress data...');
                 this.displayProgressData(
                     progressData.progress, 
                     progressData.result,
@@ -695,6 +710,9 @@ class TomorrowSchoolApp {
                     groupData.group_user || [],
                     eventData.event_user || []
                 );
+            } else {
+                console.log('No progress data received, showing basic data');
+                this.showBasicProgressData();
             }
         } catch (error) {
             console.error('Error loading progress data:', error);
@@ -739,7 +757,33 @@ class TomorrowSchoolApp {
         }
     }
 
+    showBasicProgressData() {
+        console.log('Showing basic progress data as fallback');
+        const progressDetails = document.getElementById('progress-details');
+        
+        if (progressDetails) {
+            progressDetails.innerHTML = `
+                <div class="info-item">
+                    <h3>Loading Progress Data...</h3>
+                    <div class="value">Please wait</div>
+                </div>
+                <div class="info-item">
+                    <h3>Status</h3>
+                    <div class="value">Connecting to server</div>
+                </div>
+            `;
+        }
+    }
+
     displayProgressData(progress, results, audits, groupMemberships, eventParticipations) {
+        console.log('displayProgressData called with:', {
+            progress: progress?.length || 0,
+            results: results?.length || 0,
+            audits: audits?.length || 0,
+            groupMemberships: groupMemberships?.length || 0,
+            eventParticipations: eventParticipations?.length || 0
+        });
+        
         // Ensure we have arrays to work with
         progress = progress || [];
         results = results || [];
@@ -794,6 +838,7 @@ class TomorrowSchoolApp {
         });
         
         const progressDetails = document.getElementById('progress-details');
+        console.log('Found progress details element:', !!progressDetails);
         
         progressDetails.innerHTML = `
             <!-- Basic Progress Stats -->
@@ -889,6 +934,8 @@ class TomorrowSchoolApp {
             </div>
             ` : ''}
         `;
+        
+        console.log('Progress data HTML updated successfully');
     }
 
     async loadStatistics() {
