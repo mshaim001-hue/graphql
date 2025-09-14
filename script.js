@@ -380,39 +380,9 @@ class TomorrowSchoolApp {
     }
 
     displayUserStatistics(audits, groupMemberships) {
-        const userDetails = document.getElementById('user-details');
-        
-        // Calculate audit statistics
-        const totalAudits = audits.length;
-        const passedAudits = audits.filter(a => a.grade >= 1).length;
-        const auditSuccessRate = totalAudits > 0 ? Math.round((passedAudits / totalAudits) * 100) : 0;
-        
-        // Calculate group statistics
-        const totalGroups = groupMemberships.length;
-        const confirmedGroups = groupMemberships.filter(g => g.confirmed).length;
-        const activeGroups = groupMemberships.filter(g => g.group && g.group.status === 'working').length;
-        
-        // Add additional statistics to existing content
-        const additionalStats = `
-            <div class="info-item">
-                <h3>Audits Conducted</h3>
-                <div class="value">${totalAudits}</div>
-            </div>
-            <div class="info-item">
-                <h3>Audit Success Rate</h3>
-                <div class="value">${auditSuccessRate}%</div>
-            </div>
-            <div class="info-item">
-                <h3>Groups Joined</h3>
-                <div class="value">${totalGroups}</div>
-            </div>
-            <div class="info-item">
-                <h3>Active Groups</h3>
-                <div class="value">${activeGroups}</div>
-            </div>
-        `;
-        
-        userDetails.innerHTML += additionalStats;
+        // This method is now handled in displayProgressData
+        // Keeping it empty to avoid breaking existing code
+        console.log('User statistics now displayed in Progress & Grades section');
     }
 
     async loadXPData() {
@@ -650,48 +620,156 @@ class TomorrowSchoolApp {
 
 
     async loadProgressData() {
-        const query = `
-            query {
-                progress {
-                    id
-                    grade
-                    createdAt
-                    path
-                    object {
-                        name
+        try {
+            // Load progress and result data
+            const progressQuery = `
+                query {
+                    progress {
+                        id
+                        grade
+                        createdAt
+                        path
+                        object {
+                            name
+                            type
+                        }
+                    }
+                    result {
+                        id
+                        grade
                         type
+                        createdAt
+                        path
+                        object {
+                            name
+                            type
+                        }
                     }
                 }
-                result {
-                    id
-                    grade
-                    type
-                    createdAt
-                    path
-                    object {
-                        name
-                        type
-                    }
-                }
-            }
-        `;
+            `;
 
-        const data = await this.makeGraphQLQuery(query);
-        
-        if (data.progress && data.result) {
-            this.displayProgressData(data.progress, data.result);
+            // Load audit data
+            const auditQuery = `
+                query {
+                    audit(where: {auditorId: {_eq: ${this.userId}}}) {
+                        id
+                        grade
+                        createdAt
+                        groupId
+                        attrs
+                    }
+                }
+            `;
+
+            // Load group participation data
+            const groupQuery = `
+                query {
+                    group_user(where: {userId: {_eq: ${this.userId}}}) {
+                        id
+                        confirmed
+                        createdAt
+                        group {
+                            id
+                            status
+                            object {
+                                name
+                                type
+                            }
+                        }
+                    }
+                }
+            `;
+
+            // Load event participation data
+            const eventQuery = `
+                query {
+                    event_user(where: {userId: {_eq: ${this.userId}}}) {
+                        id
+                        createdAt
+                        event {
+                            id
+                            object {
+                                name
+                                type
+                            }
+                        }
+                    }
+                }
+            `;
+
+            // Execute all queries in parallel
+            const [progressData, auditData, groupData, eventData] = await Promise.all([
+                this.makeGraphQLQuery(progressQuery),
+                this.makeGraphQLQuery(auditQuery),
+                this.makeGraphQLQuery(groupQuery),
+                this.makeGraphQLQuery(eventQuery)
+            ]);
+            
+            if (progressData.progress && progressData.result) {
+                this.displayProgressData(
+                    progressData.progress, 
+                    progressData.result,
+                    auditData.audit || [],
+                    groupData.group_user || [],
+                    eventData.event_user || []
+                );
+            }
+        } catch (error) {
+            console.error('Error loading progress data:', error);
         }
     }
 
-    displayProgressData(progress, results) {
+    displayProgressData(progress, results, audits, groupMemberships, eventParticipations) {
         const totalProgress = progress.length;
         const totalResults = results.length;
-        const passedProgress = progress.filter(p => p.grade === 1).length;
-        const passedResults = results.filter(r => r.grade === 1).length;
+        const passedProgress = progress.filter(p => p.grade >= 1).length;
+        const passedResults = results.filter(r => r.grade >= 1).length;
+        
+        // Calculate detailed progress breakdown by object type
+        const progressByType = {};
+        const resultsByType = {};
+        
+        progress.forEach(p => {
+            const type = p.object?.type || 'unknown';
+            if (!progressByType[type]) {
+                progressByType[type] = { total: 0, passed: 0 };
+            }
+            progressByType[type].total++;
+            if (p.grade >= 1) progressByType[type].passed++;
+        });
+        
+        results.forEach(r => {
+            const type = r.object?.type || 'unknown';
+            if (!resultsByType[type]) {
+                resultsByType[type] = { total: 0, passed: 0 };
+            }
+            resultsByType[type].total++;
+            if (r.grade >= 1) resultsByType[type].passed++;
+        });
+        
+        // Calculate audit statistics
+        const totalAudits = audits.length;
+        const passedAudits = audits.filter(a => a.grade >= 1).length;
+        const auditSuccessRate = totalAudits > 0 ? Math.round((passedAudits / totalAudits) * 100) : 0;
+        
+        // Calculate group statistics
+        const totalGroups = groupMemberships.length;
+        const confirmedGroups = groupMemberships.filter(g => g.confirmed).length;
+        const activeGroups = groupMemberships.filter(g => g.group?.status === 'working').length;
+        const finishedGroups = groupMemberships.filter(g => g.group?.status === 'finished').length;
+        
+        // Calculate event statistics
+        const totalEvents = eventParticipations.length;
+        const eventsByType = {};
+        eventParticipations.forEach(e => {
+            const type = e.event?.object?.type || 'unknown';
+            eventsByType[type] = (eventsByType[type] || 0) + 1;
+        });
         
         const progressDetails = document.getElementById('progress-details');
         
         progressDetails.innerHTML = `
+            <!-- Basic Progress Stats -->
             <div class="info-item">
                 <h3>Total Progress Items</h3>
                 <div class="value">${totalProgress}</div>
@@ -708,6 +786,81 @@ class TomorrowSchoolApp {
                 <h3>Results Success Rate</h3>
                 <div class="value">${totalResults > 0 ? Math.round((passedResults / totalResults) * 100) : 0}%</div>
             </div>
+            
+            <!-- Audit Statistics -->
+            <div class="info-item">
+                <h3>Audits Conducted</h3>
+                <div class="value">${totalAudits}</div>
+            </div>
+            <div class="info-item">
+                <h3>Audit Success Rate</h3>
+                <div class="value">${auditSuccessRate}%</div>
+            </div>
+            
+            <!-- Group Statistics -->
+            <div class="info-item">
+                <h3>Groups Joined</h3>
+                <div class="value">${totalGroups}</div>
+            </div>
+            <div class="info-item">
+                <h3>Confirmed Groups</h3>
+                <div class="value">${confirmedGroups}</div>
+            </div>
+            <div class="info-item">
+                <h3>Active Groups</h3>
+                <div class="value">${activeGroups}</div>
+            </div>
+            <div class="info-item">
+                <h3>Finished Groups</h3>
+                <div class="value">${finishedGroups}</div>
+            </div>
+            
+            <!-- Event Participation -->
+            <div class="info-item">
+                <h3>Events Participated</h3>
+                <div class="value">${totalEvents}</div>
+            </div>
+            
+            <!-- Progress Breakdown by Type -->
+            <div class="info-item progress-breakdown">
+                <h3>Progress by Type</h3>
+                <div class="breakdown-list">
+                    ${Object.keys(progressByType).map(type => `
+                        <div class="breakdown-item">
+                            <span class="type-name">${type}</span>
+                            <span class="type-stats">${progressByType[type].passed}/${progressByType[type].total}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+            
+            <!-- Results Breakdown by Type -->
+            <div class="info-item results-breakdown">
+                <h3>Results by Type</h3>
+                <div class="breakdown-list">
+                    ${Object.keys(resultsByType).map(type => `
+                        <div class="breakdown-item">
+                            <span class="type-name">${type}</span>
+                            <span class="type-stats">${resultsByType[type].passed}/${resultsByType[type].total}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+            
+            <!-- Event Breakdown -->
+            ${Object.keys(eventsByType).length > 0 ? `
+            <div class="info-item events-breakdown">
+                <h3>Events by Type</h3>
+                <div class="breakdown-list">
+                    ${Object.keys(eventsByType).map(type => `
+                        <div class="breakdown-item">
+                            <span class="type-name">${type}</span>
+                            <span class="type-count">${eventsByType[type]}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+            ` : ''}
         `;
     }
 
