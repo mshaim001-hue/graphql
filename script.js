@@ -379,6 +379,13 @@ class TomorrowSchoolApp {
 
             const auditData = await this.makeGraphQLQuery(auditQuery);
             
+            // Debug: log audit data details
+            console.log('Audit data details:', {
+                total: auditData.audit?.length || 0,
+                sample: auditData.audit?.slice(0, 3) || [],
+                allIds: auditData.audit?.map(a => a.id) || []
+            });
+            
             // Load user's group participation
             const groupQuery = `
                 query {
