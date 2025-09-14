@@ -373,11 +373,9 @@ class TomorrowSchoolApp {
                         id
                         grade
                         createdAt
-                        path
                         attrs
                         result {
                             id
-                            path
                             object {
                                 name
                                 type
@@ -404,11 +402,12 @@ class TomorrowSchoolApp {
             if (auditData.audit) {
                 console.log('Audit names and types:', auditData.audit.map(audit => ({
                     id: audit.id,
-                    name: audit.result?.object?.name || audit.path || 'Unknown',
+                    name: audit.result?.object?.name || 'Unknown',
                     type: audit.result?.object?.type || 'Unknown',
                     grade: audit.grade,
                     date: audit.createdAt,
-                    group: audit.group?.name || 'No group'
+                    group: audit.group?.name || 'No group',
+                    resultId: audit.result?.id || 'No result'
                 })));
             }
             
@@ -1081,10 +1080,8 @@ class TomorrowSchoolApp {
                         version
                         endAt
                         resultId
-                        path
                         result {
                             id
-                            path
                             object {
                                 name
                                 type
