@@ -379,10 +379,7 @@ class TomorrowSchoolApp {
                             object {
                                 name
                                 type
-                                user {
-                                    id
-                                    login
-                                }
+                                authorId
                             }
                         }
                         group {
@@ -407,7 +404,7 @@ class TomorrowSchoolApp {
                     id: audit.id,
                     name: audit.result?.object?.name || 'Unknown',
                     type: audit.result?.object?.type || 'Unknown',
-                    author: audit.result?.object?.user?.login || 'Unknown',
+                    author: audit.result?.object?.authorId || 'Unknown',
                     grade: audit.grade,
                     date: audit.createdAt,
                     group: audit.group?.id || 'No group',
@@ -1089,10 +1086,7 @@ class TomorrowSchoolApp {
                             object {
                                 name
                                 type
-                                user {
-                                    id
-                                    login
-                                }
+                                authorId
                             }
                         }
                         group {
@@ -1268,7 +1262,7 @@ class TomorrowSchoolApp {
                             const status = gradeValue >= 1 ? 'succeeded' : 'failed';
                             const statusClass = gradeValue >= 1 ? 'passed' : 'failed';
                             const projectName = audit.result?.object?.name || 'Unknown Project';
-                            const author = audit.result?.object?.user?.login || 'Unknown';
+                            const author = audit.result?.object?.authorId || 'Unknown';
                             
                             return `
                                 <div class="recent-audit-item ${statusClass}">
