@@ -429,56 +429,22 @@ class TomorrowSchoolApp {
         // Recent activity (last 5 transactions)
         const recentTransactions = transactions.slice(0, 5);
         
-        // Debug logging
-        console.log('=== XP CALCULATION DEBUG ===');
-        console.log('Total XP calculated:', totalXP);
-        console.log('Number of transactions:', transactions.length);
-        console.log('First 5 transactions:', transactions.slice(0, 5));
-        console.log('Last 5 transactions:', transactions.slice(-5));
-        
-        // Show ALL transaction amounts for debugging
-        console.log('=== ALL XP AMOUNTS ===');
-        const allAmounts = transactions.map(t => t.amount);
-        console.log('All amounts:', allAmounts);
-        console.log('Sum of all amounts:', allAmounts.reduce((sum, amount) => sum + amount, 0));
-        
-        // Show amounts in groups of 10 for easier reading
-        for (let i = 0; i < transactions.length; i += 10) {
-            const group = transactions.slice(i, i + 10);
-            const groupAmounts = group.map(t => t.amount);
-            const groupSum = groupAmounts.reduce((sum, amount) => sum + amount, 0);
-            console.log(`Group ${Math.floor(i/10) + 1} (transactions ${i+1}-${Math.min(i+10, transactions.length)}):`, groupAmounts, `Sum: ${groupSum}`);
-        }
+        // Debug logging (simplified)
+        console.log(`XP Data loaded: ${transactions.length} transactions, Total: ${totalXP.toLocaleString()} XP`);
         
         // Store transactions for activity display
         this.allTransactions = transactions;
         
-        // Check for any negative amounts or unusual values
+        // Check for any unusual values (negative or very large amounts)
         const negativeAmounts = transactions.filter(t => t.amount < 0);
-        const zeroAmounts = transactions.filter(t => t.amount === 0);
         const veryLargeAmounts = transactions.filter(t => t.amount > 10000);
         
-        console.log('Negative amounts:', negativeAmounts.length);
-        console.log('Zero amounts:', zeroAmounts.length);
-        console.log('Very large amounts (>10000):', veryLargeAmounts.length);
-        
         if (negativeAmounts.length > 0) {
-            console.log('Negative transactions:', negativeAmounts);
+            console.log(`Warning: ${negativeAmounts.length} negative XP transactions found`);
         }
         if (veryLargeAmounts.length > 0) {
-            console.log('Very large transactions:', veryLargeAmounts);
+            console.log(`Info: ${veryLargeAmounts.length} large XP transactions (>10k) found`);
         }
-        
-        // Calculate XP by different criteria
-        const totalBySum = transactions.reduce((sum, t) => sum + t.amount, 0);
-        const totalByFilter = transactions
-            .filter(t => t.amount > 0)
-            .reduce((sum, t) => sum + t.amount, 0);
-        
-        console.log('Total by sum (all):', totalBySum);
-        console.log('Total by filter (positive only):', totalByFilter);
-        console.log('Difference:', totalBySum - totalByFilter);
-        console.log('=== END XP DEBUG ===');
         
 
         xpDetails.innerHTML = `
@@ -621,6 +587,12 @@ class TomorrowSchoolApp {
 
     async loadProgressData() {
         try {
+            // Check if userId is available
+            if (!this.userId) {
+                console.log('No userId available for progress data, skipping...');
+                return;
+            }
+
             // Load progress and result data
             const progressQuery = `
                 query {
@@ -648,7 +620,7 @@ class TomorrowSchoolApp {
                 }
             `;
 
-            // Load audit data
+            // Load audit data - only if userId exists
             const auditQuery = `
                 query {
                     audit(where: {auditorId: {_eq: ${this.userId}}}) {
@@ -661,7 +633,7 @@ class TomorrowSchoolApp {
                 }
             `;
 
-            // Load group participation data
+            // Load group participation data - only if userId exists
             const groupQuery = `
                 query {
                     group_user(where: {userId: {_eq: ${this.userId}}}) {
@@ -680,7 +652,7 @@ class TomorrowSchoolApp {
                 }
             `;
 
-            // Load event participation data
+            // Load event participation data - only if userId exists
             const eventQuery = `
                 query {
                     event_user(where: {userId: {_eq: ${this.userId}}}) {
@@ -697,13 +669,23 @@ class TomorrowSchoolApp {
                 }
             `;
 
-            // Execute all queries in parallel
-            const [progressData, auditData, groupData, eventData] = await Promise.all([
-                this.makeGraphQLQuery(progressQuery),
-                this.makeGraphQLQuery(auditQuery),
-                this.makeGraphQLQuery(groupQuery),
-                this.makeGraphQLQuery(eventQuery)
-            ]);
+            // Execute queries - start with progress/result data
+            const progressData = await this.makeGraphQLQuery(progressQuery);
+            
+            // Execute user-specific queries only if userId is valid
+            let auditData = { audit: [] };
+            let groupData = { group_user: [] };
+            let eventData = { event_user: [] };
+
+            try {
+                [auditData, groupData, eventData] = await Promise.all([
+                    this.makeGraphQLQuery(auditQuery),
+                    this.makeGraphQLQuery(groupQuery),
+                    this.makeGraphQLQuery(eventQuery)
+                ]);
+            } catch (userDataError) {
+                console.log('Error loading user-specific data, using empty arrays:', userDataError);
+            }
             
             if (progressData.progress && progressData.result) {
                 this.displayProgressData(
@@ -716,10 +698,55 @@ class TomorrowSchoolApp {
             }
         } catch (error) {
             console.error('Error loading progress data:', error);
+            // Display basic progress data even if there's an error
+            try {
+                const basicQuery = `
+                    query {
+                        progress {
+                            id
+                            grade
+                            createdAt
+                            path
+                            object {
+                                name
+                                type
+                            }
+                        }
+                        result {
+                            id
+                            grade
+                            type
+                            createdAt
+                            path
+                            object {
+                                name
+                                type
+                            }
+                        }
+                    }
+                `;
+                const basicData = await this.makeGraphQLQuery(basicQuery);
+                if (basicData.progress && basicData.result) {
+                    this.displayProgressData(
+                        basicData.progress, 
+                        basicData.result,
+                        [], [], []
+                    );
+                }
+            } catch (fallbackError) {
+                console.error('Fallback query also failed:', fallbackError);
+            }
         }
     }
 
     displayProgressData(progress, results, audits, groupMemberships, eventParticipations) {
+        // Ensure we have arrays to work with
+        progress = progress || [];
+        results = results || [];
+        audits = audits || [];
+        groupMemberships = groupMemberships || [];
+        eventParticipations = eventParticipations || [];
+
         const totalProgress = progress.length;
         const totalResults = results.length;
         const passedProgress = progress.filter(p => p.grade >= 1).length;
