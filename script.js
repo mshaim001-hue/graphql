@@ -409,7 +409,11 @@ class TomorrowSchoolApp {
                     date: audit.createdAt,
                     group: audit.group?.id || 'No group',
                     resultId: audit.resultId || 'No result',
-                    hasResult: !!audit.result
+                    hasResult: !!audit.result,
+                    // Check all available fields
+                    allFields: Object.keys(audit),
+                    resultFields: audit.result ? Object.keys(audit.result) : 'No result',
+                    objectFields: audit.result?.object ? Object.keys(audit.result.object) : 'No object'
                 })));
             }
             
@@ -1275,8 +1279,9 @@ class TomorrowSchoolApp {
                                 author = audit.result.object.authorId || 'Unknown Author';
                                 hasResult = true;
                             } else {
-                                projectName = `Audit #${audit.id}`;
-                                author = `Result ID: ${audit.resultId || 'N/A'}`;
+                                // Try to get project info from other sources or use fallback
+                                projectName = 'Unknown Project';
+                                author = 'Unknown Author';
                                 hasResult = false;
                             }
                             
@@ -1287,9 +1292,9 @@ class TomorrowSchoolApp {
                                         <span class="audit-separator">-</span>
                                         <span class="audit-author">${author}</span>
                                         <span class="audit-separator">-</span>
-                                        <span class="audit-date">${date.toLocaleDateString()}</span>
-                                        <span class="audit-separator">-</span>
                                         <span class="audit-status ${statusClass}">${status}</span>
+                                        <span class="audit-separator">-</span>
+                                        <span class="audit-date">${date.toLocaleDateString()}</span>
                                         ${!hasResult ? '<span class="audit-warning">⚠️ No Result Data</span>' : ''}
                                     </div>
                                 </div>
