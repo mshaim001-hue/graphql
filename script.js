@@ -226,7 +226,7 @@ class TomorrowSchoolApp {
             } catch (progressError) {
                 console.error('Error loading progress data:', progressError);
                 // Show basic progress data even if loading fails
-                this.showBasicProgressData();
+                await this.showBasicProgressData();
             }
             
             // Load additional user statistics
@@ -597,7 +597,7 @@ class TomorrowSchoolApp {
             // Check if userId is available
             if (!this.userId) {
                 console.log('No userId available for progress data, showing basic data...');
-                this.showBasicProgressData();
+                await this.showBasicProgressData();
                 return;
             }
             
@@ -637,8 +637,6 @@ class TomorrowSchoolApp {
                         id
                         grade
                         createdAt
-                        groupId
-                        attrs
                     }
                 }
             `;
@@ -653,10 +651,6 @@ class TomorrowSchoolApp {
                         group {
                             id
                             status
-                            object {
-                                name
-                                type
-                            }
                         }
                     }
                 }
@@ -670,10 +664,6 @@ class TomorrowSchoolApp {
                         createdAt
                         event {
                             id
-                            object {
-                                name
-                                type
-                            }
                         }
                     }
                 }
@@ -757,7 +747,7 @@ class TomorrowSchoolApp {
         }
     }
 
-    showBasicProgressData() {
+    async showBasicProgressData() {
         console.log('Showing basic progress data as fallback');
         const progressDetails = document.getElementById('progress-details');
         
@@ -772,6 +762,59 @@ class TomorrowSchoolApp {
                     <div class="value">Connecting to server</div>
                 </div>
             `;
+            
+            // Try to load basic progress data without user-specific queries
+            try {
+                const basicQuery = `
+                    query {
+                        progress {
+                            id
+                            grade
+                            createdAt
+                            path
+                            object {
+                                name
+                                type
+                            }
+                        }
+                        result {
+                            id
+                            grade
+                            type
+                            createdAt
+                            path
+                            object {
+                                name
+                                type
+                            }
+                        }
+                    }
+                `;
+                
+                console.log('Attempting basic progress query...');
+                const basicData = await this.makeGraphQLQuery(basicQuery);
+                
+                if (basicData.progress && basicData.result) {
+                    console.log('Basic progress data loaded successfully');
+                    this.displayProgressData(
+                        basicData.progress, 
+                        basicData.result,
+                        [], [], []
+                    );
+                }
+            } catch (basicError) {
+                console.error('Basic progress query also failed:', basicError);
+                progressDetails.innerHTML = `
+                    <div class="info-item">
+                        <h3>Unable to Load Progress Data</h3>
+                        <div class="value">Please try refreshing the page</div>
+                    </div>
+                    <div class="info-item">
+                        <h3>Status</h3>
+                        <div class="value">Connection error</div>
+                    </div>
+                `;
+            }
         }
     }
 
@@ -832,10 +875,8 @@ class TomorrowSchoolApp {
         // Calculate event statistics
         const totalEvents = eventParticipations.length;
         const eventsByType = {};
-        eventParticipations.forEach(e => {
-            const type = e.event?.object?.type || 'unknown';
-            eventsByType[type] = (eventsByType[type] || 0) + 1;
-        });
+        // Since we simplified the event query, we'll just count total events
+        eventsByType['events'] = totalEvents;
         
         const progressDetails = document.getElementById('progress-details');
         console.log('Found progress details element:', !!progressDetails);
