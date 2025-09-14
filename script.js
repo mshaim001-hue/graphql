@@ -374,16 +374,30 @@ class TomorrowSchoolApp {
                         grade
                         createdAt
                         attrs
+                        resultId
                         result {
                             id
                             object {
                                 name
                                 type
                                 authorId
+                                user {
+                                    id
+                                    login
+                                }
+                            }
+                            user {
+                                id
+                                login
                             }
                         }
                         group {
                             id
+                            name
+                        }
+                        auditor {
+                            id
+                            login
                         }
                     }
                 }
@@ -410,6 +424,7 @@ class TomorrowSchoolApp {
                     group: audit.group?.id || 'No group',
                     resultId: audit.resultId || 'No result',
                     hasResult: !!audit.result,
+                    attrs: audit.attrs,
                     // Check all available fields
                     allFields: Object.keys(audit),
                     resultFields: audit.result ? Object.keys(audit.result) : 'No result',
@@ -1276,11 +1291,38 @@ class TomorrowSchoolApp {
                             let projectName, author, hasResult;
                             if (audit.result && audit.result.object) {
                                 projectName = audit.result.object.name || 'Unknown Project';
-                                author = audit.result.object.authorId || 'Unknown Author';
+                                author = audit.result.object.authorId || audit.result.object.user?.login || 'Unknown Author';
                                 hasResult = true;
+                            } else if (audit.result && audit.result.user) {
+                                // Try to get info from result.user
+                                projectName = `Project #${audit.result.id}`;
+                                author = audit.result.user.login || 'Unknown Author';
+                                hasResult = true;
+                            } else if (audit.attrs) {
+                                // Try to extract info from attrs if available
+                                try {
+                                    const attrs = typeof audit.attrs === 'string' ? JSON.parse(audit.attrs) : audit.attrs;
+                                    console.log('Attrs for audit', audit.id, ':', attrs);
+                                    
+                                    // Look for project info in various possible fields
+                                    projectName = attrs.projectName || attrs.name || attrs.project_name || 
+                                                attrs.objectName || attrs.object_name || 
+                                                attrs.title || attrs.subject || `Audit #${audit.id}`;
+                                    
+                                    author = attrs.author || attrs.user || attrs.authorId || 
+                                            attrs.author_id || attrs.userId || attrs.user_id || 
+                                            attrs.login || attrs.username || 'Unknown Author';
+                                    
+                                    hasResult = true;
+                                } catch (e) {
+                                    console.log('Error parsing attrs for audit', audit.id, ':', e);
+                                    projectName = `Audit #${audit.id}`;
+                                    author = 'Unknown Author';
+                                    hasResult = false;
+                                }
                             } else {
-                                // Try to get project info from other sources or use fallback
-                                projectName = 'Unknown Project';
+                                // Fallback
+                                projectName = `Audit #${audit.id}`;
                                 author = 'Unknown Author';
                                 hasResult = false;
                             }
