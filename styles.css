@@ -660,7 +660,7 @@ svg {
 
 /* Recent Audits Styles */
 .recent-audits-list {
-    max-height: 400px;
+    max-height: 500px;
     overflow-y: auto;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
@@ -671,15 +671,15 @@ svg {
 .recent-audit-item {
     background: white;
     border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 10px;
+    padding: 12px 15px;
+    margin-bottom: 8px;
     border-left: 4px solid #ddd;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.2s ease;
 }
 
 .recent-audit-item:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
@@ -691,55 +691,49 @@ svg {
     border-left-color: #e74c3c;
 }
 
-.audit-header {
+.audit-content {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 8px;
+    gap: 8px;
+    font-size: 0.95rem;
+    line-height: 1.4;
 }
 
 .audit-project {
     font-weight: 600;
     color: #333;
-    font-size: 1rem;
 }
 
-.audit-type {
-    background: #667eea;
-    color: white;
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 0.75rem;
+.audit-separator {
+    color: #999;
+    font-weight: 300;
+}
+
+.audit-author {
+    color: #667eea;
     font-weight: 500;
-    text-transform: uppercase;
-}
-
-.audit-details {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.9rem;
-}
-
-.audit-grade {
-    font-weight: 600;
-    font-size: 1rem;
-}
-
-.audit-grade.passed {
-    color: #27ae60;
-}
-
-.audit-grade.failed {
-    color: #e74c3c;
 }
 
 .audit-date {
     color: #666;
+    font-size: 0.9rem;
 }
 
-.audit-group {
-    color: #667eea;
-    font-weight: 500;
+.audit-status {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.audit-status.passed {
+    color: #27ae60;
+    background: #d5f4e6;
+}
+
+.audit-status.failed {
+    color: #e74c3c;
+    background: #fdeaea;
 }
 

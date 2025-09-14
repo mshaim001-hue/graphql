@@ -380,6 +380,10 @@ class TomorrowSchoolApp {
                                 name
                                 type
                             }
+                            user {
+                                id
+                                login
+                            }
                         }
                         group {
                             id
@@ -403,6 +407,7 @@ class TomorrowSchoolApp {
                     id: audit.id,
                     name: audit.result?.object?.name || 'Unknown',
                     type: audit.result?.object?.type || 'Unknown',
+                    author: audit.result?.user?.login || 'Unknown',
                     grade: audit.grade,
                     date: audit.createdAt,
                     group: audit.group?.id || 'No group',
@@ -1085,6 +1090,10 @@ class TomorrowSchoolApp {
                                 name
                                 type
                             }
+                            user {
+                                id
+                                login
+                            }
                         }
                         group {
                             id
@@ -1252,25 +1261,25 @@ class TomorrowSchoolApp {
                 <div class="recent-audits-list">
                     ${conductedAudits
                         .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-                        .slice(0, 10)
+                        .slice(0, 15)
                         .map(audit => {
                             const date = new Date(audit.createdAt);
                             const gradeValue = audit.grade || 0;
-                            const grade = gradeValue >= 1 ? '✓' : '✗';
-                            const gradeClass = gradeValue >= 1 ? 'passed' : 'failed';
+                            const status = gradeValue >= 1 ? 'succeeded' : 'failed';
+                            const statusClass = gradeValue >= 1 ? 'passed' : 'failed';
                             const projectName = audit.result?.object?.name || 'Unknown Project';
-                            const projectType = audit.result?.object?.type || 'Unknown';
+                            const author = audit.result?.user?.login || 'Unknown';
                             
                             return `
-                                <div class="recent-audit-item ${gradeClass}">
-                                    <div class="audit-header">
+                                <div class="recent-audit-item ${statusClass}">
+                                    <div class="audit-content">
                                         <span class="audit-project">${projectName}</span>
-                                        <span class="audit-type">${projectType}</span>
-                                    </div>
-                                    <div class="audit-details">
-                                        <span class="audit-grade">${grade} ${gradeValue.toFixed(2)}</span>
+                                        <span class="audit-separator">-</span>
+                                        <span class="audit-author">${author}</span>
+                                        <span class="audit-separator">-</span>
                                         <span class="audit-date">${date.toLocaleDateString()}</span>
-                                        <span class="audit-group">Group ${audit.groupId || 'N/A'}</span>
+                                        <span class="audit-separator">-</span>
+                                        <span class="audit-status ${statusClass}">${status}</span>
                                     </div>
                                 </div>
                             `;
