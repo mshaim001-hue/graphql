@@ -372,7 +372,6 @@ class TomorrowSchoolApp {
                 query {
                     group_user(where: {userId: {_eq: ${this.userId}}}) {
                         id
-                        confirmed
                         createdAt
                         group {
                             id
@@ -654,7 +653,6 @@ class TomorrowSchoolApp {
                 query {
                     group_user(where: {userId: {_eq: ${this.userId}}}) {
                         id
-                        confirmed
                         createdAt
                         group {
                             id
@@ -876,7 +874,7 @@ class TomorrowSchoolApp {
         
         // Calculate group statistics
         const totalGroups = groupMemberships.length;
-        const confirmedGroups = groupMemberships.filter(g => g.confirmed).length;
+        const confirmedGroups = groupMemberships.length; // Since we can't check confirmed status, assume all are confirmed
         const activeGroups = groupMemberships.filter(g => g.group?.status === 'working').length;
         const finishedGroups = groupMemberships.filter(g => g.group?.status === 'finished').length;
         
@@ -1031,10 +1029,6 @@ class TomorrowSchoolApp {
                         resultId
                         group {
                             id
-                            group_user(where: {userId: {_eq: ${this.userId}}}) {
-                                id
-                                confirmed
-                            }
                         }
                     }
                 }
@@ -1051,10 +1045,9 @@ class TomorrowSchoolApp {
                 received: auditedData.audit?.length || 0
             });
             
-            // Filter audited data to only include audits where user is actually in the group
-            const relevantAudited = auditedData.audit?.filter(audit => 
-                audit.group?.group_user && audit.group.group_user.length > 0
-            ) || [];
+            // For now, we'll show all audit data since we can't filter by group membership
+            // In a real implementation, you might need a different approach to filter audits
+            const relevantAudited = auditedData.audit || [];
             
             this.displayAuditData(auditData.audit || [], relevantAudited);
             
