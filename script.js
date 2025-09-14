@@ -14,6 +14,18 @@ class TomorrowSchoolApp {
         
         // Check if user is already logged in
         if (this.jwt && this.isValidJWT(this.jwt)) {
+            // Restore userId from localStorage if available
+            const storedUserId = localStorage.getItem('userId');
+            if (storedUserId) {
+                this.userId = storedUserId;
+                console.log('Restored userId from localStorage:', this.userId);
+            } else {
+                // Parse JWT to get userId if not in localStorage
+                const payload = this.parseJWT(this.jwt);
+                this.userId = payload.sub || payload.id;
+                localStorage.setItem('userId', this.userId);
+                console.log('Extracted userId from JWT:', this.userId);
+            }
             this.showProfile();
             this.loadUserData();
         } else {
