@@ -272,8 +272,71 @@ class TomorrowSchoolApp {
             const user = data.user[0];
             // Store original date for calculations
             localStorage.setItem('memberSince', user.createdAt);
+            
+            // Загружаем данные для вычисления level
+            const userLevel = await this.calculateUserLevel(user.id);
+            user.level = userLevel;
+            
             this.displayUserInfo(user);
         }
+    }
+
+    async calculateUserLevel(userId) {
+        try {
+            // Получаем результаты пользователя для вычисления level
+            const query = `
+                query {
+                    result(where: {userId: {_eq: ${userId}}}, order_by: {createdAt: desc}) {
+                        id
+                        grade
+                        object {
+                            name
+                            type
+                        }
+                    }
+                }
+            `;
+
+            const data = await this.makeGraphQLQuery(query);
+            if (data && data.result) {
+                const results = data.result;
+                
+                // Вычисляем level на основе количества завершенных проектов
+                const completedProjects = results.filter(r => r.grade > 0);
+                const totalProjects = results.length;
+                const averageGrade = results.length > 0 ? 
+                    results.reduce((sum, r) => sum + (r.grade || 0), 0) / results.length : 0;
+                
+                // Простая формула для level: базовый level + бонусы за качество
+                let level = 1; // Базовый level
+                
+                if (totalProjects > 0) {
+                    // +1 level за каждые 5 завершенных проектов
+                    level += Math.floor(completedProjects.length / 5);
+                    
+                    // +1 level за высокий средний балл
+                    if (averageGrade >= 1.0) level += 1;
+                    if (averageGrade >= 1.5) level += 1;
+                    if (averageGrade >= 2.0) level += 1;
+                }
+                
+                return {
+                    level: level,
+                    completedProjects: completedProjects.length,
+                    totalProjects: totalProjects,
+                    averageGrade: Math.round(averageGrade * 100) / 100
+                };
+            }
+        } catch (error) {
+            console.log('Error calculating user level:', error);
+        }
+        
+        return {
+            level: 1,
+            completedProjects: 0,
+            totalProjects: 0,
+            averageGrade: 0
+        };
     }
 
     displayUserInfo(user) {
@@ -317,6 +380,16 @@ class TomorrowSchoolApp {
             <div class="info-item">
                 <h3>Username</h3>
                 <div class="value">${user.login || 'N/A'}</div>
+            </div>
+            <div class="info-item">
+                <h3>Level</h3>
+                <div class="value level-info">
+                    <span class="level-number">${user.level?.level || 1}</span>
+                    <span class="level-details">
+                        ${user.level?.completedProjects || 0} projects completed
+                        ${user.level?.averageGrade ? `(avg: ${user.level.averageGrade})` : ''}
+                    </span>
+                </div>
             </div>
             <div class="info-item">
                 <h3>Campus</h3>

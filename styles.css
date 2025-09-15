@@ -188,6 +188,26 @@ section h2 {
     color: #333;
 }
 
+/* Level Info Styles */
+.level-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.level-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #667eea;
+    text-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+}
+
+.level-details {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 400;
+}
+
 /* Statistics Section */
 .statistics-section {
     background: white;
