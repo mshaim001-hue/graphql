@@ -13,31 +13,6 @@ query GetUserInfo {
   }
 }
 
-# Получить аудиты
-query GetAudits {
-  audit(limit: 10) {
-    id
-    grade
-    createdAt
-    resultId
-    result {
-      id
-      userId
-      objectId
-      object {
-        id
-        name
-        type
-        authorId
-      }
-      user {
-        id
-        login
-        profile
-      }
-    }
-  }
-}
 
 # Получить ваши результаты
 query GetMyResults {

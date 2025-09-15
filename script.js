@@ -241,13 +241,6 @@ class TomorrowSchoolApp {
                 await this.showBasicProgressData();
             }
             
-            // Load audit data
-            try {
-                await this.loadAuditData();
-            } catch (auditError) {
-                console.error('Error loading audit data:', auditError);
-                this.showBasicAuditData();
-            }
             
             // Load additional user statistics
             await this.loadUserStatistics();
@@ -354,278 +347,6 @@ class TomorrowSchoolApp {
             </div>
             ` : ''}
         `;
-    }
-
-    async loadUserStatistics() {
-        try {
-            // Check if userId is available
-            if (!this.userId) {
-                console.log('No userId available for statistics, skipping...');
-                return;
-            }
-            
-            console.log('Loading user statistics for userId:', this.userId);
-
-            // Load user's audit statistics
-            const auditQuery = `
-                query {
-                    audit(where: {auditorId: {_eq: ${this.userId}}}) {
-                        id
-                        grade
-                        createdAt
-                        attrs
-                        resultId
-                        result {
-                            id
-                            userId
-                            objectId
-                            object {
-                                id
-                                name
-                                type
-                                authorId
-                            }
-                            user {
-                                id
-                                login
-                                profile
-                                attrs
-                            }
-                        }
-                        group {
-                            id
-                        }
-                        auditor {
-                            id
-                            login
-                        }
-                    }
-                }
-            `;
-
-            const auditData = await this.makeGraphQLQuery(auditQuery);
-            
-            // Debug: log audit data details
-            console.log('Audit data details:', {
-                total: auditData.audit?.length || 0,
-                sample: auditData.audit?.slice(0, 3) || [],
-                allIds: auditData.audit?.map(a => a.id) || []
-            });
-            
-            // Try to get result data for audits that have resultId but no result object
-            if (auditData.audit && auditData.audit.length > 0) {
-                const auditsWithResultId = auditData.audit.filter(a => a.resultId && !a.result);
-                console.log('Audits with resultId but no result object:', auditsWithResultId.length);
-                
-                if (auditsWithResultId.length > 0) {
-                    // Get result data for these audits
-                    const resultIds = auditsWithResultId.map(a => a.resultId);
-                    console.log('Fetching result data for resultIds:', resultIds);
-                    
-                    const resultQuery = `
-                        query {
-                            result(where: {id: {_in: [${resultIds.join(',')}]}}) {
-                                id
-                                userId
-                                objectId
-                                object {
-                                    id
-                                    name
-                                    type
-                                    authorId
-                                }
-                                user {
-                                    id
-                                    login
-                                    profile
-                                    attrs
-                                }
-                            }
-                        }
-                    `;
-                    
-                    try {
-                        const resultData = await this.makeGraphQLQuery(resultQuery);
-                        console.log('Result data fetched:', resultData);
-                        
-                        // Merge result data back into audits
-                        if (resultData.result) {
-                            auditData.audit.forEach(audit => {
-                                if (audit.resultId && !audit.result) {
-                                    const matchingResult = resultData.result.find(r => r.id === audit.resultId);
-                                    if (matchingResult) {
-                                        audit.result = matchingResult;
-                                        console.log(`Merged result data for audit ${audit.id}:`, matchingResult);
-                                    }
-                                }
-                            });
-                        }
-                    } catch (error) {
-                        console.error('Error fetching result data:', error);
-                    }
-                }
-                
-                // Alternative: try to get data through progress table
-                const auditsStillMissingData = auditData.audit.filter(a => a.resultId && (!a.result || !a.result.object));
-                if (auditsStillMissingData.length > 0) {
-                    console.log('Trying to get data through progress table for audits:', auditsStillMissingData.length);
-                    
-                    // Get progress data that might be related to these audits
-                    const progressQuery = `
-                        query {
-                            progress(where: {userId: {_eq: ${this.userId}}}) {
-                                id
-                                userId
-                                objectId
-                                object {
-                                    id
-                                    name
-                                    type
-                                    authorId
-                                }
-                                user {
-                                    id
-                                    login
-                                    profile
-                                    attrs
-                                }
-                            }
-                        }
-                    `;
-                    
-                    try {
-                        const progressData = await this.makeGraphQLQuery(progressQuery);
-                        console.log('Progress data fetched:', progressData);
-                        
-                        // Try to match audits with progress data by objectId or other criteria
-                        if (progressData.progress) {
-                            auditData.audit.forEach(audit => {
-                                if (audit.resultId && (!audit.result || !audit.result.object)) {
-                                    // Try to find matching progress by objectId or other criteria
-                                    const matchingProgress = progressData.progress.find(p => 
-                                        p.objectId && audit.result && audit.result.objectId === p.objectId
-                                    );
-                                    
-                                    if (matchingProgress && matchingProgress.object) {
-                                        // Create a mock result object from progress data
-                                        audit.result = {
-                                            id: audit.resultId,
-                                            userId: matchingProgress.userId,
-                                            objectId: matchingProgress.objectId,
-                                            object: matchingProgress.object,
-                                            user: matchingProgress.user
-                                        };
-                                        console.log(`Created result from progress for audit ${audit.id}:`, audit.result);
-                                    }
-                                }
-                            });
-                        }
-                    } catch (error) {
-                        console.error('Error fetching progress data:', error);
-                    }
-                }
-            }
-            
-            // Debug: analyze data structure for first few audits
-            if (auditData.audit && auditData.audit.length > 0) {
-                console.log('=== AUDIT DATA STRUCTURE ANALYSIS ===');
-                auditData.audit.slice(0, 3).forEach((audit, index) => {
-                    console.log(`Audit ${index + 1} (ID: ${audit.id}):`, {
-                        hasResult: !!audit.result,
-                        resultId: audit.resultId,
-                        resultStructure: audit.result ? {
-                            hasObject: !!audit.result.object,
-                            hasUser: !!audit.result.user,
-                            objectName: audit.result.object?.name,
-                            objectType: audit.result.object?.type,
-                            objectAuthorId: audit.result.object?.authorId,
-                            userId: audit.result.userId,
-                            userLogin: audit.result.user?.login,
-                            userProfile: audit.result.user?.profile,
-                            userAttrs: audit.result.user?.attrs
-                        } : null,
-                        attrs: audit.attrs,
-                        grade: audit.grade
-                    });
-                });
-                console.log('=== END ANALYSIS ===');
-            }
-            
-            // Log audit names and types
-            if (auditData.audit) {
-                console.log('Audit names and types:', auditData.audit.map(audit => ({
-                    id: audit.id,
-                    name: audit.result?.object?.name || 'No Project Info',
-                    type: audit.result?.object?.type || 'No Type Info',
-                    author: audit.result?.object?.authorId || 'No Author Info',
-                    grade: audit.grade,
-                    date: audit.createdAt,
-                    group: audit.group?.id || 'No group',
-                    resultId: audit.resultId || 'No result',
-                    hasResult: !!audit.result,
-                    attrs: audit.attrs,
-                    // Check all available fields
-                    allFields: Object.keys(audit),
-                    resultFields: audit.result ? Object.keys(audit.result) : 'No result',
-                    objectFields: audit.result?.object ? Object.keys(audit.result.object) : 'No object'
-                })));
-            }
-            
-            // Additional debug: check for duplicates and analyze data
-            if (auditData.audit) {
-                const ids = auditData.audit.map(a => a.id);
-                const uniqueIds = [...new Set(ids)];
-                const duplicates = ids.length - uniqueIds.length;
-                
-                console.log('Audit analysis:', {
-                    totalRecords: auditData.audit.length,
-                    uniqueIds: uniqueIds.length,
-                    duplicates: duplicates,
-                    dateRange: {
-                        earliest: auditData.audit.reduce((min, a) => 
-                            new Date(a.createdAt) < new Date(min.createdAt) ? a : min
-                        ).createdAt,
-                        latest: auditData.audit.reduce((max, a) => 
-                            new Date(a.createdAt) > new Date(max.createdAt) ? a : max
-                        ).createdAt
-                    },
-                    gradeDistribution: {
-                        nullGrades: auditData.audit.filter(a => a.grade === null || a.grade === undefined).length,
-                        zeroGrades: auditData.audit.filter(a => a.grade === 0).length,
-                        passedGrades: auditData.audit.filter(a => a.grade >= 1).length
-                    }
-                });
-            }
-            
-            // Load user's group participation
-            const groupQuery = `
-                query {
-                    group_user(where: {userId: {_eq: ${this.userId}}}) {
-                        id
-                        createdAt
-                        group {
-                            id
-                            status
-                        }
-                    }
-                }
-            `;
-
-            const groupData = await this.makeGraphQLQuery(groupQuery);
-            
-            // Display additional statistics
-            this.displayUserStatistics(auditData.audit || [], groupData.group_user || []);
-            
-        } catch (error) {
-            console.error('Error loading user statistics:', error);
-            // Don't show error to user as this is additional info
-        }
-    }
-
-    displayUserStatistics(audits, groupMemberships) {
-        // This method is now handled in displayProgressData
-        // Keeping it empty to avoid breaking existing code
-        console.log('User statistics now displayed in Progress & Grades section');
     }
 
     async loadXPData() {
@@ -867,16 +588,6 @@ class TomorrowSchoolApp {
                 }
             `;
 
-            // Load audit data - only if userId exists
-            const auditQuery = `
-                query {
-                    audit(where: {auditorId: {_eq: ${this.userId}}}) {
-                        id
-                        grade
-                        createdAt
-                    }
-                }
-            `;
 
             // Load group participation data - only if userId exists
             const groupQuery = `
@@ -911,14 +622,12 @@ class TomorrowSchoolApp {
             console.log('Progress data received:', progressData);
             
             // Execute user-specific queries only if userId is valid
-            let auditData = { audit: [] };
             let groupData = { group_user: [] };
             let eventData = { event_user: [] };
 
             try {
                 console.log('Executing user-specific queries...');
-                [auditData, groupData, eventData] = await Promise.all([
-                    this.makeGraphQLQuery(auditQuery),
+                [groupData, eventData] = await Promise.all([
                     this.makeGraphQLQuery(groupQuery),
                     this.makeGraphQLQuery(eventQuery)
                 ]);
@@ -932,7 +641,6 @@ class TomorrowSchoolApp {
                 this.displayProgressData(
                     progressData.progress, 
                     progressData.result,
-                    auditData.audit || [],
                     groupData.group_user || [],
                     eventData.event_user || []
                 );
@@ -1054,11 +762,10 @@ class TomorrowSchoolApp {
         }
     }
 
-    displayProgressData(progress, results, audits, groupMemberships, eventParticipations) {
+    displayProgressData(progress, results, groupMemberships, eventParticipations) {
         console.log('displayProgressData called with:', {
             progress: progress?.length || 0,
             results: results?.length || 0,
-            audits: audits?.length || 0,
             groupMemberships: groupMemberships?.length || 0,
             eventParticipations: eventParticipations?.length || 0
         });
@@ -1066,7 +773,6 @@ class TomorrowSchoolApp {
         // Ensure we have arrays to work with
         progress = progress || [];
         results = results || [];
-        audits = audits || [];
         groupMemberships = groupMemberships || [];
         eventParticipations = eventParticipations || [];
 
@@ -1097,10 +803,6 @@ class TomorrowSchoolApp {
             if (r.grade >= 1) resultsByType[type].passed++;
         });
         
-        // Calculate audit statistics
-        const totalAudits = audits.length;
-        const passedAudits = audits.filter(a => a.grade >= 1).length;
-        const auditSuccessRate = totalAudits > 0 ? Math.round((passedAudits / totalAudits) * 100) : 0;
         
         // Calculate group statistics
         const totalGroups = groupMemberships.length;
@@ -1136,15 +838,6 @@ class TomorrowSchoolApp {
                 <div class="value">${totalResults > 0 ? Math.round((passedResults / totalResults) * 100) : 0}%</div>
             </div>
             
-            <!-- Audit Statistics -->
-            <div class="info-item">
-                <h3>Audits Conducted</h3>
-                <div class="value">${totalAudits}</div>
-            </div>
-            <div class="info-item">
-                <h3>Audit Success Rate</h3>
-                <div class="value">${auditSuccessRate}%</div>
-            </div>
             
             <!-- Group Statistics -->
             <div class="info-item">
@@ -1215,267 +908,6 @@ class TomorrowSchoolApp {
         console.log('Progress data HTML updated successfully');
     }
 
-    async loadAuditData() {
-        console.log('Starting loadAuditData...');
-        try {
-            // Check if userId is available
-            if (!this.userId) {
-                console.log('No userId available for audit data, showing basic data...');
-                this.showBasicAuditData();
-                return;
-            }
-            
-            console.log('userId available for audits:', this.userId);
-
-            // Load audit data where user is the auditor
-            const auditQuery = `
-                query {
-                    audit(where: {auditorId: {_eq: ${this.userId}}}) {
-                        id
-                        grade
-                        createdAt
-                        updatedAt
-                        groupId
-                        attrs
-                        version
-                        endAt
-                        resultId
-                        result {
-                            id
-                            userId
-                            objectId
-                            object {
-                                id
-                                name
-                                type
-                                authorId
-                            }
-                            user {
-                                id
-                                login
-                                profile
-                                attrs
-                            }
-                        }
-                        group {
-                            id
-                        }
-                    }
-                }
-            `;
-
-            // Load audit data where user is being audited (through groups)
-            const auditedQuery = `
-                query {
-                    audit {
-                        id
-                        grade
-                        createdAt
-                        updatedAt
-                        groupId
-                        attrs
-                        version
-                        endAt
-                        resultId
-                        group {
-                            id
-                        }
-                    }
-                }
-            `;
-
-            console.log('Executing audit queries...');
-            const [auditData, auditedData] = await Promise.all([
-                this.makeGraphQLQuery(auditQuery),
-                this.makeGraphQLQuery(auditedQuery)
-            ]);
-            
-            console.log('Audit data received:', {
-                conducted: auditData.audit?.length || 0,
-                received: auditedData.audit?.length || 0
-            });
-            
-            // For now, we'll show all audit data since we can't filter by group membership
-            // In a real implementation, you might need a different approach to filter audits
-            const relevantAudited = auditedData.audit || [];
-            
-            this.displayAuditData(auditData.audit || [], relevantAudited);
-            
-        } catch (error) {
-            console.error('Error loading audit data:', error);
-            this.showBasicAuditData();
-        }
-    }
-
-    showBasicAuditData() {
-        console.log('Showing basic audit data as fallback');
-        const auditDetails = document.getElementById('audits-details');
-        
-        if (auditDetails) {
-            auditDetails.innerHTML = `
-                <div class="info-item">
-                    <h3>Loading Audit Data...</h3>
-                    <div class="value">Please wait</div>
-                </div>
-                <div class="info-item">
-                    <h3>Status</h3>
-                    <div class="value">Connecting to server</div>
-                </div>
-            `;
-        }
-    }
-
-    displayAuditData(conductedAudits, receivedAudits) {
-        console.log('displayAuditData called with:', {
-            conducted: conductedAudits?.length || 0,
-            received: receivedAudits?.length || 0
-        });
-        
-        // Ensure we have arrays to work with
-        conductedAudits = conductedAudits || [];
-        receivedAudits = receivedAudits || [];
-
-        // Calculate conducted audit statistics
-        const totalConducted = conductedAudits.length;
-        const passedConducted = conductedAudits.filter(a => (a.grade || 0) >= 1).length;
-        const failedConducted = conductedAudits.filter(a => (a.grade || 0) < 1).length;
-        const avgGradeConducted = totalConducted > 0 ? 
-            (conductedAudits.reduce((sum, a) => sum + (a.grade || 0), 0) / totalConducted).toFixed(2) : 0;
-        
-        // Calculate received audit statistics
-        const totalReceived = receivedAudits.length;
-        const passedReceived = receivedAudits.filter(a => (a.grade || 0) >= 1).length;
-        const failedReceived = receivedAudits.filter(a => (a.grade || 0) < 1).length;
-        const avgGradeReceived = totalReceived > 0 ? 
-            (receivedAudits.reduce((sum, a) => sum + (a.grade || 0), 0) / totalReceived).toFixed(2) : 0;
-
-        // Calculate recent activity (last 30 days)
-        const thirtyDaysAgo = new Date();
-        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-        
-        const recentConducted = conductedAudits.filter(a => 
-            new Date(a.createdAt) >= thirtyDaysAgo
-        ).length;
-        
-        const recentReceived = receivedAudits.filter(a => 
-            new Date(a.createdAt) >= thirtyDaysAgo
-        ).length;
-
-        // Calculate audit timeline data
-        const auditTimeline = {};
-        [...conductedAudits, ...receivedAudits].forEach(audit => {
-            const date = new Date(audit.createdAt).toISOString().split('T')[0];
-            if (!auditTimeline[date]) {
-                auditTimeline[date] = { conducted: 0, received: 0 };
-            }
-            if (conductedAudits.includes(audit)) {
-                auditTimeline[date].conducted++;
-            } else {
-                auditTimeline[date].received++;
-            }
-        });
-
-        const auditDetails = document.getElementById('audits-details');
-        console.log('Found audit details element:', !!auditDetails);
-        
-        auditDetails.innerHTML = `
-            <!-- Conducted Audits Stats -->
-            <div class="info-item audit-conducted">
-                <h3>Audits Conducted</h3>
-                <div class="value">${totalConducted}</div>
-            </div>
-            <div class="info-item">
-                <h3>Conducted Success Rate</h3>
-                <div class="value">${totalConducted > 0 ? Math.round((passedConducted / totalConducted) * 100) : 0}%</div>
-            </div>
-            <div class="info-item">
-                <h3>Avg Grade Given</h3>
-                <div class="value">${avgGradeConducted}</div>
-            </div>
-            
-            <!-- Received Audits Stats -->
-            <div class="info-item audit-received">
-                <h3>Audits Received</h3>
-                <div class="value">${totalReceived}</div>
-            </div>
-            <div class="info-item">
-                <h3>Received Success Rate</h3>
-                <div class="value">${totalReceived > 0 ? Math.round((passedReceived / totalReceived) * 100) : 0}%</div>
-            </div>
-            <div class="info-item">
-                <h3>Avg Grade Received</h3>
-                <div class="value">${avgGradeReceived}</div>
-            </div>
-            
-            <!-- Recent Activity -->
-            <div class="info-item">
-                <h3>Recent Conducted (30d)</h3>
-                <div class="value">${recentConducted}</div>
-            </div>
-            <div class="info-item">
-                <h3>Recent Received (30d)</h3>
-                <div class="value">${recentReceived}</div>
-            </div>
-            
-            <!-- Recent Audits Conducted -->
-            <div class="info-item recent-audits">
-                <h3>Recent Audits Conducted</h3>
-                <div class="audit-info">
-                    <p>📊 Total: ${conductedAudits.length} audits | 
-                    ✅ With project data: ${conductedAudits.filter(a => a.result && a.result.object).length} | 
-                    ⚠️ Missing data: ${conductedAudits.filter(a => !a.result || !a.result.object).length}</p>
-                </div>
-                
-                <!-- Simple Text Format -->
-                <div class="audit-simple-format">
-                    <h4>Audits in Simple Format:</h4>
-                    <div class="audit-info">
-                        <p>📊 Total: ${conductedAudits.length} audits | 
-                        ✅ With project data: ${conductedAudits.filter(a => a.result && a.result.object).length} | 
-                        ⚠️ Missing data: ${conductedAudits.filter(a => !a.result || !a.result.object).length} | 
-                        🗑️ Deleted results: ${conductedAudits.filter(a => a.resultId && !a.result).length}</p>
-                    </div>
-                    <div class="audit-text-list">
-                        ${conductedAudits
-                            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-                            .slice(0, 20)
-                            .map(audit => {
-                                const formattedAudit = this.formatAuditForDisplay(audit);
-                                return `${formattedAudit.projectName} - ${formattedAudit.author} - ${formattedAudit.status} - ${formattedAudit.date}`;
-                            }).join('<br>')}
-                    </div>
-                </div>
-                
-                <div class="recent-audits-list">
-                    ${conductedAudits
-                        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-                        .slice(0, 15)
-                        .map(audit => {
-                            // Используем новую функцию форматирования
-                            const formattedAudit = this.formatAuditForDisplay(audit);
-                            
-                            return `
-                                <div class="recent-audit-item ${formattedAudit.status} ${formattedAudit.hasResult ? 'has-result' : 'no-result'}">
-                                    <div class="audit-content">
-                                        <span class="audit-project">${formattedAudit.projectName}</span>
-                                        <span class="audit-separator">-</span>
-                                        <span class="audit-author">${formattedAudit.author}</span>
-                                        <span class="audit-separator">-</span>
-                                        <span class="audit-status ${formattedAudit.status}">${formattedAudit.status}</span>
-                                        <span class="audit-separator">-</span>
-                                        <span class="audit-date">${formattedAudit.date}</span>
-                                        ${!formattedAudit.hasResult ? '<span class="audit-warning">⚠️ No Result Data</span>' : ''}
-                                    </div>
-                                </div>
-                            `;
-                        }).join('')}
-                </div>
-            </div>
-        `;
-        
-        console.log('Audit data HTML updated successfully');
-    }
-
     async loadStatistics() {
         try {
             // Load data for all graphs
@@ -1487,7 +919,6 @@ class TomorrowSchoolApp {
 
             // Create graphs
             this.createXPTimelineGraph(xpData);
-            this.createAuditRatioGraph(progressData, resultData);
             this.createProjectSuccessGraph(progressData, resultData);
             this.createExerciseAttemptsGraph(progressData, resultData);
             
@@ -1622,58 +1053,6 @@ class TomorrowSchoolApp {
             svg.appendChild(circle);
         });
         
-        container.innerHTML = '';
-        container.appendChild(svg);
-    }
-
-    createAuditRatioGraph(progressData, resultData) {
-        const container = document.getElementById('audit-ratio-graph');
-        
-        const totalProgress = progressData.length;
-        const totalResults = resultData.length;
-        const total = totalProgress + totalResults;
-        
-        if (total === 0) {
-            container.innerHTML = '<div class="loading">No audit data available</div>';
-            return;
-        }
-
-        const progressRatio = (totalProgress / total) * 100;
-        const resultRatio = (totalResults / total) * 100;
-
-        // Create pie chart
-        const width = 300;
-        const height = 250;
-        const radius = Math.min(width, height) / 2 - 20;
-        const centerX = width / 2;
-        const centerY = height / 2;
-
-        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        svg.setAttribute('width', width);
-        svg.setAttribute('height', height);
-
-        // Calculate angles
-        const progressAngle = (progressRatio / 100) * 2 * Math.PI;
-        const resultAngle = (resultRatio / 100) * 2 * Math.PI;
-
-        // Create pie slices
-        const progressSlice = this.createPieSlice(centerX, centerY, radius, 0, progressAngle, '#667eea');
-        const resultSlice = this.createPieSlice(centerX, centerY, radius, progressAngle, progressAngle + resultAngle, '#764ba2');
-
-        svg.appendChild(progressSlice);
-        svg.appendChild(resultSlice);
-
-        // Add labels
-        const progressLabel = this.createLabel(centerX + Math.cos(progressAngle / 2) * (radius * 0.7), 
-                                             centerY + Math.sin(progressAngle / 2) * (radius * 0.7), 
-                                             `Progress\n${progressRatio.toFixed(1)}%`);
-        const resultLabel = this.createLabel(centerX + Math.cos(progressAngle + resultAngle / 2) * (radius * 0.7), 
-                                           centerY + Math.sin(progressAngle + resultAngle / 2) * (radius * 0.7), 
-                                           `Results\n${resultRatio.toFixed(1)}%`);
-
-        svg.appendChild(progressLabel);
-        svg.appendChild(resultLabel);
-
         container.innerHTML = '';
         container.appendChild(svg);
     }
@@ -1884,93 +1263,6 @@ class TomorrowSchoolApp {
         setTimeout(() => {
             document.body.removeChild(tooltip);
         }, 2000);
-    }
-
-    formatAuditForDisplay(audit) {
-        /**
-         * Форматирует аудит в нужном формате: название проекта - автор проекта - оценка проекта - дата
-         * Например: forum - akakharo - failed - 8/11/2025
-         */
-        const date = new Date(audit.createdAt);
-        const gradeValue = audit.grade || 0;
-        const status = gradeValue >= 1 ? 'passed' : 'failed';
-        
-        // Получаем название проекта и автора
-        let projectName = 'Unknown Project';
-        let author = 'Unknown Author';
-        
-        // Debug: логируем структуру данных для анализа
-        console.log('Audit data structure for audit', audit.id, ':', {
-            hasResult: !!audit.result,
-            resultStructure: audit.result ? {
-                hasObject: !!audit.result.object,
-                hasUser: !!audit.result.user,
-                objectName: audit.result.object?.name,
-                objectType: audit.result.object?.type,
-                userId: audit.result.userId,
-                userLogin: audit.result.user?.login
-            } : null,
-            attrs: audit.attrs
-        });
-        
-        if (audit.result && audit.result.object) {
-            // Приоритет 1: данные из связанной таблицы object
-            projectName = audit.result.object.name || 'Unknown Project';
-            
-            // Пытаемся получить автора из разных источников
-            if (audit.result.user && audit.result.user.login) {
-                // Автор из связанной таблицы user
-                author = audit.result.user.login;
-            } else if (audit.result.object.authorId) {
-                // Автор из поля authorId объекта
-                author = audit.result.object.authorId;
-            } else if (audit.result.userId) {
-                // Используем userId как fallback
-                author = `user_${audit.result.userId}`;
-            } else {
-                author = 'Unknown Author';
-            }
-        } else if (audit.resultId) {
-            // Приоритет 2: есть resultId, но нет result объекта
-            // Это означает, что результат был удален или недоступен
-            projectName = `Deleted Project (Result #${audit.resultId})`;
-            author = 'Unknown Author (Result Deleted)';
-        } else if (audit.attrs) {
-            // Приоритет 2: данные из attrs
-            try {
-                const attrs = typeof audit.attrs === 'string' ? JSON.parse(audit.attrs) : audit.attrs;
-                console.log('Parsed attrs for audit', audit.id, ':', attrs);
-                
-                projectName = attrs.projectName || attrs.name || attrs.project_name || 
-                            attrs.objectName || attrs.object_name || 
-                            attrs.title || attrs.subject || `Audit #${audit.id}`;
-                
-                author = attrs.author || attrs.user || attrs.authorId || 
-                        attrs.author_id || attrs.userId || attrs.user_id || 
-                        attrs.login || attrs.username || 'Unknown Author';
-            } catch (e) {
-                console.log('Error parsing attrs for audit', audit.id, ':', e);
-                projectName = `Audit #${audit.id}`;
-                author = 'Unknown Author';
-            }
-        } else {
-            // Fallback
-            projectName = `Audit #${audit.id}`;
-            author = 'Unknown Author';
-        }
-        
-        // Форматируем дату в нужном формате (M/D/YYYY)
-        const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-        
-        return {
-            projectName,
-            author,
-            status,
-            date: formattedDate,
-            fullDate: date,
-            grade: gradeValue,
-            hasResult: !!(audit.result && audit.result.object)
-        };
     }
 
     showError(message) {
