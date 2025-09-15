@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit Format Example</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .audit-simple-format {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .audit-simple-format h4 {
+            color: #667eea;
+            margin: 0 0 10px 0;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        .audit-text-list {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #333;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .example-note {
+            background: #e8f4fd;
+            border: 1px solid #bee5eb;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 20px 0;
+            color: #0c5460;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Audit Format Example</h1>
+        
+        <div class="example-note">
+            <strong>Формат отображения аудитов:</strong><br>
+            <code>название проекта - автор проекта - оценка проекта - дата</code><br>
+            <em>Например: forum - akakharo - failed - 8/11/2025</em>
+        </div>
+
+        <div class="audit-simple-format">
+            <h4>Audits in Simple Format:</h4>
+            <div class="audit-text-list">
+                forum - akakharo - failed - 8/11/2025<br>
+                calculator - john_doe - passed - 7/11/2025<br>
+                webserver - mary_smith - failed - 6/11/2025<br>
+                ftp - alex_brown - passed - 5/11/2025<br>
+                libft - sarah_wilson - passed - 4/11/2025<br>
+                get_next_line - mike_davis - failed - 3/11/2025<br>
+                printf - emma_taylor - passed - 2/11/2025<br>
+                born2beroot - david_miller - passed - 1/11/2025<br>
+                minitalk - lisa_anderson - failed - 31/10/2025<br>
+                push_swap - tom_wilson - passed - 30/10/2025<br>
+                so_long - jane_garcia - failed - 29/10/2025<br>
+                philosophers - bob_martinez - passed - 28/10/2025<br>
+                minishell - alice_rodriguez - failed - 27/10/2025<br>
+                cub3d - charlie_lee - passed - 26/10/2025<br>
+                netpractice - diana_white - passed - 25/10/2025<br>
+                ft_irc - frank_harris - failed - 24/10/2025<br>
+                webserv - grace_clark - passed - 23/10/2025<br>
+                inception - henry_lewis - passed - 22/10/2025<br>
+                ft_transcendence - ivy_walker - failed - 21/10/2025<br>
+                exam_rank_02 - jack_hall - passed - 20/10/2025
+            </div>
+        </div>
+
+        <div class="example-note">
+            <strong>Как это работает:</strong><br>
+            1. GraphQL запрос получает данные аудитов из таблицы <code>audit</code><br>
+            2. Функция <code>formatAuditForDisplay()</code> форматирует данные<br>
+            3. Отображается в формате: <code>проект - автор - статус - дата</code><br>
+            4. Статус: <code>passed</code> (grade >= 1) или <code>failed</code> (grade < 1)
+        </div>
+    </div>
+</body>
+</html>

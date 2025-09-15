@@ -1268,62 +1268,40 @@ class TomorrowSchoolApp {
                     ✅ With project data: ${conductedAudits.filter(a => a.result && a.result.object).length} | 
                     ⚠️ Missing data: ${conductedAudits.filter(a => !a.result || !a.result.object).length}</p>
                 </div>
+                
+                <!-- Simple Text Format -->
+                <div class="audit-simple-format">
+                    <h4>Audits in Simple Format:</h4>
+                    <div class="audit-text-list">
+                        ${conductedAudits
+                            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                            .slice(0, 20)
+                            .map(audit => {
+                                const formattedAudit = this.formatAuditForDisplay(audit);
+                                return `${formattedAudit.projectName} - ${formattedAudit.author} - ${formattedAudit.status} - ${formattedAudit.date}`;
+                            }).join('<br>')}
+                    </div>
+                </div>
+                
                 <div class="recent-audits-list">
                     ${conductedAudits
                         .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
                         .slice(0, 15)
                         .map(audit => {
-                            const date = new Date(audit.createdAt);
-                            const gradeValue = audit.grade || 0;
-                            const status = gradeValue >= 1 ? 'succeeded' : 'failed';
-                            const statusClass = gradeValue >= 1 ? 'passed' : 'failed';
-                            
-                            // Handle missing result data
-                            let projectName, author, hasResult;
-                            if (audit.result && audit.result.object) {
-                                projectName = audit.result.object.name || 'Unknown Project';
-                                author = audit.result.object.authorId || 'Unknown Author';
-                                hasResult = true;
-                            } else if (audit.attrs) {
-                                // Try to extract info from attrs if available
-                                try {
-                                    const attrs = typeof audit.attrs === 'string' ? JSON.parse(audit.attrs) : audit.attrs;
-                                    console.log('Attrs for audit', audit.id, ':', attrs);
-                                    
-                                    // Look for project info in various possible fields
-                                    projectName = attrs.projectName || attrs.name || attrs.project_name || 
-                                                attrs.objectName || attrs.object_name || 
-                                                attrs.title || attrs.subject || `Audit #${audit.id}`;
-                                    
-                                    author = attrs.author || attrs.user || attrs.authorId || 
-                                            attrs.author_id || attrs.userId || attrs.user_id || 
-                                            attrs.login || attrs.username || 'Unknown Author';
-                                    
-                                    hasResult = true;
-                                } catch (e) {
-                                    console.log('Error parsing attrs for audit', audit.id, ':', e);
-                                    projectName = `Audit #${audit.id}`;
-                                    author = 'Unknown Author';
-                                    hasResult = false;
-                                }
-                            } else {
-                                // Fallback
-                                projectName = `Audit #${audit.id}`;
-                                author = 'Unknown Author';
-                                hasResult = false;
-                            }
+                            // Используем новую функцию форматирования
+                            const formattedAudit = this.formatAuditForDisplay(audit);
                             
                             return `
-                                <div class="recent-audit-item ${statusClass} ${hasResult ? 'has-result' : 'no-result'}">
+                                <div class="recent-audit-item ${formattedAudit.status} ${formattedAudit.hasResult ? 'has-result' : 'no-result'}">
                                     <div class="audit-content">
-                                        <span class="audit-project">${projectName}</span>
+                                        <span class="audit-project">${formattedAudit.projectName}</span>
                                         <span class="audit-separator">-</span>
-                                        <span class="audit-author">${author}</span>
+                                        <span class="audit-author">${formattedAudit.author}</span>
                                         <span class="audit-separator">-</span>
-                                        <span class="audit-status ${statusClass}">${status}</span>
+                                        <span class="audit-status ${formattedAudit.status}">${formattedAudit.status}</span>
                                         <span class="audit-separator">-</span>
-                                        <span class="audit-date">${date.toLocaleDateString()}</span>
-                                        ${!hasResult ? '<span class="audit-warning">⚠️ No Result Data</span>' : ''}
+                                        <span class="audit-date">${formattedAudit.date}</span>
+                                        ${!formattedAudit.hasResult ? '<span class="audit-warning">⚠️ No Result Data</span>' : ''}
                                     </div>
                                 </div>
                             `;
@@ -1743,6 +1721,55 @@ class TomorrowSchoolApp {
         setTimeout(() => {
             document.body.removeChild(tooltip);
         }, 2000);
+    }
+
+    formatAuditForDisplay(audit) {
+        /**
+         * Форматирует аудит в нужном формате: название проекта - автор проекта - оценка проекта - дата
+         * Например: forum - akakharo - failed - 8/11/2025
+         */
+        const date = new Date(audit.createdAt);
+        const gradeValue = audit.grade || 0;
+        const status = gradeValue >= 1 ? 'passed' : 'failed';
+        
+        // Получаем название проекта и автора
+        let projectName = 'Unknown Project';
+        let author = 'Unknown Author';
+        
+        if (audit.result && audit.result.object) {
+            projectName = audit.result.object.name || 'Unknown Project';
+            author = audit.result.object.authorId || 'Unknown Author';
+        } else if (audit.attrs) {
+            // Пытаемся извлечь информацию из attrs
+            try {
+                const attrs = typeof audit.attrs === 'string' ? JSON.parse(audit.attrs) : audit.attrs;
+                
+                projectName = attrs.projectName || attrs.name || attrs.project_name || 
+                            attrs.objectName || attrs.object_name || 
+                            attrs.title || attrs.subject || `Audit #${audit.id}`;
+                
+                author = attrs.author || attrs.user || attrs.authorId || 
+                        attrs.author_id || attrs.userId || attrs.user_id || 
+                        attrs.login || attrs.username || 'Unknown Author';
+            } catch (e) {
+                console.log('Error parsing attrs for audit', audit.id, ':', e);
+                projectName = `Audit #${audit.id}`;
+                author = 'Unknown Author';
+            }
+        }
+        
+        // Форматируем дату в нужном формате (M/D/YYYY)
+        const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+        
+        return {
+            projectName,
+            author,
+            status,
+            date: formattedDate,
+            fullDate: date,
+            grade: gradeValue,
+            hasResult: !!(audit.result && audit.result.object)
+        };
     }
 
     showError(message) {
