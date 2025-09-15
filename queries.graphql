@@ -1,4 +1,4 @@
-# GraphQL запросы для Tomorrow School API
+# GraphQL запросы для Tomorrow School API (Hasura)
 # Используйте VS Code GraphQL расширение для выполнения этих запросов
 
 # Получить информацию о пользователе
@@ -13,7 +13,7 @@ query GetUserInfo {
   }
 }
 
-# Получить аудиты с результатами
+# Получить аудиты с результатами (исправленный синтаксис Hasura)
 query GetAuditsWithResults($limit: Int = 10) {
   audit(limit: $limit) {
     id

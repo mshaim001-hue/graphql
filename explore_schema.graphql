@@ -1,0 +1,91 @@
+# Исследование схемы GraphQL API Tomorrow School
+# Эти запросы помогут понять реальную структуру API
+
+# 1. Простой запрос для проверки доступных полей
+query ExploreRootFields {
+  __schema {
+    queryType {
+      fields {
+        name
+        description
+        type {
+          name
+          kind
+        }
+      }
+    }
+  }
+}
+
+# 2. Получить информацию о типах
+query ExploreTypes {
+  __type(name: "query_root") {
+    fields {
+      name
+      description
+      args {
+        name
+        type {
+          name
+          kind
+        }
+      }
+    }
+  }
+}
+
+# 3. Получить информацию о типе audit
+query ExploreAuditType {
+  __type(name: "audit") {
+    fields {
+      name
+      description
+      type {
+        name
+        kind
+      }
+    }
+  }
+}
+
+# 4. Получить информацию о типе result
+query ExploreResultType {
+  __type(name: "result") {
+    fields {
+      name
+      description
+      type {
+        name
+        kind
+      }
+    }
+  }
+}
+
+# 5. Получить информацию о типе object
+query ExploreObjectType {
+  __type(name: "object") {
+    fields {
+      name
+      description
+      type {
+        name
+        kind
+      }
+    }
+  }
+}
+
+# 6. Получить информацию о типе user
+query ExploreUserType {
+  __type(name: "user") {
+    fields {
+      name
+      description
+      type {
+        name
+        kind
+      }
+    }
+  }
+}

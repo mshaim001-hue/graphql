@@ -1,173 +1,224 @@
 #!/usr/bin/env python3
+"""
+Проверка существования результатов по ID из аудитов
+"""
+
 import requests
 import json
-import base64
+import os
+from dotenv import load_dotenv
 
-def get_jwt_token(username, password):
-    """Get JWT token using username and password"""
-    auth_url = 'https://01.tomorrow-school.ai/api/auth/signin'
+# Загружаем переменные окружения
+load_dotenv()
+
+def make_graphql_request(query, variables=None):
+    """Выполнить GraphQL запрос"""
+    api_url = 'https://01.tomorrow-school.ai/api/graphql-engine/v1/graphql'
+    token = os.getenv('GRAPHQL_TOKEN')
     
-    credentials = base64.b64encode(f"{username}:{password}".encode()).decode()
+    if not token:
+        print("❌ GRAPHQL_TOKEN не найден в .env файле")
+        return None
     
     headers = {
-        'Authorization': f'Basic {credentials}',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': f'Bearer {token}'
     }
     
+    payload = {
+        'query': query
+    }
+    
+    if variables:
+        payload['variables'] = variables
+    
     try:
-        response = requests.post(auth_url, headers=headers)
+        response = requests.post(api_url, headers=headers, json=payload)
         response.raise_for_status()
         
         data = response.json()
         
-        if isinstance(data, str):
-            jwt = data
-        else:
-            jwt = data.get('token') or data.get('access_token') or data.get('jwt') or data
+        if 'errors' in data:
+            print(f"❌ GraphQL ошибки: {data['errors']}")
+            return None
         
-        if not jwt:
-            raise Exception('No token received from server')
+        return data.get('data', {})
         
-        return jwt
     except Exception as e:
-        print(f"Error getting JWT token: {e}")
+        print(f"❌ Ошибка запроса: {e}")
         return None
 
-def check_results_directly(jwt):
-    """Check if we can access result table directly"""
-    api_url = 'https://01.tomorrow-school.ai/api/graphql-engine/v1/graphql'
+def check_results_exist():
+    """Проверить существование результатов"""
+    print("🔍 Проверка существования результатов")
+    print("=" * 50)
     
-    # Try to get results directly
+    # ID результатов из аудитов
+    result_ids = [53666, 46370, 95241, 54335, 53034, 240932]
+    
+    for result_id in result_ids:
+        print(f"\nПроверка результата {result_id}:")
+        
+        query = """
+        query GetResultById($resultId: Int!) {
+            result(where: {id: {_eq: $resultId}}) {
+                id
+                userId
+                objectId
+                grade
+                object {
+                    id
+                    name
+                    type
+                    authorId
+                }
+                user {
+                    id
+                    login
+                    profile
+                    attrs
+                }
+            }
+        }
+        """
+        
+        variables = {"resultId": result_id}
+        data = make_graphql_request(query, variables)
+        
+        if data and 'result' in data:
+            results = data['result']
+            if results:
+                result = results[0]
+                print(f"  ✅ Результат найден")
+                print(f"     UserId: {result['userId']}")
+                print(f"     ObjectId: {result['objectId']}")
+                print(f"     Grade: {result['grade']}")
+                
+                if result.get('object'):
+                    obj = result['object']
+                    print(f"     Project: {obj['name']} (Type: {obj['type']})")
+                    print(f"     AuthorId: {obj['authorId']}")
+                else:
+                    print(f"     ❌ No object data")
+                
+                if result.get('user'):
+                    user = result['user']
+                    print(f"     Author: {user['login']}")
+                else:
+                    print(f"     ❌ No user data")
+            else:
+                print(f"  ❌ Результат не найден")
+        else:
+            print(f"  ❌ Ошибка запроса")
+
+def check_all_results():
+    """Проверить все доступные результаты"""
+    print("\n🔍 Проверка всех доступных результатов")
+    print("=" * 50)
+    
     query = """
-    query {
-        result(limit: 10) {
+    query GetAllResults($limit: Int!) {
+        result(limit: $limit, order_by: {id: desc}) {
             id
             userId
-            groupId
             objectId
-            eventId
             grade
-            createdAt
+            object {
+                id
+                name
+                type
+                authorId
+            }
+            user {
+                id
+                login
+            }
         }
     }
     """
     
-    headers = {
-        'Content-Type': 'application/json',
-        'Authorization': f'Bearer {jwt}'
-    }
+    variables = {"limit": 20}
+    data = make_graphql_request(query, variables)
     
-    try:
-        response = requests.post(api_url, headers=headers, json={'query': query})
-        response.raise_for_status()
+    if data and 'result' in data:
+        results = data['result']
+        print(f"✅ Найдено результатов: {len(results)}")
         
-        data = response.json()
-        
-        if 'errors' in data:
-            print("GraphQL Errors:")
-            for error in data['errors']:
-                print(f"  - {error['message']}")
-            return None
-        
-        return data['data']['result']
-    except Exception as e:
-        print(f"Error checking results: {e}")
-        return None
+        for result in results[:10]:  # Показываем первые 10
+            print(f"  Result {result['id']}:")
+            print(f"    UserId: {result['userId']}")
+            print(f"    ObjectId: {result['objectId']}")
+            print(f"    Grade: {result['grade']}")
+            
+            if result.get('object'):
+                obj = result['object']
+                print(f"    Project: {obj['name']} (Type: {obj['type']})")
+            else:
+                print(f"    ❌ No object data")
+            
+            if result.get('user'):
+                user = result['user']
+                print(f"    Author: {user['login']}")
+            else:
+                print(f"    ❌ No user data")
+            print()
+    else:
+        print("❌ Ошибка получения результатов")
 
-def check_specific_results(jwt, result_ids):
-    """Check specific result IDs from audits"""
-    api_url = 'https://01.tomorrow-school.ai/api/graphql-engine/v1/graphql'
+def check_audit_result_connection():
+    """Проверить связь между аудитами и результатами"""
+    print("\n🔍 Проверка связи audit -> result")
+    print("=" * 50)
     
-    # Try to get specific results
-    query = f"""
-    query {{
-        result(where: {{id: {{_in: {result_ids}}}}} {{
+    # Получим аудиты с resultId
+    query = """
+    query GetAuditsWithResultId {
+        audit(limit: 10, order_by: {id: desc}) {
             id
-            userId
-            groupId
-            objectId
-            eventId
             grade
-            createdAt
-        }}
-    }}
+            resultId
+            result {
+                id
+                userId
+                objectId
+                object {
+                    name
+                    type
+                }
+                user {
+                    login
+                }
+            }
+        }
+    }
     """
     
-    headers = {
-        'Content-Type': 'application/json',
-        'Authorization': f'Bearer {jwt}'
-    }
+    data = make_graphql_request(query)
     
-    try:
-        response = requests.post(api_url, headers=headers, json={'query': query})
-        response.raise_for_status()
+    if data and 'audit' in data:
+        audits = data['audit']
+        print(f"✅ Найдено аудитов: {len(audits)}")
         
-        data = response.json()
-        
-        if 'errors' in data:
-            print("GraphQL Errors:")
-            for error in data['errors']:
-                print(f"  - {error['message']}")
-            return None
-        
-        return data['data']['result']
-    except Exception as e:
-        print(f"Error checking specific results: {e}")
-        return None
-
-def main():
-    print("=== Checking Result Table Access ===")
-    
-    # Get credentials
-    username = input("Enter username/email: ")
-    password = input("Enter password: ")
-    
-    print("\n1. Getting JWT token...")
-    jwt = get_jwt_token(username, password)
-    if not jwt:
-        print("Failed to get JWT token")
-        return
-    
-    print("✓ JWT token obtained")
-    
-    print("\n2. Checking direct access to result table...")
-    results = check_results_directly(jwt)
-    if results:
-        print(f"✓ Can access result table directly! Found {len(results)} results")
-        print("Sample result:")
-        print(json.dumps(results[0], indent=2))
+        for audit in audits:
+            print(f"  Аудит {audit['id']}:")
+            print(f"    Grade: {audit['grade']}")
+            print(f"    ResultId: {audit['resultId']}")
+            print(f"    Has Result: {bool(audit.get('result'))}")
+            
+            if audit.get('result'):
+                result = audit['result']
+                print(f"    ✅ Result data available")
+                if result.get('object'):
+                    print(f"    Project: {result['object']['name']}")
+                if result.get('user'):
+                    print(f"    Author: {result['user']['login']}")
+            else:
+                print(f"    ❌ No result data")
+            print()
     else:
-        print("❌ Cannot access result table directly")
-    
-    print("\n3. Loading audit data to get result IDs...")
-    # Load audit data to get result IDs
-    with open('audit_analysis_full.json', 'r') as f:
-        audit_data = json.load(f)
-    
-    audits = audit_data['audits']
-    result_ids = [audit['resultId'] for audit in audits if audit.get('resultId')]
-    print(f"Found {len(result_ids)} result IDs from audits")
-    
-    if result_ids:
-        print("\n4. Checking specific result IDs...")
-        # Check first 10 result IDs
-        sample_result_ids = result_ids[:10]
-        specific_results = check_specific_results(jwt, sample_result_ids)
-        
-        if specific_results:
-            print(f"✓ Can access specific results! Found {len(specific_results)} results")
-            print("Sample specific result:")
-            print(json.dumps(specific_results[0], indent=2))
-        else:
-            print("❌ Cannot access specific results")
-    
-    print("\n=== CONCLUSION ===")
-    if results:
-        print("✅ Проблема: GraphQL запрос audit->result не работает, но прямой доступ к result есть")
-        print("💡 Решение: Нужно исправить GraphQL запрос или использовать прямой доступ к result")
-    else:
-        print("❌ Проблема: Нет доступа к таблице result")
-        print("💡 Решение: Нужно проверить права доступа или структуру базы данных")
+        print("❌ Ошибка получения аудитов")
 
 if __name__ == "__main__":
-    main()
+    check_results_exist()
+    check_all_results()
+    check_audit_result_connection()

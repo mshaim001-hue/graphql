@@ -1,0 +1,169 @@
+# Отладочные запросы для исследования проблемы с аудитами
+# Hasura GraphQL синтаксис
+
+# 1. Получить аудиты с фильтрацией по auditorId
+query GetUserAudits($auditorId: Int!) {
+  audit(where: {auditorId: {_eq: $auditorId}}, limit: 10) {
+    id
+    grade
+    createdAt
+    resultId
+    attrs
+    result {
+      id
+      userId
+      objectId
+      object {
+        id
+        name
+        type
+        authorId
+      }
+      user {
+        id
+        login
+        profile
+        attrs
+      }
+    }
+  }
+}
+
+# 2. Получить все результаты для анализа
+query GetAllResults($limit: Int = 20) {
+  result(limit: $limit) {
+    id
+    userId
+    objectId
+    grade
+    object {
+      id
+      name
+      type
+      authorId
+    }
+    user {
+      id
+      login
+      profile
+      attrs
+    }
+  }
+}
+
+# 3. Получить все объекты (проекты)
+query GetAllObjects($limit: Int = 20) {
+  object(limit: $limit) {
+    id
+    name
+    type
+    authorId
+    attrs
+  }
+}
+
+# 4. Получить конкретный аудит по ID
+query GetAuditById($auditId: Int!) {
+  audit(where: {id: {_eq: $auditId}}) {
+    id
+    grade
+    createdAt
+    resultId
+    attrs
+    result {
+      id
+      userId
+      objectId
+      object {
+        id
+        name
+        type
+        authorId
+      }
+      user {
+        id
+        login
+        profile
+        attrs
+      }
+    }
+  }
+}
+
+# 5. Получить конкретный результат по ID
+query GetResultById($resultId: Int!) {
+  result(where: {id: {_eq: $resultId}}) {
+    id
+    userId
+    objectId
+    grade
+    object {
+      id
+      name
+      type
+      authorId
+    }
+    user {
+      id
+      login
+      profile
+      attrs
+    }
+  }
+}
+
+# 6. Получить конкретный объект по ID
+query GetObjectById($objectId: Int!) {
+  object(where: {id: {_eq: $objectId}}) {
+    id
+    name
+    type
+    authorId
+    attrs
+  }
+}
+
+# 7. Получить конкретного пользователя по ID
+query GetUserById($userId: Int!) {
+  user(where: {id: {_eq: $userId}}) {
+    id
+    login
+    profile
+    attrs
+    firstName
+    lastName
+    email
+  }
+}
+
+# 8. Анализ связей: аудит -> результат -> объект -> автор
+query AnalyzeAuditChain($auditId: Int!) {
+  audit(where: {id: {_eq: $auditId}}) {
+    id
+    grade
+    resultId
+    result {
+      id
+      userId
+      objectId
+      object {
+        id
+        name
+        type
+        authorId
+        author {
+          id
+          login
+          firstName
+          lastName
+        }
+      }
+      user {
+        id
+        login
+        firstName
+        lastName
+      }
+    }
+  }
+}

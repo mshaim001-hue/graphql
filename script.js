@@ -1429,6 +1429,12 @@ class TomorrowSchoolApp {
                 <!-- Simple Text Format -->
                 <div class="audit-simple-format">
                     <h4>Audits in Simple Format:</h4>
+                    <div class="audit-info">
+                        <p>📊 Total: ${conductedAudits.length} audits | 
+                        ✅ With project data: ${conductedAudits.filter(a => a.result && a.result.object).length} | 
+                        ⚠️ Missing data: ${conductedAudits.filter(a => !a.result || !a.result.object).length} | 
+                        🗑️ Deleted results: ${conductedAudits.filter(a => a.resultId && !a.result).length}</p>
+                    </div>
                     <div class="audit-text-list">
                         ${conductedAudits
                             .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
@@ -1924,6 +1930,11 @@ class TomorrowSchoolApp {
             } else {
                 author = 'Unknown Author';
             }
+        } else if (audit.resultId) {
+            // Приоритет 2: есть resultId, но нет result объекта
+            // Это означает, что результат был удален или недоступен
+            projectName = `Deleted Project (Result #${audit.resultId})`;
+            author = 'Unknown Author (Result Deleted)';
         } else if (audit.attrs) {
             // Приоритет 2: данные из attrs
             try {
