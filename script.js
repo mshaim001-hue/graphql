@@ -242,8 +242,6 @@ class TomorrowSchoolApp {
             }
             
             
-            // Load additional user statistics
-            await this.loadUserStatistics();
             
             // Load statistics and create graphs
             await this.loadStatistics();
