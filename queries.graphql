@@ -1,5 +1,5 @@
-# GraphQL запросы для Tomorrow School API (Hasura)
-# Используйте VS Code GraphQL расширение для выполнения этих запросов
+# GraphQL запросы для Tomorrow School API
+# Используйте VS Code GraphQL расширение для выполнения
 
 # Получить информацию о пользователе
 query GetUserInfo {
@@ -13,9 +13,9 @@ query GetUserInfo {
   }
 }
 
-# Получить аудиты с результатами (исправленный синтаксис Hasura)
-query GetAuditsWithResults($limit: Int = 10) {
-  audit(limit: $limit) {
+# Получить аудиты
+query GetAudits {
+  audit(limit: 10) {
     id
     grade
     createdAt
@@ -34,19 +34,19 @@ query GetAuditsWithResults($limit: Int = 10) {
         id
         login
         profile
-        attrs
       }
     }
   }
 }
 
-# Получить результаты напрямую
-query GetResultsDirectly($limit: Int = 10) {
-  result(limit: $limit) {
+# Получить ваши результаты
+query GetMyResults {
+  result(where: {userId: {_eq: 2058}}, limit: 10, order_by: {createdAt: desc}) {
     id
     userId
     objectId
     grade
+    createdAt
     object {
       id
       name
@@ -57,29 +57,18 @@ query GetResultsDirectly($limit: Int = 10) {
       id
       login
       profile
-      attrs
     }
   }
 }
 
-# Получить объекты (проекты, упражнения)
-query GetObjects($limit: Int = 20) {
-  object(limit: $limit) {
-    id
-    name
-    type
-    authorId
-    attrs
-  }
-}
-
-# Получить прогресс пользователя
-query GetProgress($limit: Int = 10) {
-  progress(limit: $limit) {
+# Получить все результаты
+query GetAllResults {
+  result(limit: 10, order_by: {createdAt: desc}) {
     id
     userId
     objectId
     grade
+    createdAt
     object {
       id
       name
@@ -90,79 +79,6 @@ query GetProgress($limit: Int = 10) {
       id
       login
       profile
-      attrs
-    }
-  }
-}
-
-# Получить транзакции XP
-query GetXPTransactions($limit: Int = 10) {
-  transaction(where: {type: {_eq: "xp"}}, limit: $limit, order_by: {createdAt: desc}) {
-    id
-    amount
-    createdAt
-    path
-    objectId
-    attrs
-  }
-}
-
-# Получить группы пользователя
-query GetUserGroups {
-  group_user {
-    id
-    userId
-    groupId
-    confirmed
-    createdAt
-    group {
-      id
-      objectId
-      captainId
-      status
-    }
-  }
-}
-
-# Получить события пользователя
-query GetUserEvents {
-  event_user {
-    id
-    userId
-    eventId
-    createdAt
-    event {
-      id
-      objectId
-      status
-    }
-  }
-}
-
-# Анализ аудитов для отладки
-query AnalyzeAuditData($auditId: Int!) {
-  audit(where: {id: {_eq: $auditId}}) {
-    id
-    grade
-    createdAt
-    resultId
-    attrs
-    result {
-      id
-      userId
-      objectId
-      object {
-        id
-        name
-        type
-        authorId
-      }
-      user {
-        id
-        login
-        profile
-        attrs
-      }
     }
   }
 }
