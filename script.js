@@ -377,10 +377,19 @@ class TomorrowSchoolApp {
                         resultId
                         result {
                             id
+                            userId
+                            objectId
                             object {
+                                id
                                 name
                                 type
                                 authorId
+                            }
+                            user {
+                                id
+                                login
+                                profile
+                                attrs
                             }
                         }
                         group {
@@ -402,6 +411,31 @@ class TomorrowSchoolApp {
                 sample: auditData.audit?.slice(0, 3) || [],
                 allIds: auditData.audit?.map(a => a.id) || []
             });
+            
+            // Debug: analyze data structure for first few audits
+            if (auditData.audit && auditData.audit.length > 0) {
+                console.log('=== AUDIT DATA STRUCTURE ANALYSIS ===');
+                auditData.audit.slice(0, 3).forEach((audit, index) => {
+                    console.log(`Audit ${index + 1} (ID: ${audit.id}):`, {
+                        hasResult: !!audit.result,
+                        resultId: audit.resultId,
+                        resultStructure: audit.result ? {
+                            hasObject: !!audit.result.object,
+                            hasUser: !!audit.result.user,
+                            objectName: audit.result.object?.name,
+                            objectType: audit.result.object?.type,
+                            objectAuthorId: audit.result.object?.authorId,
+                            userId: audit.result.userId,
+                            userLogin: audit.result.user?.login,
+                            userProfile: audit.result.user?.profile,
+                            userAttrs: audit.result.user?.attrs
+                        } : null,
+                        attrs: audit.attrs,
+                        grade: audit.grade
+                    });
+                });
+                console.log('=== END ANALYSIS ===');
+            }
             
             // Log audit names and types
             if (auditData.audit) {
@@ -1094,10 +1128,19 @@ class TomorrowSchoolApp {
                         resultId
                         result {
                             id
+                            userId
+                            objectId
                             object {
+                                id
                                 name
                                 type
                                 authorId
+                            }
+                            user {
+                                id
+                                login
+                                profile
+                                attrs
                             }
                         }
                         group {
@@ -1736,13 +1779,42 @@ class TomorrowSchoolApp {
         let projectName = 'Unknown Project';
         let author = 'Unknown Author';
         
+        // Debug: логируем структуру данных для анализа
+        console.log('Audit data structure for audit', audit.id, ':', {
+            hasResult: !!audit.result,
+            resultStructure: audit.result ? {
+                hasObject: !!audit.result.object,
+                hasUser: !!audit.result.user,
+                objectName: audit.result.object?.name,
+                objectType: audit.result.object?.type,
+                userId: audit.result.userId,
+                userLogin: audit.result.user?.login
+            } : null,
+            attrs: audit.attrs
+        });
+        
         if (audit.result && audit.result.object) {
+            // Приоритет 1: данные из связанной таблицы object
             projectName = audit.result.object.name || 'Unknown Project';
-            author = audit.result.object.authorId || 'Unknown Author';
+            
+            // Пытаемся получить автора из разных источников
+            if (audit.result.user && audit.result.user.login) {
+                // Автор из связанной таблицы user
+                author = audit.result.user.login;
+            } else if (audit.result.object.authorId) {
+                // Автор из поля authorId объекта
+                author = audit.result.object.authorId;
+            } else if (audit.result.userId) {
+                // Используем userId как fallback
+                author = `user_${audit.result.userId}`;
+            } else {
+                author = 'Unknown Author';
+            }
         } else if (audit.attrs) {
-            // Пытаемся извлечь информацию из attrs
+            // Приоритет 2: данные из attrs
             try {
                 const attrs = typeof audit.attrs === 'string' ? JSON.parse(audit.attrs) : audit.attrs;
+                console.log('Parsed attrs for audit', audit.id, ':', attrs);
                 
                 projectName = attrs.projectName || attrs.name || attrs.project_name || 
                             attrs.objectName || attrs.object_name || 
@@ -1756,6 +1828,10 @@ class TomorrowSchoolApp {
                 projectName = `Audit #${audit.id}`;
                 author = 'Unknown Author';
             }
+        } else {
+            // Fallback
+            projectName = `Audit #${audit.id}`;
+            author = 'Unknown Author';
         }
         
         // Форматируем дату в нужном формате (M/D/YYYY)
