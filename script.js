@@ -283,8 +283,31 @@ class TomorrowSchoolApp {
 
     async calculateUserLevel(userId) {
         try {
-            // Получаем результаты пользователя для вычисления level
-            const query = `
+            // Получаем последнюю транзакцию типа "level" для получения настоящего level
+            const levelQuery = `
+                query {
+                    transaction(where: {userId: {_eq: ${userId}}, type: {_eq: "level"}}, order_by: {createdAt: desc}, limit: 1) {
+                        amount
+                        createdAt
+                        path
+                    }
+                }
+            `;
+
+            const levelData = await this.makeGraphQLQuery(levelQuery);
+            let currentLevel = 1;
+            let levelDate = null;
+            let levelPath = null;
+
+            if (levelData && levelData.transaction && levelData.transaction.length > 0) {
+                const levelTx = levelData.transaction[0];
+                currentLevel = Math.round(levelTx.amount);
+                levelDate = levelTx.createdAt;
+                levelPath = levelTx.path;
+            }
+
+            // Также получаем статистику по проектам для дополнительной информации
+            const resultsQuery = `
                 query {
                     result(where: {userId: {_eq: ${userId}}}, order_by: {createdAt: desc}) {
                         id
@@ -297,42 +320,35 @@ class TomorrowSchoolApp {
                 }
             `;
 
-            const data = await this.makeGraphQLQuery(query);
-            if (data && data.result) {
-                const results = data.result;
-                
-                // Вычисляем level на основе количества завершенных проектов
-                const completedProjects = results.filter(r => r.grade > 0);
-                const totalProjects = results.length;
-                const averageGrade = results.length > 0 ? 
+            const resultsData = await this.makeGraphQLQuery(resultsQuery);
+            let completedProjects = 0;
+            let totalProjects = 0;
+            let averageGrade = 0;
+
+            if (resultsData && resultsData.result) {
+                const results = resultsData.result;
+                completedProjects = results.filter(r => r.grade > 0).length;
+                totalProjects = results.length;
+                averageGrade = results.length > 0 ? 
                     results.reduce((sum, r) => sum + (r.grade || 0), 0) / results.length : 0;
-                
-                // Простая формула для level: базовый level + бонусы за качество
-                let level = 1; // Базовый level
-                
-                if (totalProjects > 0) {
-                    // +1 level за каждые 5 завершенных проектов
-                    level += Math.floor(completedProjects.length / 5);
-                    
-                    // +1 level за высокий средний балл
-                    if (averageGrade >= 1.0) level += 1;
-                    if (averageGrade >= 1.5) level += 1;
-                    if (averageGrade >= 2.0) level += 1;
-                }
-                
-                return {
-                    level: level,
-                    completedProjects: completedProjects.length,
-                    totalProjects: totalProjects,
-                    averageGrade: Math.round(averageGrade * 100) / 100
-                };
             }
+            
+            return {
+                level: currentLevel,
+                levelDate: levelDate,
+                levelPath: levelPath,
+                completedProjects: completedProjects,
+                totalProjects: totalProjects,
+                averageGrade: Math.round(averageGrade * 100) / 100
+            };
         } catch (error) {
             console.log('Error calculating user level:', error);
         }
         
         return {
             level: 1,
+            levelDate: null,
+            levelPath: null,
             completedProjects: 0,
             totalProjects: 0,
             averageGrade: 0
@@ -388,6 +404,7 @@ class TomorrowSchoolApp {
                     <span class="level-details">
                         ${user.level?.completedProjects || 0} projects completed
                         ${user.level?.averageGrade ? `(avg: ${user.level.averageGrade})` : ''}
+                        ${user.level?.levelDate ? `<br><small>Updated: ${formatDate(user.level.levelDate)}</small>` : ''}
                     </span>
                 </div>
             </div>

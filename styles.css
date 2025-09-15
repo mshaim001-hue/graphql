@@ -208,6 +208,12 @@ section h2 {
     font-weight: 400;
 }
 
+.level-details small {
+    font-size: 0.8rem;
+    color: #888;
+    font-style: italic;
+}
+
 /* Statistics Section */
 .statistics-section {
     background: white;
