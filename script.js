@@ -412,6 +412,120 @@ class TomorrowSchoolApp {
                 allIds: auditData.audit?.map(a => a.id) || []
             });
             
+            // Try to get result data for audits that have resultId but no result object
+            if (auditData.audit && auditData.audit.length > 0) {
+                const auditsWithResultId = auditData.audit.filter(a => a.resultId && !a.result);
+                console.log('Audits with resultId but no result object:', auditsWithResultId.length);
+                
+                if (auditsWithResultId.length > 0) {
+                    // Get result data for these audits
+                    const resultIds = auditsWithResultId.map(a => a.resultId);
+                    console.log('Fetching result data for resultIds:', resultIds);
+                    
+                    const resultQuery = `
+                        query {
+                            result(where: {id: {_in: [${resultIds.join(',')}]}}) {
+                                id
+                                userId
+                                objectId
+                                object {
+                                    id
+                                    name
+                                    type
+                                    authorId
+                                }
+                                user {
+                                    id
+                                    login
+                                    profile
+                                    attrs
+                                }
+                            }
+                        }
+                    `;
+                    
+                    try {
+                        const resultData = await this.makeGraphQLQuery(resultQuery);
+                        console.log('Result data fetched:', resultData);
+                        
+                        // Merge result data back into audits
+                        if (resultData.result) {
+                            auditData.audit.forEach(audit => {
+                                if (audit.resultId && !audit.result) {
+                                    const matchingResult = resultData.result.find(r => r.id === audit.resultId);
+                                    if (matchingResult) {
+                                        audit.result = matchingResult;
+                                        console.log(`Merged result data for audit ${audit.id}:`, matchingResult);
+                                    }
+                                }
+                            });
+                        }
+                    } catch (error) {
+                        console.error('Error fetching result data:', error);
+                    }
+                }
+                
+                // Alternative: try to get data through progress table
+                const auditsStillMissingData = auditData.audit.filter(a => a.resultId && (!a.result || !a.result.object));
+                if (auditsStillMissingData.length > 0) {
+                    console.log('Trying to get data through progress table for audits:', auditsStillMissingData.length);
+                    
+                    // Get progress data that might be related to these audits
+                    const progressQuery = `
+                        query {
+                            progress(where: {userId: {_eq: ${this.userId}}}) {
+                                id
+                                userId
+                                objectId
+                                object {
+                                    id
+                                    name
+                                    type
+                                    authorId
+                                }
+                                user {
+                                    id
+                                    login
+                                    profile
+                                    attrs
+                                }
+                            }
+                        }
+                    `;
+                    
+                    try {
+                        const progressData = await this.makeGraphQLQuery(progressQuery);
+                        console.log('Progress data fetched:', progressData);
+                        
+                        // Try to match audits with progress data by objectId or other criteria
+                        if (progressData.progress) {
+                            auditData.audit.forEach(audit => {
+                                if (audit.resultId && (!audit.result || !audit.result.object)) {
+                                    // Try to find matching progress by objectId or other criteria
+                                    const matchingProgress = progressData.progress.find(p => 
+                                        p.objectId && audit.result && audit.result.objectId === p.objectId
+                                    );
+                                    
+                                    if (matchingProgress && matchingProgress.object) {
+                                        // Create a mock result object from progress data
+                                        audit.result = {
+                                            id: audit.resultId,
+                                            userId: matchingProgress.userId,
+                                            objectId: matchingProgress.objectId,
+                                            object: matchingProgress.object,
+                                            user: matchingProgress.user
+                                        };
+                                        console.log(`Created result from progress for audit ${audit.id}:`, audit.result);
+                                    }
+                                }
+                            });
+                        }
+                    } catch (error) {
+                        console.error('Error fetching progress data:', error);
+                    }
+                }
+            }
+            
             // Debug: analyze data structure for first few audits
             if (auditData.audit && auditData.audit.length > 0) {
                 console.log('=== AUDIT DATA STRUCTURE ANALYSIS ===');

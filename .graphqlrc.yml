@@ -1,0 +1,9 @@
+# GraphQL конфигурация для Tomorrow School API
+schema: "https://01.tomorrow-school.ai/api/graphql-engine/v1/graphql"
+documents: "**/*.{graphql,gql,js,ts,jsx,tsx}"
+endpoints:
+  default:
+    url: "https://01.tomorrow-school.ai/api/graphql-engine/v1/graphql"
+    headers:
+      Authorization: "Bearer ${GRAPHQL_TOKEN}"
+      Content-Type: "application/json"
