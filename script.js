@@ -52,6 +52,11 @@ class TomorrowSchoolApp {
         document.getElementById('logout-btn').addEventListener('click', () => {
             this.handleLogout();
         });
+
+        // More Info button
+        document.getElementById('more-info-btn').addEventListener('click', () => {
+            this.handleMoreInfo();
+        });
     }
 
     showLogin() {
@@ -1371,6 +1376,127 @@ class TomorrowSchoolApp {
         setTimeout(() => {
             document.body.removeChild(errorDiv);
         }, 5000);
+    }
+
+    async handleMoreInfo() {
+        const button = document.getElementById('more-info-btn');
+        const additionalInfo = document.getElementById('additional-info');
+        
+        // Toggle button text and loading state
+        const originalText = button.textContent;
+        button.textContent = 'Loading...';
+        button.disabled = true;
+        
+        try {
+            const userData = await this.loadUserAdditionalInfo();
+            this.displayAdditionalInfo(userData);
+            
+            // Toggle visibility
+            if (additionalInfo.style.display === 'none') {
+                additionalInfo.style.display = 'block';
+                button.textContent = 'Hide Info';
+            } else {
+                additionalInfo.style.display = 'none';
+                button.textContent = 'More Info';
+            }
+        } catch (error) {
+            console.error('Error loading additional info:', error);
+            this.showError('Failed to load additional information');
+        } finally {
+            if (additionalInfo.style.display === 'none') {
+                button.textContent = originalText;
+            }
+            button.disabled = false;
+        }
+    }
+
+    async loadUserAdditionalInfo() {
+        const query = `
+            query {
+                result(order_by: {createdAt: desc}) {
+                    attrs
+                }
+            }
+        `;
+
+        const response = await fetch(this.apiUrl, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${this.jwt}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ query })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        
+        if (data.errors) {
+            throw new Error(`GraphQL errors: ${data.errors.map(e => e.message).join(', ')}`);
+        }
+
+        console.log('GraphQL query successful, received', data.data.result.length, 'results');
+        
+        return data.data.result;
+    }
+
+    displayAdditionalInfo(results) {
+        const additionalInfo = document.getElementById('additional-info');
+        
+        // Debug: log basic info
+        console.log('Searching through', results.length, 'results for personal data...');
+        
+        // Find the first result with personal data in attrs
+        let userAttrs = null;
+        for (let i = 0; i < results.length; i++) {
+            const result = results[i];
+            if (result.attrs && Object.keys(result.attrs).length > 0) {
+                // Check if this attrs contains personal information
+                const attrs = result.attrs;
+                if (attrs.phone || attrs.email || attrs.gender || attrs.firstName || attrs.lastName || 
+                    attrs.dateOfBirth || attrs.addressCity || attrs.addressStreet) {
+                    console.log(`Found personal data in result ${i}:`, attrs);
+                    userAttrs = attrs;
+                    break;
+                }
+            }
+        }
+
+        if (!userAttrs) {
+            additionalInfo.innerHTML = `
+                <h3>Additional Information</h3>
+                <p style="color: #6c757d; font-style: italic;">No additional information available</p>
+            `;
+            return;
+        }
+
+        // Extract the required fields from attrs
+        const fields = {
+            'First Name': userAttrs.firstName || 'Not provided',
+            'Last Name': userAttrs.lastName || 'Not provided',
+            'Phone': userAttrs.phone || 'Not provided',
+            'Email': userAttrs.email || 'Not provided',
+            'Gender': userAttrs.gender || 'Not provided',
+            'Date of Birth': userAttrs.dateOfBirth ? new Date(userAttrs.dateOfBirth).toLocaleDateString() : 'Not provided',
+            'City': userAttrs.addressCity || 'Not provided',
+            'Street': userAttrs.addressStreet || 'Not provided'
+        };
+
+        // Create HTML for additional info
+        let html = '<h3>Additional Information</h3>';
+        for (const [label, value] of Object.entries(fields)) {
+            html += `
+                <div class="info-item">
+                    <span class="info-label">${label}:</span>
+                    <span class="info-value">${value}</span>
+                </div>
+            `;
+        }
+
+        additionalInfo.innerHTML = html;
     }
 }
 

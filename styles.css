@@ -199,7 +199,6 @@ section h2 {
     font-size: 2rem;
     font-weight: 700;
     color: #667eea;
-    text-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
 }
 
 .level-details {
@@ -212,6 +211,81 @@ section h2 {
     font-size: 0.8rem;
     color: #888;
     font-style: italic;
+}
+
+/* More Info Button */
+.more-info-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.more-info-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.more-info-btn:active {
+    transform: translateY(0);
+}
+
+/* Additional Info */
+.additional-info {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    border-left: 4px solid #667eea;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.additional-info h3 {
+    color: #667eea;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.additional-info .info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.additional-info .info-item:last-child {
+    border-bottom: none;
+}
+
+.additional-info .info-label {
+    font-weight: 600;
+    color: #495057;
+    min-width: 120px;
+}
+
+.additional-info .info-value {
+    color: #6c757d;
+    text-align: right;
+    flex: 1;
 }
 
 /* Statistics Section */

@@ -57,3 +57,20 @@ query GetAllResults {
     }
   }
 }
+
+group {
+    id
+    event {
+        id
+        path
+        object {
+            id
+            name
+            type
+            attrs
+            createdAt
+            updatedAt
+            campus
+        }
+    }
+}
