@@ -561,6 +561,30 @@ svg {
     border-left: 4px solid #fff;
 }
 
+/* XP Category Styles */
+.xp-category {
+    background: #f8f9fa;
+    border-left: 4px solid #667eea;
+    transition: transform 0.2s ease;
+}
+
+.xp-category:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+.xp-category h3 {
+    color: #667eea;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.xp-category .value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+}
+
 .total-xp h3 {
     color: white;
     font-size: 1.2rem;

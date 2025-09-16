@@ -468,6 +468,23 @@ class TomorrowSchoolApp {
         const totalXP = transactions.reduce((sum, t) => sum + t.amount, 0);
         const xpDetails = document.getElementById('xp-details');
         
+        // Categorize XP by path
+        const piscineGoXP = transactions
+            .filter(t => t.path && t.path.startsWith('/astanahub/piscinego/'))
+            .reduce((sum, t) => sum + t.amount, 0);
+            
+        const piscineJSXP = transactions
+            .filter(t => t.path && t.path.startsWith('/astanahub/module/piscine-js/'))
+            .reduce((sum, t) => sum + t.amount, 0);
+            
+        const coreEducationXP = transactions
+            .filter(t => t.path && t.path.startsWith('/astanahub/module/') && !t.path.startsWith('/astanahub/module/piscine-js/'))
+            .reduce((sum, t) => sum + t.amount, 0);
+            
+        const otherXP = transactions
+            .filter(t => !t.path || (!t.path.startsWith('/astanahub/piscinego/') && !t.path.startsWith('/astanahub/module/')))
+            .reduce((sum, t) => sum + t.amount, 0);
+        
         // Calculate additional statistics
         const today = new Date();
         const thisWeek = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
@@ -488,6 +505,7 @@ class TomorrowSchoolApp {
         
         // Debug logging (simplified)
         console.log(`XP Data loaded: ${transactions.length} transactions, Total: ${totalXP.toLocaleString()} XP`);
+        console.log(`Piscine Go: ${piscineGoXP.toLocaleString()} XP, Piscine JS: ${piscineJSXP.toLocaleString()} XP, Core Education: ${coreEducationXP.toLocaleString()} XP, Other: ${otherXP.toLocaleString()} XP`);
         
         // Store transactions for activity display
         this.allTransactions = transactions;
@@ -508,6 +526,26 @@ class TomorrowSchoolApp {
             <div class="info-item total-xp">
                 <h3>Total XP</h3>
                 <div class="value">${totalXP.toLocaleString()}</div>
+            </div>
+            
+            <div class="info-item xp-category">
+                <h3>Piscine Go</h3>
+                <div class="value">${piscineGoXP.toLocaleString()}</div>
+            </div>
+            
+            <div class="info-item xp-category">
+                <h3>Piscine JS</h3>
+                <div class="value">${piscineJSXP.toLocaleString()}</div>
+            </div>
+            
+            <div class="info-item xp-category">
+                <h3>Core Education</h3>
+                <div class="value">${coreEducationXP.toLocaleString()}</div>
+            </div>
+            
+            <div class="info-item xp-category">
+                <h3>Other</h3>
+                <div class="value">${otherXP.toLocaleString()}</div>
             </div>
             
             <div class="info-item activity-section">
@@ -1382,7 +1420,17 @@ class TomorrowSchoolApp {
         const button = document.getElementById('more-info-btn');
         const additionalInfo = document.getElementById('additional-info');
         
-        // Toggle button text and loading state
+        // Check current state
+        const isCurrentlyVisible = additionalInfo.style.display !== 'none';
+        
+        if (isCurrentlyVisible) {
+            // Hide the info
+            additionalInfo.style.display = 'none';
+            button.textContent = 'More Info';
+            return;
+        }
+        
+        // Show loading state
         const originalText = button.textContent;
         button.textContent = 'Loading...';
         button.disabled = true;
@@ -1391,21 +1439,14 @@ class TomorrowSchoolApp {
             const userData = await this.loadUserAdditionalInfo();
             this.displayAdditionalInfo(userData);
             
-            // Toggle visibility
-            if (additionalInfo.style.display === 'none') {
-                additionalInfo.style.display = 'block';
-                button.textContent = 'Hide Info';
-            } else {
-                additionalInfo.style.display = 'none';
-                button.textContent = 'More Info';
-            }
+            // Show the info
+            additionalInfo.style.display = 'block';
+            button.textContent = 'Hide Info';
         } catch (error) {
             console.error('Error loading additional info:', error);
             this.showError('Failed to load additional information');
+            button.textContent = originalText;
         } finally {
-            if (additionalInfo.style.display === 'none') {
-                button.textContent = originalText;
-            }
             button.disabled = false;
         }
     }

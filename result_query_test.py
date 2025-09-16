@@ -27,7 +27,20 @@ def test_different_approaches():
     query4 = """
     query {
         result(order_by: {createdAt: desc}) {
+            id
+            userId
+            objectId
+            grade
+            createdAt
+            updatedAt
+            eventId
+            type
+            path
+            version
             attrs
+            isLast
+            campus
+            groupId
         }
     }
     """
