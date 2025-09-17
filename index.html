@@ -43,9 +43,15 @@
                     <div id="user-details" class="info-grid">
                         <!-- User data will be populated here -->
                     </div>
-                    <button id="more-info-btn" class="more-info-btn">More Info</button>
+                    <div class="button-group">
+                        <button id="more-info-btn" class="more-info-btn">More Info</button>
+                        <button id="records-btn" class="records-btn">Records</button>
+                    </div>
                     <div id="additional-info" class="additional-info" style="display: none;">
                         <!-- Additional user data will be populated here -->
+                    </div>
+                    <div id="records-info" class="records-info" style="display: none;">
+                        <!-- Records data will be populated here -->
                     </div>
                 </section>
 
@@ -61,6 +67,35 @@
                 <section class="progress-section">
                     <h2>Progress & Grades</h2>
                     <div id="progress-details" class="info-grid">
+                        <div class="info-item">
+                            <h3>Successful Projects</h3>
+                            <div class="value">
+                                <button id="successful-projects-btn" class="progress-btn">
+                                    <span class="btn-icon">✅</span>
+                                    <span class="btn-count" id="successful-count">-</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <h3>Failed Projects</h3>
+                            <div class="value">
+                                <button id="failed-projects-btn" class="progress-btn">
+                                    <span class="btn-icon">❌</span>
+                                    <span class="btn-count" id="failed-count">-</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <h3>Active Projects</h3>
+                            <div class="value">
+                                <button id="active-projects-btn" class="progress-btn">
+                                    <span class="btn-icon">🔄</span>
+                                    <span class="btn-count" id="active-count">-</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="progress-content" class="progress-content" style="display: none;">
                         <!-- Progress data will be populated here -->
                     </div>
                 </section>

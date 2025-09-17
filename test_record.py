@@ -27,12 +27,10 @@ def test_record():
     query1 = """
     query {
         record {
-            id
-            user {
+            author {
                 id
                 login
             }
-            authorId
             message
             createdAt
         }

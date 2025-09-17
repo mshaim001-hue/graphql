@@ -1,0 +1,1066 @@
+[
+  {
+    "id": 7401,
+    "userId": 2058,
+    "group": null,
+    "grade": null,
+    "createdAt": "2024-10-25T09:30:00.455282+00:00",
+    "updatedAt": "2024-10-25T10:56:25.360403+00:00",
+    "path": "/astanahub/piscinego/checkpoint-01",
+    "object": {
+      "id": 101393,
+      "name": "Checkpoint 01",
+      "type": "exam",
+      "attrs": {
+        "eventDuration": 240,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 8550,
+    "userId": 2058,
+    "group": null,
+    "grade": 0.1,
+    "createdAt": "2024-10-25T13:30:00.899883+00:00",
+    "updatedAt": "2024-10-25T13:30:00.899883+00:00",
+    "path": "/astanahub/piscinego/checkpoint-01",
+    "object": {
+      "id": 101393,
+      "name": "Checkpoint 01",
+      "type": "exam",
+      "attrs": {
+        "eventDuration": 240,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 13092,
+    "userId": 2058,
+    "group": null,
+    "grade": null,
+    "createdAt": "2024-11-01T09:30:00.358893+00:00",
+    "updatedAt": "2024-11-01T11:21:54.51735+00:00",
+    "path": "/astanahub/piscinego/checkpoint-02",
+    "object": {
+      "id": 101394,
+      "name": "Checkpoint 02",
+      "type": "exam",
+      "attrs": {
+        "eventDuration": 240,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 14110,
+    "userId": 2058,
+    "group": null,
+    "grade": 0.14285714285714285,
+    "createdAt": "2024-11-01T13:30:00.938759+00:00",
+    "updatedAt": "2024-11-01T13:30:00.938759+00:00",
+    "path": "/astanahub/piscinego/checkpoint-02",
+    "object": {
+      "id": 101394,
+      "name": "Checkpoint 02",
+      "type": "exam",
+      "attrs": {
+        "eventDuration": 240,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 16569,
+    "userId": 2058,
+    "group": null,
+    "grade": null,
+    "createdAt": "2024-11-08T09:30:00.902036+00:00",
+    "updatedAt": "2024-11-08T11:25:07.159985+00:00",
+    "path": "/astanahub/piscinego/checkpoint-03",
+    "object": {
+      "id": 101395,
+      "name": "Checkpoint 03",
+      "type": "exam",
+      "attrs": {
+        "eventDuration": 240,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 17828,
+    "userId": 2058,
+    "group": null,
+    "grade": 0.08333333333333333,
+    "createdAt": "2024-11-08T13:30:00.977074+00:00",
+    "updatedAt": "2024-11-08T13:30:00.977074+00:00",
+    "path": "/astanahub/piscinego/checkpoint-03",
+    "object": {
+      "id": 101395,
+      "name": "Checkpoint 03",
+      "type": "exam",
+      "attrs": {
+        "eventDuration": 240,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 22168,
+    "userId": 2058,
+    "group": null,
+    "grade": null,
+    "createdAt": "2024-11-15T07:30:00.35015+00:00",
+    "updatedAt": "2024-11-15T10:06:39.471009+00:00",
+    "path": "/astanahub/piscinego/final-checkpoint",
+    "object": {
+      "id": 101180,
+      "name": "Final Checkpoint",
+      "type": "exam",
+      "attrs": {
+        "eventDuration": 480,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 23887,
+    "userId": 2058,
+    "group": null,
+    "grade": 0.10909090909090909,
+    "createdAt": "2024-11-15T13:30:00.398375+00:00",
+    "updatedAt": "2024-11-15T13:30:00.398375+00:00",
+    "path": "/astanahub/piscinego/final-checkpoint",
+    "object": {
+      "id": 101180,
+      "name": "Final Checkpoint",
+      "type": "exam",
+      "attrs": {
+        "eventDuration": 480,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 208608,
+    "userId": 2058,
+    "group": null,
+    "grade": 0.0,
+    "createdAt": "2025-08-03T07:00:00.763671+00:00",
+    "updatedAt": "2025-08-03T15:00:00.925117+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 170126,
+    "userId": 2058,
+    "group": null,
+    "grade": null,
+    "createdAt": "2025-06-15T07:00:00.897502+00:00",
+    "updatedAt": "2025-06-15T11:56:35.436113+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 171220,
+    "userId": 2058,
+    "group": null,
+    "grade": 1.0,
+    "createdAt": "2025-06-15T15:00:00.743096+00:00",
+    "updatedAt": "2025-06-15T15:00:00.743096+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 175139,
+    "userId": 2058,
+    "group": null,
+    "grade": null,
+    "createdAt": "2025-06-22T07:00:00.633028+00:00",
+    "updatedAt": "2025-06-22T10:59:40.192249+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 180556,
+    "userId": 2058,
+    "group": null,
+    "grade": 0.0,
+    "createdAt": "2025-06-29T07:00:00.153603+00:00",
+    "updatedAt": "2025-06-29T10:00:00.878861+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 65952,
+    "userId": 2058,
+    "group": null,
+    "grade": 1,
+    "createdAt": "2025-01-26T15:00:00.178902+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 75640,
+    "userId": 2058,
+    "group": null,
+    "grade": 1,
+    "createdAt": "2025-02-02T15:00:00.706159+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 83186,
+    "userId": 2058,
+    "group": null,
+    "grade": null,
+    "createdAt": "2025-02-09T07:00:00.65879+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 176762,
+    "userId": 2058,
+    "group": null,
+    "grade": 1.0,
+    "createdAt": "2025-06-22T15:00:00.89667+00:00",
+    "updatedAt": "2025-06-22T15:00:00.89667+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 122273,
+    "userId": 2058,
+    "group": null,
+    "grade": null,
+    "createdAt": "2025-03-30T07:00:00.069747+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 201267,
+    "userId": 2058,
+    "group": null,
+    "grade": 0.0,
+    "createdAt": "2025-07-27T07:00:00.319171+00:00",
+    "updatedAt": "2025-07-27T15:00:00.334921+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 189876,
+    "userId": 2058,
+    "group": null,
+    "grade": 0.0,
+    "createdAt": "2025-07-13T07:00:00.938803+00:00",
+    "updatedAt": "2025-07-13T15:00:00.767435+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 63885,
+    "userId": 2058,
+    "group": null,
+    "grade": null,
+    "createdAt": "2025-01-26T07:00:00.017056+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 73763,
+    "userId": 2058,
+    "group": null,
+    "grade": null,
+    "createdAt": "2025-02-02T07:00:00.468399+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 84265,
+    "userId": 2058,
+    "group": null,
+    "grade": 1,
+    "createdAt": "2025-02-09T15:00:00.677353+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 94837,
+    "userId": 2058,
+    "group": null,
+    "grade": null,
+    "createdAt": "2025-03-02T08:30:00.901867+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 95629,
+    "userId": 2058,
+    "group": null,
+    "grade": 1,
+    "createdAt": "2025-03-02T16:30:00.152298+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 96289,
+    "userId": 2058,
+    "group": null,
+    "grade": null,
+    "createdAt": "2025-03-09T05:00:00.202263+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 96690,
+    "userId": 2058,
+    "group": null,
+    "grade": 1,
+    "createdAt": "2025-03-09T13:00:00.357237+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 104989,
+    "userId": 2058,
+    "group": null,
+    "grade": null,
+    "createdAt": "2025-03-16T07:00:00.073853+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 107033,
+    "userId": 2058,
+    "group": null,
+    "grade": 1,
+    "createdAt": "2025-03-16T15:00:00.71074+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 123402,
+    "userId": 2058,
+    "group": null,
+    "grade": 1,
+    "createdAt": "2025-03-30T17:00:00.920599+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 129351,
+    "userId": 2058,
+    "group": null,
+    "grade": null,
+    "createdAt": "2025-04-13T07:00:00.181796+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 130623,
+    "userId": 2058,
+    "group": null,
+    "grade": 1,
+    "createdAt": "2025-04-13T15:00:00.616719+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 131088,
+    "userId": 2058,
+    "group": null,
+    "grade": null,
+    "createdAt": "2025-04-20T07:00:00.173113+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 132150,
+    "userId": 2058,
+    "group": null,
+    "grade": 1,
+    "createdAt": "2025-04-20T15:00:00.975278+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 132547,
+    "userId": 2058,
+    "group": null,
+    "grade": null,
+    "createdAt": "2025-04-27T07:00:00.560521+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 133906,
+    "userId": 2058,
+    "group": null,
+    "grade": 1,
+    "createdAt": "2025-04-27T15:00:00.521173+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 140116,
+    "userId": 2058,
+    "group": null,
+    "grade": 0.38181818181818183,
+    "createdAt": "2025-05-04T07:00:00.638425+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 147866,
+    "userId": 2058,
+    "group": null,
+    "grade": null,
+    "createdAt": "2025-05-11T06:00:00.876215+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 149954,
+    "userId": 2058,
+    "group": null,
+    "grade": 1,
+    "createdAt": "2025-05-11T15:00:00.15842+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 155511,
+    "userId": 2058,
+    "group": null,
+    "grade": null,
+    "createdAt": "2025-05-18T06:00:00.853361+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 157072,
+    "userId": 2058,
+    "group": null,
+    "grade": 1,
+    "createdAt": "2025-05-18T15:00:00.549042+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 161872,
+    "userId": 2058,
+    "group": null,
+    "grade": null,
+    "createdAt": "2025-05-25T07:00:00.586832+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 163339,
+    "userId": 2058,
+    "group": null,
+    "grade": 1,
+    "createdAt": "2025-05-25T15:00:00.05815+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 165002,
+    "userId": 2058,
+    "group": null,
+    "grade": null,
+    "createdAt": "2025-06-08T05:00:00.782245+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 166097,
+    "userId": 2058,
+    "group": null,
+    "grade": 1,
+    "createdAt": "2025-06-08T15:00:00.93705+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 227590,
+    "userId": 2058,
+    "group": null,
+    "grade": 0.0,
+    "createdAt": "2025-08-27T08:20:00.910532+00:00",
+    "updatedAt": "2025-08-27T11:20:00.902743+00:00",
+    "path": "/astanahub/module/checkpoint-zero",
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  }
+]

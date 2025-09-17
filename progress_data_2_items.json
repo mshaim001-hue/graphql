@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1304,
+    "userId": 2058,
+    "group": null,
+    "grade": 0.0,
+    "createdAt": "2024-10-15T12:12:50.862107+00:00",
+    "updatedAt": "2024-10-15T13:27:32.425212+00:00",
+    "path": "/astanahub/onboarding/administration",
+    "object": {
+      "id": 100941,
+      "name": "Administration",
+      "type": "administration",
+      "attrs": {}
+    }
+  },
+  {
+    "id": 1327,
+    "userId": 2058,
+    "group": null,
+    "grade": 1,
+    "createdAt": "2024-10-15T14:11:03.275572+00:00",
+    "updatedAt": "2024-10-16T04:34:26.519912+00:00",
+    "path": "/astanahub/onboarding/administration",
+    "object": {
+      "id": 100941,
+      "name": "Administration",
+      "type": "administration",
+      "attrs": {}
+    }
+  }
+]

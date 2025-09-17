@@ -1,21 +1,11 @@
 [
   {
-    "id": 56,
-    "user": {
-      "id": 2058,
-      "login": "mshaimard"
-    },
-    "authorId": 6398,
+    "author": null,
     "message": "TIG! Next time be patient and act without conflict during audits. Please come to the staff zone to receive your task :)",
     "createdAt": "2025-02-04T08:43:02.263685+00:00"
   },
   {
-    "id": 64,
-    "user": {
-      "id": 2058,
-      "login": "mshaimard"
-    },
-    "authorId": 9,
+    "author": null,
     "message": "нарушение правил и порядка",
     "createdAt": "2025-02-21T09:48:12.957178+00:00"
   }

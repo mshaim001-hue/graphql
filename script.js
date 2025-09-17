@@ -57,6 +57,11 @@ class TomorrowSchoolApp {
         document.getElementById('more-info-btn').addEventListener('click', () => {
             this.handleMoreInfo();
         });
+
+        // Records button
+        document.getElementById('records-btn').addEventListener('click', () => {
+            this.handleRecords();
+        });
     }
 
     showLogin() {
@@ -245,6 +250,9 @@ class TomorrowSchoolApp {
                 // Show basic progress data even if loading fails
                 await this.showBasicProgressData();
             }
+            
+            // Setup progress button event listeners
+            this.setupProgressButtons();
             
             
             
@@ -683,214 +691,262 @@ class TomorrowSchoolApp {
     async loadProgressData() {
         console.log('Starting loadProgressData...');
         try {
-            // Check if userId is available
-            if (!this.userId) {
-                console.log('No userId available for progress data, showing basic data...');
-                await this.showBasicProgressData();
-                return;
-            }
-            
-            console.log('userId available:', this.userId);
-
-            // Load progress and result data
-            const progressQuery = `
+            // Load projects data
+            const projectsQuery = `
                 query {
-                    progress {
+                    progress(where: {object: {type: {_eq: "project"}}}) {
                         id
-                        grade
-                        createdAt
-                        path
-                        object {
-                            name
-                            type
-                        }
-                    }
-                    result {
-                        id
-                        grade
-                        type
-                        createdAt
-                        path
-                        object {
-                            name
-                            type
-                        }
-                    }
-                }
-            `;
-
-
-            // Load group participation data - only if userId exists
-            const groupQuery = `
-                query {
-                    group_user(where: {userId: {_eq: ${this.userId}}}) {
-                        id
-                        createdAt
+                        userId
                         group {
                             id
                             status
                         }
-                    }
-                }
-            `;
-
-            // Load event participation data - only if userId exists
-            const eventQuery = `
-                query {
-                    event_user(where: {userId: {_eq: ${this.userId}}}) {
-                        id
+                        grade
                         createdAt
-                        event {
+                        updatedAt
+                        path
+                        object {
                             id
+                            name
+                            type
+                            attrs
                         }
                     }
                 }
             `;
 
-            // Execute queries - start with progress/result data
-            console.log('Executing progress query...');
-            const progressData = await this.makeGraphQLQuery(progressQuery);
-            console.log('Progress data received:', progressData);
+            console.log('Executing projects query...');
+            const projectsData = await this.makeGraphQLQuery(projectsQuery);
+            console.log('Projects data received:', projectsData);
             
-            // Execute user-specific queries only if userId is valid
-            let groupData = { group_user: [] };
-            let eventData = { event_user: [] };
-
-            try {
-                console.log('Executing user-specific queries...');
-                [groupData, eventData] = await Promise.all([
-                    this.makeGraphQLQuery(groupQuery),
-                    this.makeGraphQLQuery(eventQuery)
-                ]);
-                console.log('User-specific data received');
-            } catch (userDataError) {
-                console.log('Error loading user-specific data, using empty arrays:', userDataError);
-            }
-            
-            if (progressData.progress && progressData.result) {
-                console.log('Displaying progress data...');
-                this.displayProgressData(
-                    progressData.progress, 
-                    progressData.result,
-                    groupData.group_user || [],
-                    eventData.event_user || []
-                );
+            if (projectsData.progress) {
+                console.log('Processing projects data...');
+                this.processProjectsData(projectsData.progress);
             } else {
-                console.log('No progress data received, showing basic data');
+                console.log('No projects data received');
                 this.showBasicProgressData();
             }
         } catch (error) {
             console.error('Error loading progress data:', error);
-            // Display basic progress data even if there's an error
-            try {
-                const basicQuery = `
-                    query {
-                        progress {
-                            id
-                            grade
-                            createdAt
-                            path
-                            object {
-                                name
-                                type
-                            }
-                        }
-                        result {
-                            id
-                            grade
-                            type
-                            createdAt
-                            path
-                            object {
-                                name
-                                type
-                            }
-                        }
-                    }
-                `;
-                const basicData = await this.makeGraphQLQuery(basicQuery);
-                if (basicData.progress && basicData.result) {
-                    this.displayProgressData(
-                        basicData.progress, 
-                        basicData.result,
-                        [], [], []
-                    );
-                }
-            } catch (fallbackError) {
-                console.error('Fallback query also failed:', fallbackError);
-            }
+            this.showBasicProgressData();
         }
     }
 
     async showBasicProgressData() {
         console.log('Showing basic progress data as fallback');
-        const progressDetails = document.getElementById('progress-details');
+        // Update button counts to show loading state
+        document.getElementById('successful-count').textContent = '...';
+        document.getElementById('failed-count').textContent = '...';
+        document.getElementById('active-count').textContent = '...';
+    }
+
+    processProjectsData(projects) {
+        console.log('Processing projects data:', projects.length, 'projects');
         
-        if (progressDetails) {
-            progressDetails.innerHTML = `
-                <div class="info-item">
-                    <h3>Loading Progress Data...</h3>
-                    <div class="value">Please wait</div>
-                </div>
-                <div class="info-item">
-                    <h3>Status</h3>
-                    <div class="value">Connecting to server</div>
-                </div>
-            `;
-            
-            // Try to load basic progress data without user-specific queries
-            try {
-                const basicQuery = `
-                    query {
-                        progress {
-                            id
-                            grade
-                            createdAt
-                            path
-                            object {
-                                name
-                                type
-                            }
-                        }
-                        result {
-                            id
-                            grade
-                            type
-                            createdAt
-                            path
-                            object {
-                                name
-                                type
-                            }
-                        }
-                    }
-                `;
-                
-                console.log('Attempting basic progress query...');
-                const basicData = await this.makeGraphQLQuery(basicQuery);
-                
-                if (basicData.progress && basicData.result) {
-                    console.log('Basic progress data loaded successfully');
-                    this.displayProgressData(
-                        basicData.progress, 
-                        basicData.result,
-                        [], [], []
-                    );
-                }
-            } catch (basicError) {
-                console.error('Basic progress query also failed:', basicError);
-                progressDetails.innerHTML = `
-                    <div class="info-item">
-                        <h3>Unable to Load Progress Data</h3>
-                        <div class="value">Please try refreshing the page</div>
-                    </div>
-                    <div class="info-item">
-                        <h3>Status</h3>
-                        <div class="value">Connection error</div>
-                    </div>
-                `;
-            }
+        // Filter projects by grade
+        const successfulProjects = projects.filter(p => p.grade !== null && p.grade >= 1);
+        const failedProjects = projects.filter(p => p.grade !== null && p.grade < 1);
+        const activeProjects = projects.filter(p => p.grade === null);
+        
+        // Update button counts
+        document.getElementById('successful-count').textContent = successfulProjects.length;
+        document.getElementById('failed-count').textContent = failedProjects.length;
+        document.getElementById('active-count').textContent = activeProjects.length;
+        
+        // Store data for button clicks
+        this.projectsData = {
+            successful: successfulProjects,
+            failed: failedProjects,
+            active: activeProjects
+        };
+        
+        console.log('Projects processed:', {
+            successful: successfulProjects.length,
+            failed: failedProjects.length,
+            active: activeProjects.length,
+            total: projects.length
+        });
+    }
+
+    setupProgressButtons() {
+        const successfulBtn = document.getElementById('successful-projects-btn');
+        const failedBtn = document.getElementById('failed-projects-btn');
+        const activeBtn = document.getElementById('active-projects-btn');
+        
+        if (successfulBtn) {
+            successfulBtn.addEventListener('click', () => this.toggleSuccessfulProjects());
         }
+        
+        if (failedBtn) {
+            failedBtn.addEventListener('click', () => this.toggleFailedProjects());
+        }
+        
+        if (activeBtn) {
+            activeBtn.addEventListener('click', () => this.toggleActiveProjects());
+        }
+    }
+
+    toggleSuccessfulProjects() {
+        const progressContent = document.getElementById('progress-content');
+        const successfulBtn = document.getElementById('successful-projects-btn');
+        const failedBtn = document.getElementById('failed-projects-btn');
+        const activeBtn = document.getElementById('active-projects-btn');
+        
+        // If content is already showing successful projects, hide it
+        if (successfulBtn.classList.contains('active')) {
+            this.hideProgressContent();
+            return;
+        }
+        
+        // Update button states
+        successfulBtn.classList.add('active');
+        failedBtn.classList.remove('active');
+        activeBtn.classList.remove('active');
+        
+        // Show content
+        progressContent.style.display = 'block';
+        
+        if (!this.projectsData || !this.projectsData.successful) {
+            progressContent.innerHTML = '<p>No successful projects data available</p>';
+            return;
+        }
+        
+        const projects = this.projectsData.successful;
+        let html = '<h3>✅ Successful Projects</h3>';
+        
+        if (projects.length === 0) {
+            html += '<p>No successful projects found</p>';
+        } else {
+            projects.forEach(project => {
+                const createdAt = new Date(project.createdAt).toLocaleDateString();
+                html += `
+                    <div class="project-item">
+                        <span class="project-name">${project.object.name}</span>
+                        <span class="project-grade">Started: ${createdAt}</span>
+                    </div>
+                `;
+            });
+        }
+        
+        progressContent.innerHTML = html;
+    }
+
+    toggleFailedProjects() {
+        const progressContent = document.getElementById('progress-content');
+        const successfulBtn = document.getElementById('successful-projects-btn');
+        const failedBtn = document.getElementById('failed-projects-btn');
+        const activeBtn = document.getElementById('active-projects-btn');
+        
+        // If content is already showing failed projects, hide it
+        if (failedBtn.classList.contains('active')) {
+            this.hideProgressContent();
+            return;
+        }
+        
+        // Update button states
+        failedBtn.classList.add('active');
+        successfulBtn.classList.remove('active');
+        activeBtn.classList.remove('active');
+        
+        // Show content
+        progressContent.style.display = 'block';
+        
+        if (!this.projectsData || !this.projectsData.failed) {
+            progressContent.innerHTML = '<p>No failed projects data available</p>';
+            return;
+        }
+        
+        const projects = this.projectsData.failed;
+        let html = '<h3>❌ Failed Projects</h3>';
+        
+        if (projects.length === 0) {
+            html += '<p>No failed projects found</p>';
+        } else {
+            // Group projects by name to show retry attempts
+            const projectGroups = {};
+            projects.forEach(project => {
+                const name = project.object.name;
+                if (!projectGroups[name]) {
+                    projectGroups[name] = [];
+                }
+                projectGroups[name].push(project);
+            });
+            
+            Object.entries(projectGroups).forEach(([name, attempts]) => {
+                const attemptsCount = attempts.length;
+                const latestAttempt = attempts[attempts.length - 1];
+                const createdAt = new Date(latestAttempt.createdAt).toLocaleDateString();
+                
+                html += `
+                    <div class="project-item">
+                        <span class="project-name">${name} ${attemptsCount > 1 ? `(${attemptsCount} attempts)` : ''}</span>
+                        <span class="project-grade">Last attempt: ${createdAt}</span>
+                    </div>
+                `;
+            });
+        }
+        
+        progressContent.innerHTML = html;
+    }
+
+    toggleActiveProjects() {
+        const progressContent = document.getElementById('progress-content');
+        const successfulBtn = document.getElementById('successful-projects-btn');
+        const failedBtn = document.getElementById('failed-projects-btn');
+        const activeBtn = document.getElementById('active-projects-btn');
+        
+        // If content is already showing active projects, hide it
+        if (activeBtn.classList.contains('active')) {
+            this.hideProgressContent();
+            return;
+        }
+        
+        // Update button states
+        activeBtn.classList.add('active');
+        successfulBtn.classList.remove('active');
+        failedBtn.classList.remove('active');
+        
+        // Show content
+        progressContent.style.display = 'block';
+        
+        if (!this.projectsData || !this.projectsData.active) {
+            progressContent.innerHTML = '<p>No active projects data available</p>';
+            return;
+        }
+        
+        const projects = this.projectsData.active;
+        let html = '<h3>🔄 Active Projects</h3>';
+        
+        if (projects.length === 0) {
+            html += '<p>No active projects found</p>';
+        } else {
+            projects.forEach(project => {
+                const createdAt = new Date(project.createdAt).toLocaleDateString();
+                html += `
+                    <div class="project-item">
+                        <span class="project-name">${project.object.name}</span>
+                        <span class="project-grade">Started: ${createdAt}</span>
+                    </div>
+                `;
+            });
+        }
+        
+        progressContent.innerHTML = html;
+    }
+
+    hideProgressContent() {
+        const progressContent = document.getElementById('progress-content');
+        const successfulBtn = document.getElementById('successful-projects-btn');
+        const failedBtn = document.getElementById('failed-projects-btn');
+        const activeBtn = document.getElementById('active-projects-btn');
+        
+        // Hide content
+        progressContent.style.display = 'none';
+        
+        // Remove active states
+        successfulBtn.classList.remove('active');
+        failedBtn.classList.remove('active');
+        activeBtn.classList.remove('active');
     }
 
     displayProgressData(progress, results, groupMemberships, eventParticipations) {
@@ -1538,6 +1594,104 @@ class TomorrowSchoolApp {
         }
 
         additionalInfo.innerHTML = html;
+    }
+
+    async handleRecords() {
+        const button = document.getElementById('records-btn');
+        const recordsInfo = document.getElementById('records-info');
+        
+        // Check current state
+        const isCurrentlyVisible = recordsInfo.style.display !== 'none';
+        
+        if (isCurrentlyVisible) {
+            // Hide the records
+            recordsInfo.style.display = 'none';
+            button.textContent = 'Records';
+            return;
+        }
+        
+        // Show loading state
+        const originalText = button.textContent;
+        button.textContent = 'Loading...';
+        button.disabled = true;
+        
+        try {
+            const recordsData = await this.loadRecordsData();
+            this.displayRecordsData(recordsData);
+            
+            // Show the records
+            recordsInfo.style.display = 'block';
+            button.textContent = 'Hide Records';
+        } catch (error) {
+            console.error('Error loading records data:', error);
+            this.showError('Failed to load records data');
+            button.textContent = originalText;
+        } finally {
+            button.disabled = false;
+        }
+    }
+
+    async loadRecordsData() {
+        const query = `
+            query {
+                record(order_by: {createdAt: desc}) {
+                    message
+                    createdAt
+                }
+            }
+        `;
+
+        const response = await fetch(this.apiUrl, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${this.jwt}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ query })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        
+        if (data.errors) {
+            throw new Error(`GraphQL errors: ${data.errors.map(e => e.message).join(', ')}`);
+        }
+
+        console.log('Records query successful, received', data.data.record.length, 'records');
+        
+        return data.data.record;
+    }
+
+    displayRecordsData(records) {
+        const recordsInfo = document.getElementById('records-info');
+        
+        if (!records || records.length === 0) {
+            recordsInfo.innerHTML = `
+                <h3>Records</h3>
+                <p style="color: #6c757d; font-style: italic;">No records available</p>
+            `;
+            return;
+        }
+
+        // Create HTML for records
+        let html = '<h3>Records</h3>';
+        
+        records.forEach(record => {
+            const date = new Date(record.createdAt).toLocaleDateString();
+            const message = record.message || 'No message';
+            
+            html += `
+                <div class="record-item">
+                    <span class="record-date">${date}</span>
+                    <span class="record-message">${message}</span>
+                </div>
+            `;
+        });
+
+        recordsInfo.innerHTML = html;
     }
 }
 
