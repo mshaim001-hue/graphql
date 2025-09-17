@@ -1,0 +1,1031 @@
+[
+  {
+    "id": 101359,
+    "name": "introduction",
+    "type": "exercise",
+    "attrs": {
+      "special": {
+        "name": "getSpecial",
+        "type": "function"
+      },
+      "subject": "/api/content/root/01-edu_imperative-piscine/content/introduction/README.md",
+      "language": "sh",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/imperative-piscine-sh"
+        }
+      ],
+      "expectedFiles": [
+        "hello.sh"
+      ],
+      "allowedFunctions": []
+    },
+    "createdAt": "2024-09-19T10:29:02.67932+00:00",
+    "campus": "astanahub"
+  },
+  {
+    "id": 102081,
+    "name": "go-reloaded",
+    "type": "project",
+    "attrs": {
+      "subject": {
+        "name": "getSubject",
+        "type": "function"
+      },
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "Go",
+      "validations": [
+        {
+          "form": {
+            "name": "getAuditPath",
+            "type": "function"
+          },
+          "type": "user_audit",
+          "delay": 4320,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub"
+  },
+  {
+    "id": 101362,
+    "name": "who-are-you",
+    "type": "exercise",
+    "attrs": {
+      "special": {
+        "name": "getSpecial",
+        "type": "function"
+      },
+      "subject": "/api/content/root/01-edu_imperative-piscine/content/who-are-you/README.md",
+      "language": "sh",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/imperative-piscine-sh"
+        }
+      ],
+      "expectedFiles": [
+        "who-are-you.sh"
+      ],
+      "allowedFunctions": []
+    },
+    "createdAt": "2024-09-19T10:29:02.67932+00:00",
+    "campus": "astanahub"
+  },
+  {
+    "id": 102142,
+    "name": "physics",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "physics.js"
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub"
+  },
+  {
+    "id": 4002,
+    "name": "cl-camp1",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_imperative-piscine/content/cl-camp1/README.md",
+      "language": "sh",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/imperative-piscine-sh"
+        }
+      ],
+      "expectedFiles": [
+        "mastertheLS"
+      ],
+      "allowedFunctions": []
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 102143,
+    "name": "collections",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "collections.js"
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub"
+  },
+  {
+    "id": 102083,
+    "name": "ascii-art",
+    "type": "project",
+    "attrs": {
+      "subject": {
+        "name": "getSubject",
+        "type": "function"
+      },
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": {
+            "name": "getAuditPath",
+            "type": "function"
+          },
+          "type": "user_audit",
+          "delay": 4320,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub"
+  },
+  {
+    "id": 102181,
+    "name": "unicode-technical-report-35",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "unicode-technical-report-35.js"
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub"
+  },
+  {
+    "id": 102194,
+    "name": "flow",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "flow.js"
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub"
+  },
+  {
+    "id": 102806,
+    "name": "onlya",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_imperative-piscine/content/onlya/README.md",
+      "language": "go",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/imperative-piscine-go"
+        }
+      ],
+      "expectedFiles": [
+        "onlya/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune",
+        "--allow-builtin"
+      ]
+    },
+    "createdAt": "2024-12-26T16:30:50.731548+00:00",
+    "campus": null
+  },
+  {
+    "id": 102808,
+    "name": "onlyf",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_imperative-piscine/content/onlyf/README.md",
+      "language": "go",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/imperative-piscine-go"
+        }
+      ],
+      "expectedFiles": [
+        "onlyf/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune"
+      ]
+    },
+    "createdAt": "2024-12-26T16:30:50.731548+00:00",
+    "campus": null
+  },
+  {
+    "id": 102183,
+    "name": "using-map",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "using-map.js"
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub"
+  },
+  {
+    "id": 102184,
+    "name": "using-filter",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "using-filter.js"
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub"
+  },
+  {
+    "id": 102185,
+    "name": "using-reduce",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "using-reduce.js"
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub"
+  },
+  {
+    "id": 102186,
+    "name": "long-words",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "long-words.js"
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub"
+  },
+  {
+    "id": 4043,
+    "name": "explain",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_imperative-piscine/content/explain/README.md",
+      "language": "sh",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/imperative-piscine-sh"
+        }
+      ],
+      "expectedFiles": [
+        "explain.sh"
+      ],
+      "allowedFunctions": []
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 4044,
+    "name": "teacher",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_imperative-piscine/content/teacher/README.md",
+      "language": "sh",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/imperative-piscine-sh"
+        }
+      ],
+      "expectedFiles": [
+        "teacher.sh"
+      ],
+      "allowedFunctions": []
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 4218,
+    "name": "btreeapplypostorder",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_imperative-piscine/content/btreeapplypostorder/README.md",
+      "language": "go",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/imperative-piscine-go"
+        }
+      ],
+      "expectedFiles": [
+        "btreeapplypostorder.go"
+      ],
+      "allowedFunctions": [
+        "--allow-builtin"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 4226,
+    "name": "activebits",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_imperative-piscine/content/activebits/README.md",
+      "language": "go",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/imperative-piscine-go"
+        }
+      ],
+      "expectedFiles": [
+        "activebits.go"
+      ],
+      "allowedFunctions": [
+        "--allow-builtin"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 4322,
+    "name": "hello",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "hello/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune",
+        "--allow-builtin"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 4359,
+    "name": "displayalpham",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "displayalpham/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune",
+        "--allow-builtin"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 4360,
+    "name": "displayalrevm",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "displayalrevm/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune",
+        "--allow-builtin"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 4383,
+    "name": "printbits",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "printbits/main.go"
+      ],
+      "allowedFunctions": [
+        "strconv.Atoi",
+        "os.Args",
+        "github.com/01-edu/z01.PrintRune",
+        "--allow-builtin"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 4398,
+    "name": "countdown",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "countdown/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune",
+        "--allow-builtin"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20001,
+    "name": "hello-there",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Hello There 👋",
+      "expectedFiles": [
+        "hello-there.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20002,
+    "name": "anything-to-declare",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Anything to Declare ? 🛂",
+      "expectedFiles": [
+        "anything-to-declare.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20003,
+    "name": "an-undefined-future",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "An Undefined Future",
+      "expectedFiles": [
+        "an-undefined-future.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20004,
+    "name": "the-great-escape",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "The Great Escape",
+      "expectedFiles": [
+        "the-great-escape.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20005,
+    "name": "a-string-of-number",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "A String of Number",
+      "expectedFiles": [
+        "a-string-of-number.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20006,
+    "name": "redeclaration-of-love",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Redeclaration of Love 💕",
+      "expectedFiles": [
+        "redeclaration-of-love.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20007,
+    "name": "smooth-operator",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Smooth Operator",
+      "expectedFiles": [
+        "smooth-operator.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20008,
+    "name": "placeholders",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Placeholders",
+      "expectedFiles": [
+        "placeholders.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20009,
+    "name": "duplicate",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Duplicate",
+      "expectedFiles": [
+        "duplicate.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20010,
+    "name": "unchanging",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 Unchanging",
+      "expectedFiles": [
+        "unchanging.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20011,
+    "name": "inequality",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 Inequality",
+      "expectedFiles": [
+        "inequality.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20012,
+    "name": "notorious",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 Notorious 🎤",
+      "expectedFiles": [
+        "notorious.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20021,
+    "name": "object",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Object",
+      "expectedFiles": [
+        "object.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20022,
+    "name": "access",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Access 🔑",
+      "expectedFiles": [
+        "access.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20023,
+    "name": "alter-ego",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Alter Ego 🎭",
+      "expectedFiles": [
+        "alter-ego.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20024,
+    "name": "nested-objects",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Nested Objects",
+      "expectedFiles": [
+        "nested-objects.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20025,
+    "name": "the-four-seasons",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "The Four Seasons",
+      "expectedFiles": [
+        "the-four-seasons.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20026,
+    "name": "3-directions",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "3 Directions",
+      "expectedFiles": [
+        "3-directions.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20027,
+    "name": "swapy",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Swapy",
+      "expectedFiles": [
+        "swapy.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20028,
+    "name": "mixed-feelings",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Mixed Feelings",
+      "expectedFiles": [
+        "mixed-feelings.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20029,
+    "name": "keymaker",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Keymaker",
+      "expectedFiles": [
+        "keymaker.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20030,
+    "name": "half-a-million",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Half a million",
+      "expectedFiles": [
+        "half-a-million.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20031,
+    "name": "parenting",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 Parenting 👨‍👧",
+      "expectedFiles": [
+        "parenting.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20032,
+    "name": "my-house",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 My House 🏠",
+      "expectedFiles": [
+        "my-house.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20033,
+    "name": "virus19",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 Virus19 🦠",
+      "expectedFiles": [
+        "virus19.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  },
+  {
+    "id": 20041,
+    "name": "you-spin-me-round",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "You Spin Me Round",
+      "expectedFiles": [
+        "you-spin-me-round.js"
+      ]
+    },
+    "createdAt": "2024-09-13T00:01:46.545588+00:00",
+    "campus": null
+  }
+]

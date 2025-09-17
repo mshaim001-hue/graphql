@@ -1,0 +1,102 @@
+{
+  "languages": [
+    [
+      "Go",
+      27
+    ],
+    [
+      "python",
+      21
+    ],
+    [
+      "Open",
+      14
+    ],
+    [
+      "dart",
+      14
+    ],
+    [
+      "cybersecurity",
+      11
+    ],
+    [
+      "unreal engine",
+      10
+    ],
+    [
+      "JavaScript",
+      10
+    ],
+    [
+      "blockchain",
+      7
+    ],
+    [
+      "DevOps",
+      7
+    ],
+    [
+      "sys",
+      6
+    ],
+    [
+      "Java",
+      5
+    ],
+    [
+      "rust",
+      4
+    ],
+    [
+      "\"go\",\"html\", \"css\", \"js\"",
+      1
+    ],
+    [
+      "c",
+      1
+    ],
+    [
+      "php",
+      1
+    ],
+    [
+      "ruby",
+      1
+    ],
+    [
+      "c++",
+      1
+    ],
+    [
+      "TypeScript",
+      1
+    ],
+    [
+      "sh",
+      1
+    ]
+  ],
+  "total_projects": 143,
+  "colors": {
+    "Go": "#00add8",
+    "Python": "#3776ab",
+    "Open": "#e74c3c",
+    "Dart": "#0175c2",
+    "Cybersecurity": "#e74c3c",
+    "Unreal Engine": "#f39c12",
+    "JavaScript": "#f1c40f",
+    "DevOps": "#8e44ad",
+    "Blockchain": "#e74c3c",
+    "Sys": "#7f8c8d",
+    "Java": "#e74c3c",
+    "Rust": "#e74c3c",
+    "TypeScript": "#007acc",
+    "C": "#7f8c8d",
+    "Go,HTML,CSS,JS": "#00add8",
+    "Shell": "#7f8c8d",
+    "PHP": "#8e44ad",
+    "Ruby": "#e74c3c",
+    "C++": "#7f8c8d"
+  }
+}

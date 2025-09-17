@@ -794,9 +794,26 @@ svg {
     align-items: center;
 }
 
+.project-details {
+    width: 100%;
+}
+
 .project-name {
     font-weight: 600;
     font-size: 16px;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.project-info {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.4;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #fff;
 }
 
 .project-grade {

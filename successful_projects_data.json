@@ -1,0 +1,20 @@
+[
+  {
+    "language": "Go",
+    "total": 26,
+    "successful": 19,
+    "percentage": 73.07692307692307
+  },
+  {
+    "language": "JavaScript",
+    "total": 7,
+    "successful": 6,
+    "percentage": 85.71428571428571
+  },
+  {
+    "language": "sh",
+    "total": 1,
+    "successful": 0,
+    "percentage": 0.0
+  }
+]

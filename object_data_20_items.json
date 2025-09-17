@@ -1,0 +1,504 @@
+[
+  {
+    "id": 102982,
+    "name": "BreakdownURL",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/breakdown-url/README.md",
+      "language": "java",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/module-java"
+        }
+      ],
+      "expectedFiles": [
+        "BreakdownURL.java"
+      ]
+    },
+    "createdAt": "2025-09-01T19:54:34.293678+00:00",
+    "updatedAt": "2025-09-01T19:54:34.293678+00:00",
+    "campus": null,
+    "authorId": 6
+  },
+  {
+    "id": 102980,
+    "name": "rust-localserver",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/rust-localserver/README.md",
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "rust",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/rust-localserver/audit/README.md",
+          "type": "user_audit"
+        }
+      ]
+    },
+    "createdAt": "2025-08-06T19:16:54.14779+00:00",
+    "updatedAt": "2025-08-06T19:16:54.14779+00:00",
+    "campus": null,
+    "authorId": 6
+  },
+  {
+    "id": 102981,
+    "name": "java-localserver",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/java-localserver/README.md",
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "java",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/java-localserver/audit/README.md",
+          "type": "user_audit"
+        }
+      ]
+    },
+    "createdAt": "2025-08-06T19:16:54.14779+00:00",
+    "updatedAt": "2025-08-06T19:16:54.14779+00:00",
+    "campus": null,
+    "authorId": 6
+  },
+  {
+    "id": 102977,
+    "name": "networking-practices",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/networking-practices/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/networking-practices/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 3,
+          "matchWhere": {
+            "name": "usersOfCampusWithAdmins",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2025-07-16T20:44:20.79328+00:00",
+    "updatedAt": "2025-07-16T20:44:20.79328+00:00",
+    "campus": null,
+    "authorId": 6
+  },
+  {
+    "id": 102975,
+    "name": "building-resume",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/building-resume/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/building-resume/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 2,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2025-07-16T20:44:20.79328+00:00",
+    "updatedAt": "2025-07-16T20:44:20.79328+00:00",
+    "campus": null,
+    "authorId": 6
+  },
+  {
+    "id": 102978,
+    "name": "market-exploration",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/market-exploration/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/market-exploration/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 3,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2025-07-16T20:44:20.79328+00:00",
+    "updatedAt": "2025-07-16T20:44:20.79328+00:00",
+    "campus": null,
+    "authorId": 6
+  },
+  {
+    "id": 102976,
+    "name": "personal-branding",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/personal-branding/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/personal-branding/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 2,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2025-07-16T20:44:20.79328+00:00",
+    "updatedAt": "2025-07-16T20:44:20.79328+00:00",
+    "campus": null,
+    "authorId": 6
+  },
+  {
+    "id": 102979,
+    "name": "interview-practices",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/interview-practices/README.md",
+      "groupMax": 4,
+      "groupMin": 3,
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/interview-practices/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 2,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2025-07-16T20:44:20.79328+00:00",
+    "updatedAt": "2025-07-16T20:44:20.79328+00:00",
+    "campus": null,
+    "authorId": 6
+  },
+  {
+    "id": 102974,
+    "name": "01blog",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/01blog/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "java",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/01blog/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 3,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2025-04-24T17:31:45.659067+00:00",
+    "updatedAt": "2025-05-13T19:35:34.550456+00:00",
+    "campus": null,
+    "authorId": 6
+  },
+  {
+    "id": 102956,
+    "name": "js-object-lab",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/js-object-lab/README.md",
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/module-js"
+        }
+      ],
+      "expectedFiles": [
+        "object-lab.js"
+      ]
+    },
+    "createdAt": "2025-04-01T19:12:38.10258+00:00",
+    "updatedAt": "2025-05-13T19:35:34.550456+00:00",
+    "campus": null,
+    "authorId": 6
+  },
+  {
+    "id": 102946,
+    "name": "js-divisor-finder",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/js-divisor-finder/README.md",
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/module-js"
+        }
+      ],
+      "expectedFiles": [
+        "divisor-finder.js"
+      ]
+    },
+    "createdAt": "2025-04-01T19:12:38.10258+00:00",
+    "updatedAt": "2025-05-13T19:35:34.550456+00:00",
+    "campus": null,
+    "authorId": 6
+  },
+  {
+    "id": 102942,
+    "name": "js-factorial",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/js-factorial/README.md",
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/module-js"
+        }
+      ],
+      "expectedFiles": [
+        "factorial.js"
+      ]
+    },
+    "createdAt": "2025-04-01T19:12:38.10258+00:00",
+    "updatedAt": "2025-05-13T19:35:34.550456+00:00",
+    "campus": null,
+    "authorId": 6
+  },
+  {
+    "id": 102970,
+    "name": "js-transform-keys",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/js-transform-keys/README.md",
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/module-js"
+        }
+      ],
+      "expectedFiles": [
+        "js-transform-keys.js"
+      ]
+    },
+    "createdAt": "2025-04-01T19:12:38.10258+00:00",
+    "updatedAt": "2025-05-13T19:35:34.550456+00:00",
+    "campus": null,
+    "authorId": 6
+  },
+  {
+    "id": 102969,
+    "name": "js-swappable-object",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/js-swappable-object/README.md",
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/module-js"
+        }
+      ],
+      "expectedFiles": [
+        "swappable-object.js"
+      ]
+    },
+    "createdAt": "2025-04-01T19:12:38.10258+00:00",
+    "updatedAt": "2025-05-13T19:35:34.550456+00:00",
+    "campus": null,
+    "authorId": 6
+  },
+  {
+    "id": 102972,
+    "name": "quantum-passage",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/quantum-passage/README.md",
+      "groupMax": 4,
+      "groupMin": 2,
+      "language": "unreal engine",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/quantum-passage/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 3,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2025-04-01T19:12:38.10258+00:00",
+    "updatedAt": "2025-05-13T19:35:34.550456+00:00",
+    "campus": null,
+    "authorId": 6
+  },
+  {
+    "id": 102968,
+    "name": "js-flatten-object",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/js-flatten-object/README.md",
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/module-js"
+        }
+      ],
+      "expectedFiles": [
+        "flatten-object.js"
+      ]
+    },
+    "createdAt": "2025-04-01T19:12:38.10258+00:00",
+    "updatedAt": "2025-05-13T19:35:34.550456+00:00",
+    "campus": null,
+    "authorId": 6
+  },
+  {
+    "id": 102941,
+    "name": "checkpoint-js",
+    "type": "exam",
+    "attrs": {
+      "language": "js",
+      "eventDuration": 180,
+      "eventStartDelay": 60,
+      "registrationDuration": 2160
+    },
+    "createdAt": "2025-04-01T19:12:38.10258+00:00",
+    "updatedAt": "2025-05-13T19:35:34.599188+00:00",
+    "campus": null,
+    "authorId": 6
+  },
+  {
+    "id": 102971,
+    "name": "js-trap-object",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/js-trap-object/README.md",
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/module-js"
+        }
+      ],
+      "expectedFiles": [
+        "trap-object.js"
+      ]
+    },
+    "createdAt": "2025-04-01T19:12:38.10258+00:00",
+    "updatedAt": "2025-05-13T19:35:34.550456+00:00",
+    "campus": null,
+    "authorId": 6
+  },
+  {
+    "id": 102943,
+    "name": "js-fibonacci",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/js-fibonacci/README.md",
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/module-js"
+        }
+      ],
+      "expectedFiles": [
+        "fibonacci.js"
+      ]
+    },
+    "createdAt": "2025-04-01T19:12:38.10258+00:00",
+    "updatedAt": "2025-05-13T19:35:34.550456+00:00",
+    "campus": null,
+    "authorId": 6
+  },
+  {
+    "id": 102944,
+    "name": "js-even-sum",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/js-even-sum/README.md",
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/module-js"
+        }
+      ],
+      "expectedFiles": [
+        "even-sum.js"
+      ]
+    },
+    "createdAt": "2025-04-01T19:12:38.10258+00:00",
+    "updatedAt": "2025-05-13T19:35:34.550456+00:00",
+    "campus": null,
+    "authorId": 6
+  }
+]

@@ -1,0 +1,1990 @@
+[
+  {
+    "id": 1187,
+    "userId": 2058,
+    "objectId": 100940,
+    "grade": 1,
+    "object": {
+      "id": 100940,
+      "name": "Online Cognitive Games",
+      "type": "games",
+      "attrs": {
+        "campaignId": "acd37687-c85f-4986-8ff5-71a274388e75",
+        "autoRejectWhere": {
+          "zzleLevel": {
+            "<": 3
+          },
+          "memoryLevel": {
+            "<": 10
+          }
+        },
+        "autoValidateWhere": {
+          "zzleLevel": {
+            ">=": 3
+          },
+          "memoryLevel": {
+            ">=": 10
+          }
+        },
+        "autoRejectOperator": {
+          "name": "one",
+          "type": "function"
+        },
+        "autoValidateOperator": {
+          "name": "all",
+          "type": "function"
+        }
+      }
+    }
+  },
+  {
+    "id": 1304,
+    "userId": 2058,
+    "objectId": 100941,
+    "grade": 0.0,
+    "object": {
+      "id": 100941,
+      "name": "Administration",
+      "type": "administration",
+      "attrs": {}
+    }
+  },
+  {
+    "id": 1327,
+    "userId": 2058,
+    "objectId": 100941,
+    "grade": 1,
+    "object": {
+      "id": 100941,
+      "name": "Administration",
+      "type": "administration",
+      "attrs": {}
+    }
+  },
+  {
+    "id": 2016,
+    "userId": 2058,
+    "objectId": 102796,
+    "grade": 1,
+    "object": {
+      "id": 102796,
+      "name": "Check-in",
+      "type": "interview",
+      "attrs": {
+        "resume": "We want to meet you before registration to the piscine. Please choose a date of appointment. Notice: The meeting will take place offline in Astanahub C4.6, please do not be late.",
+        "capacity": 80,
+        "validations": [
+          {
+            "type": "admin_selection"
+          }
+        ],
+        "eventDuration": 1440,
+        "eventStartDelay": 1440,
+        "registrationDuration": 20160
+      }
+    }
+  },
+  {
+    "id": 2401,
+    "userId": 2058,
+    "objectId": 101359,
+    "grade": 1.0,
+    "object": {
+      "id": 101359,
+      "name": "introduction",
+      "type": "exercise",
+      "attrs": {
+        "special": {
+          "name": "getSpecial",
+          "type": "function"
+        },
+        "subject": "/api/content/root/01-edu_imperative-piscine/content/introduction/README.md",
+        "language": "sh",
+        "validations": [
+          {
+            "type": "tester",
+            "testImage": "ghcr.io/01-edu/imperative-piscine-sh"
+          }
+        ],
+        "expectedFiles": [
+          "hello.sh"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 2609,
+    "userId": 2058,
+    "objectId": 101362,
+    "grade": 0.0,
+    "object": {
+      "id": 101362,
+      "name": "who-are-you",
+      "type": "exercise",
+      "attrs": {
+        "special": {
+          "name": "getSpecial",
+          "type": "function"
+        },
+        "subject": "/api/content/root/01-edu_imperative-piscine/content/who-are-you/README.md",
+        "language": "sh",
+        "validations": [
+          {
+            "type": "tester",
+            "testImage": "ghcr.io/01-edu/imperative-piscine-sh"
+          }
+        ],
+        "expectedFiles": [
+          "who-are-you.sh"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 2861,
+    "userId": 2058,
+    "objectId": 101362,
+    "grade": 1.0,
+    "object": {
+      "id": 101362,
+      "name": "who-are-you",
+      "type": "exercise",
+      "attrs": {
+        "special": {
+          "name": "getSpecial",
+          "type": "function"
+        },
+        "subject": "/api/content/root/01-edu_imperative-piscine/content/who-are-you/README.md",
+        "language": "sh",
+        "validations": [
+          {
+            "type": "tester",
+            "testImage": "ghcr.io/01-edu/imperative-piscine-sh"
+          }
+        ],
+        "expectedFiles": [
+          "who-are-you.sh"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3095,
+    "userId": 2058,
+    "objectId": 101361,
+    "grade": 0.0,
+    "object": {
+      "id": 101361,
+      "name": "to-git-or-not-to-git",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "to-git-or-not-to-git.sh"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3128,
+    "userId": 2058,
+    "objectId": 101361,
+    "grade": 1.0,
+    "object": {
+      "id": 101361,
+      "name": "to-git-or-not-to-git",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "to-git-or-not-to-git.sh"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3212,
+    "userId": 2058,
+    "objectId": 101358,
+    "grade": 1.0,
+    "object": {
+      "id": 101358,
+      "name": "cl-camp1",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "mastertheLS"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3221,
+    "userId": 2058,
+    "objectId": 101363,
+    "grade": 0.0,
+    "object": {
+      "id": 101363,
+      "name": "cl-camp2",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "r"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3226,
+    "userId": 2058,
+    "objectId": 101363,
+    "grade": 1.0,
+    "object": {
+      "id": 101363,
+      "name": "cl-camp2",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "r"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3237,
+    "userId": 2058,
+    "objectId": 101364,
+    "grade": 0.0,
+    "object": {
+      "id": 101364,
+      "name": "cl-camp3",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "look"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3251,
+    "userId": 2058,
+    "objectId": 101364,
+    "grade": 0.0,
+    "object": {
+      "id": 101364,
+      "name": "cl-camp3",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "look"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3259,
+    "userId": 2058,
+    "objectId": 101364,
+    "grade": 0.0,
+    "object": {
+      "id": 101364,
+      "name": "cl-camp3",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "look"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3312,
+    "userId": 2058,
+    "objectId": 101359,
+    "grade": 1.0,
+    "object": {
+      "id": 101359,
+      "name": "introduction",
+      "type": "exercise",
+      "attrs": {
+        "special": {
+          "name": "getSpecial",
+          "type": "function"
+        },
+        "subject": "/api/content/root/01-edu_imperative-piscine/content/introduction/README.md",
+        "language": "sh",
+        "validations": [
+          {
+            "type": "tester",
+            "testImage": "ghcr.io/01-edu/imperative-piscine-sh"
+          }
+        ],
+        "expectedFiles": [
+          "hello.sh"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3313,
+    "userId": 2058,
+    "objectId": 101364,
+    "grade": 0.0,
+    "object": {
+      "id": 101364,
+      "name": "cl-camp3",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "look"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3317,
+    "userId": 2058,
+    "objectId": 101364,
+    "grade": 0.0,
+    "object": {
+      "id": 101364,
+      "name": "cl-camp3",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "look"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3320,
+    "userId": 2058,
+    "objectId": 101364,
+    "grade": 0.0,
+    "object": {
+      "id": 101364,
+      "name": "cl-camp3",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "look"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3340,
+    "userId": 2058,
+    "objectId": 101364,
+    "grade": 0.0,
+    "object": {
+      "id": 101364,
+      "name": "cl-camp3",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "look"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3347,
+    "userId": 2058,
+    "objectId": 101364,
+    "grade": 0.0,
+    "object": {
+      "id": 101364,
+      "name": "cl-camp3",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "look"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3353,
+    "userId": 2058,
+    "objectId": 101364,
+    "grade": 0.0,
+    "object": {
+      "id": 101364,
+      "name": "cl-camp3",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "look"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3393,
+    "userId": 2058,
+    "objectId": 101364,
+    "grade": 0.0,
+    "object": {
+      "id": 101364,
+      "name": "cl-camp3",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "look"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3407,
+    "userId": 2058,
+    "objectId": 101364,
+    "grade": 0.0,
+    "object": {
+      "id": 101364,
+      "name": "cl-camp3",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "look"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3411,
+    "userId": 2058,
+    "objectId": 101364,
+    "grade": 0.0,
+    "object": {
+      "id": 101364,
+      "name": "cl-camp3",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "look"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3419,
+    "userId": 2058,
+    "objectId": 101364,
+    "grade": 0.0,
+    "object": {
+      "id": 101364,
+      "name": "cl-camp3",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "look"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3451,
+    "userId": 2058,
+    "objectId": 101364,
+    "grade": 1.0,
+    "object": {
+      "id": 101364,
+      "name": "cl-camp3",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "look"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3670,
+    "userId": 2058,
+    "objectId": 101365,
+    "grade": 0.0,
+    "object": {
+      "id": 101365,
+      "name": "cl-camp4",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "myfamily.sh"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3759,
+    "userId": 2058,
+    "objectId": 101365,
+    "grade": 0.0,
+    "object": {
+      "id": 101365,
+      "name": "cl-camp4",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "myfamily.sh"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3777,
+    "userId": 2058,
+    "objectId": 101365,
+    "grade": 0.0,
+    "object": {
+      "id": 101365,
+      "name": "cl-camp4",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "myfamily.sh"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3793,
+    "userId": 2058,
+    "objectId": 101365,
+    "grade": 0.0,
+    "object": {
+      "id": 101365,
+      "name": "cl-camp4",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "myfamily.sh"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3809,
+    "userId": 2058,
+    "objectId": 101365,
+    "grade": 1.0,
+    "object": {
+      "id": 101365,
+      "name": "cl-camp4",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "myfamily.sh"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3865,
+    "userId": 2058,
+    "objectId": 101366,
+    "grade": 0.0,
+    "object": {
+      "id": 101366,
+      "name": "cl-camp5",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "lookagain.sh"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3960,
+    "userId": 2058,
+    "objectId": 101366,
+    "grade": 1.0,
+    "object": {
+      "id": 101366,
+      "name": "cl-camp5",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "lookagain.sh"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 3987,
+    "userId": 2058,
+    "objectId": 101372,
+    "grade": 1.0,
+    "object": {
+      "id": 101372,
+      "name": "cl-camp6",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "countfiles.sh"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 4317,
+    "userId": 2058,
+    "objectId": 101367,
+    "grade": 0.0,
+    "object": {
+      "id": 101367,
+      "name": "cl-camp7",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "\"\\?$*'ChouMi'*$?\\\""
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 4344,
+    "userId": 2058,
+    "objectId": 101367,
+    "grade": 0.0,
+    "object": {
+      "id": 101367,
+      "name": "cl-camp7",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "\"\\?$*'ChouMi'*$?\\\""
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 4352,
+    "userId": 2058,
+    "objectId": 101367,
+    "grade": 1.0,
+    "object": {
+      "id": 101367,
+      "name": "cl-camp7",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "\"\\?$*'ChouMi'*$?\\\""
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 4379,
+    "userId": 2058,
+    "objectId": 101371,
+    "grade": 1.0,
+    "object": {
+      "id": 101371,
+      "name": "cl-camp8",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "skip.sh"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 4414,
+    "userId": 2058,
+    "objectId": 101368,
+    "grade": 0.0,
+    "object": {
+      "id": 101368,
+      "name": "now-get-to-work",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "my_answer.sh"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 4458,
+    "userId": 2058,
+    "objectId": 101368,
+    "grade": 0.0,
+    "object": {
+      "id": 101368,
+      "name": "now-get-to-work",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "my_answer.sh"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 4464,
+    "userId": 2058,
+    "objectId": 101368,
+    "grade": 0.0,
+    "object": {
+      "id": 101368,
+      "name": "now-get-to-work",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "my_answer.sh"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 4473,
+    "userId": 2058,
+    "objectId": 101368,
+    "grade": 0.0,
+    "object": {
+      "id": 101368,
+      "name": "now-get-to-work",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "my_answer.sh"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 4766,
+    "userId": 2058,
+    "objectId": 101368,
+    "grade": 0.0,
+    "object": {
+      "id": 101368,
+      "name": "now-get-to-work",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "my_answer.sh"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 4782,
+    "userId": 2058,
+    "objectId": 101368,
+    "grade": 1.0,
+    "object": {
+      "id": 101368,
+      "name": "now-get-to-work",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "my_answer.sh"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 4817,
+    "userId": 2058,
+    "objectId": 101369,
+    "grade": 1.0,
+    "object": {
+      "id": 101369,
+      "name": "explain",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "explain.sh"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 5126,
+    "userId": 2058,
+    "objectId": 101379,
+    "grade": 0.0,
+    "object": {
+      "id": 101379,
+      "name": "printdigits",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "printdigits/main.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune",
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 5139,
+    "userId": 2058,
+    "objectId": 101379,
+    "grade": 0.0,
+    "object": {
+      "id": 101379,
+      "name": "printdigits",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "printdigits/main.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune",
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 5146,
+    "userId": 2058,
+    "objectId": 101379,
+    "grade": 0.0,
+    "object": {
+      "id": 101379,
+      "name": "printdigits",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "printdigits/main.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune",
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 5154,
+    "userId": 2058,
+    "objectId": 101379,
+    "grade": 0.0,
+    "object": {
+      "id": 101379,
+      "name": "printdigits",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "printdigits/main.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune",
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 5166,
+    "userId": 2058,
+    "objectId": 101379,
+    "grade": 0.0,
+    "object": {
+      "id": 101379,
+      "name": "printdigits",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "printdigits/main.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune",
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 5194,
+    "userId": 2058,
+    "objectId": 101379,
+    "grade": 0.0,
+    "object": {
+      "id": 101379,
+      "name": "printdigits",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "printdigits/main.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune",
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 5228,
+    "userId": 2058,
+    "objectId": 101379,
+    "grade": 0.0,
+    "object": {
+      "id": 101379,
+      "name": "printdigits",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "printdigits/main.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune",
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 5247,
+    "userId": 2058,
+    "objectId": 101379,
+    "grade": 1.0,
+    "object": {
+      "id": 101379,
+      "name": "printdigits",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "printdigits/main.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune",
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 5337,
+    "userId": 2058,
+    "objectId": 101375,
+    "grade": 0.0,
+    "object": {
+      "id": 101375,
+      "name": "isnegative",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "isnegative.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune",
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 5341,
+    "userId": 2058,
+    "objectId": 101375,
+    "grade": 0.0,
+    "object": {
+      "id": 101375,
+      "name": "isnegative",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "isnegative.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune",
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 5346,
+    "userId": 2058,
+    "objectId": 101375,
+    "grade": 0.0,
+    "object": {
+      "id": 101375,
+      "name": "isnegative",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "isnegative.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune",
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 5356,
+    "userId": 2058,
+    "objectId": 101375,
+    "grade": 0.0,
+    "object": {
+      "id": 101375,
+      "name": "isnegative",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "isnegative.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune",
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 5368,
+    "userId": 2058,
+    "objectId": 101375,
+    "grade": 1.0,
+    "object": {
+      "id": 101375,
+      "name": "isnegative",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "isnegative.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune",
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 5864,
+    "userId": 2058,
+    "objectId": 101376,
+    "grade": 0.0,
+    "object": {
+      "id": 101376,
+      "name": "printcomb",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "printcomb.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune",
+          "--no-lit=\\d{3},"
+        ]
+      }
+    }
+  },
+  {
+    "id": 5875,
+    "userId": 2058,
+    "objectId": 101376,
+    "grade": 0.0,
+    "object": {
+      "id": 101376,
+      "name": "printcomb",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "printcomb.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune",
+          "--no-lit=\\d{3},"
+        ]
+      }
+    }
+  },
+  {
+    "id": 5881,
+    "userId": 2058,
+    "objectId": 101376,
+    "grade": 0.0,
+    "object": {
+      "id": 101376,
+      "name": "printcomb",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "printcomb.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune",
+          "--no-lit=\\d{3},"
+        ]
+      }
+    }
+  },
+  {
+    "id": 5888,
+    "userId": 2058,
+    "objectId": 101376,
+    "grade": 0.0,
+    "object": {
+      "id": 101376,
+      "name": "printcomb",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "printcomb.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune",
+          "--no-lit=\\d{3},"
+        ]
+      }
+    }
+  },
+  {
+    "id": 5913,
+    "userId": 2058,
+    "objectId": 101376,
+    "grade": 0.0,
+    "object": {
+      "id": 101376,
+      "name": "printcomb",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "printcomb.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune",
+          "--no-lit=\\d{3},"
+        ]
+      }
+    }
+  },
+  {
+    "id": 5926,
+    "userId": 2058,
+    "objectId": 101376,
+    "grade": 1.0,
+    "object": {
+      "id": 101376,
+      "name": "printcomb",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "printcomb.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune",
+          "--no-lit=\\d{3},"
+        ]
+      }
+    }
+  },
+  {
+    "id": 5962,
+    "userId": 2058,
+    "objectId": 101377,
+    "grade": 1.0,
+    "object": {
+      "id": 101377,
+      "name": "printcomb2",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "printcomb2.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune",
+          "--no-lit=\\d{2}\\s"
+        ]
+      }
+    }
+  },
+  {
+    "id": 5984,
+    "userId": 2058,
+    "objectId": 101381,
+    "grade": 1.0,
+    "object": {
+      "id": 101381,
+      "name": "pointone",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "pointone.go"
+        ],
+        "allowedFunctions": [
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 5997,
+    "userId": 2058,
+    "objectId": 101382,
+    "grade": 1.0,
+    "object": {
+      "id": 101382,
+      "name": "ultimatepointone",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "ultimatepointone.go"
+        ],
+        "allowedFunctions": [
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 6013,
+    "userId": 2058,
+    "objectId": 101383,
+    "grade": 1.0,
+    "object": {
+      "id": 101383,
+      "name": "divmod",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "divmod.go"
+        ],
+        "allowedFunctions": [
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 6028,
+    "userId": 2058,
+    "objectId": 101384,
+    "grade": 1.0,
+    "object": {
+      "id": 101384,
+      "name": "ultimatedivmod",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "ultimatedivmod.go"
+        ],
+        "allowedFunctions": [
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 6047,
+    "userId": 2058,
+    "objectId": 101388,
+    "grade": 1.0,
+    "object": {
+      "id": 101388,
+      "name": "printstr",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "printstr.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune",
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 6058,
+    "userId": 2058,
+    "objectId": 101389,
+    "grade": 1.0,
+    "object": {
+      "id": 101389,
+      "name": "strlen",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "strlen.go"
+        ],
+        "allowedFunctions": [
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 6071,
+    "userId": 2058,
+    "objectId": 101390,
+    "grade": 1.0,
+    "object": {
+      "id": 101390,
+      "name": "swap",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "swap.go"
+        ],
+        "allowedFunctions": [
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 6085,
+    "userId": 2058,
+    "objectId": 101391,
+    "grade": 1.0,
+    "object": {
+      "id": 101391,
+      "name": "strrev",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "strrev.go"
+        ],
+        "allowedFunctions": [
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 6572,
+    "userId": 2058,
+    "objectId": 101358,
+    "grade": 1.0,
+    "object": {
+      "id": 101358,
+      "name": "cl-camp1",
+      "type": "exercise",
+      "attrs": {
+        "language": "sh",
+        "expectedFiles": [
+          "mastertheLS"
+        ],
+        "allowedFunctions": []
+      }
+    }
+  },
+  {
+    "id": 7401,
+    "userId": 2058,
+    "objectId": 101393,
+    "grade": null,
+    "object": {
+      "id": 101393,
+      "name": "Checkpoint 01",
+      "type": "exam",
+      "attrs": {
+        "eventDuration": 240,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 7495,
+    "userId": 2058,
+    "objectId": 101227,
+    "grade": 1.0,
+    "object": {
+      "id": 101227,
+      "name": "onlyb",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "onlyb/main.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune"
+        ]
+      }
+    }
+  },
+  {
+    "id": 7949,
+    "userId": 2058,
+    "objectId": 101230,
+    "grade": 0.0,
+    "object": {
+      "id": 101230,
+      "name": "printifnot",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "printifnot.go"
+        ],
+        "allowedFunctions": [
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 8550,
+    "userId": 2058,
+    "objectId": 101393,
+    "grade": 0.1,
+    "object": {
+      "id": 101393,
+      "name": "Checkpoint 01",
+      "type": "exam",
+      "attrs": {
+        "eventDuration": 240,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 9033,
+    "userId": 2058,
+    "objectId": 101389,
+    "grade": 0.0,
+    "object": {
+      "id": 101389,
+      "name": "strlen",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "strlen.go"
+        ],
+        "allowedFunctions": [
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 9036,
+    "userId": 2058,
+    "objectId": 101389,
+    "grade": 1.0,
+    "object": {
+      "id": 101389,
+      "name": "strlen",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "strlen.go"
+        ],
+        "allowedFunctions": [
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 9149,
+    "userId": 2058,
+    "objectId": 101391,
+    "grade": 1.0,
+    "object": {
+      "id": 101391,
+      "name": "strrev",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "strrev.go"
+        ],
+        "allowedFunctions": [
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 9152,
+    "userId": 2058,
+    "objectId": 101348,
+    "grade": 0.0,
+    "object": {
+      "id": 101348,
+      "name": "iterativefactorial",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "iterativefactorial.go"
+        ],
+        "allowedFunctions": [
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 9170,
+    "userId": 2058,
+    "objectId": 101348,
+    "grade": 0.0,
+    "object": {
+      "id": 101348,
+      "name": "iterativefactorial",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "iterativefactorial.go"
+        ],
+        "allowedFunctions": [
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 9172,
+    "userId": 2058,
+    "objectId": 101348,
+    "grade": 0.0,
+    "object": {
+      "id": 101348,
+      "name": "iterativefactorial",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "iterativefactorial.go"
+        ],
+        "allowedFunctions": [
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 9174,
+    "userId": 2058,
+    "objectId": 101348,
+    "grade": 0.0,
+    "object": {
+      "id": 101348,
+      "name": "iterativefactorial",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "iterativefactorial.go"
+        ],
+        "allowedFunctions": [
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 9180,
+    "userId": 2058,
+    "objectId": 101348,
+    "grade": 0.0,
+    "object": {
+      "id": 101348,
+      "name": "iterativefactorial",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "iterativefactorial.go"
+        ],
+        "allowedFunctions": [
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 9182,
+    "userId": 2058,
+    "objectId": 101348,
+    "grade": 1.0,
+    "object": {
+      "id": 101348,
+      "name": "iterativefactorial",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "iterativefactorial.go"
+        ],
+        "allowedFunctions": [
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 9978,
+    "userId": 2058,
+    "objectId": 101349,
+    "grade": 1.0,
+    "object": {
+      "id": 101349,
+      "name": "recursivefactorial",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "recursivefactorial.go"
+        ],
+        "allowedFunctions": [
+          "-no-for"
+        ]
+      }
+    }
+  },
+  {
+    "id": 9980,
+    "userId": 2058,
+    "objectId": 101350,
+    "grade": 1.0,
+    "object": {
+      "id": 101350,
+      "name": "iterativepower",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "iterativepower.go"
+        ],
+        "allowedFunctions": [
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 9982,
+    "userId": 2058,
+    "objectId": 101351,
+    "grade": 1.0,
+    "object": {
+      "id": 101351,
+      "name": "recursivepower",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "recursivepower.go"
+        ],
+        "allowedFunctions": [
+          "-no-for"
+        ]
+      }
+    }
+  },
+  {
+    "id": 9983,
+    "userId": 2058,
+    "objectId": 101352,
+    "grade": 1.0,
+    "object": {
+      "id": 101352,
+      "name": "fibonacci",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "fibonacci.go"
+        ],
+        "allowedFunctions": [
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 9985,
+    "userId": 2058,
+    "objectId": 101353,
+    "grade": 0.0,
+    "object": {
+      "id": 101353,
+      "name": "sqrt",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "sqrt.go"
+        ],
+        "allowedFunctions": [
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 9987,
+    "userId": 2058,
+    "objectId": 101353,
+    "grade": 1.0,
+    "object": {
+      "id": 101353,
+      "name": "sqrt",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "sqrt.go"
+        ],
+        "allowedFunctions": [
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 9989,
+    "userId": 2058,
+    "objectId": 101354,
+    "grade": 1.0,
+    "object": {
+      "id": 101354,
+      "name": "isprime",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "isprime.go"
+        ],
+        "allowedFunctions": [
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 9990,
+    "userId": 2058,
+    "objectId": 101355,
+    "grade": 1.0,
+    "object": {
+      "id": 101355,
+      "name": "findnextprime",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "findnextprime.go"
+        ],
+        "allowedFunctions": [
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 8499,
+    "userId": 2058,
+    "objectId": 101397,
+    "grade": 1.0,
+    "object": {
+      "id": 101397,
+      "name": "quad",
+      "type": "raid",
+      "attrs": {
+        "language": "go",
+        "groupSize": 3,
+        "eventDuration": 3120,
+        "expectedFiles": [
+          "quad.go"
+        ],
+        "eventStartDelay": 300,
+        "allowedFunctions": [
+          "--cast",
+          "github.com/01-edu/z01.PrintRune"
+        ],
+        "registrationDuration": 2160
+      }
+    }
+  },
+  {
+    "id": 11133,
+    "userId": 2058,
+    "objectId": 101264,
+    "grade": 1.0,
+    "object": {
+      "id": 101264,
+      "name": "printprogramname",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "printprogramname/main.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune",
+          "os.Args",
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 11140,
+    "userId": 2058,
+    "objectId": 101265,
+    "grade": 1.0,
+    "object": {
+      "id": 101265,
+      "name": "printparams",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "printparams/main.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune",
+          "os.Args",
+          "--allow-builtin"
+        ]
+      }
+    }
+  },
+  {
+    "id": 11147,
+    "userId": 2058,
+    "objectId": 101266,
+    "grade": 1.0,
+    "object": {
+      "id": 101266,
+      "name": "revparams",
+      "type": "exercise",
+      "attrs": {
+        "language": "go",
+        "expectedFiles": [
+          "revparams/main.go"
+        ],
+        "allowedFunctions": [
+          "github.com/01-edu/z01.PrintRune",
+          "os.Args",
+          "..",
+          "--allow-builtin"
+        ]
+      }
+    }
+  }
+]

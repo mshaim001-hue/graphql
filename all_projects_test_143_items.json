@@ -1,0 +1,4076 @@
+[
+  {
+    "id": 102939,
+    "name": "filevault",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/s01talen/filevault/README.md",
+      "groupMax": 4,
+      "groupMin": 2,
+      "language": "\"go\",\"html\", \"css\", \"js\"",
+      "validations": [
+        {
+          "form": "/markdown/s01talen/filevault/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "createdAt": "2025-03-03T23:52:38.172315+00:00",
+    "updatedAt": "2025-03-04T12:30:55.688695+00:00",
+    "campus": "astanahub",
+    "authorId": 7
+  },
+  {
+    "id": 102083,
+    "name": "ascii-art",
+    "type": "project",
+    "attrs": {
+      "subject": {
+        "name": "getSubject",
+        "type": "function"
+      },
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": {
+            "name": "getAuditPath",
+            "type": "function"
+          },
+          "type": "user_audit",
+          "delay": 4320,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-01-13T05:50:44.100691+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102088,
+    "name": "ascii-art-reverse",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/ascii-art-reverse/README.md",
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/ascii-art-reverse/audit/README.md",
+          "type": "user_audit"
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-06-04T04:56:34.579305+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102097,
+    "name": "groupie-tracker-filters",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/groupie-tracker-filters/README.md",
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/groupie-tracker-filters/audit/README.md",
+          "type": "user_audit"
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-06-04T04:57:02.059387+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102090,
+    "name": "ascii-art-web",
+    "type": "project",
+    "attrs": {
+      "subject": {
+        "name": "getSubject",
+        "type": "function"
+      },
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": {
+            "name": "getAuditPath",
+            "type": "function"
+          },
+          "type": "user_audit",
+          "delay": 4320,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-01-13T05:51:02.981883+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102096,
+    "name": "groupie-tracker",
+    "type": "project",
+    "attrs": {
+      "subject": {
+        "name": "getSubject",
+        "type": "function"
+      },
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": {
+            "name": "getAuditPath",
+            "type": "function"
+          },
+          "type": "user_audit",
+          "delay": 4320,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-01-15T07:36:49.370702+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102086,
+    "name": "ascii-art-fs",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/ascii-art-fs/README.md",
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/ascii-art-fs/audit/README.md",
+          "type": "user_audit"
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-06-04T04:56:22.894922+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102087,
+    "name": "ascii-art-justify",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/ascii-art-justify/README.md",
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/ascii-art-justify/audit/README.md",
+          "type": "user_audit"
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-06-04T04:56:29.558102+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102092,
+    "name": "ascii-art-web-dockerize",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/ascii-art-web-dockerize/README.md",
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/ascii-art-web-dockerize/audit/README.md",
+          "type": "user_audit"
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-06-04T04:56:44.14203+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102093,
+    "name": "ascii-art-web-export-file",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/ascii-art-web-export-file/README.md",
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/ascii-art-web-export-file/audit/README.md",
+          "type": "user_audit"
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-06-04T04:56:49.294213+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102098,
+    "name": "groupie-tracker-geolocalization",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/groupie-tracker-geolocalization/README.md",
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/groupie-tracker-geolocalization/audit/README.md",
+          "type": "user_audit"
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-06-04T04:57:08.161535+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102100,
+    "name": "groupie-tracker-search-bar",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/groupie-tracker-search-bar/README.md",
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/groupie-tracker-search-bar/audit/README.md",
+          "type": "user_audit"
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-06-04T04:57:21.770807+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102076,
+    "name": "forum-authentication",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/forum-authentication/README.md",
+      "groupMax": 5,
+      "groupMin": 4,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/forum-authentication/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 4,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2
+          }
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-06-04T04:59:32.349714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102075,
+    "name": "forum",
+    "type": "project",
+    "attrs": {
+      "subject": {
+        "name": "getSubject",
+        "type": "function"
+      },
+      "groupMax": 5,
+      "groupMin": 4,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/forum/audit/README.md",
+          "type": "user_audit",
+          "delay": 4320,
+          "ratio": 1,
+          "required": 10,
+          "matchWhere": {
+            "name": "usersOfCampusWithAdmins",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-01-15T07:48:12.729686+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102099,
+    "name": "groupie-tracker-visualizations",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/groupie-tracker-visualizations/README.md",
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/groupie-tracker-visualizations/audit/README.md",
+          "type": "user_audit"
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-06-04T04:57:14.029544+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102077,
+    "name": "forum-image-upload",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/forum-image-upload/README.md",
+      "groupMax": 5,
+      "groupMin": 4,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/forum-image-upload/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 4,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2
+          }
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-06-04T05:00:38.574142+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102410,
+    "name": "widget-factory",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/gaming/widget-factory/README.md",
+      "groupMax": 2,
+      "groupMin": 1,
+      "language": "unreal engine",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/gaming/widget-factory/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-01-07T18:33:11.669685+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102411,
+    "name": "army-of-one",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/gaming/army-of-one/README.md",
+      "groupMax": 2,
+      "groupMin": 1,
+      "language": "unreal engine",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/gaming/army-of-one/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-01-07T18:33:11.669685+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102413,
+    "name": "zombie-ai",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/gaming/zombie-ai/README.md",
+      "groupMax": 2,
+      "groupMin": 1,
+      "language": "unreal engine",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/gaming/zombie-ai/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-01-07T18:33:11.669685+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102414,
+    "name": "nascar-online-alpha",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/gaming/nascar-online-alpha/README.md",
+      "groupMax": 2,
+      "groupMin": 1,
+      "language": "unreal engine",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/gaming/nascar-online-alpha/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-01-07T18:33:11.669685+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102415,
+    "name": "mouse-vr",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/gaming/mouse-vr/README.md",
+      "groupMax": 2,
+      "groupMin": 1,
+      "language": "unreal engine",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/gaming/mouse-vr/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-01-07T18:33:11.669685+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102418,
+    "name": "jumpo",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/gaming/jumpo/README.md",
+      "groupMax": 2,
+      "groupMin": 1,
+      "language": "unreal engine",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/gaming/jumpo/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-01-07T18:33:11.669685+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102094,
+    "name": "my-ls-1",
+    "type": "project",
+    "attrs": {
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102107,
+    "name": "mini-framework",
+    "type": "project",
+    "attrs": {
+      "groupMax": 4,
+      "groupMin": 4,
+      "language": "JavaScript"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102095,
+    "name": "net-cat",
+    "type": "project",
+    "attrs": {
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102106,
+    "name": "social-network",
+    "type": "project",
+    "attrs": {
+      "groupMax": 6,
+      "groupMin": 4,
+      "language": "JavaScript"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102102,
+    "name": "filler",
+    "type": "project",
+    "attrs": {
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "rust"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102103,
+    "name": "make-your-game",
+    "type": "project",
+    "attrs": {
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "JavaScript"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102104,
+    "name": "real-time-forum",
+    "type": "project",
+    "attrs": {
+      "groupMax": 2,
+      "groupMin": 2,
+      "language": "JavaScript"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102105,
+    "name": "stock-exchange-sim",
+    "type": "project",
+    "attrs": {
+      "groupMax": 4,
+      "groupMin": 4,
+      "language": "Open"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102108,
+    "name": "wget",
+    "type": "project",
+    "attrs": {
+      "groupMax": 4,
+      "groupMin": 4,
+      "language": "Open"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102109,
+    "name": "bomberman-dom",
+    "type": "project",
+    "attrs": {
+      "groupMax": 4,
+      "groupMin": 4,
+      "language": "JavaScript"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102110,
+    "name": "rt",
+    "type": "project",
+    "attrs": {
+      "groupMax": 6,
+      "groupMin": 4,
+      "language": "rust"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102111,
+    "name": "zappy",
+    "type": "project",
+    "attrs": {
+      "groupMax": 4,
+      "groupMin": 2,
+      "language": "Open"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102112,
+    "name": "corewar",
+    "type": "project",
+    "attrs": {
+      "groupMax": 4,
+      "groupMin": 3,
+      "language": "Open"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102113,
+    "name": "make-your-own",
+    "type": "project",
+    "attrs": {
+      "groupMax": 10,
+      "groupMin": 4,
+      "language": "Open"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102114,
+    "name": "multiplayer-fps",
+    "type": "project",
+    "attrs": {
+      "groupMax": 8,
+      "groupMin": 4,
+      "language": "Open"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102115,
+    "name": "0-shell",
+    "type": "project",
+    "attrs": {
+      "groupMax": 4,
+      "groupMin": 4,
+      "language": "Open"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102116,
+    "name": "make-your-game-score-handling",
+    "type": "project",
+    "attrs": {
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "JavaScript"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102117,
+    "name": "make-your-game-history",
+    "type": "project",
+    "attrs": {
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "JavaScript"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102118,
+    "name": "make-your-game-different-maps",
+    "type": "project",
+    "attrs": {
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "JavaScript"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102119,
+    "name": "real-time-forum-typing-in-progress",
+    "type": "project",
+    "attrs": {
+      "groupMax": 2,
+      "groupMin": 2,
+      "language": "JavaScript"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102120,
+    "name": "social-network-cross-platform-appimage",
+    "type": "project",
+    "attrs": {
+      "groupMax": 6,
+      "groupMin": 4,
+      "language": "Open"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102121,
+    "name": "job-control",
+    "type": "project",
+    "attrs": {
+      "groupMax": 4,
+      "groupMin": 4,
+      "language": "Open"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102122,
+    "name": "scripting",
+    "type": "project",
+    "attrs": {
+      "groupMax": 4,
+      "groupMin": 4,
+      "language": "Open"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102084,
+    "name": "ascii-art-color",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/ascii-art-color/README.md",
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/ascii-art-color/audit/README.md",
+          "type": "user_audit"
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-06-04T04:45:29.584459+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102091,
+    "name": "ascii-art-web-stylize",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/ascii-art-web-stylize/README.md",
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/ascii-art-web-stylize/audit/README.md",
+          "type": "user_audit"
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-06-04T04:56:39.739928+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102082,
+    "name": "tetris-optimizer",
+    "type": "project",
+    "attrs": {
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "Go"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102089,
+    "name": "push-swap",
+    "type": "project",
+    "attrs": {
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102247,
+    "name": "graphql",
+    "type": "project",
+    "attrs": {
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "JavaScript"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102419,
+    "name": "atm-management-system",
+    "type": "project",
+    "attrs": {
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "c"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102420,
+    "name": "smart-road",
+    "type": "project",
+    "attrs": {
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "rust"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102421,
+    "name": "netfix",
+    "type": "project",
+    "attrs": {
+      "groupMax": 2,
+      "groupMin": 1,
+      "language": "python"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102422,
+    "name": "mister-quiz",
+    "type": "project",
+    "attrs": {
+      "groupMax": 2,
+      "groupMin": 1,
+      "language": "php"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102423,
+    "name": "shop",
+    "type": "project",
+    "attrs": {
+      "groupMax": 2,
+      "groupMin": 1,
+      "language": "ruby"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102424,
+    "name": "system-monitor",
+    "type": "project",
+    "attrs": {
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "c++"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102429,
+    "name": "linux",
+    "type": "project",
+    "attrs": {
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "sys"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102430,
+    "name": "login",
+    "type": "project",
+    "attrs": {
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "sys"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102431,
+    "name": "add-vm",
+    "type": "project",
+    "attrs": {
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "sys"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102432,
+    "name": "connect",
+    "type": "project",
+    "attrs": {
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "sys"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102433,
+    "name": "remote",
+    "type": "project",
+    "attrs": {
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "sys"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102434,
+    "name": "scan",
+    "type": "project",
+    "attrs": {
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "sys"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102496,
+    "name": "localhost",
+    "type": "project",
+    "attrs": {
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "rust"
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-09-19T10:29:44.243078+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102771,
+    "name": "travel-plan",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/java/projects/travel-plan/README.md",
+      "groupMax": 6,
+      "groupMin": 4,
+      "language": "Java",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/java/projects/travel-plan/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102409,
+    "name": "firing-range",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/gaming/firing-range/README.md",
+      "groupMax": 2,
+      "groupMin": 1,
+      "language": "unreal engine",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/gaming/firing-range/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102412,
+    "name": "vehicle-physics",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/gaming/vehicle-physics/README.md",
+      "groupMax": 2,
+      "groupMin": 1,
+      "language": "unreal engine",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/gaming/vehicle-physics/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102416,
+    "name": "the-pages",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/gaming/the-pages/README.md",
+      "groupMax": 2,
+      "groupMin": 1,
+      "language": "unreal engine",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/gaming/the-pages/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102417,
+    "name": "stealth-boom",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/gaming/stealth-boom/README.md",
+      "groupMax": 2,
+      "groupMin": 1,
+      "language": "unreal engine",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/gaming/stealth-boom/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102498,
+    "name": "numpy",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/ai/numpy/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "python",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/ai/numpy/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102079,
+    "name": "forum-moderation",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/forum-moderation/README.md",
+      "groupMax": 5,
+      "groupMin": 4,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/forum-moderation/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 4,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2
+          }
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-06-04T05:00:57.089307+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102080,
+    "name": "forum-advanced-features",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/forum-advanced-features/README.md",
+      "groupMax": 5,
+      "groupMin": 4,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/forum-advanced-features/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 4,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2
+          }
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-06-04T05:01:03.021156+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102499,
+    "name": "pandas",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/ai/pandas/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "python",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/ai/pandas/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102500,
+    "name": "visualizations",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/ai/visualizations/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "python",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/ai/visualizations/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102501,
+    "name": "data-wrangling",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/ai/data-wrangling/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "python",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/ai/data-wrangling/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102502,
+    "name": "time-series",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/ai/time-series/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "python",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/ai/time-series/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102504,
+    "name": "linear-regression",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/ai/linear-regression/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "python",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/ai/linear-regression/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102505,
+    "name": "classification",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/ai/classification/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "python",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/ai/classification/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102506,
+    "name": "pipeline",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/ai/pipeline/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "python",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/ai/pipeline/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102507,
+    "name": "training",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/ai/training/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "python",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/ai/training/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102508,
+    "name": "model-selection",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/ai/model-selection/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "python",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/ai/model-selection/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102510,
+    "name": "neural-networks",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/ai/neural-networks/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "python",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/ai/neural-networks/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102511,
+    "name": "keras",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/ai/keras/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "python",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/ai/keras/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102512,
+    "name": "keras-2",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/ai/keras-2/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "python",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/ai/keras-2/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102513,
+    "name": "nlp",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/ai/nlp/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "python",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/ai/nlp/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102514,
+    "name": "nlp-spacy",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/ai/nlp-spacy/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "python",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/ai/nlp-spacy/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102515,
+    "name": "kaggle-titanic",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/ai/kaggle-titanic/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "python",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/ai/kaggle-titanic/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102516,
+    "name": "nlp-scraper",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/ai/nlp-scraper/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "python",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/ai/nlp-scraper/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102517,
+    "name": "emotions-detector",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/ai/emotions-detector/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "python",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/ai/emotions-detector/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102518,
+    "name": "sp500-strategies",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/ai/sp500-strategies/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "python",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/ai/sp500-strategies/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102519,
+    "name": "credit-scoring",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/ai/credit-scoring/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "python",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/ai/credit-scoring/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102566,
+    "name": "non-fungible-cats",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/blockchain/non-fungible-cats/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "blockchain",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/blockchain/non-fungible-cats/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102567,
+    "name": "decentralized-finance",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/blockchain/decentralized-finance/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "blockchain",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/blockchain/decentralized-finance/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102568,
+    "name": "exploring-blockchains",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/blockchain/exploring-blockchains/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "blockchain",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/blockchain/exploring-blockchains/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102570,
+    "name": "nft-marketplace",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/blockchain/nft-marketplace/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "blockchain",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/blockchain/nft-marketplace/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102571,
+    "name": "payment-channel",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/blockchain/payment-channel/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "blockchain",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/blockchain/payment-channel/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102572,
+    "name": "node-dashboard",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/blockchain/node-dashboard/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "blockchain",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/blockchain/node-dashboard/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102573,
+    "name": "financial-instruments",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/blockchain/financial-instruments/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "blockchain",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/blockchain/financial-instruments/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102588,
+    "name": "bizz-card",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/mobile-dev/bizz-card/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "dart",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/mobile-dev/bizz-card/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102589,
+    "name": "quizz-app",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/mobile-dev/quizz-app/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "dart",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/mobile-dev/quizz-app/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102590,
+    "name": "movie-list",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/mobile-dev/movie-list/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "dart",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/mobile-dev/movie-list/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102592,
+    "name": "favorite-images",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/mobile-dev/favorite-images/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "dart",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/mobile-dev/favorite-images/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102593,
+    "name": "bouncer",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/mobile-dev/bouncer/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "dart",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/mobile-dev/bouncer/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102594,
+    "name": "map-markers",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/mobile-dev/map-markers/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "dart",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/mobile-dev/map-markers/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102596,
+    "name": "package",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/mobile-dev/package/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "dart",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/mobile-dev/package/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102597,
+    "name": "bloc-counter",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/mobile-dev/bloc-counter/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "dart",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/mobile-dev/bloc-counter/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102598,
+    "name": "sky-map",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/mobile-dev/sky-map/README.md",
+      "groupMax": 2,
+      "groupMin": 1,
+      "language": "dart",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/mobile-dev/sky-map/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102599,
+    "name": "stock-market",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/mobile-dev/stock-market/README.md",
+      "groupMax": 2,
+      "groupMin": 1,
+      "language": "dart",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/mobile-dev/stock-market/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102600,
+    "name": "kaquiz",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/mobile-dev/kaquiz/README.md",
+      "groupMax": 2,
+      "groupMin": 1,
+      "language": "dart",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/mobile-dev/kaquiz/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102601,
+    "name": "secure-messenger",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/mobile-dev/secure-messenger/README.md",
+      "groupMax": 2,
+      "groupMin": 1,
+      "language": "dart",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/mobile-dev/secure-messenger/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102608,
+    "name": "hole-in-bin",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/cybersecurity/hole-in-bin/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "cybersecurity",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/cybersecurity/hole-in-bin/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102613,
+    "name": "twenty-forty-eight",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/mobile-dev/twenty-forty-eight/README.md",
+      "groupMax": 2,
+      "groupMin": 1,
+      "language": "dart",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/mobile-dev/twenty-forty-eight/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102614,
+    "name": "chess",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/mobile-dev/chess/README.md",
+      "groupMax": 2,
+      "groupMin": 1,
+      "language": "dart",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/mobile-dev/chess/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102615,
+    "name": "deep-in-system",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/devops/deep-in-system/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "DevOps",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/devops/deep-in-system/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 2,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102616,
+    "name": "deep-in-net",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/devops/deep-in-net/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "DevOps",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/devops/deep-in-net/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 2,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102617,
+    "name": "crud-master",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/devops/crud-master-py/README.md",
+      "groupMax": 2,
+      "groupMin": 2,
+      "language": "DevOps",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/devops/crud-master-py/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 2,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102618,
+    "name": "play-with-containers",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/devops/play-with-containers/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "DevOps",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/devops/play-with-containers/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 2,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102619,
+    "name": "orchestrator",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/devops/orchestrator/README.md",
+      "groupMax": 2,
+      "groupMin": 2,
+      "language": "DevOps",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/devops/orchestrator/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 2,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102620,
+    "name": "cloud-design",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/devops/cloud-design/README.md",
+      "groupMax": 2,
+      "groupMin": 2,
+      "language": "DevOps",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/devops/cloud-design/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 2,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102621,
+    "name": "code-keeper",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/devops/code-keeper/README.md",
+      "groupMax": 2,
+      "groupMin": 2,
+      "language": "DevOps",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/devops/code-keeper/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 2,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102763,
+    "name": "lets-play",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/java/projects/lets-play/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "Java",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/java/projects/lets-play/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102764,
+    "name": "angul-it",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/java/projects/angul-it/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "TypeScript",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/java/projects/angul-it/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102765,
+    "name": "buy-01",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/java/projects/buy-01/README.md",
+      "groupMax": 4,
+      "groupMin": 2,
+      "language": "Java",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/java/projects/buy-01/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102766,
+    "name": "mr-jenk",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/java/projects/mr-jenk/README.md",
+      "groupMax": 2,
+      "groupMin": 1,
+      "language": "Open",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/java/projects/mr-jenk/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102767,
+    "name": "safe-zone",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/java/projects/safe-zone/README.md",
+      "groupMax": 2,
+      "groupMin": 1,
+      "language": "Open",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/java/projects/safe-zone/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102768,
+    "name": "buy-02",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/java/projects/buy-02/README.md",
+      "groupMax": 4,
+      "groupMin": 2,
+      "language": "Java",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/java/projects/buy-02/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102769,
+    "name": "nexus",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/java/projects/nexus/README.md",
+      "groupMax": 2,
+      "groupMin": 1,
+      "language": "Open",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/java/projects/nexus/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102770,
+    "name": "neo4flix",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/java/projects/neo4flix/README.md",
+      "groupMax": 2,
+      "groupMin": 1,
+      "language": "Open",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/java/projects/neo4flix/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102772,
+    "name": "lets-travel",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/java/projects/lets-travel/README.md",
+      "groupMax": 6,
+      "groupMin": 4,
+      "language": "Java",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/java/projects/lets-travel/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102773,
+    "name": "git",
+    "type": "project",
+    "attrs": {
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "sh",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/git/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 1,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ],
+      "requiredAuditRatio": 0
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2024-11-13T22:06:36.917714+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102602,
+    "name": "passive",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/cybersecurity/passive/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "cybersecurity",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/cybersecurity/passive/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-01-31T21:26:41.879171+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102603,
+    "name": "inspector-image",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/cybersecurity/inspector-image/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "cybersecurity",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/cybersecurity/inspector-image/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-01-31T21:26:41.879171+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102604,
+    "name": "active",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/cybersecurity/active/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "cybersecurity",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/cybersecurity/active/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-01-31T21:26:41.879171+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102605,
+    "name": "local",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/cybersecurity/local/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "cybersecurity",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/cybersecurity/local/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-01-31T21:26:41.879171+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102606,
+    "name": "web-hack",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/cybersecurity/web-hack/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "cybersecurity",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/cybersecurity/web-hack/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-01-31T21:26:41.879171+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102607,
+    "name": "injector",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/cybersecurity/injector/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "cybersecurity",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/cybersecurity/injector/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-01-31T21:26:41.879171+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102609,
+    "name": "mal-track",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/cybersecurity/mal-track/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "cybersecurity",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/cybersecurity/mal-track/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-01-31T21:26:41.879171+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102610,
+    "name": "evasion",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/cybersecurity/evasion/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "cybersecurity",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/cybersecurity/evasion/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-01-31T21:26:41.879171+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102611,
+    "name": "obfuscator",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/cybersecurity/obfuscator/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "cybersecurity",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/cybersecurity/obfuscator/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-01-31T21:26:41.879171+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102612,
+    "name": "malware",
+    "type": "project",
+    "attrs": {
+      "subject": "/markdown/root/public/subjects/cybersecurity/malware/README.md",
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "cybersecurity",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/cybersecurity/malware/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ]
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-01-31T21:26:41.879171+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102101,
+    "name": "lem-in",
+    "type": "project",
+    "attrs": {
+      "subject": {
+        "name": "getSubject",
+        "type": "function"
+      },
+      "groupMax": 2,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": {
+            "name": "getAuditPath",
+            "type": "function"
+          },
+          "type": "user_audit",
+          "delay": 4320,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-02-19T11:59:40.01461+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102085,
+    "name": "ascii-art-output",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/ascii-art-output/README.md",
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/ascii-art-output/audit/README.md",
+          "type": "user_audit"
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-06-04T04:46:04.250338+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102081,
+    "name": "go-reloaded",
+    "type": "project",
+    "attrs": {
+      "subject": {
+        "name": "getSubject",
+        "type": "function"
+      },
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "Go",
+      "validations": [
+        {
+          "form": {
+            "name": "getAuditPath",
+            "type": "function"
+          },
+          "type": "user_audit",
+          "delay": 4320,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-01-24T06:15:06.029434+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  },
+  {
+    "id": 102078,
+    "name": "forum-security",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/forum-security/README.md",
+      "groupMax": 5,
+      "groupMin": 4,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/forum-security/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 4,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2
+          }
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "createdAt": "2024-09-19T10:29:44.243078+00:00",
+    "updatedAt": "2025-06-04T05:00:50.543924+00:00",
+    "campus": "astanahub",
+    "authorId": 8
+  }
+]

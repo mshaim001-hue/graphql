@@ -1,0 +1,4943 @@
+[
+  {
+    "id": 2004,
+    "name": "Form Step Example",
+    "type": "form-step",
+    "attrs": {
+      "form": [
+        {
+          "key": "moreAboutYou",
+          "title": "More about you",
+          "inputs": [
+            {
+              "key": "favoriteColor",
+              "type": "text",
+              "required": true,
+              "placeholder": "Your favorite color"
+            }
+          ]
+        },
+        {
+          "key": "identification",
+          "title": "Identification",
+          "inputs": [
+            {
+              "key": "firstName",
+              "type": "text",
+              "required": true,
+              "maxLength": 50,
+              "placeholder": "First name"
+            },
+            {
+              "key": "tel",
+              "type": "tel",
+              "label": "Phone number",
+              "pattern": "[+][3][0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}",
+              "required": true,
+              "placeholder": "+333 33 33 33 33"
+            },
+            {
+              "key": "dateOfBirth",
+              "max": "1900-01-01",
+              "min": "1621-07-08",
+              "type": "date",
+              "label": "Date of birth",
+              "value": "2000-01-01",
+              "required": true
+            },
+            {
+              "id": "genders",
+              "key": "gender",
+              "type": "select",
+              "items": [
+                {
+                  "data": "male",
+                  "label": "Male"
+                },
+                {
+                  "data": "female",
+                  "label": "Female"
+                }
+              ],
+              "required": true,
+              "emptyItem": {
+                "label": "Select your gender"
+              }
+            },
+            {
+              "id": "countries",
+              "key": "country",
+              "type": "countries",
+              "required": true,
+              "emptyItem": {
+                "label": "Select your country label"
+              }
+            },
+            {
+              "key": "environment",
+              "type": "radio",
+              "items": [
+                {
+                  "data": "city",
+                  "label": "City"
+                },
+                {
+                  "data": "countryside",
+                  "label": "Countryside"
+                }
+              ],
+              "label": "Which environment do you live in ?",
+              "required": true,
+              "inlineBlock": true
+            },
+            {
+              "key": "programmingAbilities",
+              "type": "switch",
+              "label": "I am new in programming",
+              "value": true
+            },
+            {
+              "key": "medicalInfo",
+              "type": "textarea",
+              "label": "Medical informations",
+              "maxLength": 250,
+              "placeholder": "Your medical Informations"
+            },
+            {
+              "key": "generalConditions",
+              "type": "checkbox",
+              "label": "I have read and I accept the general conditions",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 100938,
+    "name": "Piscine",
+    "type": "piscine-registration",
+    "attrs": {
+      "resume": "Ready to dive? Here is the final step of your onboarding, you're almost done!"
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 101359,
+    "name": "introduction",
+    "type": "exercise",
+    "attrs": {
+      "special": {
+        "name": "getSpecial",
+        "type": "function"
+      },
+      "subject": "/api/content/root/01-edu_imperative-piscine/content/introduction/README.md",
+      "language": "sh",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/imperative-piscine-sh"
+        }
+      ],
+      "expectedFiles": [
+        "hello.sh"
+      ],
+      "allowedFunctions": []
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102081,
+    "name": "go-reloaded",
+    "type": "project",
+    "attrs": {
+      "subject": {
+        "name": "getSubject",
+        "type": "function"
+      },
+      "groupMax": 1,
+      "groupMin": 1,
+      "language": "Go",
+      "validations": [
+        {
+          "form": {
+            "name": "getAuditPath",
+            "type": "function"
+          },
+          "type": "user_audit",
+          "delay": 4320,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 100940,
+    "name": "Online Cognitive Games",
+    "type": "games",
+    "attrs": {
+      "campaignId": "acd37687-c85f-4986-8ff5-71a274388e75",
+      "autoRejectWhere": {
+        "zzleLevel": {
+          "<": 3
+        },
+        "memoryLevel": {
+          "<": 10
+        }
+      },
+      "autoValidateWhere": {
+        "zzleLevel": {
+          ">=": 3
+        },
+        "memoryLevel": {
+          ">=": 10
+        }
+      },
+      "autoRejectOperator": {
+        "name": "one",
+        "type": "function"
+      },
+      "autoValidateOperator": {
+        "name": "all",
+        "type": "function"
+      }
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 101362,
+    "name": "who-are-you",
+    "type": "exercise",
+    "attrs": {
+      "special": {
+        "name": "getSpecial",
+        "type": "function"
+      },
+      "subject": "/api/content/root/01-edu_imperative-piscine/content/who-are-you/README.md",
+      "language": "sh",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/imperative-piscine-sh"
+        }
+      ],
+      "expectedFiles": [
+        "who-are-you.sh"
+      ],
+      "allowedFunctions": []
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 100936,
+    "name": "astanahub",
+    "type": "campus",
+    "attrs": {
+      "teamworkRanks": [
+        {
+          "name": "Byte Buddy",
+          "groups": 10
+        },
+        {
+          "name": "Network Ninja",
+          "groups": 30
+        },
+        {
+          "name": "Teamwork Titan",
+          "groups": 50
+        },
+        {
+          "name": "Cohort Conqueror",
+          "groups": 100
+        }
+      ]
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 100937,
+    "name": "Onboarding",
+    "type": "onboarding",
+    "attrs": {},
+    "campus": "astanahub"
+  },
+  {
+    "id": 102142,
+    "name": "physics",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "physics.js"
+      ]
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 4002,
+    "name": "cl-camp1",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_imperative-piscine/content/cl-camp1/README.md",
+      "language": "sh",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/imperative-piscine-sh"
+        }
+      ],
+      "expectedFiles": [
+        "mastertheLS"
+      ],
+      "allowedFunctions": []
+    },
+    "campus": null
+  },
+  {
+    "id": 102143,
+    "name": "collections",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "collections.js"
+      ]
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102083,
+    "name": "ascii-art",
+    "type": "project",
+    "attrs": {
+      "subject": {
+        "name": "getSubject",
+        "type": "function"
+      },
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": {
+            "name": "getAuditPath",
+            "type": "function"
+          },
+          "type": "user_audit",
+          "delay": 4320,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102181,
+    "name": "unicode-technical-report-35",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "unicode-technical-report-35.js"
+      ]
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102194,
+    "name": "flow",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "flow.js"
+      ]
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102806,
+    "name": "onlya",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_imperative-piscine/content/onlya/README.md",
+      "language": "go",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/imperative-piscine-go"
+        }
+      ],
+      "expectedFiles": [
+        "onlya/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune",
+        "--allow-builtin"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 102808,
+    "name": "onlyf",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_imperative-piscine/content/onlyf/README.md",
+      "language": "go",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/imperative-piscine-go"
+        }
+      ],
+      "expectedFiles": [
+        "onlyf/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 21592,
+    "name": "Checkpoint 02-java",
+    "type": "exam",
+    "attrs": {
+      "language": "java",
+      "eventDuration": 240,
+      "eventStartDelay": 60,
+      "registrationDuration": 2160
+    },
+    "campus": null
+  },
+  {
+    "id": 102183,
+    "name": "using-map",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "using-map.js"
+      ]
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 21278,
+    "name": "Cloud DevOps Branch template",
+    "type": "module",
+    "attrs": {
+      "graph": {
+        "innerCircle": [
+          {
+            "id": "1mdd5ao9oh5",
+            "name": {
+              "text": "Cloud DevOps Branch template",
+              "hidden": false
+            },
+            "type": "slice",
+            "innerArc": {
+              "id": "0jopnuoo3u3j",
+              "name": {
+                "text": "Inner arc",
+                "hidden": true
+              },
+              "contents": [
+                "deep-in-net",
+                "deep-in-system",
+                "crud-master-py",
+                "play-with-containers",
+                "orchestrator",
+                "cloud-design",
+                "code-keeper",
+                "road-to-ccp",
+                "road-to-dofd"
+              ]
+            },
+            "outerArcs": [],
+            "entryPoint": "piscine-scripting"
+          }
+        ],
+        "outerCircle": [],
+        "middleCircle": []
+      },
+      "capacity": 200,
+      "eventDuration": 403200,
+      "eventStartDelay": 240,
+      "registrationDuration": 43200
+    },
+    "campus": null
+  },
+  {
+    "id": 21555,
+    "name": "DevOps template M1-M2",
+    "type": "module",
+    "attrs": {
+      "graph": {
+        "innerCircle": [
+          {
+            "id": "hj2cxr6gh6t",
+            "name": {
+              "text": "DevOps template M1-M2",
+              "hidden": false
+            },
+            "type": "slice",
+            "innerArc": {
+              "id": "o8e2rhofxr",
+              "name": {
+                "text": "Inner arc",
+                "hidden": true
+              },
+              "contents": [
+                "deep-in-system",
+                "cloud-press-piscine",
+                "play-with-containers",
+                "easy-cloud"
+              ]
+            },
+            "outerArcs": [],
+            "entryPoint": "piscine-scripting"
+          }
+        ],
+        "outerCircle": [],
+        "middleCircle": []
+      },
+      "capacity": 100,
+      "eventDuration": 1051200,
+      "eventStartDelay": 240,
+      "registrationDuration": 1440
+    },
+    "campus": null
+  },
+  {
+    "id": 21556,
+    "name": "DevOps template M3",
+    "type": "module",
+    "attrs": {
+      "graph": {
+        "innerCircle": [
+          {
+            "id": "66fujk4zb3w",
+            "name": {
+              "text": "DevOps template M3",
+              "hidden": false
+            },
+            "type": "slice",
+            "innerArc": {
+              "id": "1mfwja080qt",
+              "name": {
+                "text": "Inner arc",
+                "hidden": true
+              },
+              "contents": [
+                "deep-in-net",
+                "crud-master-py",
+                "orchestrator",
+                "cloud-kube",
+                "code-keeper"
+              ]
+            },
+            "outerArcs": []
+          }
+        ],
+        "outerCircle": [],
+        "middleCircle": []
+      },
+      "capacity": 100,
+      "eventDuration": 525600,
+      "eventStartDelay": 240,
+      "registrationDuration": 43200
+    },
+    "campus": null
+  },
+  {
+    "id": 102145,
+    "name": "loop",
+    "type": "quest",
+    "attrs": {},
+    "campus": "astanahub"
+  },
+  {
+    "id": 102184,
+    "name": "using-filter",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "using-filter.js"
+      ]
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 100615,
+    "name": "Module",
+    "type": "module",
+    "attrs": {
+      "graph": {
+        "innerCircle": [
+          {
+            "id": "3rg1fkp9g7",
+            "name": {
+              "text": "Imperative",
+              "hidden": false
+            },
+            "type": "slice",
+            "innerArc": {
+              "id": "ydc1zab3f0k",
+              "name": {
+                "text": "Inner arc",
+                "hidden": true
+              },
+              "contents": [
+                "go-reloaded",
+                "ascii-art",
+                "color",
+                "output",
+                "fs",
+                "justify",
+                "reverse",
+                "ascii-art-web",
+                "stylize",
+                "dockerize",
+                "exportfile",
+                "groupie-tracker",
+                "filters",
+                "geolocalization",
+                "visualizations",
+                "search-bar",
+                "lem-in",
+                "forum",
+                "authentication",
+                "image-upload",
+                "security",
+                "moderation",
+                "advanced-features"
+              ]
+            },
+            "outerArcs": [
+              {
+                "id": "chvdxl6z7p",
+                "name": {
+                  "text": "Outer arc #1",
+                  "hidden": true
+                },
+                "contents": [
+                  "git",
+                  "tetris-optimizer",
+                  "atm-management-system",
+                  "push-swap",
+                  "my-ls-1",
+                  "net-cat"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "l9tj2g7krzl",
+            "name": {
+              "text": "AdminSys",
+              "hidden": false
+            },
+            "type": "line",
+            "contents": [
+              "linux",
+              "login",
+              "add-vm",
+              "connect",
+              "remote",
+              "scan"
+            ]
+          },
+          {
+            "id": "prduofyisv",
+            "name": {
+              "text": "Full-Stack",
+              "hidden": false
+            },
+            "type": "slice",
+            "innerArc": {
+              "id": "shoaub20hbp",
+              "name": {
+                "text": "Inner arc",
+                "hidden": true
+              },
+              "contents": [
+                "make-your-game",
+                "score-handling",
+                "history",
+                "different-maps",
+                "real-time-forum",
+                "typing-in-progress",
+                "graphql",
+                "social-network",
+                "cross-platform-appimage",
+                "mini-framework",
+                "bomberman-dom"
+              ]
+            },
+            "outerArcs": [
+              {
+                "id": "3licl3s04ah",
+                "name": {
+                  "text": "UX-UI",
+                  "hidden": true
+                },
+                "contents": [
+                  "piscine-ux",
+                  "piscine-ui",
+                  "a-table",
+                  "get-a-room",
+                  "lets-do-some-sports",
+                  "lets-fair-trade"
+                ]
+              },
+              {
+                "id": "qb3xwc0pea",
+                "name": {
+                  "text": "Outer arc #2",
+                  "hidden": true
+                },
+                "contents": [
+                  "stock-exchange-sim",
+                  "mister-quiz",
+                  "shop",
+                  "netfix"
+                ]
+              }
+            ],
+            "entryPoint": "piscine-js"
+          },
+          {
+            "id": "0w8i8zdqy0bo",
+            "name": {
+              "text": "Architecture",
+              "hidden": false
+            },
+            "type": "slice",
+            "innerArc": {
+              "id": "cyt3x8w4vsk",
+              "name": {
+                "text": "Inner arc",
+                "hidden": true
+              },
+              "contents": [
+                "smart-road",
+                "filler",
+                "rt",
+                "localhost",
+                "multiplayer-fps",
+                "0-shell",
+                "job-control",
+                "scripting"
+              ]
+            },
+            "outerArcs": [
+              {
+                "id": "mk2j0rsaiqc",
+                "name": {
+                  "text": "Outer arc #1",
+                  "hidden": true
+                },
+                "contents": [
+                  "wget",
+                  "system-monitor",
+                  "zappy",
+                  "corewar",
+                  "make-your-own"
+                ]
+              }
+            ],
+            "entryPoint": "piscine-rust"
+          },
+          {
+            "id": "9f6rjsyl4bl",
+            "name": {
+              "text": "Algorithm",
+              "hidden": false
+            },
+            "type": "line",
+            "contents": [
+              "math-skills",
+              "guess-it-1",
+              "linear-stats",
+              "guess-it-2"
+            ]
+          }
+        ],
+        "outerCircle": [],
+        "centralPoint": "checkpoint",
+        "middleCircle": [
+          {
+            "id": "en1gwdpvu4i",
+            "name": {
+              "text": "Java Full-Stack",
+              "hidden": false
+            },
+            "contents": [
+              "piscine-java",
+              "lets-play",
+              "angul-it",
+              "buy-01",
+              "mr-jenk",
+              "safe-zone",
+              "buy-02",
+              "nexus",
+              "neo-4-flix",
+              "travel-plan",
+              "lets-travel"
+            ]
+          },
+          {
+            "id": "07g8xapx4qi5",
+            "name": {
+              "text": "Video Games",
+              "hidden": false
+            },
+            "contents": [
+              "firing-range",
+              "widget-factory",
+              "army-of-one",
+              "zombie-ai",
+              "nascar-online-alpha",
+              "mouse-vr",
+              "the-pages",
+              "stealth-boom",
+              "jumpo",
+              "vehicle-physics"
+            ]
+          },
+          {
+            "id": "wvi3uz3f4z",
+            "name": {
+              "text": "Mobile Applications",
+              "hidden": false
+            },
+            "contents": [
+              "piscine-flutter",
+              "twenty-forty-eight",
+              "sky-map",
+              "chess",
+              "kaquiz",
+              "stock-market",
+              "secure-messenger"
+            ]
+          },
+          {
+            "id": "x763teu684",
+            "name": {
+              "text": "Cybersecurity",
+              "hidden": false
+            },
+            "contents": [
+              "passive",
+              "inspector-image",
+              "active",
+              "local",
+              "web-hack",
+              "injector",
+              "hole-in-bin",
+              "mal-track",
+              "evasion",
+              "obfuscator",
+              "malware"
+            ]
+          },
+          {
+            "id": "sajozz0j8oq",
+            "name": {
+              "text": "Blockchain & Crypto",
+              "hidden": false
+            },
+            "contents": [
+              "piscine-blockchain",
+              "nft-marketplace",
+              "payment-channel",
+              "node-dashboard",
+              "financial-instruments"
+            ]
+          },
+          {
+            "id": "jqf2yzmv0t",
+            "name": {
+              "text": "Cloud DevOps",
+              "hidden": false
+            },
+            "contents": [
+              "deep-in-net",
+              "deep-in-system",
+              "crud-master",
+              "play-with-containers",
+              "orchestrator",
+              "cloud-design",
+              "code-keeper"
+            ]
+          },
+          {
+            "id": "g8c9l872jnk",
+            "name": {
+              "text": "Artificial Intelligence",
+              "hidden": false
+            },
+            "contents": [
+              "piscine-ai",
+              "kaggle-titanic",
+              "nlp-scraper",
+              "emotions-detector",
+              "sp500-strategies",
+              "credit-scoring"
+            ]
+          }
+        ]
+      }
+    },
+    "campus": "template"
+  },
+  {
+    "id": 102185,
+    "name": "using-reduce",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "using-reduce.js"
+      ]
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102186,
+    "name": "long-words",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "long-words.js"
+      ]
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 4043,
+    "name": "explain",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_imperative-piscine/content/explain/README.md",
+      "language": "sh",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/imperative-piscine-sh"
+        }
+      ],
+      "expectedFiles": [
+        "explain.sh"
+      ],
+      "allowedFunctions": []
+    },
+    "campus": null
+  },
+  {
+    "id": 4044,
+    "name": "teacher",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_imperative-piscine/content/teacher/README.md",
+      "language": "sh",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/imperative-piscine-sh"
+        }
+      ],
+      "expectedFiles": [
+        "teacher.sh"
+      ],
+      "allowedFunctions": []
+    },
+    "campus": null
+  },
+  {
+    "id": 4218,
+    "name": "btreeapplypostorder",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_imperative-piscine/content/btreeapplypostorder/README.md",
+      "language": "go",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/imperative-piscine-go"
+        }
+      ],
+      "expectedFiles": [
+        "btreeapplypostorder.go"
+      ],
+      "allowedFunctions": [
+        "--allow-builtin"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 4226,
+    "name": "activebits",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_imperative-piscine/content/activebits/README.md",
+      "language": "go",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/imperative-piscine-go"
+        }
+      ],
+      "expectedFiles": [
+        "activebits.go"
+      ],
+      "allowedFunctions": [
+        "--allow-builtin"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 4322,
+    "name": "hello",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "hello/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune",
+        "--allow-builtin"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 4359,
+    "name": "displayalpham",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "displayalpham/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune",
+        "--allow-builtin"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 4360,
+    "name": "displayalrevm",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "displayalrevm/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune",
+        "--allow-builtin"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 4383,
+    "name": "printbits",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "printbits/main.go"
+      ],
+      "allowedFunctions": [
+        "strconv.Atoi",
+        "os.Args",
+        "github.com/01-edu/z01.PrintRune",
+        "--allow-builtin"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 4398,
+    "name": "countdown",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "countdown/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune",
+        "--allow-builtin"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 102074,
+    "name": "Module",
+    "type": "module",
+    "attrs": {
+      "graph": {
+        "innerCircle": [
+          {
+            "id": "3rg1fkp9g7",
+            "name": {
+              "text": "Imperative",
+              "hidden": false
+            },
+            "type": "slice",
+            "innerArc": {
+              "id": "ydc1zab3f0k",
+              "name": {
+                "text": "Inner arc",
+                "hidden": true
+              },
+              "contents": [
+                "checkpoint-zero",
+                "go-reloaded",
+                {
+                  "ascii-art": [
+                    "color",
+                    "output",
+                    "fs",
+                    "justify",
+                    "reverse"
+                  ]
+                },
+                {
+                  "ascii-art-web": [
+                    "stylize",
+                    "dockerize",
+                    "exportfile"
+                  ]
+                },
+                {
+                  "groupie-tracker": [
+                    "filters",
+                    "geolocalization",
+                    "visualizations",
+                    "search-bar"
+                  ]
+                },
+                "lem-in",
+                {
+                  "forum": [
+                    "authentication",
+                    "image-upload",
+                    "security",
+                    "moderation",
+                    "advanced-features"
+                  ]
+                },
+                "filevault"
+              ]
+            },
+            "outerArcs": [
+              {
+                "id": "chvdxl6z7p",
+                "name": {
+                  "text": "Outer arc #1",
+                  "hidden": true
+                },
+                "contents": [
+                  "git",
+                  "tetris-optimizer",
+                  "atm-management-system",
+                  "push-swap",
+                  "my-ls-1",
+                  "net-cat"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "l9tj2g7krzl",
+            "name": {
+              "text": "AdminSys",
+              "hidden": false
+            },
+            "type": "line",
+            "contents": [
+              "linux",
+              "login",
+              "add-vm",
+              "connect",
+              "remote",
+              "scan"
+            ]
+          },
+          {
+            "id": "prduofyisv",
+            "name": {
+              "text": "Full-Stack",
+              "hidden": false
+            },
+            "type": "slice",
+            "innerArc": {
+              "id": "shoaub20hbp",
+              "name": {
+                "text": "Inner arc",
+                "hidden": true
+              },
+              "contents": [
+                {
+                  "make-your-game": [
+                    "score-handling",
+                    "history",
+                    "different-maps"
+                  ]
+                },
+                {
+                  "real-time-forum": [
+                    "typing-in-progress"
+                  ]
+                },
+                "graphql",
+                {
+                  "social-network": [
+                    "cross-platform-appimage"
+                  ]
+                },
+                "mini-framework",
+                "bomberman-dom"
+              ]
+            },
+            "outerArcs": [
+              {
+                "id": "3licl3s04ah",
+                "name": {
+                  "text": "UX-UI",
+                  "hidden": true
+                },
+                "contents": [
+                  "piscine-ux",
+                  "piscine-ui",
+                  "a-table",
+                  "get-a-room",
+                  "lets-do-some-sports",
+                  "lets-fair-trade"
+                ]
+              },
+              {
+                "id": "qb3xwc0pea",
+                "name": {
+                  "text": "Outer arc #2",
+                  "hidden": true
+                },
+                "contents": [
+                  "stock-exchange-sim",
+                  "mister-quiz",
+                  "shop",
+                  "netfix"
+                ]
+              }
+            ],
+            "entryPoint": "piscine-js"
+          },
+          {
+            "id": "0w8i8zdqy0bo",
+            "name": {
+              "text": "Architecture",
+              "hidden": false
+            },
+            "type": "slice",
+            "innerArc": {
+              "id": "cyt3x8w4vsk",
+              "name": {
+                "text": "Inner arc",
+                "hidden": true
+              },
+              "contents": [
+                "smart-road",
+                "filler",
+                "rt",
+                "localhost",
+                "multiplayer-fps",
+                {
+                  "0-shell": [
+                    "job-control",
+                    "scripting"
+                  ]
+                }
+              ]
+            },
+            "outerArcs": [
+              {
+                "id": "mk2j0rsaiqc",
+                "name": {
+                  "text": "Outer arc #1",
+                  "hidden": true
+                },
+                "contents": [
+                  "wget",
+                  "system-monitor",
+                  "zappy",
+                  "corewar",
+                  "make-your-own"
+                ]
+              }
+            ],
+            "entryPoint": "piscine-rust"
+          },
+          {
+            "id": "9f6rjsyl4bl",
+            "name": {
+              "text": "Algorithm",
+              "hidden": false
+            },
+            "type": "line",
+            "contents": [
+              "math-skills",
+              "guess-it-1",
+              "linear-stats",
+              "guess-it-2"
+            ]
+          }
+        ],
+        "outerCircle": [],
+        "centralPoint": "checkpoint-zero",
+        "middleCircle": [
+          {
+            "id": "en1gwdpvu4i",
+            "name": {
+              "text": "Java Full-Stack",
+              "hidden": false
+            },
+            "contents": [
+              "piscine-java",
+              "lets-play",
+              "angul-it",
+              "buy-01",
+              "mr-jenk",
+              "safe-zone",
+              "buy-02",
+              "nexus",
+              "neo-4-flix",
+              "travel-plan",
+              "lets-travel"
+            ]
+          },
+          {
+            "id": "07g8xapx4qi5",
+            "name": {
+              "text": "Video Games",
+              "hidden": false
+            },
+            "contents": [
+              "firing-range",
+              "widget-factory",
+              "army-of-one",
+              "zombie-ai",
+              "nascar-online-alpha",
+              "mouse-vr",
+              "the-pages",
+              "stealth-boom",
+              "jumpo",
+              "vehicle-physics"
+            ]
+          },
+          {
+            "id": "wvi3uz3f4z",
+            "name": {
+              "text": "Mobile Applications",
+              "hidden": false
+            },
+            "contents": [
+              "piscine-flutter",
+              "twenty-forty-eight",
+              "sky-map",
+              "chess",
+              "kaquiz",
+              "stock-market",
+              "secure-messenger"
+            ]
+          },
+          {
+            "id": "x763teu684",
+            "name": {
+              "text": "Cybersecurity",
+              "hidden": false
+            },
+            "contents": [
+              "passive",
+              "inspector-image",
+              "active",
+              "local",
+              "web-hack",
+              "injector",
+              "hole-in-bin",
+              "mal-track",
+              "evasion",
+              "obfuscator",
+              "malware"
+            ]
+          },
+          {
+            "id": "sajozz0j8oq",
+            "name": {
+              "text": "Blockchain & Crypto",
+              "hidden": false
+            },
+            "contents": [
+              "piscine-blockchain",
+              "nft-marketplace",
+              "payment-channel",
+              "node-dashboard",
+              "financial-instruments"
+            ]
+          },
+          {
+            "id": "jqf2yzmv0t",
+            "name": {
+              "text": "Cloud DevOps",
+              "hidden": false
+            },
+            "contents": [
+              "deep-in-net",
+              "deep-in-system",
+              "crud-master",
+              "play-with-containers",
+              "orchestrator",
+              "cloud-design",
+              "code-keeper"
+            ]
+          },
+          {
+            "id": "g8c9l872jnk",
+            "name": {
+              "text": "Artificial Intelligence",
+              "hidden": false
+            },
+            "contents": [
+              "piscine-ai",
+              "kaggle-titanic",
+              "nlp-scraper",
+              "emotions-detector",
+              "sp500-strategies",
+              "credit-scoring"
+            ]
+          }
+        ]
+      },
+      "capacity": 200,
+      "timeline": [
+        {
+          "rank": "Aspiring developer",
+          "month": 1,
+          "minLevel": 0,
+          "expectedLevel": 0,
+          "checkpointLevel": 0,
+          "developpedSkills": {
+            "list": [
+              "Online tests",
+              "Selection piscine"
+            ]
+          }
+        },
+        {
+          "month": 2,
+          "minLevel": 5,
+          "expectedLevel": 7,
+          "checkpointLevel": 0,
+          "developpedSkills": {
+            "list": [
+              "Imperative programming",
+              "Structured programming",
+              "Algorithms (basics)",
+              "Go language development",
+              "Infrastructure: network and security (basics)"
+            ],
+            "monthsSpan": 5
+          }
+        },
+        {
+          "month": 3,
+          "minLevel": 6,
+          "expectedLevel": 10,
+          "checkpointLevel": 0
+        },
+        {
+          "month": 4,
+          "minLevel": 9,
+          "expectedLevel": 13,
+          "checkpointLevel": 0
+        },
+        {
+          "rank": "Beginner developer",
+          "month": 5,
+          "minLevel": 12,
+          "expectedLevel": 17,
+          "checkpointLevel": 10
+        },
+        {
+          "month": 6,
+          "minLevel": 15,
+          "expectedLevel": 18,
+          "checkpointLevel": 20
+        },
+        {
+          "month": 7,
+          "minLevel": 17,
+          "expectedLevel": 20,
+          "checkpointLevel": 20,
+          "developpedSkills": {
+            "list": [
+              "Event-driven programming",
+              "Web architecture and tech: HTML, CSS",
+              "JavaScript & Node.js",
+              "Backend programming in Go & JS",
+              "Infrastructure: system administration, network, security (intermediate)",
+              "Algorithms (intermediate)",
+              "Software security (basics)"
+            ],
+            "monthsSpan": 6
+          }
+        },
+        {
+          "rank": "Apprentice developer",
+          "month": 8,
+          "minLevel": 20,
+          "expectedLevel": 23,
+          "checkpointLevel": 30
+        },
+        {
+          "month": 9,
+          "minLevel": 23,
+          "expectedLevel": 27,
+          "checkpointLevel": 30
+        },
+        {
+          "month": 10,
+          "minLevel": 28,
+          "expectedLevel": 34,
+          "checkpointLevel": 30
+        },
+        {
+          "rank": "Assistant developer",
+          "month": 11,
+          "minLevel": 33,
+          "expectedLevel": 38,
+          "checkpointLevel": 40
+        },
+        {
+          "month": 12,
+          "minLevel": 34,
+          "expectedLevel": 38,
+          "checkpointLevel": 40
+        },
+        {
+          "month": 13,
+          "minLevel": 37,
+          "expectedLevel": 41,
+          "checkpointLevel": 40,
+          "developpedSkills": {
+            "list": [
+              "Imperative programming (confirmed)",
+              "Object-oriented programming and sofware architecture (confirmed)",
+              "Network architecture design",
+              "Rust language programming",
+              "Infrastructure confirmed : system administration, network, security (confirmed)",
+              "Software security (intermediate)",
+              "Algorithms (advanced)"
+            ],
+            "monthsSpan": 6
+          }
+        },
+        {
+          "month": 14,
+          "minLevel": 39,
+          "expectedLevel": 53,
+          "checkpointLevel": 40
+        },
+        {
+          "rank": "Basic developer",
+          "month": 15,
+          "minLevel": 42,
+          "expectedLevel": 54,
+          "checkpointLevel": 40
+        },
+        {
+          "month": 16,
+          "minLevel": 45,
+          "expectedLevel": 59,
+          "checkpointLevel": 40
+        },
+        {
+          "month": 17,
+          "minLevel": 47,
+          "expectedLevel": 60,
+          "checkpointLevel": 40
+        },
+        {
+          "rank": "Junior developer",
+          "month": 18,
+          "minLevel": 50,
+          "expectedLevel": 62,
+          "checkpointLevel": 50
+        }
+      ],
+      "eventDuration": 1051920,
+      "eventStartDelay": 240,
+      "ranksDefinitions": [
+        {
+          "name": "Aspiring developer",
+          "level": 0,
+          "milestone": "Passed the piscine"
+        },
+        {
+          "name": "Beginner developer",
+          "level": 10
+        },
+        {
+          "name": "Apprentice developer",
+          "level": 20
+        },
+        {
+          "name": "Assistant developer",
+          "level": 30
+        },
+        {
+          "name": "Basic developer",
+          "level": 40
+        },
+        {
+          "name": "Junior developer",
+          "level": 50
+        },
+        {
+          "name": "Confirmed developer",
+          "level": 55
+        },
+        {
+          "name": "Full-Stack developer",
+          "level": 60
+        }
+      ],
+      "levelsDefinitions": [
+        {
+          "level": 10,
+          "requirements": {
+            "skills": {
+              "prog": 10
+            }
+          }
+        },
+        {
+          "level": 20,
+          "requirements": {
+            "skills": {
+              "prog": 20
+            }
+          }
+        },
+        {
+          "level": 30,
+          "requirements": {
+            "skills": {
+              "prog": 30
+            }
+          }
+        },
+        {
+          "level": 40,
+          "requirements": {
+            "skills": {
+              "prog": 40
+            }
+          }
+        },
+        {
+          "level": 50,
+          "requirements": {
+            "skills": {
+              "prog": 50
+            }
+          }
+        }
+      ],
+      "registrationDuration": 43200
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 20001,
+    "name": "hello-there",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Hello There 👋",
+      "expectedFiles": [
+        "hello-there.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20002,
+    "name": "anything-to-declare",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Anything to Declare ? 🛂",
+      "expectedFiles": [
+        "anything-to-declare.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20003,
+    "name": "an-undefined-future",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "An Undefined Future",
+      "expectedFiles": [
+        "an-undefined-future.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20004,
+    "name": "the-great-escape",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "The Great Escape",
+      "expectedFiles": [
+        "the-great-escape.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20005,
+    "name": "a-string-of-number",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "A String of Number",
+      "expectedFiles": [
+        "a-string-of-number.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20006,
+    "name": "redeclaration-of-love",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Redeclaration of Love 💕",
+      "expectedFiles": [
+        "redeclaration-of-love.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20007,
+    "name": "smooth-operator",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Smooth Operator",
+      "expectedFiles": [
+        "smooth-operator.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20008,
+    "name": "placeholders",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Placeholders",
+      "expectedFiles": [
+        "placeholders.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20009,
+    "name": "duplicate",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Duplicate",
+      "expectedFiles": [
+        "duplicate.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20010,
+    "name": "unchanging",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 Unchanging",
+      "expectedFiles": [
+        "unchanging.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20011,
+    "name": "inequality",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 Inequality",
+      "expectedFiles": [
+        "inequality.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20012,
+    "name": "notorious",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 Notorious 🎤",
+      "expectedFiles": [
+        "notorious.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20021,
+    "name": "object",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Object",
+      "expectedFiles": [
+        "object.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20022,
+    "name": "access",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Access 🔑",
+      "expectedFiles": [
+        "access.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20023,
+    "name": "alter-ego",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Alter Ego 🎭",
+      "expectedFiles": [
+        "alter-ego.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20024,
+    "name": "nested-objects",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Nested Objects",
+      "expectedFiles": [
+        "nested-objects.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20025,
+    "name": "the-four-seasons",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "The Four Seasons",
+      "expectedFiles": [
+        "the-four-seasons.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20026,
+    "name": "3-directions",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "3 Directions",
+      "expectedFiles": [
+        "3-directions.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20027,
+    "name": "swapy",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Swapy",
+      "expectedFiles": [
+        "swapy.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20028,
+    "name": "mixed-feelings",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Mixed Feelings",
+      "expectedFiles": [
+        "mixed-feelings.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20029,
+    "name": "keymaker",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Keymaker",
+      "expectedFiles": [
+        "keymaker.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20030,
+    "name": "half-a-million",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Half a million",
+      "expectedFiles": [
+        "half-a-million.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20031,
+    "name": "parenting",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 Parenting 👨‍👧",
+      "expectedFiles": [
+        "parenting.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20032,
+    "name": "my-house",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 My House 🏠",
+      "expectedFiles": [
+        "my-house.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20033,
+    "name": "virus19",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 Virus19 🦠",
+      "expectedFiles": [
+        "virus19.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20041,
+    "name": "you-spin-me-round",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "You Spin Me Round",
+      "expectedFiles": [
+        "you-spin-me-round.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20042,
+    "name": "maximus",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Maximus ⚔️",
+      "expectedFiles": [
+        "maximus.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20043,
+    "name": "all-caps",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "ALL CAPS",
+      "expectedFiles": [
+        "all-caps.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20044,
+    "name": "cut",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Cut ✂️",
+      "expectedFiles": [
+        "cut.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20045,
+    "name": "keep",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Keep",
+      "expectedFiles": [
+        "keep.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20046,
+    "name": "words",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Words",
+      "expectedFiles": [
+        "words.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20047,
+    "name": "ratchet-clap",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Ratchet👏Clap👏",
+      "expectedFiles": [
+        "ratchet-clap.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20048,
+    "name": "pop-art",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Pop Art 🎨",
+      "expectedFiles": [
+        "pop-art.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20049,
+    "name": "cultural-shift",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Cultural Shift",
+      "expectedFiles": [
+        "cultural-shift.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20050,
+    "name": "lines",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Lines",
+      "expectedFiles": [
+        "lines.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20051,
+    "name": "capitalized",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Capitalized",
+      "expectedFiles": [
+        "capitalized.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20052,
+    "name": "mirror",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Mirror",
+      "expectedFiles": [
+        "mirror.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20053,
+    "name": "wololo",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 Wololo 🧙",
+      "expectedFiles": [
+        "wololo.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20054,
+    "name": "spread-the-word",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 Spread the Word 💬",
+      "expectedFiles": [
+        "spread-the-word.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20055,
+    "name": "rest-in-peace",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 Rest in peace",
+      "expectedFiles": [
+        "rest-in-peace.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20061,
+    "name": "griswold-the-blacksmith",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Griswold the Blacksmith ⚒️",
+      "expectedFiles": [
+        "griswold-the-blacksmith.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20062,
+    "name": "the-true-king",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "The True King 👑",
+      "expectedFiles": [
+        "the-true-king.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20063,
+    "name": "seeker-of-truth",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Seeker of Truth",
+      "expectedFiles": [
+        "seeker-of-truth.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20064,
+    "name": "special-promo",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Special Promo 🎟️",
+      "expectedFiles": [
+        "special-promo.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20065,
+    "name": "time-to-pay",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Time to Pay 💸",
+      "expectedFiles": [
+        "time-to-pay.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20066,
+    "name": "security",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Security",
+      "expectedFiles": [
+        "security.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20067,
+    "name": "phant0m-writ3r",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "PHANT0M-WRiT3R 👻",
+      "expectedFiles": [
+        "phant0m-writ3r.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20068,
+    "name": "what-else",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "What else ?",
+      "expectedFiles": [
+        "what-else.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20069,
+    "name": "to-infinity-and-beyond",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "To Infinity And Beyond",
+      "expectedFiles": [
+        "to-infinity-and-beyond.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20070,
+    "name": "olympic",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Olympic",
+      "expectedFiles": [
+        "olympic.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20071,
+    "name": "what-9000",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 What 9000 ?!",
+      "expectedFiles": [
+        "what-9000.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20072,
+    "name": "ultra-venom-speed-control-system-rgb",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 Ultra Venom Speed Control System (RGB)",
+      "expectedFiles": [
+        "ultra-venom-speed-control-system-rgb.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20081,
+    "name": "what-is-my-purpose",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "What is my purpose ?",
+      "expectedFiles": [
+        "what-is-my-purpose.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20082,
+    "name": "a-winning-argument",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "A winning argument",
+      "expectedFiles": [
+        "a-winning-argument.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20083,
+    "name": "two-can-play-that-game",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Two can play that game",
+      "expectedFiles": [
+        "two-can-play-that-game.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20084,
+    "name": "you-pass-butter",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "You pass butter",
+      "expectedFiles": [
+        "you-pass-butter.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20085,
+    "name": "a-new-purpose",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "A new purpose",
+      "expectedFiles": [
+        "a-new-purpose.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20086,
+    "name": "level-up",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "level up",
+      "expectedFiles": [
+        "level-up.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20087,
+    "name": "give-it-a-rest",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 Give it a ...rest",
+      "expectedFiles": [
+        "give-it-a-rest.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20088,
+    "name": "happy",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 Happy ?",
+      "expectedFiles": [
+        "happy.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20089,
+    "name": "funfunfunction",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 FunFunFunction",
+      "expectedFiles": [
+        "funfunfunction.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20090,
+    "name": "give-back",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 Give Back",
+      "expectedFiles": [
+        "give-back.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20101,
+    "name": "skeleton",
+    "type": "exercise",
+    "attrs": {
+      "language": "dom",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-dom"
+        }
+      ],
+      "displayedName": "Skeleton",
+      "expectedFiles": [
+        "skeleton.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20102,
+    "name": "the-calling",
+    "type": "exercise",
+    "attrs": {
+      "language": "dom",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-dom"
+        }
+      ],
+      "displayedName": "The Calling",
+      "expectedFiles": [
+        "the-calling.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20103,
+    "name": "select-and-style",
+    "type": "exercise",
+    "attrs": {
+      "language": "dom",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-dom"
+        }
+      ],
+      "displayedName": "Select And Style",
+      "expectedFiles": [
+        "select-and-style.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20104,
+    "name": "nesting-organs",
+    "type": "exercise",
+    "attrs": {
+      "language": "dom",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-dom"
+        }
+      ],
+      "displayedName": "Nesting Organs",
+      "expectedFiles": [
+        "nesting-organs.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20105,
+    "name": "class-that",
+    "type": "exercise",
+    "attrs": {
+      "language": "dom",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-dom"
+        }
+      ],
+      "displayedName": "Class That",
+      "expectedFiles": [
+        "class-that.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20106,
+    "name": "bring-it-to-life",
+    "type": "exercise",
+    "attrs": {
+      "language": "dom",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-dom"
+        }
+      ],
+      "displayedName": "Bring It To Life",
+      "expectedFiles": [
+        "bring-it-to-life.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20107,
+    "name": "action-reaction",
+    "type": "exercise",
+    "attrs": {
+      "language": "dom",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-dom"
+        }
+      ],
+      "displayedName": "🌟 Action Reaction",
+      "expectedFiles": [
+        "action-reaction.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20108,
+    "name": "first-words",
+    "type": "exercise",
+    "attrs": {
+      "language": "dom",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-dom"
+        }
+      ],
+      "displayedName": "🌟 First Words",
+      "expectedFiles": [
+        "first-words.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20121,
+    "name": "go-to-11",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Go to 11",
+      "expectedFiles": [
+        "go-to-11.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20122,
+    "name": "count-up-to",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Count up to",
+      "expectedFiles": [
+        "count-up-to.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20123,
+    "name": "count-from-10",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Count from 10",
+      "expectedFiles": [
+        "count-from-10.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20124,
+    "name": "total",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Total",
+      "expectedFiles": [
+        "total.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20125,
+    "name": "average",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Average",
+      "expectedFiles": [
+        "average.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20126,
+    "name": "repeat",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Repeat",
+      "expectedFiles": [
+        "repeat.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20127,
+    "name": "power-ranger",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Power Ranger",
+      "expectedFiles": [
+        "power-ranger.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20128,
+    "name": "extremes",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Extremes",
+      "expectedFiles": [
+        "extremes.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20129,
+    "name": "slicer",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Slicer",
+      "expectedFiles": [
+        "slicer.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20130,
+    "name": "fikbuk",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "FikBuk",
+      "expectedFiles": [
+        "fikbuk.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20131,
+    "name": "triangle",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Triangle",
+      "expectedFiles": [
+        "triangle.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20132,
+    "name": "pyramid",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Pyramid",
+      "expectedFiles": [
+        "pyramid.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20133,
+    "name": "diamon",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 Diamon",
+      "expectedFiles": [
+        "diamon.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20134,
+    "name": "recursion",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 Recursion",
+      "expectedFiles": [
+        "recursion.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20141,
+    "name": "no-adults-wanted",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "No Adults Wanted",
+      "expectedFiles": [
+        "no-adults-wanted.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20142,
+    "name": "give-me-the-code",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Give me the code",
+      "expectedFiles": [
+        "give-me-the-code.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20143,
+    "name": "squared",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Squared",
+      "expectedFiles": [
+        "squared.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20144,
+    "name": "names-plz",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Names plz",
+      "expectedFiles": [
+        "names-plz.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20145,
+    "name": "jaden-case",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Jaden Case",
+      "expectedFiles": [
+        "jaden-case.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20146,
+    "name": "speed-run",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "Speed run",
+      "expectedFiles": [
+        "speed-run.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20147,
+    "name": "about-time",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "About Time",
+      "expectedFiles": [
+        "about-time.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20148,
+    "name": "using-reduce",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 using-reduce",
+      "expectedFiles": [
+        "using-reduce.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20149,
+    "name": "invert",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 invert",
+      "expectedFiles": [
+        "invert.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20150,
+    "name": "pick-omit",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 pick-omit",
+      "expectedFiles": [
+        "pick-omit.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20151,
+    "name": "long-words",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 long-words",
+      "expectedFiles": [
+        "long-words.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20152,
+    "name": "flat",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 flat",
+      "expectedFiles": [
+        "flat.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20153,
+    "name": "mapper",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 mapper",
+      "expectedFiles": [
+        "mapper.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20154,
+    "name": "filter",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 filter",
+      "expectedFiles": [
+        "filter.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20155,
+    "name": "reduce",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 reduce",
+      "expectedFiles": [
+        "reduce.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20156,
+    "name": "manipulate-values",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 manipulate-values",
+      "expectedFiles": [
+        "manipulate-values.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20157,
+    "name": "manipulate-keys",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 manipulate-keys",
+      "expectedFiles": [
+        "manipulate-keys.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20158,
+    "name": "manipulate-entries",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 manipulate-entries",
+      "expectedFiles": [
+        "manipulate-entries.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20159,
+    "name": "deep-copy",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-js"
+        }
+      ],
+      "displayedName": "🌟 deep-copy",
+      "expectedFiles": [
+        "deep-copy.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20181,
+    "name": "get-them-all",
+    "type": "exercise",
+    "attrs": {
+      "language": "dom",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-dom"
+        }
+      ],
+      "displayedName": "Get Them All",
+      "expectedFiles": [
+        "get-them-all.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20182,
+    "name": "build-brick-and-break",
+    "type": "exercise",
+    "attrs": {
+      "language": "dom",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-dom"
+        }
+      ],
+      "displayedName": "Build Brick and Break",
+      "expectedFiles": [
+        "build-brick-and-break.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20183,
+    "name": "harder-bigger-bolder-stronger",
+    "type": "exercise",
+    "attrs": {
+      "language": "dom",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-dom"
+        }
+      ],
+      "displayedName": "Harder Bigger Bolder Stronger",
+      "expectedFiles": [
+        "harder-bigger-bolder-stronger.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20184,
+    "name": "pimp-my-style",
+    "type": "exercise",
+    "attrs": {
+      "language": "dom",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-dom"
+        }
+      ],
+      "displayedName": "Pimp my Style",
+      "expectedFiles": [
+        "pimp-my-style.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20185,
+    "name": "fifty-shades-of-cold",
+    "type": "exercise",
+    "attrs": {
+      "language": "dom",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-dom"
+        }
+      ],
+      "displayedName": "Fifty Shades of Cold",
+      "expectedFiles": [
+        "fifty-shades-of-cold.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20186,
+    "name": "keycodes-symphony",
+    "type": "exercise",
+    "attrs": {
+      "language": "dom",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-dom"
+        }
+      ],
+      "displayedName": "Keycodes Symphony",
+      "expectedFiles": [
+        "keycodes-symphony.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20187,
+    "name": "mouse-trap",
+    "type": "exercise",
+    "attrs": {
+      "language": "dom",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-dom"
+        }
+      ],
+      "displayedName": "Mouse Trap",
+      "expectedFiles": [
+        "mouse-trap.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20188,
+    "name": "pick-and-click",
+    "type": "exercise",
+    "attrs": {
+      "language": "dom",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-dom"
+        }
+      ],
+      "displayedName": "Pick and Click",
+      "expectedFiles": [
+        "pick-and-click.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20189,
+    "name": "gossip-grid",
+    "type": "exercise",
+    "attrs": {
+      "language": "dom",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-dom"
+        }
+      ],
+      "displayedName": "🌟 Gossip Grid",
+      "expectedFiles": [
+        "gossip-grid.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20190,
+    "name": "were-do-we-go",
+    "type": "exercise",
+    "attrs": {
+      "language": "dom",
+      "validations": [
+        {
+          "type": "tester",
+          "cooldown": 0,
+          "testImage": "ghcr.io/01-edu/test-dom"
+        }
+      ],
+      "displayedName": "🌟 Were do we Go ?",
+      "expectedFiles": [
+        "were-do-we-go.js"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20196,
+    "name": "free-project",
+    "type": "raid",
+    "attrs": {
+      "language": "dom",
+      "groupSize": 2,
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/free-project/audit/README.md",
+          "type": "admin_audit",
+          "delay": 0,
+          "ratio": 1,
+          "required": 1,
+          "matchWhere": {
+            "name": "isCampusAdmin",
+            "type": "function"
+          }
+        }
+      ],
+      "displayedName": "Free Project",
+      "eventDuration": 1680,
+      "eventStartDelay": 300,
+      "registrationDuration": 2160
+    },
+    "campus": null
+  },
+  {
+    "id": 20198,
+    "name": "ephemeris",
+    "type": "raid",
+    "attrs": {
+      "language": "node",
+      "groupSize": 3,
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/ephemeris/audit/README.md",
+          "type": "admin_audit",
+          "delay": 0,
+          "ratio": 1,
+          "required": 1,
+          "matchWhere": {
+            "name": "isCampusAdmin",
+            "type": "function"
+          }
+        }
+      ],
+      "displayedName": "Ephemeris",
+      "eventDuration": 3120,
+      "eventStartDelay": 300,
+      "registrationDuration": 2160
+    },
+    "campus": null
+  },
+  {
+    "id": 20199,
+    "name": "carbon-copy",
+    "type": "raid",
+    "attrs": {
+      "language": "dom",
+      "groupSize": 2,
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/carbon-copy/audit/README.md",
+          "type": "admin_audit",
+          "delay": 0,
+          "ratio": 1,
+          "required": 1,
+          "matchWhere": {
+            "name": "isCampusAdmin",
+            "type": "function"
+          }
+        }
+      ],
+      "displayedName": "Carbon Copy",
+      "eventDuration": 1680,
+      "eventStartDelay": 300,
+      "registrationDuration": 2160
+    },
+    "campus": null
+  },
+  {
+    "id": 102163,
+    "name": "find",
+    "type": "quest",
+    "attrs": {},
+    "campus": "astanahub"
+  },
+  {
+    "id": 102187,
+    "name": "for-each",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "for-each.js"
+      ]
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102188,
+    "name": "mapper",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "mapper.js"
+      ]
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102189,
+    "name": "filter",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "filter.js"
+      ]
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 20309,
+    "name": "matrix_transposition_4by3",
+    "type": "exercise",
+    "attrs": {
+      "language": "rust",
+      "expectedFiles": [
+        "matrix_transposition_4by3/src/lib.rs"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 102190,
+    "name": "reduce",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "reduce.js"
+      ]
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 20617,
+    "name": "printalphabetalt2",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "printalphabetalt2/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune#6",
+        "rune",
+        "--no-lit=[b-lB-L]"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20618,
+    "name": "printalphabetalt",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "printalphabetalt/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune#6",
+        "rune",
+        "--no-lit=[b-lB-L]"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20619,
+    "name": "printalphabetg",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "printalphabetg/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune#2",
+        "rune",
+        "--no-lit=[b-fB-F]"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20620,
+    "name": "printalt2",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "printalt2/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune#3",
+        "rune",
+        "--no-lit=[b-lB-L]"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20621,
+    "name": "printalt",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "printalt/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune#3",
+        "rune",
+        "--no-lit=[b-lB-L]"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20622,
+    "name": "printaltu2",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "printaltu2/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune#3",
+        "rune",
+        "--no-lit=[b-lB-L]"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20623,
+    "name": "printaltu",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "printaltu/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune#3",
+        "rune",
+        "--no-lit=[b-lB-L]"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20624,
+    "name": "printreversealphabetalt2",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "printreversealphabetalt2/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune#6",
+        "rune",
+        "--no-lit=[b-lB-L]"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20625,
+    "name": "printreversealphabetalt",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "printreversealphabetalt/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune#6",
+        "rune",
+        "--no-lit=[b-lB-L]"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20626,
+    "name": "printreversealphabetg",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "printreversealphabetg/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune#2",
+        "rune",
+        "--no-lit=[b-fB-F]"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 20627,
+    "name": "printrot",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "printrot/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune#6",
+        "rune",
+        "--no-lit=[b-lB-L]",
+        "len",
+        "os.Args",
+        "append",
+        "--cast"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 102144,
+    "name": "block-chain",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "block-chain.js"
+      ]
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 4367,
+    "name": "flags",
+    "type": "exercise",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_imperative-piscine/content/flags/README.md",
+      "language": "go",
+      "validations": [
+        {
+          "type": "tester",
+          "testImage": "ghcr.io/01-edu/imperative-piscine-go"
+        }
+      ],
+      "expectedFiles": [
+        "flags/main.go"
+      ],
+      "allowedFunctions": [
+        "os.*",
+        "fmt.*",
+        "github.com/01-edu/z01.PrintRune",
+        "--allow-builtin"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 102088,
+    "name": "ascii-art-reverse",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/ascii-art-reverse/README.md",
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/ascii-art-reverse/audit/README.md",
+          "type": "user_audit"
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102097,
+    "name": "groupie-tracker-filters",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/groupie-tracker-filters/README.md",
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/groupie-tracker-filters/audit/README.md",
+          "type": "user_audit"
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102090,
+    "name": "ascii-art-web",
+    "type": "project",
+    "attrs": {
+      "subject": {
+        "name": "getSubject",
+        "type": "function"
+      },
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": {
+            "name": "getAuditPath",
+            "type": "function"
+          },
+          "type": "user_audit",
+          "delay": 4320,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102172,
+    "name": "time",
+    "type": "quest",
+    "attrs": {},
+    "campus": "astanahub"
+  },
+  {
+    "id": 102191,
+    "name": "quantifiers",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "quantifiers.js"
+      ]
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 101180,
+    "name": "Final Checkpoint",
+    "type": "exam",
+    "attrs": {
+      "eventDuration": 480,
+      "eventStartDelay": 60,
+      "registrationDuration": 2160
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102146,
+    "name": "chunky",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "chunky.js"
+      ]
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102096,
+    "name": "groupie-tracker",
+    "type": "project",
+    "attrs": {
+      "subject": {
+        "name": "getSubject",
+        "type": "function"
+      },
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": {
+            "name": "getAuditPath",
+            "type": "function"
+          },
+          "type": "user_audit",
+          "delay": 4320,
+          "ratio": 2,
+          "required": 5,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102147,
+    "name": "nasa",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "nasa.js"
+      ]
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102148,
+    "name": "molecules-cells",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "molecules-cells.js"
+      ]
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102149,
+    "name": "repeat",
+    "type": "exercise",
+    "attrs": {
+      "language": "js",
+      "expectedFiles": [
+        "repeat.js"
+      ]
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102086,
+    "name": "ascii-art-fs",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/ascii-art-fs/README.md",
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/ascii-art-fs/audit/README.md",
+          "type": "user_audit"
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 101271,
+    "name": "Quest 07",
+    "type": "quest",
+    "attrs": {
+      "videos": "https://www.youtube.com/watch?v=2HHVUM0YQuI"
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102087,
+    "name": "ascii-art-justify",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/ascii-art-justify/README.md",
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/ascii-art-justify/audit/README.md",
+          "type": "user_audit"
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102092,
+    "name": "ascii-art-web-dockerize",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/ascii-art-web-dockerize/README.md",
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/ascii-art-web-dockerize/audit/README.md",
+          "type": "user_audit"
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102093,
+    "name": "ascii-art-web-export-file",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/ascii-art-web-export-file/README.md",
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/ascii-art-web-export-file/audit/README.md",
+          "type": "user_audit"
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102098,
+    "name": "groupie-tracker-geolocalization",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/groupie-tracker-geolocalization/README.md",
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/groupie-tracker-geolocalization/audit/README.md",
+          "type": "user_audit"
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102100,
+    "name": "groupie-tracker-search-bar",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/groupie-tracker-search-bar/README.md",
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/groupie-tracker-search-bar/audit/README.md",
+          "type": "user_audit"
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102076,
+    "name": "forum-authentication",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/forum-authentication/README.md",
+      "groupMax": 5,
+      "groupMin": 4,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/forum-authentication/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 4,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2
+          }
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102075,
+    "name": "forum",
+    "type": "project",
+    "attrs": {
+      "subject": {
+        "name": "getSubject",
+        "type": "function"
+      },
+      "groupMax": 5,
+      "groupMin": 4,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/markdown/root/public/subjects/forum/audit/README.md",
+          "type": "user_audit",
+          "delay": 4320,
+          "ratio": 1,
+          "required": 10,
+          "matchWhere": {
+            "name": "usersOfCampusWithAdmins",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2,
+            "lastAuditAttributed": 2
+          }
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 21515,
+    "name": "issamestring",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "issamestring.go"
+      ],
+      "allowedFunctions": [
+        "--allow-builtin",
+        "unicode.IsLetter"
+      ]
+    },
+    "campus": null
+  },
+  {
+    "id": 102310,
+    "name": "crates",
+    "type": "quest",
+    "attrs": {
+      "videos": "https://www.youtube.com/watch?v=XyUliQD7v-0"
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102099,
+    "name": "groupie-tracker-visualizations",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/groupie-tracker-visualizations/README.md",
+      "groupMax": 3,
+      "groupMin": 2,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/groupie-tracker-visualizations/audit/README.md",
+          "type": "user_audit"
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102077,
+    "name": "forum-image-upload",
+    "type": "project",
+    "attrs": {
+      "subject": "/api/content/root/01-edu_module/content/forum-image-upload/README.md",
+      "groupMax": 5,
+      "groupMin": 4,
+      "language": "Go",
+      "validations": [
+        {
+          "form": "/api/content/root/01-edu_module/content/forum-image-upload/audit/README.md",
+          "type": "user_audit",
+          "delay": 20160,
+          "ratio": 2,
+          "required": 4,
+          "matchWhere": {
+            "name": "userInCampus",
+            "type": "function"
+          },
+          "matchInfluence": {
+            "auditsRatio": 2,
+            "auditsAssigned": 2,
+            "levelProximity": 2
+          }
+        }
+      ],
+      "displayedName": {
+        "name": "getProjectName",
+        "type": "function"
+      },
+      "requiredAuditRatio": 0.5
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 101187,
+    "name": "expandstr",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "expandstr/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune",
+        "os.*",
+        "--allow-builtin"
+      ]
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 100056,
+    "name": "expandstr",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "expandstr/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune",
+        "os.*",
+        "--allow-builtin"
+      ]
+    },
+    "campus": "template"
+  },
+  {
+    "id": 102442,
+    "name": "expandstr",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "expandstr/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune",
+        "os.*",
+        "--allow-builtin"
+      ]
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 101190,
+    "name": "searchreplace",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "searchreplace/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune",
+        "os.Args",
+        "--allow-builtin"
+      ]
+    },
+    "campus": "astanahub"
+  },
+  {
+    "id": 102445,
+    "name": "searchreplace",
+    "type": "exercise",
+    "attrs": {
+      "language": "go",
+      "expectedFiles": [
+        "searchreplace/main.go"
+      ],
+      "allowedFunctions": [
+        "github.com/01-edu/z01.PrintRune",
+        "os.Args",
+        "--allow-builtin"
+      ]
+    },
+    "campus": "astanahub"
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Go",
+    "total": 26,
+    "successful": 19
+  },
+  {
+    "name": "JavaScript",
+    "total": 7,
+    "successful": 6
+  },
+  {
+    "name": "sh",
+    "total": 1,
+    "successful": 0
+  }
+]
