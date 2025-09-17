@@ -32,7 +32,7 @@ def test_progress():
     # Запрос для таблицы progress с фильтром по типу "project"
     query = """
     query {
-        progress(where: {object: {type: {_eq: "exercise"}}}) {
+        progress(where: {object: {name: {_eq: "checkpoint-zero"}}}) {
             id
             userId
             group {

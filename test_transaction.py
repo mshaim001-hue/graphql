@@ -37,7 +37,9 @@ def test_transaction():
             }
             attrs
             path
-            eventId
+            event {
+                path
+            }
             object {
                 id
                 name

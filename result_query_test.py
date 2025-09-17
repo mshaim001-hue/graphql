@@ -26,10 +26,19 @@ def test_different_approaches():
     # Подход 4: Полная структура result
     query4 = """
     query {
-        result(order_by: {createdAt: desc}) {
+        result(where: {object: {name: {_eq: "checkpoint-zero"}}}) {
             id
-            userId
-            objectId
+            user {
+                id
+                login
+                profile
+            }
+            object {
+                id
+                name
+                type
+                attrs
+            }
             grade
             createdAt
             updatedAt
@@ -40,7 +49,10 @@ def test_different_approaches():
             attrs
             isLast
             campus
-            groupId
+            group {
+                id
+                status
+            }
         }
     }
     """

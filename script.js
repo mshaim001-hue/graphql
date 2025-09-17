@@ -251,6 +251,13 @@ class TomorrowSchoolApp {
                 await this.showBasicProgressData();
             }
             
+            // Load checkpoint zero data
+            try {
+                await this.loadCheckpointZeroData();
+            } catch (checkpointError) {
+                console.error('Error loading checkpoint zero data:', checkpointError);
+            }
+            
             // Setup progress button event listeners
             this.setupProgressButtons();
             
@@ -738,6 +745,51 @@ class TomorrowSchoolApp {
         document.getElementById('successful-count').textContent = '...';
         document.getElementById('failed-count').textContent = '...';
         document.getElementById('active-count').textContent = '...';
+        document.getElementById('time-analysis-count').textContent = '...';
+        document.getElementById('checkpoint-zero-count').textContent = '...';
+    }
+
+    async loadCheckpointZeroData() {
+        console.log('Loading checkpoint zero data...');
+        try {
+            const checkpointQuery = `
+                query {
+                    progress(where: {object: {name: {_eq: "checkpoint-zero"}}}) {
+                        id
+                        userId
+                        group {
+                            id
+                            status
+                        }
+                        grade
+                        createdAt
+                        updatedAt
+                        path
+                        object {
+                            id
+                            name
+                            type
+                            attrs
+                        }
+                    }
+                }
+            `;
+
+            console.log('Executing checkpoint zero query...');
+            const checkpointData = await this.makeGraphQLQuery(checkpointQuery);
+            console.log('Checkpoint zero data received:', checkpointData);
+            
+            if (checkpointData.progress) {
+                console.log('Processing checkpoint zero data...');
+                this.processCheckpointZeroData(checkpointData.progress);
+            } else {
+                console.log('No checkpoint zero data received');
+                document.getElementById('checkpoint-zero-count').textContent = '0';
+            }
+        } catch (error) {
+            console.error('Error loading checkpoint zero data:', error);
+            document.getElementById('checkpoint-zero-count').textContent = '0';
+        }
     }
 
     processProjectsData(projects) {
@@ -748,23 +800,101 @@ class TomorrowSchoolApp {
         const failedProjects = projects.filter(p => p.grade !== null && p.grade < 1);
         const activeProjects = projects.filter(p => p.grade === null);
         
+        // Group projects by name to find earliest start time
+        const projectGroups = {};
+        projects.forEach(project => {
+            const name = project.object.name;
+            if (!projectGroups[name]) {
+                projectGroups[name] = [];
+            }
+            projectGroups[name].push(project);
+        });
+        
+        // Calculate time spent for each project group
+        const projectsWithTime = Object.entries(projectGroups).map(([name, attempts]) => {
+            // Find earliest start time
+            const earliestStart = new Date(Math.min(...attempts.map(a => new Date(a.createdAt))));
+            
+            // Find successful completion (grade >= 1)
+            const successfulAttempt = attempts.find(a => a.grade !== null && a.grade >= 1);
+            
+            let timeSpentDays = null;
+            let timeSpentMs = null;
+            
+            if (successfulAttempt) {
+                const endTime = new Date(successfulAttempt.updatedAt);
+                timeSpentMs = endTime - earliestStart;
+                timeSpentDays = Math.round(timeSpentMs / (1000 * 60 * 60 * 24));
+            }
+            
+            return {
+                name: name,
+                earliestStart: earliestStart,
+                successfulAttempt: successfulAttempt,
+                timeSpentDays: timeSpentDays,
+                timeSpentMs: timeSpentMs,
+                totalAttempts: attempts.length
+            };
+        });
+        
+        // Sort by time spent (longest to shortest) - only successful projects
+        const sortedByTime = projectsWithTime
+            .filter(p => p.timeSpentDays !== null) // Only successfully completed projects
+            .sort((a, b) => b.timeSpentDays - a.timeSpentDays);
+        
         // Update button counts
         document.getElementById('successful-count').textContent = successfulProjects.length;
         document.getElementById('failed-count').textContent = failedProjects.length;
         document.getElementById('active-count').textContent = activeProjects.length;
+        document.getElementById('time-analysis-count').textContent = sortedByTime.length;
         
         // Store data for button clicks
         this.projectsData = {
             successful: successfulProjects,
             failed: failedProjects,
-            active: activeProjects
+            active: activeProjects,
+            timeAnalysis: sortedByTime
         };
         
         console.log('Projects processed:', {
             successful: successfulProjects.length,
             failed: failedProjects.length,
             active: activeProjects.length,
+            timeAnalysis: sortedByTime.length,
             total: projects.length
+        });
+    }
+
+    processCheckpointZeroData(checkpointData) {
+        console.log('Processing checkpoint zero data:', checkpointData.length, 'records');
+        
+        // Sort by createdAt (newest first)
+        const sortedCheckpoint = checkpointData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        
+        // Categorize by grade
+        const successful = sortedCheckpoint.filter(p => p.grade !== null && p.grade >= 1);
+        const registeredNotStarted = sortedCheckpoint.filter(p => p.grade !== null && p.grade === 0);
+        const registeredIncomplete = sortedCheckpoint.filter(p => p.grade !== null && p.grade > 0 && p.grade < 1);
+        const notRegistered = sortedCheckpoint.filter(p => p.grade === null);
+        
+        // Update button count
+        document.getElementById('checkpoint-zero-count').textContent = sortedCheckpoint.length;
+        
+        // Store data for button clicks
+        this.checkpointZeroData = {
+            all: sortedCheckpoint,
+            successful: successful,
+            registeredNotStarted: registeredNotStarted,
+            registeredIncomplete: registeredIncomplete,
+            notRegistered: notRegistered
+        };
+        
+        console.log('Checkpoint zero processed:', {
+            successful: successful.length,
+            registeredNotStarted: registeredNotStarted.length,
+            registeredIncomplete: registeredIncomplete.length,
+            notRegistered: notRegistered.length,
+            total: sortedCheckpoint.length
         });
     }
 
@@ -772,6 +902,8 @@ class TomorrowSchoolApp {
         const successfulBtn = document.getElementById('successful-projects-btn');
         const failedBtn = document.getElementById('failed-projects-btn');
         const activeBtn = document.getElementById('active-projects-btn');
+        const timeAnalysisBtn = document.getElementById('time-analysis-btn');
+        const checkpointZeroBtn = document.getElementById('checkpoint-zero-btn');
         
         if (successfulBtn) {
             successfulBtn.addEventListener('click', () => this.toggleSuccessfulProjects());
@@ -784,6 +916,14 @@ class TomorrowSchoolApp {
         if (activeBtn) {
             activeBtn.addEventListener('click', () => this.toggleActiveProjects());
         }
+        
+        if (timeAnalysisBtn) {
+            timeAnalysisBtn.addEventListener('click', () => this.toggleTimeAnalysis());
+        }
+        
+        if (checkpointZeroBtn) {
+            checkpointZeroBtn.addEventListener('click', () => this.toggleCheckpointZero());
+        }
     }
 
     toggleSuccessfulProjects() {
@@ -791,6 +931,8 @@ class TomorrowSchoolApp {
         const successfulBtn = document.getElementById('successful-projects-btn');
         const failedBtn = document.getElementById('failed-projects-btn');
         const activeBtn = document.getElementById('active-projects-btn');
+        const timeAnalysisBtn = document.getElementById('time-analysis-btn');
+        const checkpointZeroBtn = document.getElementById('checkpoint-zero-btn');
         
         // If content is already showing successful projects, hide it
         if (successfulBtn.classList.contains('active')) {
@@ -802,6 +944,8 @@ class TomorrowSchoolApp {
         successfulBtn.classList.add('active');
         failedBtn.classList.remove('active');
         activeBtn.classList.remove('active');
+        timeAnalysisBtn.classList.remove('active');
+        checkpointZeroBtn.classList.remove('active');
         
         // Show content
         progressContent.style.display = 'block';
@@ -823,8 +967,8 @@ class TomorrowSchoolApp {
                     <div class="project-item">
                         <span class="project-name">${project.object.name}</span>
                         <span class="project-grade">Started: ${createdAt}</span>
-                    </div>
-                `;
+                </div>
+            `;
             });
         }
         
@@ -836,6 +980,8 @@ class TomorrowSchoolApp {
         const successfulBtn = document.getElementById('successful-projects-btn');
         const failedBtn = document.getElementById('failed-projects-btn');
         const activeBtn = document.getElementById('active-projects-btn');
+        const timeAnalysisBtn = document.getElementById('time-analysis-btn');
+        const checkpointZeroBtn = document.getElementById('checkpoint-zero-btn');
         
         // If content is already showing failed projects, hide it
         if (failedBtn.classList.contains('active')) {
@@ -847,6 +993,8 @@ class TomorrowSchoolApp {
         failedBtn.classList.add('active');
         successfulBtn.classList.remove('active');
         activeBtn.classList.remove('active');
+        timeAnalysisBtn.classList.remove('active');
+        checkpointZeroBtn.classList.remove('active');
         
         // Show content
         progressContent.style.display = 'block';
@@ -894,6 +1042,8 @@ class TomorrowSchoolApp {
         const successfulBtn = document.getElementById('successful-projects-btn');
         const failedBtn = document.getElementById('failed-projects-btn');
         const activeBtn = document.getElementById('active-projects-btn');
+        const timeAnalysisBtn = document.getElementById('time-analysis-btn');
+        const checkpointZeroBtn = document.getElementById('checkpoint-zero-btn');
         
         // If content is already showing active projects, hide it
         if (activeBtn.classList.contains('active')) {
@@ -905,6 +1055,8 @@ class TomorrowSchoolApp {
         activeBtn.classList.add('active');
         successfulBtn.classList.remove('active');
         failedBtn.classList.remove('active');
+        timeAnalysisBtn.classList.remove('active');
+        checkpointZeroBtn.classList.remove('active');
         
         // Show content
         progressContent.style.display = 'block';
@@ -934,11 +1086,144 @@ class TomorrowSchoolApp {
         progressContent.innerHTML = html;
     }
 
+    toggleTimeAnalysis() {
+        const progressContent = document.getElementById('progress-content');
+        const successfulBtn = document.getElementById('successful-projects-btn');
+        const failedBtn = document.getElementById('failed-projects-btn');
+        const activeBtn = document.getElementById('active-projects-btn');
+        const timeAnalysisBtn = document.getElementById('time-analysis-btn');
+        const checkpointZeroBtn = document.getElementById('checkpoint-zero-btn');
+        
+        // If content is already showing time analysis, hide it
+        if (timeAnalysisBtn.classList.contains('active')) {
+            this.hideProgressContent();
+            return;
+        }
+        
+        // Update button states
+        timeAnalysisBtn.classList.add('active');
+        successfulBtn.classList.remove('active');
+        failedBtn.classList.remove('active');
+        activeBtn.classList.remove('active');
+        checkpointZeroBtn.classList.remove('active');
+        
+        // Show content
+        progressContent.style.display = 'block';
+        
+        if (!this.projectsData || !this.projectsData.timeAnalysis) {
+            progressContent.innerHTML = '<p>No time analysis data available</p>';
+            return;
+        }
+        
+        const projects = this.projectsData.timeAnalysis;
+        let html = '<h3>⏱️ Time Analysis (Longest to Shortest)</h3>';
+        
+        if (projects.length === 0) {
+            html += '<p>No completed projects found for time analysis</p>';
+        } else {
+            projects.forEach(project => {
+                const timeSpent = project.timeSpentDays;
+                const timeDisplay = timeSpent === 0 ? '< 1 day' : `${timeSpent} day${timeSpent > 1 ? 's' : ''}`;
+                const gradeDisplay = project.successfulAttempt.grade.toFixed(2);
+                const attemptsText = project.totalAttempts > 1 ? ` (${project.totalAttempts} attempts)` : '';
+                
+                html += `
+                    <div class="project-item">
+                        <span class="project-name">${project.name}${attemptsText}</span>
+                        <span class="project-grade">${timeDisplay} (Grade: ${gradeDisplay})</span>
+                    </div>
+                `;
+            });
+        }
+        
+        progressContent.innerHTML = html;
+    }
+
+    toggleCheckpointZero() {
+        const progressContent = document.getElementById('progress-content');
+        const successfulBtn = document.getElementById('successful-projects-btn');
+        const failedBtn = document.getElementById('failed-projects-btn');
+        const activeBtn = document.getElementById('active-projects-btn');
+        const timeAnalysisBtn = document.getElementById('time-analysis-btn');
+        const checkpointZeroBtn = document.getElementById('checkpoint-zero-btn');
+        
+        // If content is already showing checkpoint zero, hide it
+        if (checkpointZeroBtn.classList.contains('active')) {
+            this.hideProgressContent();
+            return;
+        }
+        
+        // Update button states
+        checkpointZeroBtn.classList.add('active');
+        successfulBtn.classList.remove('active');
+        failedBtn.classList.remove('active');
+        activeBtn.classList.remove('active');
+        timeAnalysisBtn.classList.remove('active');
+        
+        // Show content
+        progressContent.style.display = 'block';
+        
+        if (!this.checkpointZeroData) {
+            progressContent.innerHTML = '<p>No checkpoint zero data available</p>';
+            return;
+        }
+        
+        let html = '<h3>🎯 Checkpoint Zero Analysis</h3>';
+        
+        // Successful (grade >= 1)
+        html += `<h4>✅ Successful (${this.checkpointZeroData.successful.length})</h4>`;
+        if (this.checkpointZeroData.successful.length === 0) {
+            html += '<p>No successful completions</p>';
+        } else {
+            this.checkpointZeroData.successful.forEach(item => {
+                const createdAt = new Date(item.createdAt).toLocaleDateString();
+                html += `<div class="project-item"><span class="project-name">${createdAt}</span><span class="project-grade success">Grade: ${item.grade.toFixed(2)}</span></div>`;
+            });
+        }
+        
+        // Registered but not started (grade = 0)
+        html += `<h4>📝 Registered but not started (${this.checkpointZeroData.registeredNotStarted.length})</h4>`;
+        if (this.checkpointZeroData.registeredNotStarted.length === 0) {
+            html += '<p>No registrations without attempts</p>';
+        } else {
+            this.checkpointZeroData.registeredNotStarted.forEach(item => {
+                const createdAt = new Date(item.createdAt).toLocaleDateString();
+                html += `<div class="project-item"><span class="project-name">${createdAt}</span><span class="project-grade">Registered</span></div>`;
+            });
+        }
+        
+        // Registered but incomplete (grade > 0 but < 1)
+        html += `<h4>🔄 Registered but incomplete (${this.checkpointZeroData.registeredIncomplete.length})</h4>`;
+        if (this.checkpointZeroData.registeredIncomplete.length === 0) {
+            html += '<p>No incomplete attempts</p>';
+        } else {
+            this.checkpointZeroData.registeredIncomplete.forEach(item => {
+                const createdAt = new Date(item.createdAt).toLocaleDateString();
+                html += `<div class="project-item"><span class="project-name">${createdAt}</span><span class="project-grade failed">Grade: ${item.grade.toFixed(2)}</span></div>`;
+            });
+        }
+        
+        // Not registered (grade = null)
+        html += `<h4>❌ Not registered (${this.checkpointZeroData.notRegistered.length})</h4>`;
+        if (this.checkpointZeroData.notRegistered.length === 0) {
+            html += '<p>All users are registered</p>';
+        } else {
+            this.checkpointZeroData.notRegistered.forEach(item => {
+                const createdAt = new Date(item.createdAt).toLocaleDateString();
+                html += `<div class="project-item"><span class="project-name">${createdAt}</span><span class="project-grade">Not registered</span></div>`;
+            });
+        }
+        
+        progressContent.innerHTML = html;
+    }
+
     hideProgressContent() {
         const progressContent = document.getElementById('progress-content');
         const successfulBtn = document.getElementById('successful-projects-btn');
         const failedBtn = document.getElementById('failed-projects-btn');
         const activeBtn = document.getElementById('active-projects-btn');
+        const timeAnalysisBtn = document.getElementById('time-analysis-btn');
+        const checkpointZeroBtn = document.getElementById('checkpoint-zero-btn');
         
         // Hide content
         progressContent.style.display = 'none';
@@ -947,6 +1232,8 @@ class TomorrowSchoolApp {
         successfulBtn.classList.remove('active');
         failedBtn.classList.remove('active');
         activeBtn.classList.remove('active');
+        timeAnalysisBtn.classList.remove('active');
+        checkpointZeroBtn.classList.remove('active');
     }
 
     displayProgressData(progress, results, groupMemberships, eventParticipations) {
@@ -1239,7 +1526,7 @@ class TomorrowSchoolApp {
             
             svg.appendChild(circle);
         });
-        
+
         container.innerHTML = '';
         container.appendChild(svg);
     }

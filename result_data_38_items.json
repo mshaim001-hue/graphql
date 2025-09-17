@@ -1,0 +1,1328 @@
+[
+  {
+    "id": 174271,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": null,
+    "createdAt": "2025-06-22T10:59:40.192249+00:00",
+    "updatedAt": "2025-06-22T10:59:40.192249+00:00",
+    "eventId": 227,
+    "type": "tester",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "cca88f64-fb6d-4864-ab52-4d5ba93b7515",
+    "attrs": {},
+    "isLast": true,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 63394,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": null,
+    "createdAt": "2025-01-26T08:21:24.637083+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 129,
+    "type": "tester",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "3543016a-0a9a-4bc9-8f11-9050b81ec3a2",
+    "attrs": {},
+    "isLast": true,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 65238,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": 1.0,
+    "createdAt": "2025-01-26T15:00:00.178902+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 129,
+    "type": "admin_selection",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "f1f7a878-ea20-431f-874c-81b9fda4b24c",
+    "attrs": {
+      "exam": 2750
+    },
+    "isLast": false,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 73877,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": null,
+    "createdAt": "2025-02-02T10:27:50.815036+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 140,
+    "type": "tester",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "9d9ff576-d780-47e5-a5ad-e817c221677d",
+    "attrs": {},
+    "isLast": true,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 74806,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": 1.0,
+    "createdAt": "2025-02-02T15:00:00.706159+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 140,
+    "type": "admin_selection",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "2c6b0680-e5d7-404a-9c04-efd655323b8b",
+    "attrs": {
+      "exam": 2750
+    },
+    "isLast": false,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 82695,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": null,
+    "createdAt": "2025-02-09T10:36:30.810851+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 141,
+    "type": "tester",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "a2aeba55-8b0b-451c-ae5b-4aac26738c65",
+    "attrs": {},
+    "isLast": true,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 83350,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": 1.0,
+    "createdAt": "2025-02-09T15:00:00.677353+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 141,
+    "type": "admin_selection",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "85a864d7-26ac-47ff-b6c4-faa28bc14436",
+    "attrs": {
+      "exam": 2750
+    },
+    "isLast": false,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 94252,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": null,
+    "createdAt": "2025-03-02T10:33:36.647799+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 161,
+    "type": "tester",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "feae47f6-24ea-425f-9134-da911f4d162f",
+    "attrs": {},
+    "isLast": true,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 94831,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": 1.0,
+    "createdAt": "2025-03-02T16:30:00.152298+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 161,
+    "type": "admin_selection",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "e411d88b-d9fb-43aa-9b08-394dd5d94868",
+    "attrs": {
+      "exam": 2750
+    },
+    "isLast": false,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 95677,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": null,
+    "createdAt": "2025-03-09T10:54:34.732889+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 162,
+    "type": "tester",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "c3cffb77-b417-48f7-9792-543d13503fce",
+    "attrs": {},
+    "isLast": true,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 95866,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": 1.0,
+    "createdAt": "2025-03-09T13:00:00.357237+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 162,
+    "type": "admin_selection",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "11126d47-2fac-4fed-8be1-0ce37976a300",
+    "attrs": {
+      "exam": 2750
+    },
+    "isLast": false,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 104841,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": null,
+    "createdAt": "2025-03-16T11:11:33.610711+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 163,
+    "type": "tester",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "a2d50b1f-d1fb-49f3-9cb6-c767eafb7056",
+    "attrs": {},
+    "isLast": true,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 105848,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": 1.0,
+    "createdAt": "2025-03-16T15:00:00.71074+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 163,
+    "type": "admin_selection",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "7599e750-6099-4d69-814e-05564cb36ca8",
+    "attrs": {
+      "exam": 2750
+    },
+    "isLast": false,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 121404,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": null,
+    "createdAt": "2025-03-30T09:56:29.081527+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 184,
+    "type": "tester",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "609b7015-d705-493e-b49e-aec0d6412955",
+    "attrs": {},
+    "isLast": true,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 122128,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": 1.0,
+    "createdAt": "2025-03-30T17:00:00.920599+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 184,
+    "type": "admin_selection",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "b0126cc5-149a-4951-8d26-5e4b678d1fb1",
+    "attrs": {
+      "exam": 2750
+    },
+    "isLast": false,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 128842,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": null,
+    "createdAt": "2025-04-13T10:26:59.124789+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 187,
+    "type": "tester",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "37bc0329-5ba6-4ad0-96e3-ee4f3c032df9",
+    "attrs": {},
+    "isLast": true,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 129460,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": 1.0,
+    "createdAt": "2025-04-13T15:00:00.616719+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 187,
+    "type": "admin_selection",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "25fa0efd-1196-4a22-9867-4c638f6c6578",
+    "attrs": {
+      "exam": 2750
+    },
+    "isLast": false,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 130579,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": null,
+    "createdAt": "2025-04-20T11:27:55.202995+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 188,
+    "type": "tester",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "a051aeaa-c3f1-48ef-96b7-b52e90739c4b",
+    "attrs": {},
+    "isLast": true,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 130985,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": 1.0,
+    "createdAt": "2025-04-20T15:00:00.975278+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 188,
+    "type": "admin_selection",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "a50cd29e-2e99-473c-8a5d-d970f9e24eae",
+    "attrs": {
+      "exam": 2750
+    },
+    "isLast": false,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 132245,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": null,
+    "createdAt": "2025-04-27T11:47:41.919308+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 198,
+    "type": "tester",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "064246ff-f9cc-438e-9219-99674db91382",
+    "attrs": {},
+    "isLast": true,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 132687,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": 1.0,
+    "createdAt": "2025-04-27T15:00:00.521173+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 198,
+    "type": "admin_selection",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "90b0e316-1cb1-4d66-b20e-fccc5ac3e431",
+    "attrs": {
+      "exam": 2750
+    },
+    "isLast": false,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 141276,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": 0.38181818181818183,
+    "createdAt": "2025-05-04T17:59:00.825308+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 208,
+    "type": "admin_selection",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "eb2057dd-a598-4f0b-b335-89063ee3a50d",
+    "attrs": {
+      "exam": 1050
+    },
+    "isLast": false,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 147543,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": null,
+    "createdAt": "2025-05-11T11:16:33.928485+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 209,
+    "type": "tester",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "5904bd72-f714-4994-b1f4-da2b6e620775",
+    "attrs": {},
+    "isLast": true,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 148421,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": 1.0,
+    "createdAt": "2025-05-11T15:00:00.15842+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 209,
+    "type": "admin_selection",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "39e051aa-4b58-4691-882b-666e81756765",
+    "attrs": {
+      "exam": 2750
+    },
+    "isLast": false,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 154678,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": null,
+    "createdAt": "2025-05-18T10:58:33.603243+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 210,
+    "type": "tester",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "e737e9fb-c285-4c7b-b587-b742c593b7da",
+    "attrs": {},
+    "isLast": true,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 155457,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": 1.0,
+    "createdAt": "2025-05-18T15:00:00.549042+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 210,
+    "type": "admin_selection",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "763917eb-1b63-44b9-97c7-74024d582ccf",
+    "attrs": {
+      "exam": 2750
+    },
+    "isLast": false,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 161784,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": 1.0,
+    "createdAt": "2025-05-25T15:00:00.05815+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 212,
+    "type": "admin_selection",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "c42c4b74-a5bb-4fa7-b0f8-9e0f39ba7c59",
+    "attrs": {
+      "exam": 2750
+    },
+    "isLast": false,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 164129,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": null,
+    "createdAt": "2025-06-08T11:36:50.98278+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 214,
+    "type": "tester",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "179c15d2-e01d-414d-86c1-3299739ec34d",
+    "attrs": {},
+    "isLast": true,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 164531,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": 1.0,
+    "createdAt": "2025-06-08T15:00:00.93705+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 214,
+    "type": "admin_selection",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "8c4a0895-3c9f-42d1-aa2b-ba4ab01954c9",
+    "attrs": {
+      "exam": 2750
+    },
+    "isLast": false,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 174941,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": 1.0,
+    "createdAt": "2025-06-22T15:00:00.89667+00:00",
+    "updatedAt": "2025-06-22T15:00:00.89667+00:00",
+    "eventId": 227,
+    "type": "admin_selection",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "08667824-3def-49a2-9d65-76273f2881c4",
+    "attrs": {
+      "exam": 2750
+    },
+    "isLast": false,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 161047,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": null,
+    "createdAt": "2025-05-25T11:14:46.058243+00:00",
+    "updatedAt": "2025-06-12T19:04:09.68994+00:00",
+    "eventId": 212,
+    "type": "tester",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "382a964a-b5d4-410a-b7e4-45d50520a396",
+    "attrs": {},
+    "isLast": true,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 188865,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": 0.0,
+    "createdAt": "2025-07-13T15:00:00.767435+00:00",
+    "updatedAt": "2025-07-13T15:00:00.767435+00:00",
+    "eventId": 234,
+    "type": "admin_selection",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "e76bbd3f-3c7e-4e1b-bfb7-a01bead24820",
+    "attrs": {},
+    "isLast": false,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 207749,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": 0.0,
+    "createdAt": "2025-08-03T15:00:00.925117+00:00",
+    "updatedAt": "2025-08-03T15:00:00.925117+00:00",
+    "eventId": 251,
+    "type": "admin_selection",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "d386b984-4c4f-4b1f-82bb-0a3b7e154412",
+    "attrs": {},
+    "isLast": false,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 200357,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": 0.0,
+    "createdAt": "2025-07-27T15:00:00.334921+00:00",
+    "updatedAt": "2025-07-27T15:00:00.334921+00:00",
+    "eventId": 246,
+    "type": "admin_selection",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "ca389e14-fbe0-4c79-bc39-15b67ce03645",
+    "attrs": {},
+    "isLast": false,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 225739,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": 0.0,
+    "createdAt": "2025-08-27T11:20:00.902743+00:00",
+    "updatedAt": "2025-08-27T11:20:00.902743+00:00",
+    "eventId": 255,
+    "type": "admin_selection",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "0c25169a-9e3b-4060-b72f-c3b488bd66c9",
+    "attrs": {},
+    "isLast": false,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 169134,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": null,
+    "createdAt": "2025-06-15T11:56:35.436113+00:00",
+    "updatedAt": "2025-06-15T11:56:35.436113+00:00",
+    "eventId": 225,
+    "type": "tester",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "702b8127-8d76-40bb-a818-778858b8bcb4",
+    "attrs": {},
+    "isLast": true,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 169498,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": 1.0,
+    "createdAt": "2025-06-15T15:00:00.743096+00:00",
+    "updatedAt": "2025-06-15T15:00:00.743096+00:00",
+    "eventId": 225,
+    "type": "admin_selection",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "2e1f51df-a640-4c61-b0af-df09dc4e08ab",
+    "attrs": {
+      "exam": 2750
+    },
+    "isLast": false,
+    "campus": "astanahub",
+    "group": null
+  },
+  {
+    "id": 179180,
+    "user": {
+      "id": 2058,
+      "login": "mshaimard",
+      "profile": {}
+    },
+    "object": {
+      "id": 102435,
+      "name": "checkpoint-zero",
+      "type": "exam",
+      "attrs": {
+        "capacity": 400,
+        "expectedXp": {
+          "name": "getRequiredExpectedXp",
+          "type": "function"
+        },
+        "eventDuration": 180,
+        "eventStartDelay": 60,
+        "registrationDuration": 2160
+      }
+    },
+    "grade": 0.0,
+    "createdAt": "2025-06-29T10:00:00.878861+00:00",
+    "updatedAt": "2025-06-29T10:00:00.878861+00:00",
+    "eventId": 232,
+    "type": "admin_selection",
+    "path": "/astanahub/module/checkpoint-zero",
+    "version": "e190fe35-994b-43d1-a678-6ce5088e841a",
+    "attrs": {},
+    "isLast": false,
+    "campus": "astanahub",
+    "group": null
+  }
+]
