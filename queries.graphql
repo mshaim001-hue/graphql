@@ -58,19 +58,56 @@ query GetAllResults {
   }
 }
 
-group {
-    id
-    event {
+# Получить все аудиты с информацией о группах
+query GetAllAudits {
+    audit(order_by: {createdAt: desc}) {
         id
-        path
-        object {
+        grade
+        createdAt
+        group {
             id
-            name
-            type
-            attrs
-            createdAt
-            updatedAt
+            status
+            path
+        }
+    }
+}
+
+# Получить все связи пользователей с группами
+query GetAllGroupUsers {
+    group_user(order_by: {createdAt: desc}) {
+        id
+        createdAt
+        updatedAt
+        group {
+            id
+            status
+            path
             campus
+        }
+        user {
+            id
+            login
+            campus
+        }
+    }
+}
+
+# Пример запроса для групп
+query GetGroups {
+    group {
+        id
+        event {
+            id
+            path
+            object {
+                id
+                name
+                type
+                attrs
+                createdAt
+                updatedAt
+                campus
+            }
         }
     }
 }
