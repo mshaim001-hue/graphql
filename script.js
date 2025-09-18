@@ -18,20 +18,17 @@ class TomorrowSchoolApp {
             const storedUserId = localStorage.getItem('userId');
             if (storedUserId) {
                 this.userId = storedUserId;
-                console.log('Restored userId from localStorage:', this.userId);
             } else {
                 // Parse JWT to get userId if not in localStorage
                 const payload = this.parseJWT(this.jwt);
                 this.userId = payload.sub || payload.id;
                 localStorage.setItem('userId', this.userId);
-                console.log('Extracted userId from JWT:', this.userId);
             }
             this.showProfile();
             this.loadUserData();
         } else {
             // Clear invalid JWT
             if (this.jwt) {
-                console.log('Invalid JWT found, clearing...');
                 localStorage.removeItem('jwt');
                 localStorage.removeItem('userId');
                 this.jwt = null;
@@ -119,10 +116,6 @@ class TomorrowSchoolApp {
             
             const payload = this.parseJWT(this.jwt);
             this.userId = payload.sub || payload.id; // Use 'sub' field from JWT payload
-            
-            // Debug: log the payload and userId
-            console.log('JWT payload:', payload);
-            console.log('Extracted userId:', this.userId);
             
             // Store JWT in localStorage
             localStorage.setItem('jwt', this.jwt);
@@ -421,11 +414,6 @@ class TomorrowSchoolApp {
                 <h3>Level</h3>
                 <div class="value level-info">
                     <span class="level-number">${user.level?.level || 1}</span>
-                    <span class="level-details">
-                        ${user.level?.completedProjects || 0} projects completed
-                        ${user.level?.averageGrade ? `(avg: ${user.level.averageGrade})` : ''}
-                        ${user.level?.levelDate ? `<br><small>Updated: ${formatDate(user.level.levelDate)}</small>` : ''}
-                    </span>
                 </div>
             </div>
             <div class="info-item">
@@ -474,7 +462,6 @@ class TomorrowSchoolApp {
         const data = await this.makeGraphQLQuery(query);
         
         if (data.transaction) {
-            console.log('XP Transactions loaded:', data.transaction);
             this.displayXPData(data.transaction);
         }
     }
@@ -518,23 +505,8 @@ class TomorrowSchoolApp {
         // Recent activity (last 5 transactions)
         const recentTransactions = transactions.slice(0, 5);
         
-        // Debug logging (simplified)
-        console.log(`XP Data loaded: ${transactions.length} transactions, Total: ${totalXP.toLocaleString()} XP`);
-        console.log(`Piscine Go: ${piscineGoXP.toLocaleString()} XP, Piscine JS: ${piscineJSXP.toLocaleString()} XP, Core Education: ${coreEducationXP.toLocaleString()} XP, Other: ${otherXP.toLocaleString()} XP`);
-        
         // Store transactions for activity display
         this.allTransactions = transactions;
-        
-        // Check for any unusual values (negative or very large amounts)
-        const negativeAmounts = transactions.filter(t => t.amount < 0);
-        const veryLargeAmounts = transactions.filter(t => t.amount > 10000);
-        
-        if (negativeAmounts.length > 0) {
-            console.log(`Warning: ${negativeAmounts.length} negative XP transactions found`);
-        }
-        if (veryLargeAmounts.length > 0) {
-            console.log(`Info: ${veryLargeAmounts.length} large XP transactions (>10k) found`);
-        }
         
 
         xpDetails.innerHTML = `
@@ -696,7 +668,6 @@ class TomorrowSchoolApp {
 
 
     async loadProgressData() {
-        console.log('Starting loadProgressData...');
         try {
             // Load projects data
             const projectsQuery = `
@@ -722,17 +693,17 @@ class TomorrowSchoolApp {
                 }
             `;
 
-            console.log('Executing projects query...');
             const projectsData = await this.makeGraphQLQuery(projectsQuery);
-            console.log('Projects data received:', projectsData);
             
             if (projectsData.progress) {
-                console.log('Processing projects data...');
                 this.processProjectsData(projectsData.progress);
             } else {
-                console.log('No projects data received');
                 this.showBasicProgressData();
             }
+            
+            // Load all AstanaHub projects for the "All Projects in Module" button
+            await this.loadAllAstanaHubProjects();
+            
         } catch (error) {
             console.error('Error loading progress data:', error);
             this.showBasicProgressData();
@@ -740,17 +711,51 @@ class TomorrowSchoolApp {
     }
 
     async showBasicProgressData() {
-        console.log('Showing basic progress data as fallback');
         // Update button counts to show loading state
         document.getElementById('successful-count').textContent = '...';
         document.getElementById('failed-count').textContent = '...';
         document.getElementById('active-count').textContent = '...';
         document.getElementById('time-analysis-count').textContent = '...';
         document.getElementById('checkpoint-zero-count').textContent = '...';
+        document.getElementById('all-projects-count').textContent = '...';
+    }
+
+    async loadAllAstanaHubProjects() {
+        try {
+            const allProjectsQuery = `
+                query {
+                    object(where: {type: {_eq: "project"}, campus: {_eq: "astanahub"}}) {
+                        id
+                        name
+                        type
+                        attrs
+                        createdAt
+                    }
+                }
+            `;
+
+            const allProjectsData = await this.makeGraphQLQuery(allProjectsQuery);
+            
+            if (allProjectsData.object) {
+                this.processAllAstanaHubProjects(allProjectsData.object);
+            } else {
+                document.getElementById('all-projects-count').textContent = '0';
+            }
+        } catch (error) {
+            console.error('Error loading all AstanaHub projects:', error);
+            document.getElementById('all-projects-count').textContent = '0';
+        }
+    }
+
+    processAllAstanaHubProjects(allProjects) {
+        // Update button count
+        document.getElementById('all-projects-count').textContent = allProjects.length;
+        
+        // Store data for button clicks
+        this.allAstanaHubProjects = allProjects;
     }
 
     async loadCheckpointZeroData() {
-        console.log('Loading checkpoint zero data...');
         try {
             const checkpointQuery = `
                 query {
@@ -775,15 +780,11 @@ class TomorrowSchoolApp {
                 }
             `;
 
-            console.log('Executing checkpoint zero query...');
             const checkpointData = await this.makeGraphQLQuery(checkpointQuery);
-            console.log('Checkpoint zero data received:', checkpointData);
             
             if (checkpointData.progress) {
-                console.log('Processing checkpoint zero data...');
                 this.processCheckpointZeroData(checkpointData.progress);
             } else {
-                console.log('No checkpoint zero data received');
                 document.getElementById('checkpoint-zero-count').textContent = '0';
             }
         } catch (error) {
@@ -793,7 +794,6 @@ class TomorrowSchoolApp {
     }
 
     processProjectsData(projects) {
-        console.log('Processing projects data:', projects.length, 'projects');
         
         // Filter projects by grade
         const successfulProjects = projects.filter(p => p.grade !== null && p.grade >= 1);
@@ -855,18 +855,9 @@ class TomorrowSchoolApp {
             active: activeProjects,
             timeAnalysis: sortedByTime
         };
-        
-        console.log('Projects processed:', {
-            successful: successfulProjects.length,
-            failed: failedProjects.length,
-            active: activeProjects.length,
-            timeAnalysis: sortedByTime.length,
-            total: projects.length
-        });
     }
 
     processCheckpointZeroData(checkpointData) {
-        console.log('Processing checkpoint zero data:', checkpointData.length, 'records');
         
         // Sort by createdAt (newest first)
         const sortedCheckpoint = checkpointData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
@@ -888,14 +879,6 @@ class TomorrowSchoolApp {
             registeredIncomplete: registeredIncomplete,
             notRegistered: notRegistered
         };
-        
-        console.log('Checkpoint zero processed:', {
-            successful: successful.length,
-            registeredNotStarted: registeredNotStarted.length,
-            registeredIncomplete: registeredIncomplete.length,
-            notRegistered: notRegistered.length,
-            total: sortedCheckpoint.length
-        });
     }
 
     setupProgressButtons() {
@@ -904,6 +887,7 @@ class TomorrowSchoolApp {
         const activeBtn = document.getElementById('active-projects-btn');
         const timeAnalysisBtn = document.getElementById('time-analysis-btn');
         const checkpointZeroBtn = document.getElementById('checkpoint-zero-btn');
+        const allProjectsBtn = document.getElementById('all-projects-btn');
         
         if (successfulBtn) {
             successfulBtn.addEventListener('click', () => this.toggleSuccessfulProjects());
@@ -923,6 +907,10 @@ class TomorrowSchoolApp {
         
         if (checkpointZeroBtn) {
             checkpointZeroBtn.addEventListener('click', () => this.toggleCheckpointZero());
+        }
+        
+        if (allProjectsBtn) {
+            allProjectsBtn.addEventListener('click', () => this.toggleAllProjects());
         }
     }
 
@@ -1177,7 +1165,7 @@ class TomorrowSchoolApp {
         } else {
             this.checkpointZeroData.successful.forEach(item => {
                 const createdAt = new Date(item.createdAt).toLocaleDateString();
-                html += `<div class="project-item"><span class="project-name">${createdAt}</span><span class="project-grade success">Grade: ${item.grade.toFixed(2)}</span></div>`;
+                html += `<div class="project-item"><span class="project-name">${createdAt}</span><span class="project-grade" style="color: white;">Grade: ${item.grade.toFixed(2)}</span></div>`;
             });
         }
         
@@ -1199,7 +1187,7 @@ class TomorrowSchoolApp {
         } else {
             this.checkpointZeroData.registeredIncomplete.forEach(item => {
                 const createdAt = new Date(item.createdAt).toLocaleDateString();
-                html += `<div class="project-item"><span class="project-name">${createdAt}</span><span class="project-grade failed">Grade: ${item.grade.toFixed(2)}</span></div>`;
+                html += `<div class="project-item"><span class="project-name">${createdAt}</span><span class="project-grade" style="color: white;">Grade: ${item.grade.toFixed(2)}</span></div>`;
             });
         }
         
@@ -1217,6 +1205,81 @@ class TomorrowSchoolApp {
         progressContent.innerHTML = html;
     }
 
+    toggleAllProjects() {
+        const progressContent = document.getElementById('progress-content');
+        const successfulBtn = document.getElementById('successful-projects-btn');
+        const failedBtn = document.getElementById('failed-projects-btn');
+        const activeBtn = document.getElementById('active-projects-btn');
+        const timeAnalysisBtn = document.getElementById('time-analysis-btn');
+        const checkpointZeroBtn = document.getElementById('checkpoint-zero-btn');
+        const allProjectsBtn = document.getElementById('all-projects-btn');
+        
+        // If content is already showing all projects, hide it
+        if (allProjectsBtn.classList.contains('active')) {
+            this.hideProgressContent();
+            return;
+        }
+        
+        // Update button states
+        allProjectsBtn.classList.add('active');
+        successfulBtn.classList.remove('active');
+        failedBtn.classList.remove('active');
+        activeBtn.classList.remove('active');
+        timeAnalysisBtn.classList.remove('active');
+        checkpointZeroBtn.classList.remove('active');
+        
+        // Show content
+        progressContent.style.display = 'block';
+        
+        if (!this.allAstanaHubProjects) {
+            progressContent.innerHTML = '<p>No AstanaHub projects data available</p>';
+            return;
+        }
+        
+        let html = '<h3>📁 All Projects in AstanaHub Module</h3>';
+        
+        if (this.allAstanaHubProjects.length === 0) {
+            html += '<p>No projects found in AstanaHub module</p>';
+        } else {
+            // Sort by creation date (newest first)
+            const sortedProjects = this.allAstanaHubProjects.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            
+            sortedProjects.forEach(project => {
+                const createdAt = new Date(project.createdAt).toLocaleDateString();
+                
+                // Извлекаем информацию о размере группы из attrs
+                let groupInfo = '📁 Project - Created: ' + createdAt;
+                if (project.attrs) {
+                    try {
+                        const attrs = typeof project.attrs === 'string' ? JSON.parse(project.attrs) : project.attrs;
+                        if (attrs.groupMin && attrs.groupMax) {
+                            if (attrs.groupMin === attrs.groupMax) {
+                                groupInfo = `👥 Group size: ${attrs.groupMin} participants`;
+                            } else {
+                                groupInfo = `👥 Group size: ${attrs.groupMin}-${attrs.groupMax} participants`;
+                            }
+                        } else if (attrs.groupMax) {
+                            groupInfo = `👥 Max group size: ${attrs.groupMax} participants`;
+                        } else if (attrs.groupMin) {
+                            groupInfo = `👥 Min group size: ${attrs.groupMin} participants`;
+                        }
+                    } catch (e) {
+                        console.log('Error parsing project attrs:', e);
+                    }
+                }
+                
+                html += `
+                    <div class="project-item">
+                        <span class="project-name">${project.name}</span>
+                        <span class="project-grade">${groupInfo}</span>
+                    </div>
+                `;
+            });
+        }
+        
+        progressContent.innerHTML = html;
+    }
+
     hideProgressContent() {
         const progressContent = document.getElementById('progress-content');
         const successfulBtn = document.getElementById('successful-projects-btn');
@@ -1224,6 +1287,7 @@ class TomorrowSchoolApp {
         const activeBtn = document.getElementById('active-projects-btn');
         const timeAnalysisBtn = document.getElementById('time-analysis-btn');
         const checkpointZeroBtn = document.getElementById('checkpoint-zero-btn');
+        const allProjectsBtn = document.getElementById('all-projects-btn');
         
         // Hide content
         progressContent.style.display = 'none';
@@ -1234,6 +1298,7 @@ class TomorrowSchoolApp {
         activeBtn.classList.remove('active');
         timeAnalysisBtn.classList.remove('active');
         checkpointZeroBtn.classList.remove('active');
+        allProjectsBtn.classList.remove('active');
     }
 
     displayProgressData(progress, results, groupMemberships, eventParticipations) {
@@ -1379,22 +1444,39 @@ class TomorrowSchoolApp {
             ` : ''}
         `;
         
-        console.log('Progress data HTML updated successfully');
     }
 
     async loadStatistics() {
         try {
             // Load data for all graphs
-            const [xpData, progressData, resultData] = await Promise.all([
+            const [xpData, progressData, resultData, languagesData] = await Promise.all([
                 this.getXPTimeData(),
                 this.getProgressData(),
-                this.getResultData()
+                this.getResultData(),
+                this.getLanguagesData()
             ]);
 
-            // Create graphs
-            this.createXPTimelineGraph(xpData);
-            this.createProjectSuccessGraph(progressData, resultData);
-            this.createExerciseAttemptsGraph(progressData, resultData);
+            // Create graphs only if containers exist
+            const xpTimelineContainer = document.getElementById('xp-timeline-graph');
+            const projectSuccessContainer = document.getElementById('project-success-graph');
+            const exerciseAttemptsContainer = document.getElementById('exercise-attempts-graph');
+            const languagesContainer = document.getElementById('languages-graph');
+            
+            if (xpTimelineContainer) {
+                this.createXPTimelineGraph(xpData);
+            }
+            
+            if (projectSuccessContainer) {
+                this.createProjectSuccessGraph(progressData, resultData);
+            }
+            
+            if (exerciseAttemptsContainer) {
+                this.createExerciseAttemptsGraph(progressData, resultData);
+            }
+            
+            if (languagesContainer) {
+                this.createLanguagesGraph(languagesData);
+            }
             
         } catch (error) {
             console.error('Error loading statistics:', error);
@@ -1451,6 +1533,196 @@ class TomorrowSchoolApp {
 
         const data = await this.makeGraphQLQuery(query);
         return data.result || [];
+    }
+
+    async getLanguagesData() {
+        try {
+            // Получаем общие данные о языках программирования
+            const generalData = await this.getGeneralLanguagesData();
+            
+            // Получаем проекты пользователя с информацией о языках
+            const userProjects = await this.getUserProjectsWithLanguages();
+            
+            if (userProjects && userProjects.length > 0) {
+                // Анализируем языки программирования пользователя
+                const userLanguageStats = this.analyzeUserLanguages(userProjects);
+                
+                // Создаем прогресс-данные, сравнивая с общими данными
+                const progressData = this.createLanguageProgressData(generalData.languages, userLanguageStats);
+                
+                return {
+                    total_projects: userProjects.length,
+                    languages: progressData,
+                    isPersonalized: true
+                };
+            } else {
+                // Если нет данных пользователя, используем общую статистику
+                return generalData;
+            }
+        } catch (error) {
+            console.error('Error loading user languages data:', error);
+            // Возвращаем общую статистику в случае ошибки
+            return await this.getGeneralLanguagesData();
+        }
+    }
+
+    async getUserProjectsWithLanguages() {
+        try {
+            const query = `
+                query {
+                    progress(where: {object: {type: {_eq: "project"}}}) {
+                        id
+                        userId
+                        grade
+                        createdAt
+                        object {
+                            id
+                            name
+                            type
+                            attrs
+                        }
+                    }
+                }
+            `;
+
+            const data = await this.makeGraphQLQuery(query);
+            return data.progress || [];
+        } catch (error) {
+            console.error('Error loading user projects:', error);
+            return [];
+        }
+    }
+
+    analyzeUserLanguages(projects) {
+        const languageCount = {};
+        
+        projects.forEach(project => {
+            if (project.object && project.object.attrs) {
+                try {
+                    const attrs = typeof project.object.attrs === 'string' 
+                        ? JSON.parse(project.object.attrs) 
+                        : project.object.attrs;
+                    
+                    if (attrs.language) {
+                        const language = attrs.language;
+                        // Нормализуем название языка (приводим к нижнему регистру для сопоставления)
+                        const normalizedLanguage = language.toLowerCase().trim();
+                        languageCount[normalizedLanguage] = (languageCount[normalizedLanguage] || 0) + 1;
+                    }
+                } catch (e) {
+                    console.log('Error parsing project attrs:', e);
+                }
+            }
+        });
+
+
+        // Преобразуем в массив и сортируем по количеству проектов
+        return Object.entries(languageCount)
+            .map(([language, count]) => [language, count])
+            .sort((a, b) => b[1] - a[1]);
+    }
+
+    createLanguageProgressData(generalLanguages, userLanguages) {
+        // Создаем мапу пользовательских языков для быстрого поиска (с нормализацией)
+        const userLanguageMap = new Map();
+        userLanguages.forEach(([language, count]) => {
+            const normalizedLanguage = language.toLowerCase().trim();
+            userLanguageMap.set(normalizedLanguage, count);
+        });
+        
+        
+        // Создаем прогресс-данные для всех языков из общих данных
+        const progressData = generalLanguages.map(([language, totalCount]) => {
+            // Нормализуем название языка для сопоставления
+            const normalizedLanguage = language.toLowerCase().trim();
+            const userCount = userLanguageMap.get(normalizedLanguage) || 0;
+            
+            // Валидация: пользователь не может выполнить больше проектов, чем доступно
+            const validUserCount = Math.min(userCount, totalCount);
+            
+            // Валидация: общее количество должно быть больше 0
+            const validTotalCount = Math.max(totalCount, 1);
+            
+            const percentage = validTotalCount > 0 ? Math.round((validUserCount / validTotalCount) * 100) : 0;
+            
+            
+            return {
+                language: language, // Используем оригинальное название для отображения
+                total: validTotalCount,
+                completed: validUserCount,
+                percentage: percentage
+            };
+        });
+        
+        // Сортируем по общему количеству проектов (по убыванию)
+        return progressData.sort((a, b) => b.total - a.total);
+    }
+
+    async getGeneralLanguagesData() {
+        // Проверяем, работаем ли мы через HTTP сервер или file:// протокол
+        const isFileProtocol = window.location.protocol === 'file:';
+        
+        if (isFileProtocol) {
+            // Возвращаем fallback данные для file:// протокола
+            return {
+                total_projects: 143,
+                languages: [
+                    ["Go", 27],
+                    ["python", 21],
+                    ["Open", 14],
+                    ["dart", 14],
+                    ["cybersecurity", 11],
+                    ["unreal engine", 10],
+                    ["JavaScript", 10],
+                    ["C", 9],
+                    ["C++", 8],
+                    ["Rust", 7],
+                    ["Java", 6],
+                    ["TypeScript", 5],
+                    ["PHP", 4],
+                    ["Ruby", 3],
+                    ["Swift", 2]
+                ],
+                isPersonalized: false
+            };
+        }
+        
+        try {
+            // Загружаем данные о языках программирования из файла (только для HTTP)
+            const response = await fetch('./final_languages_graph.json');
+            if (!response.ok) {
+                throw new Error('Failed to load languages data');
+            }
+            const data = await response.json();
+            return {
+                ...data,
+                isPersonalized: false
+            };
+        } catch (error) {
+            console.error('Error loading languages data:', error);
+            // Возвращаем fallback данные в случае ошибки
+            return {
+                total_projects: 143,
+                languages: [
+                    ["Go", 27],
+                    ["python", 21],
+                    ["Open", 14],
+                    ["dart", 14],
+                    ["cybersecurity", 11],
+                    ["unreal engine", 10],
+                    ["JavaScript", 10],
+                    ["C", 9],
+                    ["C++", 8],
+                    ["Rust", 7],
+                    ["Java", 6],
+                    ["TypeScript", 5],
+                    ["PHP", 4],
+                    ["Ruby", 3],
+                    ["Swift", 2]
+                ],
+                isPersonalized: false
+            };
+        }
     }
 
     createXPTimelineGraph(xpData) {
@@ -1680,6 +1952,151 @@ class TomorrowSchoolApp {
         container.appendChild(svg);
     }
 
+    createLanguagesGraph(languagesData) {
+        const container = document.getElementById('languages-graph');
+        
+        if (!languagesData || !languagesData.languages || languagesData.languages.length === 0) {
+            container.innerHTML = '<div class="loading">No languages data available</div>';
+            return;
+        }
+
+        // Берем топ-10 языков для лучшего отображения
+        const topLanguages = languagesData.languages.slice(0, 10);
+        
+        // Создаем горизонтальную диаграмму
+        const width = 400;
+        const height = 350;
+        const margin = { top: 50, right: 30, bottom: 40, left: 120 };
+        const barHeight = 22;
+        const barSpacing = 8;
+
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('width', width);
+        svg.setAttribute('height', height);
+
+        const maxProjects = Math.max(...topLanguages.map(lang => 
+            languagesData.isPersonalized ? lang.total : lang[1] || 0
+        ));
+        const xScale = maxProjects > 0 ? (width - margin.left - margin.right) / maxProjects : 1;
+
+        // Цвета для языков программирования
+        const colors = [
+            '#667eea', '#f093fb', '#4facfe', '#43e97b', '#fa709a',
+            '#ffecd2', '#a8edea', '#d299c2', '#ffd89b', '#89f7fe'
+        ];
+
+        // Определяем заголовок в зависимости от типа данных
+        const isPersonalized = languagesData.isPersonalized;
+        const titleText = isPersonalized 
+            ? `Your Programming Languages Progress`
+            : `Top ${topLanguages.length} Programming Languages`;
+
+        // Добавляем заголовок
+        const title = this.createLabel(width / 2, 20, titleText);
+        title.setAttribute('font-size', '14');
+        title.setAttribute('font-weight', '600');
+        title.setAttribute('fill', isPersonalized ? '#667eea' : '#333');
+        svg.appendChild(title);
+
+        // Добавляем подзаголовок для персонализированных данных
+        if (isPersonalized) {
+            const subtitle = this.createLabel(width / 2, 35, 'Completed projects vs Total available');
+            subtitle.setAttribute('font-size', '10');
+            subtitle.setAttribute('font-weight', '400');
+            subtitle.setAttribute('fill', '#666');
+            svg.appendChild(subtitle);
+        }
+
+        if (topLanguages.length === 0) {
+            // Если нет языков, показываем сообщение
+            const noDataText = this.createLabel(width / 2, height / 2, 'No language data found in your projects');
+            noDataText.setAttribute('font-size', '12');
+            noDataText.setAttribute('font-weight', '400');
+            noDataText.setAttribute('fill', '#999');
+            svg.appendChild(noDataText);
+        } else {
+            topLanguages.forEach((languageData, index) => {
+                const y = margin.top + index * (barHeight + barSpacing);
+                const color = colors[index % colors.length];
+                
+                let language, total, completed, percentage;
+                
+                if (isPersonalized) {
+                    // Новый формат с прогресс-данными
+                    language = languageData.language;
+                    total = languageData.total;
+                    completed = languageData.completed;
+                    percentage = languageData.percentage;
+                } else {
+                    // Старый формат для общих данных
+                    language = languageData[0];
+                    total = languageData[1];
+                    completed = 0;
+                    percentage = 0;
+                }
+
+                const totalBarWidth = total * xScale;
+                const completedBarWidth = completed * xScale;
+
+                // Создаем фоновую полосу (общее количество)
+                const backgroundBar = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                backgroundBar.setAttribute('x', margin.left);
+                backgroundBar.setAttribute('y', y);
+                backgroundBar.setAttribute('width', totalBarWidth);
+                backgroundBar.setAttribute('height', barHeight);
+                backgroundBar.setAttribute('fill', '#e9ecef');
+                backgroundBar.setAttribute('rx', '3');
+                backgroundBar.setAttribute('ry', '3');
+
+                // Создаем полосу прогресса (выполненные проекты)
+                if (completed > 0) {
+                    const progressBar = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                    progressBar.setAttribute('x', margin.left);
+                    progressBar.setAttribute('y', y);
+                    progressBar.setAttribute('width', completedBarWidth);
+                    progressBar.setAttribute('height', barHeight);
+                    progressBar.setAttribute('fill', color);
+                    progressBar.setAttribute('rx', '3');
+                    progressBar.setAttribute('ry', '3');
+                    svg.appendChild(progressBar);
+                }
+
+                svg.appendChild(backgroundBar);
+
+                // Добавляем название языка
+                const languageLabel = this.createLabel(margin.left - 10, y + barHeight / 2, language);
+                languageLabel.setAttribute('text-anchor', 'end');
+                languageLabel.setAttribute('dominant-baseline', 'middle');
+                languageLabel.setAttribute('font-size', '11');
+                languageLabel.setAttribute('font-weight', '500');
+                svg.appendChild(languageLabel);
+
+                // Добавляем информацию о прогрессе
+                if (isPersonalized) {
+                    const progressText = `${completed}/${total} (${percentage}%)`;
+                    const progressLabel = this.createLabel(margin.left + totalBarWidth + 5, y + barHeight / 2, progressText);
+                    progressLabel.setAttribute('text-anchor', 'start');
+                    progressLabel.setAttribute('dominant-baseline', 'middle');
+                    progressLabel.setAttribute('font-size', '10');
+                    progressLabel.setAttribute('font-weight', '600');
+                    progressLabel.setAttribute('fill', completed > 0 ? color : '#999');
+                    svg.appendChild(progressLabel);
+                } else {
+                    // Для общих данных показываем только общее количество
+                    const totalLabel = this.createLabel(margin.left + totalBarWidth + 5, y + barHeight / 2, total.toString());
+                    totalLabel.setAttribute('text-anchor', 'start');
+                    totalLabel.setAttribute('dominant-baseline', 'middle');
+                    totalLabel.setAttribute('font-size', '12');
+                    totalLabel.setAttribute('font-weight', '600');
+                    svg.appendChild(totalLabel);
+                }
+            });
+        }
+
+        container.innerHTML = '';
+        container.appendChild(svg);
+    }
+
     createPieSlice(cx, cy, r, startAngle, endAngle, fill) {
         const slice = document.createElementNS('http://www.w3.org/2000/svg', 'path');
         slice.setAttribute('class', 'pie-slice');
@@ -1822,7 +2239,6 @@ class TomorrowSchoolApp {
             throw new Error(`GraphQL errors: ${data.errors.map(e => e.message).join(', ')}`);
         }
 
-        console.log('GraphQL query successful, received', data.data.result.length, 'results');
         
         return data.data.result;
     }
@@ -1830,8 +2246,6 @@ class TomorrowSchoolApp {
     displayAdditionalInfo(results) {
         const additionalInfo = document.getElementById('additional-info');
         
-        // Debug: log basic info
-        console.log('Searching through', results.length, 'results for personal data...');
         
         // Find the first result with personal data in attrs
         let userAttrs = null;
@@ -1842,7 +2256,6 @@ class TomorrowSchoolApp {
                 const attrs = result.attrs;
                 if (attrs.phone || attrs.email || attrs.gender || attrs.firstName || attrs.lastName || 
                     attrs.dateOfBirth || attrs.addressCity || attrs.addressStreet) {
-                    console.log(`Found personal data in result ${i}:`, attrs);
                     userAttrs = attrs;
                     break;
                 }
@@ -1947,7 +2360,6 @@ class TomorrowSchoolApp {
             throw new Error(`GraphQL errors: ${data.errors.map(e => e.message).join(', ')}`);
         }
 
-        console.log('Records query successful, received', data.data.record.length, 'records');
         
         return data.data.record;
     }
