@@ -84,6 +84,227 @@ class BasicInfoModule {
         return data.data.result;
     }
 
+    async loadUserData() {
+        try {
+            // Load user basic info
+            await this.loadUserInfo();
+            
+            // Load XP data
+            await this.app.experiencePointsModule.loadXPData();
+            
+            // Load progress data
+            try {
+                await this.app.progressGradesModule.loadProgressData();
+            } catch (progressError) {
+                console.error('Error loading progress data:', progressError);
+                // Show basic progress data even if loading fails
+                await this.app.progressGradesModule.showBasicProgressData();
+            }
+            
+            // Load checkpoint zero data
+            try {
+                await this.app.progressGradesModule.loadCheckpointZeroData();
+            } catch (checkpointError) {
+                console.error('Error loading checkpoint zero data:', checkpointError);
+            }
+            
+            // Setup progress button event listeners
+            this.app.progressGradesModule.setupProgressButtons();
+            
+            
+            
+            // Load statistics and create graphs
+            await this.app.statisticsAnalyticsModule.loadStatistics();
+            
+        } catch (error) {
+            console.error('Error loading user data:', error);
+            this.app.showError('Failed to load user data. Please try logging in again.');
+        }
+    }
+
+    async loadUserInfo() {
+        const query = `
+            query {
+                user {
+                    id
+                    login
+                    profile
+                    attrs
+                    createdAt
+                    campus
+                }
+            }
+        `;
+
+        const data = await this.app.makeGraphQLQuery(query);
+        
+        if (data.user && data.user.length > 0) {
+            const user = data.user[0];
+            // Store original date for calculations
+            localStorage.setItem('memberSince', user.createdAt);
+            
+            // Сохраняем информацию о пользователе в классе
+            this.currentUser = user;
+            
+            // Загружаем данные для вычисления level
+            const userLevel = await this.calculateUserLevel(user.id);
+            user.level = userLevel;
+            
+            this.displayUserInfo(user);
+        }
+    }
+
+    async calculateUserLevel(userId) {
+        try {
+            // Получаем последнюю транзакцию типа "level" для получения настоящего level
+            const levelQuery = `
+                query {
+                    transaction(where: {userId: {_eq: ${userId}}, type: {_eq: "level"}}, order_by: {createdAt: desc}, limit: 1) {
+                        amount
+                        createdAt
+                        path
+                    }
+                }
+            `;
+
+            const levelData = await this.app.makeGraphQLQuery(levelQuery);
+            let currentLevel = 1;
+            let levelDate = null;
+            let levelPath = null;
+
+            if (levelData && levelData.transaction && levelData.transaction.length > 0) {
+                const levelTx = levelData.transaction[0];
+                currentLevel = Math.round(levelTx.amount);
+                levelDate = levelTx.createdAt;
+                levelPath = levelTx.path;
+            }
+
+            // Также получаем статистику по проектам для дополнительной информации
+            const resultsQuery = `
+                query {
+                    result(where: {userId: {_eq: ${userId}}}, order_by: {createdAt: desc}) {
+                        id
+                        grade
+                        object {
+                            name
+                            type
+                        }
+                    }
+                }
+            `;
+
+            const resultsData = await this.app.makeGraphQLQuery(resultsQuery);
+            let completedProjects = 0;
+            let totalProjects = 0;
+            let averageGrade = 0;
+
+            if (resultsData && resultsData.result) {
+                const results = resultsData.result;
+                completedProjects = results.filter(r => r.grade > 0).length;
+                totalProjects = results.length;
+                averageGrade = results.length > 0 ? 
+                    results.reduce((sum, r) => sum + (r.grade || 0), 0) / results.length : 0;
+            }
+            
+            return {
+                level: currentLevel,
+                levelDate: levelDate,
+                levelPath: levelPath,
+                completedProjects: completedProjects,
+                totalProjects: totalProjects,
+                averageGrade: Math.round(averageGrade * 100) / 100
+            };
+        } catch (error) {
+            // Error calculating user level
+        }
+        
+        return {
+            level: 1,
+            levelDate: null,
+            levelPath: null,
+            completedProjects: 0,
+            totalProjects: 0,
+            averageGrade: 0
+        };
+    }
+
+    displayUserInfo(user) {
+        const userDetails = document.getElementById('user-details');
+        
+        // Parse profile and attrs if they exist
+        let profileData = {};
+        let attrsData = {};
+        
+        try {
+            if (user.profile) {
+                profileData = typeof user.profile === 'string' ? JSON.parse(user.profile) : user.profile;
+            }
+        } catch (e) {
+            // Could not parse profile data
+        }
+        
+        try {
+            if (user.attrs) {
+                attrsData = typeof user.attrs === 'string' ? JSON.parse(user.attrs) : user.attrs;
+            }
+        } catch (e) {
+            // Could not parse attrs data
+        }
+        
+        // Format dates
+        const formatDate = (dateString) => {
+            if (!dateString) return 'N/A';
+            return new Date(dateString).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        };
+        
+        userDetails.innerHTML = `
+            <div class="info-item">
+                <h3>User ID</h3>
+                <div class="value">${user.id}</div>
+            </div>
+            <div class="info-item">
+                <h3>Username</h3>
+                <div class="value">${user.login || 'N/A'}</div>
+            </div>
+            <div class="info-item">
+                <h3>Level</h3>
+                <div class="value level-info">
+                    <span class="level-number">${user.level?.level || 1}</span>
+                </div>
+            </div>
+            <div class="info-item">
+                <h3>Campus</h3>
+                <div class="value">${user.campus || 'N/A'}</div>
+            </div>
+            <div class="info-item">
+                <h3>Member Since</h3>
+                <div class="value" data-date="member-since">${formatDate(user.createdAt)}</div>
+            </div>
+            ${profileData.email ? `
+            <div class="info-item">
+                <h3>Email</h3>
+                <div class="value">${profileData.email}</div>
+            </div>
+            ` : ''}
+            ${attrsData.firstName || attrsData.lastName ? `
+            <div class="info-item">
+                <h3>Full Name</h3>
+                <div class="value">${(attrsData.firstName || '') + ' ' + (attrsData.lastName || '')}</div>
+            </div>
+            ` : ''}
+            ${attrsData.location ? `
+            <div class="info-item">
+                <h3>Location</h3>
+                <div class="value">${attrsData.location}</div>
+            </div>
+            ` : ''}
+        `;
+    }
+
     displayAdditionalInfo(results) {
         const additionalInfo = document.getElementById('additional-info');
         
