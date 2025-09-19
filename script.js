@@ -678,7 +678,12 @@ class TomorrowSchoolApp {
                         userId
                         group {
                             id
-                            status
+                            captain {
+                                id
+                            }
+                            members {
+                                id
+                            }
                         }
                         grade
                         createdAt
@@ -2103,10 +2108,21 @@ class TomorrowSchoolApp {
                 this.createSimpleRolesGraph(container);
                 return;
             }
+            
+            console.log('Projects data available:', {
+                successful: this.projectsData.successful?.length || 0,
+                failed: this.projectsData.failed?.length || 0,
+                active: this.projectsData.active?.length || 0
+            });
 
-            // Анализируем роли на основе успешных проектов
-            const successfulProjects = this.projectsData.successful;
-            const roleAnalysis = this.analyzeRolesFromProgress(successfulProjects);
+            // Анализируем роли на основе всех проектов (не только успешных)
+            // Потому что информация о ролях может быть в любых проектах
+            const allProjects = [
+                ...this.projectsData.successful,
+                ...this.projectsData.failed,
+                ...this.projectsData.active
+            ];
+            const roleAnalysis = this.analyzeRolesFromProgress(allProjects);
             
             // Создаем SVG график с правильными данными
             const svgContent = this.getDynamicRolesSVG(roleAnalysis);
@@ -2533,135 +2549,8 @@ class TomorrowSchoolApp {
     }
 
     createSimpleRolesGraph(container) {
-        // Создаем простой SVG график с примерными данными
-        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        svg.setAttribute('width', '500');
-        svg.setAttribute('height', '400');
-        svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-        
-        // Фон
-        const bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-        bg.setAttribute('width', '500');
-        bg.setAttribute('height', '400');
-        bg.setAttribute('fill', '#f8f9fa');
-        bg.setAttribute('rx', '10');
-        svg.appendChild(bg);
-        
-        // Заголовок
-        const title = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-        title.setAttribute('x', '250');
-        title.setAttribute('y', '40');
-        title.setAttribute('text-anchor', 'middle');
-        title.setAttribute('font-family', 'Arial, sans-serif');
-        title.setAttribute('font-size', '24');
-        title.setAttribute('font-weight', 'bold');
-        title.setAttribute('fill', '#2c3e50');
-        title.textContent = 'Project Roles Analysis';
-        svg.appendChild(title);
-        
-        // Простая круговая диаграмма
-        const centerX = 250;
-        const centerY = 200;
-        const radius = 80;
-        
-        // Сектор капитана (19 из 33 = 57.6%)
-        const captainAngle = 207; // 57.6% от 360
-        const captainPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        captainPath.setAttribute('d', `M ${centerX} ${centerY} L ${centerX + radius} ${centerY} A ${radius} ${radius} 0 1 1 ${centerX - 45} ${centerY - 65} Z`);
-        captainPath.setAttribute('fill', '#4CAF50');
-        svg.appendChild(captainPath);
-        
-        // Сектор участника (14 из 33 = 42.4%)
-        const memberPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        memberPath.setAttribute('d', `M ${centerX} ${centerY} L ${centerX - 45} ${centerY - 65} A ${radius} ${radius} 0 0 1 ${centerX + radius} ${centerY} Z`);
-        memberPath.setAttribute('fill', '#2196F3');
-        svg.appendChild(memberPath);
-        
-        // Центральный круг
-        const centerCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        centerCircle.setAttribute('cx', centerX);
-        centerCircle.setAttribute('cy', centerY);
-        centerCircle.setAttribute('r', '40');
-        centerCircle.setAttribute('fill', 'white');
-        centerCircle.setAttribute('stroke', '#e0e0e0');
-        centerCircle.setAttribute('stroke-width', '2');
-        svg.appendChild(centerCircle);
-        
-        // Текст в центре
-        const centerText1 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-        centerText1.setAttribute('x', centerX);
-        centerText1.setAttribute('y', centerY - 5);
-        centerText1.setAttribute('text-anchor', 'middle');
-        centerText1.setAttribute('font-family', 'Arial, sans-serif');
-        centerText1.setAttribute('font-size', '14');
-        centerText1.setAttribute('font-weight', 'bold');
-        centerText1.setAttribute('fill', '#2c3e50');
-        centerText1.textContent = 'Total';
-        svg.appendChild(centerText1);
-        
-        const centerText2 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-        centerText2.setAttribute('x', centerX);
-        centerText2.setAttribute('y', centerY + 15);
-        centerText2.setAttribute('text-anchor', 'middle');
-        centerText2.setAttribute('font-family', 'Arial, sans-serif');
-        centerText2.setAttribute('font-size', '20');
-        centerText2.setAttribute('font-weight', 'bold');
-        centerText2.setAttribute('fill', '#2c3e50');
-        centerText2.textContent = '33';
-        svg.appendChild(centerText2);
-        
-        // Легенда
-        const legendX = 50;
-        const legendY = 320;
-        
-        // Капитан
-        const captainRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-        captainRect.setAttribute('x', legendX);
-        captainRect.setAttribute('y', legendY);
-        captainRect.setAttribute('width', '20');
-        captainRect.setAttribute('height', '20');
-        captainRect.setAttribute('fill', '#4CAF50');
-        captainRect.setAttribute('rx', '3');
-        svg.appendChild(captainRect);
-        
-        const captainText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-        captainText.setAttribute('x', legendX + 30);
-        captainText.setAttribute('y', legendY + 15);
-        captainText.setAttribute('font-family', 'Arial, sans-serif');
-        captainText.setAttribute('font-size', '16');
-        captainText.setAttribute('font-weight', 'bold');
-        captainText.setAttribute('fill', '#2c3e50');
-        captainText.textContent = 'Captain: 19 projects (58%)';
-        svg.appendChild(captainText);
-        
-        // Участник
-        const memberRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-        memberRect.setAttribute('x', legendX);
-        memberRect.setAttribute('y', legendY + 30);
-        memberRect.setAttribute('width', '20');
-        memberRect.setAttribute('height', '20');
-        memberRect.setAttribute('fill', '#2196F3');
-        memberRect.setAttribute('rx', '3');
-        svg.appendChild(memberRect);
-        
-        const memberText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-        memberText.setAttribute('x', legendX + 30);
-        memberText.setAttribute('y', legendY + 45);
-        memberText.setAttribute('font-family', 'Arial, sans-serif');
-        memberText.setAttribute('font-size', '16');
-        memberText.setAttribute('font-weight', 'bold');
-        memberText.setAttribute('fill', '#2c3e50');
-        memberText.textContent = 'Member: 14 projects (42%)';
-        svg.appendChild(memberText);
-        
-        container.innerHTML = '';
-        container.appendChild(svg);
-        
-        // Добавляем обработчик клика на простой график
-        svg.style.cursor = 'pointer';
-        svg.addEventListener('click', () => {
-            this.openRolesModal();
-        });
+        // Показываем сообщение о загрузке вместо статических данных
+        container.innerHTML = '<div class="loading">Loading roles data...</div>';
     }
 
     async openRolesModal() {
@@ -2721,10 +2610,15 @@ class TomorrowSchoolApp {
                 throw new Error('No successful projects data available');
             }
 
-            const successfulProjects = this.projectsData.successful;
+            // Анализируем роли на основе всех проектов (не только успешных)
+            const allProjects = [
+                ...this.projectsData.successful,
+                ...this.projectsData.failed,
+                ...this.projectsData.active
+            ];
             
             // Анализируем роли на основе данных из progress таблицы
-            const roleAnalysis = this.analyzeRolesFromProgress(successfulProjects);
+            const roleAnalysis = this.analyzeRolesFromProgress(allProjects);
             
             // Обновляем заголовки табов с актуальными данными
             this.updateTabHeaders(roleAnalysis);
@@ -2740,15 +2634,93 @@ class TomorrowSchoolApp {
     }
 
     analyzeRolesFromProgress(projects) {
-        // Используем встроенные данные о ролях из правильного анализа
-        const embeddedData = this.getEmbeddedRolesData();
+        // Анализируем реальные данные проектов
+        let captainCount = 0;
+        let memberCount = 0;
+        const captainProjects = [];
+        const memberProjects = [];
+        
+        console.log('Analyzing roles for projects:', projects.length);
+        
+        projects.forEach((project, index) => {
+            // Проверяем роль пользователя в проекте
+            const group = project.group;
+            const currentUserLogin = this.currentUser?.login;
+            
+            console.log(`Project ${index + 1}: ${project.object.name}`, {
+                group: group,
+                hasGroup: !!group,
+                groupKeys: group ? Object.keys(group) : [],
+                captainId: group?.captain?.id,
+                membersIds: group?.members?.map(m => m.id) || [],
+                currentUserId: this.userId,
+                currentUserLogin: currentUserLogin
+            });
+            
+            if (group && this.userId) {
+                console.log(`  Checking roles for ${project.object.name}:`, {
+                    captainId: group.captain?.id,
+                    captainIdType: typeof group.captain?.id,
+                    currentUserId: this.userId,
+                    currentUserIdType: typeof this.userId,
+                    captainMatch: group.captain?.id === this.userId,
+                    captainStrictMatch: group.captain?.id == this.userId
+                });
+                
+                // Проверяем, является ли пользователь капитаном
+                if (group.captain && group.captain.id == this.userId) {
+                    captainCount++;
+                    captainProjects.push({
+                        name: project.object.name,
+                        grade: project.grade,
+                        role: 'captain'
+                    });
+                    console.log(`  -> Captain: ${project.object.name}`);
+                } 
+                // Проверяем, является ли пользователь участником (но не капитаном)
+                else if (group.members && group.members.some(member => member.id == this.userId)) {
+                    memberCount++;
+                    memberProjects.push({
+                        name: project.object.name,
+                        grade: project.grade,
+                        role: 'member'
+                    });
+                    console.log(`  -> Member: ${project.object.name}`);
+                }
+                // Если пользователь не найден ни в капитанах, ни в участниках
+                else {
+                    memberCount++;
+                    memberProjects.push({
+                        name: project.object.name,
+                        grade: project.grade,
+                        role: 'member'
+                    });
+                    console.log(`  -> Member (not in group data): ${project.object.name}`);
+                }
+            } else {
+                // Если нет информации о группе или пользователе, считаем участником
+                memberCount++;
+                memberProjects.push({
+                    name: project.object.name,
+                    grade: project.grade,
+                    role: 'member'
+                });
+                console.log(`  -> Member (no group/user data): ${project.object.name}`);
+            }
+        });
+        
+        console.log('Final role analysis:', {
+            captain_count: captainCount,
+            member_count: memberCount,
+            total_projects: captainCount + memberCount
+        });
         
         return {
-            captain_count: embeddedData.stats.captain_count,
-            member_count: embeddedData.stats.member_count,
-            total_projects: embeddedData.stats.total_projects,
-            captainProjects: embeddedData.projects.filter(p => p.role === 'captain'),
-            memberProjects: embeddedData.projects.filter(p => p.role === 'member')
+            captain_count: captainCount,
+            member_count: memberCount,
+            total_projects: captainCount + memberCount,
+            captainProjects: captainProjects,
+            memberProjects: memberProjects
         };
     }
 
