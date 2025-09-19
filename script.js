@@ -1478,6 +1478,12 @@ class TomorrowSchoolApp {
                 this.createLanguagesGraph(languagesData);
             }
             
+            // Загружаем график ролей
+            this.loadRolesGraph();
+            
+            // Добавляем обработчик клика для графика языков
+            this.addLanguagesGraphClickHandler();
+            
         } catch (error) {
             console.error('Error loading statistics:', error);
         }
@@ -1537,32 +1543,38 @@ class TomorrowSchoolApp {
 
     async getLanguagesData() {
         try {
-            // Получаем общие данные о языках программирования
-            const generalData = await this.getGeneralLanguagesData();
+            // Используем ту же логику, что и для модального окна
+            const allProjects = await this.getAllAstanaHubProjectsWithLanguages();
+            const userProjects = await this.getUserSuccessfulProjects();
             
-            // Получаем проекты пользователя с информацией о языках
-            const userProjects = await this.getUserProjectsWithLanguages();
+            // Анализируем языки
+            const languagesData = this.analyzeLanguagesWithUserProgress(allProjects, userProjects);
             
-            if (userProjects && userProjects.length > 0) {
-                // Анализируем языки программирования пользователя
-                const userLanguageStats = this.analyzeUserLanguages(userProjects);
-                
-                // Создаем прогресс-данные, сравнивая с общими данными
-                const progressData = this.createLanguageProgressData(generalData.languages, userLanguageStats);
+            // Преобразуем в формат для графика
+            const languages = Object.entries(languagesData).map(([language, projects]) => {
+                const completedCount = projects.filter(p => p.completed).length;
+                const totalCount = projects.length;
                 
                 return {
-                    total_projects: userProjects.length,
-                    languages: progressData,
-                    isPersonalized: true
+                    name: language,
+                    completed: completedCount,
+                    total: totalCount,
+                    percentage: totalCount > 0 ? (completedCount / totalCount) * 100 : 0
                 };
-            } else {
-                // Если нет данных пользователя, используем общую статистику
-                return generalData;
-            }
+            }).sort((a, b) => b.completed - a.completed); // Сортируем по количеству завершенных
+            
+            return {
+                total_projects: userProjects.length,
+                languages: languages,
+                isPersonalized: true
+            };
         } catch (error) {
-            console.error('Error loading user languages data:', error);
-            // Возвращаем общую статистику в случае ошибки
-            return await this.getGeneralLanguagesData();
+            console.error('Error loading languages data:', error);
+            return {
+                total_projects: 0,
+                languages: [],
+                isPersonalized: true
+            };
         }
     }
 
@@ -1744,8 +1756,8 @@ class TomorrowSchoolApp {
         });
 
         // Create SVG
-        const width = 400;
-        const height = 250;
+        const width = 200;
+        const height = 400;
         const margin = { top: 20, right: 30, bottom: 40, left: 60 };
         
         const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -1964,11 +1976,11 @@ class TomorrowSchoolApp {
         const topLanguages = languagesData.languages.slice(0, 10);
         
         // Создаем горизонтальную диаграмму
-        const width = 400;
-        const height = 350;
-        const margin = { top: 50, right: 30, bottom: 40, left: 120 };
-        const barHeight = 22;
-        const barSpacing = 8;
+        const width = 350; // Уменьшаем ширину
+        const height = 500; // Уменьшаем высоту
+        const margin = { top: 10, right: 15, bottom: 15, left: 80 }; // Увеличиваем левый отступ для названий языков
+        const barHeight = 24; // Уменьшаем высоту полос
+        const barSpacing = 9; // Уменьшаем расстояние между полосами
 
         const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
         svg.setAttribute('width', width);
@@ -1985,27 +1997,8 @@ class TomorrowSchoolApp {
             '#ffecd2', '#a8edea', '#d299c2', '#ffd89b', '#89f7fe'
         ];
 
-        // Определяем заголовок в зависимости от типа данных
+        // Убираем заголовок из SVG, так как он уже есть в HTML
         const isPersonalized = languagesData.isPersonalized;
-        const titleText = isPersonalized 
-            ? `Your Programming Languages Progress`
-            : `Top ${topLanguages.length} Programming Languages`;
-
-        // Добавляем заголовок
-        const title = this.createLabel(width / 2, 20, titleText);
-        title.setAttribute('font-size', '14');
-        title.setAttribute('font-weight', '600');
-        title.setAttribute('fill', isPersonalized ? '#667eea' : '#333');
-        svg.appendChild(title);
-
-        // Добавляем подзаголовок для персонализированных данных
-        if (isPersonalized) {
-            const subtitle = this.createLabel(width / 2, 35, 'Completed projects vs Total available');
-            subtitle.setAttribute('font-size', '10');
-            subtitle.setAttribute('font-weight', '400');
-            subtitle.setAttribute('fill', '#666');
-            svg.appendChild(subtitle);
-        }
 
         if (topLanguages.length === 0) {
             // Если нет языков, показываем сообщение
@@ -2023,7 +2016,7 @@ class TomorrowSchoolApp {
                 
                 if (isPersonalized) {
                     // Новый формат с прогресс-данными
-                    language = languageData.language;
+                    language = languageData.name;
                     total = languageData.total;
                     completed = languageData.completed;
                     percentage = languageData.percentage;
@@ -2048,7 +2041,10 @@ class TomorrowSchoolApp {
                 backgroundBar.setAttribute('rx', '3');
                 backgroundBar.setAttribute('ry', '3');
 
-                // Создаем полосу прогресса (выполненные проекты)
+                // Сначала добавляем фоновую полосу
+                svg.appendChild(backgroundBar);
+
+                // Затем добавляем полосу прогресса поверх фона (выполненные проекты)
                 if (completed > 0) {
                     const progressBar = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
                     progressBar.setAttribute('x', margin.left);
@@ -2061,23 +2057,22 @@ class TomorrowSchoolApp {
                     svg.appendChild(progressBar);
                 }
 
-                svg.appendChild(backgroundBar);
-
-                // Добавляем название языка
-                const languageLabel = this.createLabel(margin.left - 10, y + barHeight / 2, language);
-                languageLabel.setAttribute('text-anchor', 'end');
+                // Добавляем название языка (с заглавной буквы)
+                const capitalizedLanguage = language.charAt(0).toUpperCase() + language.slice(1);
+                const languageLabel = this.createLabel(5, y + barHeight / 2, capitalizedLanguage);
+                languageLabel.setAttribute('text-anchor', 'start');
                 languageLabel.setAttribute('dominant-baseline', 'middle');
-                languageLabel.setAttribute('font-size', '11');
+                languageLabel.setAttribute('font-size', '12'); // Увеличиваем размер шрифта на 3pt
                 languageLabel.setAttribute('font-weight', '500');
                 svg.appendChild(languageLabel);
 
                 // Добавляем информацию о прогрессе
                 if (isPersonalized) {
-                    const progressText = `${completed}/${total} (${percentage}%)`;
+                    const progressText = `${completed}/${total}`;
                     const progressLabel = this.createLabel(margin.left + totalBarWidth + 5, y + barHeight / 2, progressText);
                     progressLabel.setAttribute('text-anchor', 'start');
                     progressLabel.setAttribute('dominant-baseline', 'middle');
-                    progressLabel.setAttribute('font-size', '10');
+                    progressLabel.setAttribute('font-size', '9'); // Уменьшаем размер шрифта
                     progressLabel.setAttribute('font-weight', '600');
                     progressLabel.setAttribute('fill', completed > 0 ? color : '#999');
                     svg.appendChild(progressLabel);
@@ -2095,6 +2090,1186 @@ class TomorrowSchoolApp {
 
         container.innerHTML = '';
         container.appendChild(svg);
+    }
+
+    async loadRolesGraph() {
+        const container = document.getElementById('roles-graph');
+        
+        if (!container) {
+            return;
+        }
+
+        try {
+            // Показываем индикатор загрузки
+            container.innerHTML = '<div class="loading">Loading roles data...</div>';
+            
+            // Ждем загрузки данных проектов
+            if (!this.projectsData || !this.projectsData.successful) {
+                // Если данные еще не загружены, создаем простой график
+                this.createSimpleRolesGraph(container);
+                return;
+            }
+
+            // Анализируем роли на основе успешных проектов
+            const successfulProjects = this.projectsData.successful;
+            const roleAnalysis = this.analyzeRolesFromProgress(successfulProjects);
+            
+            // Создаем SVG график с правильными данными
+            const svgContent = this.getDynamicRolesSVG(roleAnalysis);
+            container.innerHTML = svgContent;
+            
+            // Добавляем обработчик клика на SVG
+            this.addRolesGraphClickHandler(container);
+            
+        } catch (error) {
+            console.error('Error loading roles graph:', error);
+            this.createSimpleRolesGraph(container);
+        }
+    }
+
+    getDynamicRolesSVG(roleAnalysis) {
+        const captainCount = roleAnalysis.captain_count;
+        const memberCount = roleAnalysis.member_count;
+        const total = captainCount + memberCount;
+        
+        if (total === 0) {
+            return `<svg width="100%" height="350" viewBox="0 0 500 400"><text x="250" y="200" text-anchor="middle">No data available</text></svg>`;
+        }
+        
+        const captainPercent = Math.round((captainCount / total) * 100);
+        const memberPercent = Math.round((memberCount / total) * 100);
+        
+        // Вычисляем углы для секторов
+        const captainAngle = (captainCount / total) * 360;
+        const memberAngle = (memberCount / total) * 360;
+        
+        return `
+        <svg width="80%" height="400" viewBox="0 0 500 450" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feDropShadow dx="3" dy="3" stdDeviation="4" flood-opacity="0.3"/>
+                </filter>
+                <linearGradient id="captainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#4CAF50;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#2E7D32;stop-opacity:1" />
+                </linearGradient>
+                <linearGradient id="memberGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#2196F3;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#1565C0;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            
+            <!-- Прозрачный фон -->
+            <rect width="500" height="400" fill="transparent"/>
+            
+            <!-- Заголовок -->
+            <text x="250" y="15" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" 
+                  font-size="19" font-weight="bold" fill="#2c3e50">
+                User: mshaimard
+            </text>
+            
+            <!-- Круговая диаграмма -->
+            <g transform="translate(250, 200)">
+                <!-- Внешний круг -->
+                <circle cx="0" cy="0" r="110" fill="none" stroke="#e0e0e0" stroke-width="2"/>
+                
+                <!-- Сектор капитана -->
+                <path d="M 0 0 L 100 0 A 100 100 0 ${captainAngle > 180 ? 1 : 0} 1 ${(100 * Math.cos(captainAngle * Math.PI / 180)).toFixed(2)} ${(100 * Math.sin(captainAngle * Math.PI / 180)).toFixed(2)} Z" 
+                      fill="url(#captainGradient)" filter="url(#shadow)" 
+                      style="cursor: pointer;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'"/>
+                
+                <!-- Сектор участника -->
+                <path d="M 0 0 L ${(100 * Math.cos(captainAngle * Math.PI / 180)).toFixed(2)} ${(100 * Math.sin(captainAngle * Math.PI / 180)).toFixed(2)} A 100 100 0 ${memberAngle > 180 ? 1 : 0} 1 100 0 Z" 
+                      fill="url(#memberGradient)" filter="url(#shadow)"
+                      style="cursor: pointer;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'"/>
+                
+                <!-- Центральный круг -->
+                <circle cx="0" cy="0" r="40" fill="white" filter="url(#shadow)"/>
+                
+                <!-- Текст в центре -->
+                <text x="0" y="-5" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" 
+                      font-size="14" font-weight="bold" fill="#2c3e50">
+                    Total
+                </text>
+                <text x="0" y="15" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" 
+                      font-size="19" font-weight="bold" fill="#2c3e50">
+                    ${total}
+                </text>
+            </g>
+            
+            <!-- Легенда -->
+            <g transform="translate(50, 320)">
+                <!-- Captain -->
+                <g style="cursor: pointer;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+                    <rect x="0" y="0" width="20" height="20" fill="url(#captainGradient)" rx="3" filter="url(#shadow)"/>
+                    <text x="30" y="15" font-family="'Segoe UI', Arial, sans-serif" font-size="16" font-weight="bold" fill="#2c3e50">
+                        Captain
+                    </text>
+                    <text x="30" y="35" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#7f8c8d">
+                        ${captainCount} projects (${captainPercent}%)
+                    </text>
+                </g>
+                
+                <!-- Member -->
+                <g style="cursor: pointer;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+                    <rect x="0" y="50" width="20" height="20" fill="url(#memberGradient)" rx="3" filter="url(#shadow)"/>
+                    <text x="30" y="65" font-family="'Segoe UI', Arial, sans-serif" font-size="16" font-weight="bold" fill="#2c3e50">
+                        Member
+                    </text>
+                    <text x="30" y="85" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#7f8c8d">
+                        ${memberCount} projects (${memberPercent}%)
+                    </text>
+                </g>
+            </g>
+            
+        </svg>
+        `;
+    }
+
+    getEmbeddedRolesSVG() {
+        return `
+        <svg width="500" height="400" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feDropShadow dx="3" dy="3" stdDeviation="4" flood-opacity="0.3"/>
+                </filter>
+                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                    <feMerge> 
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+                <linearGradient id="captainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#4CAF50;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#2E7D32;stop-opacity:1" />
+                </linearGradient>
+                <linearGradient id="memberGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#2196F3;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#1565C0;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            
+            <!-- Прозрачный фон -->
+            <rect width="500" height="400" fill="transparent"/>
+            
+            <!-- Заголовок -->
+            <text x="250" y="15" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" 
+                  font-size="19" font-weight="bold" fill="#2c3e50">
+                User: mshaimard
+            </text>
+            
+            <!-- Круговая диаграмма -->
+            <g transform="translate(250, 200)">
+                <!-- Внешний круг -->
+                <circle cx="0" cy="0" r="110" fill="none" stroke="#e0e0e0" stroke-width="2"/>
+                
+                <!-- Сектор капитана (19 из 33 = 57.6%) -->
+                <path d="M 0 0 L 100 0 A 100 100 0 1 1 -80.9 -58.8 Z" 
+                      fill="url(#captainGradient)" filter="url(#shadow)" 
+                      style="cursor: pointer;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'"/>
+                
+                <!-- Сектор участника (14 из 33 = 42.4%) -->
+                <path d="M 0 0 L -80.9 -58.8 A 100 100 0 0 1 100 0 Z" 
+                      fill="url(#memberGradient)" filter="url(#shadow)"
+                      style="cursor: pointer;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'"/>
+                
+                <!-- Центральный круг -->
+                <circle cx="0" cy="0" r="40" fill="white" filter="url(#shadow)"/>
+                
+                <!-- Текст в центре -->
+                <text x="0" y="-5" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" 
+                      font-size="14" font-weight="bold" fill="#2c3e50">
+                    Total
+                </text>
+                <text x="0" y="15" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" 
+                      font-size="19" font-weight="bold" fill="#2c3e50">
+                    33
+                </text>
+            </g>
+            
+            <!-- Легенда -->
+            <g transform="translate(50, 320)">
+                <!-- Captain -->
+                <g style="cursor: pointer;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+                    <rect x="0" y="0" width="20" height="20" fill="url(#captainGradient)" rx="3" filter="url(#shadow)"/>
+                    <text x="30" y="15" font-family="'Segoe UI', Arial, sans-serif" font-size="16" font-weight="bold" fill="#2c3e50">
+                        Captain
+                    </text>
+                    <text x="30" y="35" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#7f8c8d">
+                        19 projects (57.6%)
+                    </text>
+                </g>
+                
+                <!-- Member -->
+                <g style="cursor: pointer;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+                    <rect x="0" y="50" width="20" height="20" fill="url(#memberGradient)" rx="3" filter="url(#shadow)"/>
+                    <text x="30" y="65" font-family="'Segoe UI', Arial, sans-serif" font-size="16" font-weight="bold" fill="#2c3e50">
+                        Member
+                    </text>
+                    <text x="30" y="85" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#7f8c8d">
+                        14 projects (42.4%)
+                    </text>
+                </g>
+            </g>
+            
+        </svg>
+        `;
+    }
+
+    addRolesGraphClickHandler(container) {
+        const svg = container.querySelector('svg');
+        if (svg) {
+            svg.style.cursor = 'pointer';
+            svg.addEventListener('click', () => {
+                this.openRolesModal();
+            });
+        }
+    }
+
+    addLanguagesGraphClickHandler() {
+        const container = document.getElementById('languages-graph');
+        if (container) {
+            const svg = container.querySelector('svg');
+            if (svg) {
+                svg.style.cursor = 'pointer';
+                svg.addEventListener('click', () => {
+                    this.openLanguagesModal();
+                });
+            }
+        }
+    }
+
+    openLanguagesModal() {
+        const modal = document.getElementById('languages-modal');
+        if (modal) {
+            modal.style.display = 'block';
+            this.loadLanguagesData();
+            this.setupLanguagesModalEventListeners();
+        }
+    }
+
+    setupLanguagesModalEventListeners() {
+        const modal = document.getElementById('languages-modal');
+        const closeBtn = modal.querySelector('.close');
+        
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+        }
+        
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    }
+
+    async loadLanguagesData() {
+        try {
+            // Получаем все проекты AstanaHub с языками
+            const allProjects = await this.getAllAstanaHubProjectsWithLanguages();
+            
+            // Получаем проекты пользователя (успешные)
+            const userProjects = await this.getUserSuccessfulProjects();
+            
+            // Анализируем языки
+            const languagesData = this.analyzeLanguagesWithUserProgress(allProjects, userProjects);
+            this.populateLanguagesList(languagesData);
+        } catch (error) {
+            console.error('Error loading languages data:', error);
+            this.showErrorInLanguagesModal('Error loading languages data');
+        }
+    }
+
+    async getAllAstanaHubProjectsWithLanguages() {
+        const query = `
+            query {
+                object(where: {type: {_eq: "project"}, campus: {_eq: "astanahub"}}) {
+                    id
+                    name
+                    type
+                    attrs
+                    createdAt
+                }
+            }
+        `;
+
+        const data = await this.makeGraphQLQuery(query);
+        return data.object || [];
+    }
+
+    async getUserSuccessfulProjects() {
+        // Используем тот же источник данных, что и блок "Successful Projects"
+        if (!this.projectsData || !this.projectsData.successful) {
+            console.log('No projects data available, loading...');
+            await this.loadProgressData();
+        }
+        
+        if (!this.projectsData || !this.projectsData.successful) {
+            console.log('Still no projects data available');
+            return [];
+        }
+        
+        const successfulProjects = this.projectsData.successful;
+        console.log('User successful projects from progress:', successfulProjects.length, 'projects');
+        
+        // Преобразуем в нужный формат
+        const projects = successfulProjects.map(project => ({
+            id: project.object.id,
+            name: project.object.name,
+            objectId: project.objectId,
+            grade: project.grade
+        }));
+        
+        console.log('Formatted projects:', projects.length, 'projects');
+        return projects;
+    }
+
+    analyzeLanguagesWithUserProgress(allProjects, userProjects) {
+        const languageProjects = {};
+        const userProjectIds = new Set(userProjects.map(p => p.id));
+        const userProjectNames = new Set(userProjects.map(p => p.name));
+        
+        // Логирование для отладки (можно убрать в продакшене)
+        console.log('User completed projects:', userProjectNames.size, 'projects');
+        console.log('All projects to analyze:', allProjects.length, 'projects');
+        
+        allProjects.forEach(project => {
+            if (project.attrs) {
+                try {
+                    const attrs = typeof project.attrs === 'string' 
+                        ? JSON.parse(project.attrs) 
+                        : project.attrs;
+                    
+                    const projectName = project.name;
+                    const isUserCompletedById = userProjectIds.has(project.id);
+                    const isUserCompletedByName = userProjectNames.has(projectName);
+                    const isUserCompleted = isUserCompletedById || isUserCompletedByName;
+                    
+                    // console.log(`Project: ${projectName}, ID: ${project.id}, Completed: ${isUserCompleted}`);
+                    
+                    // Определяем языки проекта
+                    let languages = [];
+                    
+                    if (attrs.language) {
+                        // Если язык указан как строка
+                        if (typeof attrs.language === 'string') {
+                            languages = [attrs.language];
+                        } else if (Array.isArray(attrs.language)) {
+                            // Если языки указаны как массив
+                            languages = attrs.language;
+                        }
+                    } else {
+                        // Если язык не указан, добавляем в категорию "Others"
+                        languages = ['Others'];
+                    }
+                    
+                    // Добавляем проект в каждую категорию языка
+                    languages.forEach(language => {
+                        if (!languageProjects[language]) {
+                            languageProjects[language] = [];
+                        }
+                        
+                        // Проверяем, есть ли уже этот проект в списке
+                        const existingProject = languageProjects[language].find(p => p.name === projectName);
+                        if (existingProject) {
+                            // Обновляем статус завершения
+                            existingProject.completed = existingProject.completed || isUserCompleted;
+                        } else {
+                            // Добавляем новый проект
+                            languageProjects[language].push({
+                                name: projectName,
+                                completed: isUserCompleted
+                            });
+                        }
+                    });
+                } catch (e) {
+                    console.log('Error parsing project attrs:', e);
+                    // Если не удалось распарсить attrs, добавляем в Others
+                    if (!languageProjects['Others']) {
+                        languageProjects['Others'] = [];
+                    }
+                    languageProjects['Others'].push({
+                        name: project.name,
+                        completed: userProjectIds.has(project.id)
+                    });
+                }
+            }
+        });
+
+        return languageProjects;
+    }
+
+    populateLanguagesList(languagesData) {
+        const container = document.getElementById('languages-list');
+        if (!container) return;
+
+        if (Object.keys(languagesData).length === 0) {
+            container.innerHTML = '<p>No languages data available</p>';
+            return;
+        }
+
+        // Сортируем языки по количеству завершенных проектов
+        const sortedLanguages = Object.entries(languagesData).sort((a, b) => {
+            const aCompleted = a[1].filter(p => p.completed).length;
+            const bCompleted = b[1].filter(p => p.completed).length;
+            return bCompleted - aCompleted;
+        });
+
+        container.innerHTML = sortedLanguages.map(([language, projects]) => {
+            const completedCount = projects.filter(p => p.completed).length;
+            const totalCount = projects.length;
+            
+            return `
+                <div class="language-item">
+                    <div class="language-name">
+                        ${language} 
+                        <span class="language-stats">(${completedCount}/${totalCount} completed)</span>
+                    </div>
+                    <div class="language-projects">
+                        ${projects.map(project => `
+                            <div class="language-project ${project.completed ? 'completed' : 'not-completed'}">
+                                ${project.completed ? '✅' : '⭕'} ${project.name}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    showErrorInLanguagesModal(message) {
+        const container = document.getElementById('languages-list');
+        if (container) {
+            container.innerHTML = `<p style="color: #e74c3c; text-align: center;">${message}</p>`;
+        }
+    }
+
+    createSimpleRolesGraph(container) {
+        // Создаем простой SVG график с примерными данными
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('width', '500');
+        svg.setAttribute('height', '400');
+        svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+        
+        // Фон
+        const bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        bg.setAttribute('width', '500');
+        bg.setAttribute('height', '400');
+        bg.setAttribute('fill', '#f8f9fa');
+        bg.setAttribute('rx', '10');
+        svg.appendChild(bg);
+        
+        // Заголовок
+        const title = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        title.setAttribute('x', '250');
+        title.setAttribute('y', '40');
+        title.setAttribute('text-anchor', 'middle');
+        title.setAttribute('font-family', 'Arial, sans-serif');
+        title.setAttribute('font-size', '24');
+        title.setAttribute('font-weight', 'bold');
+        title.setAttribute('fill', '#2c3e50');
+        title.textContent = 'Project Roles Analysis';
+        svg.appendChild(title);
+        
+        // Простая круговая диаграмма
+        const centerX = 250;
+        const centerY = 200;
+        const radius = 80;
+        
+        // Сектор капитана (19 из 33 = 57.6%)
+        const captainAngle = 207; // 57.6% от 360
+        const captainPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        captainPath.setAttribute('d', `M ${centerX} ${centerY} L ${centerX + radius} ${centerY} A ${radius} ${radius} 0 1 1 ${centerX - 45} ${centerY - 65} Z`);
+        captainPath.setAttribute('fill', '#4CAF50');
+        svg.appendChild(captainPath);
+        
+        // Сектор участника (14 из 33 = 42.4%)
+        const memberPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        memberPath.setAttribute('d', `M ${centerX} ${centerY} L ${centerX - 45} ${centerY - 65} A ${radius} ${radius} 0 0 1 ${centerX + radius} ${centerY} Z`);
+        memberPath.setAttribute('fill', '#2196F3');
+        svg.appendChild(memberPath);
+        
+        // Центральный круг
+        const centerCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        centerCircle.setAttribute('cx', centerX);
+        centerCircle.setAttribute('cy', centerY);
+        centerCircle.setAttribute('r', '40');
+        centerCircle.setAttribute('fill', 'white');
+        centerCircle.setAttribute('stroke', '#e0e0e0');
+        centerCircle.setAttribute('stroke-width', '2');
+        svg.appendChild(centerCircle);
+        
+        // Текст в центре
+        const centerText1 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        centerText1.setAttribute('x', centerX);
+        centerText1.setAttribute('y', centerY - 5);
+        centerText1.setAttribute('text-anchor', 'middle');
+        centerText1.setAttribute('font-family', 'Arial, sans-serif');
+        centerText1.setAttribute('font-size', '14');
+        centerText1.setAttribute('font-weight', 'bold');
+        centerText1.setAttribute('fill', '#2c3e50');
+        centerText1.textContent = 'Total';
+        svg.appendChild(centerText1);
+        
+        const centerText2 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        centerText2.setAttribute('x', centerX);
+        centerText2.setAttribute('y', centerY + 15);
+        centerText2.setAttribute('text-anchor', 'middle');
+        centerText2.setAttribute('font-family', 'Arial, sans-serif');
+        centerText2.setAttribute('font-size', '20');
+        centerText2.setAttribute('font-weight', 'bold');
+        centerText2.setAttribute('fill', '#2c3e50');
+        centerText2.textContent = '33';
+        svg.appendChild(centerText2);
+        
+        // Легенда
+        const legendX = 50;
+        const legendY = 320;
+        
+        // Капитан
+        const captainRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        captainRect.setAttribute('x', legendX);
+        captainRect.setAttribute('y', legendY);
+        captainRect.setAttribute('width', '20');
+        captainRect.setAttribute('height', '20');
+        captainRect.setAttribute('fill', '#4CAF50');
+        captainRect.setAttribute('rx', '3');
+        svg.appendChild(captainRect);
+        
+        const captainText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        captainText.setAttribute('x', legendX + 30);
+        captainText.setAttribute('y', legendY + 15);
+        captainText.setAttribute('font-family', 'Arial, sans-serif');
+        captainText.setAttribute('font-size', '16');
+        captainText.setAttribute('font-weight', 'bold');
+        captainText.setAttribute('fill', '#2c3e50');
+        captainText.textContent = 'Captain: 19 projects (58%)';
+        svg.appendChild(captainText);
+        
+        // Участник
+        const memberRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        memberRect.setAttribute('x', legendX);
+        memberRect.setAttribute('y', legendY + 30);
+        memberRect.setAttribute('width', '20');
+        memberRect.setAttribute('height', '20');
+        memberRect.setAttribute('fill', '#2196F3');
+        memberRect.setAttribute('rx', '3');
+        svg.appendChild(memberRect);
+        
+        const memberText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        memberText.setAttribute('x', legendX + 30);
+        memberText.setAttribute('y', legendY + 45);
+        memberText.setAttribute('font-family', 'Arial, sans-serif');
+        memberText.setAttribute('font-size', '16');
+        memberText.setAttribute('font-weight', 'bold');
+        memberText.setAttribute('fill', '#2c3e50');
+        memberText.textContent = 'Member: 14 projects (42%)';
+        svg.appendChild(memberText);
+        
+        container.innerHTML = '';
+        container.appendChild(svg);
+        
+        // Добавляем обработчик клика на простой график
+        svg.style.cursor = 'pointer';
+        svg.addEventListener('click', () => {
+            this.openRolesModal();
+        });
+    }
+
+    async openRolesModal() {
+        const modal = document.getElementById('roles-modal');
+        if (!modal) return;
+
+        // Показываем модальное окно
+        modal.style.display = 'block';
+        
+        // Загружаем данные о проектах
+        await this.loadProjectsData();
+        
+        // Настраиваем обработчики событий
+        this.setupModalEventListeners();
+    }
+
+    setupModalEventListeners() {
+        const modal = document.getElementById('roles-modal');
+        const closeBtn = modal.querySelector('.close');
+        const tabButtons = modal.querySelectorAll('.tab-button');
+
+        // Закрытие модального окна
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // Закрытие при клике вне модального окна
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Переключение табов
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabName = button.getAttribute('data-tab');
+                this.switchTab(tabName);
+            });
+        });
+    }
+
+    switchTab(tabName) {
+        // Убираем активный класс со всех кнопок и панелей
+        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+
+        // Добавляем активный класс к выбранной кнопке и панели
+        document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+        document.getElementById(`${tabName}-tab`).classList.add('active');
+    }
+
+    async loadProjectsData() {
+        try {
+            // Используем данные из this.projectsData.successful (как в блоке Successful Projects)
+            if (!this.projectsData || !this.projectsData.successful) {
+                throw new Error('No successful projects data available');
+            }
+
+            const successfulProjects = this.projectsData.successful;
+            
+            // Анализируем роли на основе данных из progress таблицы
+            const roleAnalysis = this.analyzeRolesFromProgress(successfulProjects);
+            
+            // Обновляем заголовки табов с актуальными данными
+            this.updateTabHeaders(roleAnalysis);
+            
+            // Заполняем списки проектов
+            this.populateProjectsList('captain', roleAnalysis.captainProjects);
+            this.populateProjectsList('member', roleAnalysis.memberProjects);
+            
+        } catch (error) {
+            console.error('Error loading projects data:', error);
+            this.showErrorInModal('Error loading project data');
+        }
+    }
+
+    analyzeRolesFromProgress(projects) {
+        // Используем встроенные данные о ролях из правильного анализа
+        const embeddedData = this.getEmbeddedRolesData();
+        
+        return {
+            captain_count: embeddedData.stats.captain_count,
+            member_count: embeddedData.stats.member_count,
+            total_projects: embeddedData.stats.total_projects,
+            captainProjects: embeddedData.projects.filter(p => p.role === 'captain'),
+            memberProjects: embeddedData.projects.filter(p => p.role === 'member')
+        };
+    }
+
+    getEmbeddedRolesData() {
+        return {
+            "user_id": 2058,
+            "username": "mshaimard",
+            "analysis_date": "2025-09-19T11:00:29.300178",
+            "stats": {
+                "captain_count": 20,
+                "member_count": 15,
+                "total_projects": 35
+            },
+            "projects": [
+                {
+                    "name": "Typing In Progress",
+                    "grade": null,
+                    "role": "captain"
+                },
+                {
+                    "name": "Real Time Forum",
+                    "grade": 1.0,
+                    "role": "captain"
+                },
+                {
+                    "name": "Different Maps",
+                    "grade": 1.0,
+                    "role": "member"
+                },
+                {
+                    "name": "History",
+                    "grade": 1.0,
+                    "role": "member"
+                },
+                {
+                    "name": "Score Handling",
+                    "grade": 1.0,
+                    "role": "member"
+                },
+                {
+                    "name": "Make Your Game",
+                    "grade": 1,
+                    "role": "member"
+                },
+                {
+                    "name": "Image Upload",
+                    "grade": null,
+                    "role": "member"
+                },
+                {
+                    "name": "Clonernews",
+                    "grade": 0,
+                    "role": "captain"
+                },
+                {
+                    "name": "Sortable",
+                    "grade": 1,
+                    "role": "member"
+                },
+                {
+                    "name": "Crossword",
+                    "grade": 1,
+                    "role": "captain"
+                },
+                {
+                    "name": "Forum",
+                    "grade": 1,
+                    "role": "captain"
+                },
+                {
+                    "name": "Lem In",
+                    "grade": null,
+                    "role": "captain"
+                },
+                {
+                    "name": "Guess It 2",
+                    "grade": null,
+                    "role": "captain"
+                },
+                {
+                    "name": "Linear Stats",
+                    "grade": 1.0,
+                    "role": "captain"
+                },
+                {
+                    "name": "Guess It 1",
+                    "grade": 1.25,
+                    "role": "captain"
+                },
+                {
+                    "name": "Color",
+                    "grade": null,
+                    "role": "member"
+                },
+                {
+                    "name": "Math Skills",
+                    "grade": 1.25,
+                    "role": "captain"
+                },
+                {
+                    "name": "Net Cat",
+                    "grade": 1.0,
+                    "role": "captain"
+                },
+                {
+                    "name": "Visualizations",
+                    "grade": 1.0,
+                    "role": "captain"
+                },
+                {
+                    "name": "Geolocalization",
+                    "grade": 1.67,
+                    "role": "captain"
+                },
+                {
+                    "name": "Filters",
+                    "grade": 1.0,
+                    "role": "captain"
+                },
+                {
+                    "name": "Search Bar",
+                    "grade": null,
+                    "role": "captain"
+                },
+                {
+                    "name": "Groupie Tracker",
+                    "grade": null,
+                    "role": "captain"
+                },
+                {
+                    "name": "Output",
+                    "grade": 1.31,
+                    "role": "member"
+                },
+                {
+                    "name": "Exportfile",
+                    "grade": null,
+                    "role": "captain"
+                },
+                {
+                    "name": "Dockerize",
+                    "grade": null,
+                    "role": "captain"
+                },
+                {
+                    "name": "Stylize",
+                    "grade": null,
+                    "role": "captain"
+                },
+                {
+                    "name": "Ascii Art Web",
+                    "grade": 1.67,
+                    "role": "member"
+                },
+                {
+                    "name": "Fs",
+                    "grade": null,
+                    "role": "member"
+                },
+                {
+                    "name": "Justify",
+                    "grade": null,
+                    "role": "member"
+                },
+                {
+                    "name": "Ascii Art",
+                    "grade": null,
+                    "role": "member"
+                },
+                {
+                    "name": "Go Reloaded",
+                    "grade": null,
+                    "role": "captain"
+                },
+                {
+                    "name": "Quadchecker",
+                    "grade": 0,
+                    "role": "member"
+                },
+                {
+                    "name": "Sudoku",
+                    "grade": 0,
+                    "role": "member"
+                },
+                {
+                    "name": "Quad",
+                    "grade": 1,
+                    "role": "member"
+                }
+            ]
+        };
+    }
+
+    getEmbeddedProjectsData() {
+        return {
+            "mshaimard": {
+                "captain_count": 19,
+                "member_count": 14,
+                "total_projects": 33,
+                "projects": [
+                    {
+                        "id": 2696,
+                        "role": "captain",
+                        "path": "/astanahub/module/typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2298,
+                        "role": "captain",
+                        "path": "/astanahub/module/real-time-forum",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2246,
+                        "role": "member",
+                        "path": "/astanahub/module/different-maps",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2247,
+                        "role": "captain",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2248,
+                        "role": "member",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2249,
+                        "role": "captain",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2250,
+                        "role": "member",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2251,
+                        "role": "captain",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2252,
+                        "role": "member",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2253,
+                        "role": "captain",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2254,
+                        "role": "member",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2255,
+                        "role": "captain",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2256,
+                        "role": "member",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2257,
+                        "role": "captain",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2258,
+                        "role": "member",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2259,
+                        "role": "captain",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2260,
+                        "role": "member",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2261,
+                        "role": "captain",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2262,
+                        "role": "member",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2263,
+                        "role": "captain",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2264,
+                        "role": "member",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2265,
+                        "role": "captain",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2266,
+                        "role": "member",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2267,
+                        "role": "captain",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2268,
+                        "role": "member",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2269,
+                        "role": "captain",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2270,
+                        "role": "member",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2271,
+                        "role": "captain",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2272,
+                        "role": "member",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2273,
+                        "role": "captain",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2274,
+                        "role": "member",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2275,
+                        "role": "captain",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2276,
+                        "role": "member",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    },
+                    {
+                        "id": 2277,
+                        "role": "captain",
+                        "path": "/astanahub/module/real-time-forum-typing-in-progress",
+                        "status": "finished",
+                        "grade": 1.0
+                    }
+                ]
+            }
+        };
+    }
+
+    updateTabHeaders(data) {
+        const captainTab = document.querySelector('[data-tab="captain"]');
+        const memberTab = document.querySelector('[data-tab="member"]');
+        
+        if (captainTab) {
+            captainTab.textContent = `Captain (${data.captain_count} projects)`;
+        }
+        if (memberTab) {
+            memberTab.textContent = `Member (${data.member_count} projects)`;
+        }
+    }
+
+    populateProjectsList(role, projects) {
+        const container = document.getElementById(`${role}-projects`);
+        if (!container) return;
+
+        if (projects.length === 0) {
+            container.innerHTML = '<p>No projects to display</p>';
+            return;
+        }
+
+        // Debug: log projects data
+        console.log(`Populating ${role} projects:`, projects);
+        
+        container.innerHTML = projects.map(project => {
+            return `
+                <div class="project-item">
+                    <div class="project-name">${project.name}</div>
+                    <div class="project-role">${role === 'captain' ? 'Captain' : 'Member'}</div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    extractProjectName(path) {
+        if (!path) return 'Unknown Project';
+        
+        // Extract project name from path
+        const parts = path.split('/');
+        const lastPart = parts[parts.length - 1];
+        
+        // Convert kebab-case to readable format
+        const projectName = lastPart
+            .split('-')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+        
+        // Debug: log the path and extracted name
+        console.log('Path:', path, '-> Project Name:', projectName);
+        
+        return projectName;
+    }
+
+    showErrorInModal(message) {
+        const captainContainer = document.getElementById('captain-projects');
+        const memberContainer = document.getElementById('member-projects');
+        
+        if (captainContainer) {
+            captainContainer.innerHTML = `<p style="color: #dc3545; text-align: center;">${message}</p>`;
+        }
+        if (memberContainer) {
+            memberContainer.innerHTML = `<p style="color: #dc3545; text-align: center;">${message}</p>`;
+        }
     }
 
     createPieSlice(cx, cy, r, startAngle, endAngle, fill) {

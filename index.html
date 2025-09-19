@@ -133,9 +133,17 @@
                 <section class="statistics-section">
                     <h2>Statistics & Analytics</h2>
                     <div class="graphs-container">
-                        <div class="graph-card">
+                        <div class="languages-section">
                             <h3>Your Programming Languages</h3>
+                            <p class="graph-hint">💡 Click on the chart for detailed information</p>
                             <div id="languages-graph" class="svg-graph"></div>
+                        </div>
+                        <div class="roles-section">
+                            <h3>Project Roles Analysis</h3>
+                            <p class="graph-hint">💡 Click on the chart for detailed information</p>
+                            <div id="roles-graph" class="svg-graph">
+                                <!-- SVG график ролей будет загружен здесь -->
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -143,6 +151,49 @@
         </div>
     </div>
 
-    <script src="script.js?v=2"></script>
+    <!-- Modal для детальной информации о языках программирования -->
+    <div id="languages-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Programming Languages Details</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="languages-list" id="languages-list">
+                    <!-- Список языков и проектов будет загружен здесь -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal для детальной информации о проектах -->
+    <div id="roles-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Project Details</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="tabs">
+                    <button class="tab-button active" data-tab="captain">Captain (19 projects)</button>
+                    <button class="tab-button" data-tab="member">Member (14 projects)</button>
+                </div>
+                <div class="tab-content">
+                    <div id="captain-tab" class="tab-pane active">
+                        <div class="projects-list" id="captain-projects">
+                            <!-- List of projects where user was captain -->
+                        </div>
+                    </div>
+                    <div id="member-tab" class="tab-pane">
+                        <div class="projects-list" id="member-projects">
+                            <!-- List of projects where user was member -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js?v=45"></script>
 </body>
 </html>
