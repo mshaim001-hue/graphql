@@ -2639,10 +2639,18 @@ class TomorrowSchoolApp {
         let memberCount = 0;
         const captainProjects = [];
         const memberProjects = [];
+        const processedProjects = new Set(); // Для отслеживания уже обработанных проектов
         
         console.log('Analyzing roles for projects:', projects.length);
         
         projects.forEach((project, index) => {
+            // Пропускаем дублирующиеся проекты
+            const projectName = project.object.name;
+            if (processedProjects.has(projectName)) {
+                console.log(`  Skipping duplicate project: ${projectName}`);
+                return;
+            }
+            processedProjects.add(projectName);
             // Проверяем роль пользователя в проекте
             const group = project.group;
             const currentUserLogin = this.currentUser?.login;
@@ -2712,7 +2720,9 @@ class TomorrowSchoolApp {
         console.log('Final role analysis:', {
             captain_count: captainCount,
             member_count: memberCount,
-            total_projects: captainCount + memberCount
+            total_projects: captainCount + memberCount,
+            unique_projects_processed: processedProjects.size,
+            total_projects_before_dedup: projects.length
         });
         
         return {
