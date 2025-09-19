@@ -156,12 +156,10 @@ class TomorrowSchoolApp {
             const payload = this.parseJWT(token);
             // Check if token is expired
             if (payload.exp && payload.exp < Date.now() / 1000) {
-                console.log('JWT token expired');
                 return false;
             }
             // Check if token has required fields
             if (!payload.sub && !payload.id) {
-                console.log('JWT token missing user ID');
                 return false;
             }
             return true;
@@ -286,6 +284,9 @@ class TomorrowSchoolApp {
             // Store original date for calculations
             localStorage.setItem('memberSince', user.createdAt);
             
+            // Сохраняем информацию о пользователе в классе
+            this.currentUser = user;
+            
             // Загружаем данные для вычисления level
             const userLevel = await this.calculateUserLevel(user.id);
             user.level = userLevel;
@@ -355,7 +356,7 @@ class TomorrowSchoolApp {
                 averageGrade: Math.round(averageGrade * 100) / 100
             };
         } catch (error) {
-            console.log('Error calculating user level:', error);
+            // Error calculating user level
         }
         
         return {
@@ -380,7 +381,7 @@ class TomorrowSchoolApp {
                 profileData = typeof user.profile === 'string' ? JSON.parse(user.profile) : user.profile;
             }
         } catch (e) {
-            console.log('Could not parse profile data:', e);
+            // Could not parse profile data
         }
         
         try {
@@ -388,7 +389,7 @@ class TomorrowSchoolApp {
                 attrsData = typeof user.attrs === 'string' ? JSON.parse(user.attrs) : user.attrs;
             }
         } catch (e) {
-            console.log('Could not parse attrs data:', e);
+            // Could not parse attrs data
         }
         
         // Format dates
@@ -1264,7 +1265,7 @@ class TomorrowSchoolApp {
                             groupInfo = `👥 Min group size: ${attrs.groupMin} participants`;
                         }
                     } catch (e) {
-                        console.log('Error parsing project attrs:', e);
+                        // Error parsing project attrs
                     }
                 }
                 
@@ -1302,12 +1303,6 @@ class TomorrowSchoolApp {
     }
 
     displayProgressData(progress, results, groupMemberships, eventParticipations) {
-        console.log('displayProgressData called with:', {
-            progress: progress?.length || 0,
-            results: results?.length || 0,
-            groupMemberships: groupMemberships?.length || 0,
-            eventParticipations: eventParticipations?.length || 0
-        });
         
         // Ensure we have arrays to work with
         progress = progress || [];
@@ -1356,7 +1351,6 @@ class TomorrowSchoolApp {
         eventsByType['events'] = totalEvents;
         
         const progressDetails = document.getElementById('progress-details');
-        console.log('Found progress details element:', !!progressDetails);
         
         progressDetails.innerHTML = `
             <!-- Basic Progress Stats -->
@@ -1561,7 +1555,7 @@ class TomorrowSchoolApp {
                     total: totalCount,
                     percentage: totalCount > 0 ? (completedCount / totalCount) * 100 : 0
                 };
-            }).sort((a, b) => b.completed - a.completed); // Сортируем по количеству завершенных
+            }).sort((a, b) => b.total - a.total); // Сортируем по общему количеству проектов
             
             return {
                 total_projects: userProjects.length,
@@ -1622,7 +1616,7 @@ class TomorrowSchoolApp {
                         languageCount[normalizedLanguage] = (languageCount[normalizedLanguage] || 0) + 1;
                     }
                 } catch (e) {
-                    console.log('Error parsing project attrs:', e);
+                    // Error parsing project attrs
                 }
             }
         });
@@ -2165,7 +2159,7 @@ class TomorrowSchoolApp {
             <!-- Заголовок -->
             <text x="250" y="15" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" 
                   font-size="19" font-weight="bold" fill="#2c3e50">
-                User: mshaimard
+                User: ${this.currentUser ? this.currentUser.login : 'Loading...'}
             </text>
             
             <!-- Круговая диаграмма -->
@@ -2256,7 +2250,7 @@ class TomorrowSchoolApp {
             <!-- Заголовок -->
             <text x="250" y="15" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" 
                   font-size="19" font-weight="bold" fill="#2c3e50">
-                User: mshaimard
+                User: ${this.currentUser ? this.currentUser.login : 'Loading...'}
             </text>
             
             <!-- Круговая диаграмма -->
@@ -2403,17 +2397,14 @@ class TomorrowSchoolApp {
     async getUserSuccessfulProjects() {
         // Используем тот же источник данных, что и блок "Successful Projects"
         if (!this.projectsData || !this.projectsData.successful) {
-            console.log('No projects data available, loading...');
             await this.loadProgressData();
         }
         
         if (!this.projectsData || !this.projectsData.successful) {
-            console.log('Still no projects data available');
             return [];
         }
         
         const successfulProjects = this.projectsData.successful;
-        console.log('User successful projects from progress:', successfulProjects.length, 'projects');
         
         // Преобразуем в нужный формат
         const projects = successfulProjects.map(project => ({
@@ -2423,7 +2414,6 @@ class TomorrowSchoolApp {
             grade: project.grade
         }));
         
-        console.log('Formatted projects:', projects.length, 'projects');
         return projects;
     }
 
@@ -2432,9 +2422,7 @@ class TomorrowSchoolApp {
         const userProjectIds = new Set(userProjects.map(p => p.id));
         const userProjectNames = new Set(userProjects.map(p => p.name));
         
-        // Логирование для отладки (можно убрать в продакшене)
-        console.log('User completed projects:', userProjectNames.size, 'projects');
-        console.log('All projects to analyze:', allProjects.length, 'projects');
+        // Анализ проектов пользователя
         
         allProjects.forEach(project => {
             if (project.attrs) {
@@ -2447,8 +2435,6 @@ class TomorrowSchoolApp {
                     const isUserCompletedById = userProjectIds.has(project.id);
                     const isUserCompletedByName = userProjectNames.has(projectName);
                     const isUserCompleted = isUserCompletedById || isUserCompletedByName;
-                    
-                    // console.log(`Project: ${projectName}, ID: ${project.id}, Completed: ${isUserCompleted}`);
                     
                     // Определяем языки проекта
                     let languages = [];
@@ -2486,8 +2472,7 @@ class TomorrowSchoolApp {
                         }
                     });
                 } catch (e) {
-                    console.log('Error parsing project attrs:', e);
-                    // Если не удалось распарсить attrs, добавляем в Others
+                    // Error parsing project attrs - добавляем в Others
                     if (!languageProjects['Others']) {
                         languageProjects['Others'] = [];
                     }
@@ -2769,8 +2754,8 @@ class TomorrowSchoolApp {
 
     getEmbeddedRolesData() {
         return {
-            "user_id": 2058,
-            "username": "mshaimard",
+            "user_id": this.userId || 2058,
+            "username": this.currentUser ? this.currentUser.login : "mshaimard",
             "analysis_date": "2025-09-19T11:00:29.300178",
             "stats": {
                 "captain_count": 20,
@@ -2958,8 +2943,9 @@ class TomorrowSchoolApp {
     }
 
     getEmbeddedProjectsData() {
+        const username = this.currentUser ? this.currentUser.login : "mshaimard";
         return {
-            "mshaimard": {
+            [username]: {
                 "captain_count": 19,
                 "member_count": 14,
                 "total_projects": 33,
@@ -3228,8 +3214,7 @@ class TomorrowSchoolApp {
             return;
         }
 
-        // Debug: log projects data
-        console.log(`Populating ${role} projects:`, projects);
+        // Populate projects data
         
         container.innerHTML = projects.map(project => {
             return `
@@ -3254,8 +3239,7 @@ class TomorrowSchoolApp {
             .map(word => word.charAt(0).toUpperCase() + word.slice(1))
             .join(' ');
         
-        // Debug: log the path and extracted name
-        console.log('Path:', path, '-> Project Name:', projectName);
+        // Extract project name from path
         
         return projectName;
     }
